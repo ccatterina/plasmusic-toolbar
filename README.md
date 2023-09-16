@@ -1,0 +1,51 @@
+# PlasMusic Toolbar
+
+
+<p align="center">
+  <img src="./plasmusic-toolbar-demo.gif" />
+</p>
+
+## Overview
+
+PlasMusic Toolbar is a widget for KDE Plasma 5 that shows currently playing song information and provide playback controls.
+
+It leverages MPRIS2 data engine to retrieve information and execute operations.
+
+## Features
+
+### 🎵 Now Playing Song
+- Show the currently playing song's title and artist in the KDE panel
+
+### ⏯️ Playback Controls
+- Manage your music effortlessly with Play, Pause, Next, and Previous controls directly from the KDE panel.
+
+### 📸 Full View
+- Full View provides the album image, along with Play, Pause, Next, Previous, Shuffle, and Repeat controls. Adjust the volume and track position with ease.
+
+### 🛠️ Configurations
+- **Icon customization:** Change the widget's icon in the panel view to suit your preferences.
+- **Playback controls visibility:** Choose whether to display Play, Pause, Next, and Previous controls in the panel view.
+- **Preferred source**: Change the widget preferred source for music information (spotify, vlc, etc). As default the widget use `@multiplex` source.
+- **Playing song max display width**: Determine the maximum width for displaying the currently playing song in the panel. When the song's text exceeds this maximum width, the text will scroll horizontally.
+
+
+## Installation
+
+1. Clone the repository:
+    ```sh
+    git clone git@github.com:ccatterina/plasmusic-toolbar.git /tmp/plasmusic-toolbar
+    ```
+
+2. Install the widget:
+
+    ```sh
+    kpackagetool5 -t Plasma/Applet --install /tmp/plasmusic-toolbar/src
+    ```
+
+To uninstall the widget:
+
+```sh
+kpackagetool5 -t Plasma/Applet --remove /tmp/plasmusic-toolbar/src
+```
+
+**TODO**: Add the widget to the KDE store.

@@ -1,0 +1,22 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "catterina.claudio@gmail.com",
+                "Name": "Claudio Catterina"
+            }
+        ],
+        "Description": "KDE Plasma widget that shows currently playing song information and provide playback controls.",
+        "EnabledByDefault": true,
+        "Icon": "view-media-track",
+        "Id": "plasmusic-toolbar",
+        "License": "GPL3",
+        "Name": "PlasMusic Toolbar",
+        "ServiceTypes": [
+            "Plasma/Applet"
+        ],
+        "Version": "0.1"
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-MainScript": "ui/main.qml"
+}
