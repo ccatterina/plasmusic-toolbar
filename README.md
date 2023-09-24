@@ -31,6 +31,13 @@ It leverages MPRIS2 data engine to retrieve information and execute operations.
 
 ## Installation
 
+### KDE store
+
+You can install the widget directly from the kde store:
+
+- https://store.kde.org/p/2088872
+
+### Manual
 1. Clone the repository:
     ```sh
     git clone git@github.com:ccatterina/plasmusic-toolbar.git /tmp/plasmusic-toolbar
@@ -47,5 +54,3 @@ To uninstall the widget:
 ```sh
 kpackagetool5 -t Plasma/Applet --remove /tmp/plasmusic-toolbar/src
 ```
-
-**TODO**: Add the widget to the KDE store.
