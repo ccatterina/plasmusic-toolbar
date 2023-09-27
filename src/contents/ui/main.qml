@@ -10,7 +10,7 @@ Item {
 
     PlayerDataSource {
         id: player
-        sourceName: plasmoid.configuration.sourceName
+        sourceName: plasmoid.configuration.sources[plasmoid.configuration.sourceIndex]
     }
 
     visible: player.ready
