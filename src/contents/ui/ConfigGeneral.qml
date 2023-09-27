@@ -13,6 +13,7 @@ Item {
     property alias cfg_maxSongWidthInPanel: maxSongWidthInPanel.value
     property alias cfg_sourceIndex: sourceComboBox.currentIndex
     property alias cfg_sources: sourceComboBox.model
+    property alias cfg_textScrollingSpeed: textScrollingSpeed.value
 
     Kirigami.FormLayout {
         anchors.left: parent.left
@@ -40,6 +41,14 @@ Item {
             from: 0
             to: 1000
             Kirigami.FormData.label: i18n("Panel song max width:")
+        }
+
+        Slider {
+            id: textScrollingSpeed
+            from: 1
+            to: 10
+            stepSize: 1
+            Kirigami.FormData.label: i18n("Text scrolling speed:")
         }
 
         CheckBox {
