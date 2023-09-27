@@ -6,8 +6,11 @@
         <entry name="panelIcon" type="string">
             <default>view-media-track</default>
         </entry>
-        <entry name="sourceName" type="string">
-            <default>@multiplex</default>
+        <entry name="sourceIndex" type="string">
+            <default>0</default>
+        </entry>
+        <entry name="sources" type="StringList">
+            <default>@multiplex,spotify,vlc,plasma-browser-integration</default>
         </entry>
         <entry name="maxSongWidthInPanel" type="string">
             <default>200</default>

@@ -10,8 +10,9 @@ Item {
 
     property alias cfg_panelIcon: panelIcon.value
     property alias cfg_commandsInPanel: commandsInPanel.checked
-    property alias cfg_sourceName: sourceName.currentValue
     property alias cfg_maxSongWidthInPanel: maxSongWidthInPanel.value
+    property alias cfg_sourceIndex: sourceComboBox.currentIndex
+    property alias cfg_sources: sourceComboBox.model
 
     Kirigami.FormLayout {
         anchors.left: parent.left
@@ -23,19 +24,14 @@ Item {
         }
 
         ComboBox {
-            id: sourceName
+            id: sourceComboBox
             editable: true
-            model: ListModel {
-                id: model
-                ListElement { text: "@multiplex" }
-                ListElement { text: "spotify" }
-                ListElement { text: "vlc" }
-                ListElement { text: "plasma-browser-integration" }
-            }
-            onAccepted: {
+
+            onAccepted: () => {
                 if (find(editText) === -1)
-                    model.append({text: editText})
+                    model = [...model, editText]
             }
+
             Kirigami.FormData.label: i18n("Preferred MPRIS2 source:")
         }
 
