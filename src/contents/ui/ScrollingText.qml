@@ -14,6 +14,7 @@ Item {
     property int step: 0
     property string display: overflow ? combined.slice(step) + combined.slice(0, step) : text
     property alias font: label.font
+    property alias scrollingUpdateInterval: timer.interval
 
     clip: true
     width: overflow ? maxWidth : textMetrics.width + 10
@@ -28,6 +29,7 @@ Item {
     }
 
     Timer {
+        id: timer
         interval: 200
         running: overflow
         repeat: true

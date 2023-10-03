@@ -27,7 +27,7 @@ It leverages MPRIS2 data engine to retrieve information and execute operations.
 - **Playback controls visibility:** Choose whether to display Play, Pause, Next, and Previous controls in the panel view.
 - **Preferred source**: Change the widget preferred source for music information (spotify, vlc, etc). As default the widget use `@multiplex` source.
 - **Playing song max display width**: Determine the maximum width for displaying the currently playing song in the panel. When the song's text exceeds this maximum width, the text will scroll horizontally.
-
+- **Playing song scrolling speed**: Change the scrolling speed of the song's text.
 
 ## Installation
 
