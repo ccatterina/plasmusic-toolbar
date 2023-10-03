@@ -25,6 +25,12 @@ PlasmaCore.DataSource {
         }
     }
 
+    onSourceNameChanged: () => {
+        if (this.sources.find(s => this.sourceName)) {
+            this.connectSource(this.sourceName)
+        }
+    }
+
     onSourceAdded: (source) => {
         if (source === this.sourceName) {
             this.connectSource(source);
