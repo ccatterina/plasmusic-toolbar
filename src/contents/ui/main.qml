@@ -16,20 +16,20 @@ Item {
     PlayerDataSource {
         id: player
         sourceName: plasmoid.configuration.sources[plasmoid.configuration.sourceIndex]
+        onReadyChanged: () => {
+            plasmoid.status = ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
+        }
     }
-
-    visible: player.ready
 
     Plasmoid.compactRepresentation: Item {
         id: compactRepresentation
 
-        Layout.preferredWidth: player.ready ? row.implicitWidth + 20 * units.devicePixelRatio : 0
+        Layout.preferredWidth: row.implicitWidth + PlasmaCore.Units.smallSpacing * 2
         Layout.fillHeight: true
 
         readonly property real controlsSize: Math.min(height, PlasmaCore.Units.iconSizes.medium)
 
         MouseArea {
-            visible: player.ready
             anchors.fill: parent
             onClicked: () => { plasmoid.expanded = !plasmoid.expanded; }
         }
@@ -38,7 +38,6 @@ Item {
             id: row
 
             anchors.fill: parent
-            visible: player.ready
 
             PlasmaCore.IconItem {
                 source: plasmoid.configuration.panelIcon
@@ -82,7 +81,6 @@ Item {
     Plasmoid.fullRepresentation: Item {
         Layout.preferredHeight: column.implicitHeight
         Layout.preferredWidth: column.implicitWidth
-        visible: player.ready
 
         ColumnLayout {
             id: column
