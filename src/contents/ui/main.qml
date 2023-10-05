@@ -21,7 +21,12 @@ Item {
     visible: player.ready
 
     Plasmoid.compactRepresentation: Item {
+        id: compactRepresentation
+
         Layout.preferredWidth: player.ready ? row.implicitWidth + 20 * units.devicePixelRatio : 0
+        Layout.fillHeight: true
+
+        readonly property real controlsSize: Math.min(height, PlasmaCore.Units.iconSizes.medium)
 
         MouseArea {
             visible: player.ready
@@ -37,8 +42,8 @@ Item {
 
             PlasmaCore.IconItem {
                 source: plasmoid.configuration.panelIcon
-                width: PlasmaCore.Units.iconSizes.small
-                height: width
+                implicitHeight: compactRepresentation.controlsSize
+                implicitWidth: compactRepresentation.controlsSize
             }
 
             ScrollingText {
@@ -50,17 +55,23 @@ Item {
             PlasmaComponents3.ToolButton {
                 visible: plasmoid.configuration.commandsInPanel
                 icon.name: "media-seek-backward"
+                implicitWidth: compactRepresentation.controlsSize
+                implicitHeight: compactRepresentation.controlsSize
                 onClicked: player.startOperation("Previous")
             }
 
             PlasmaComponents3.ToolButton {
                 visible: plasmoid.configuration.commandsInPanel
+                implicitWidth: compactRepresentation.controlsSize
+                implicitHeight: compactRepresentation.controlsSize
                 icon.name: player.playbackStatus === "Playing" ? "media-playback-pause" : "media-playback-start"
                 onClicked: player.startOperation("PlayPause")
             }
 
             PlasmaComponents3.ToolButton {
                 visible: plasmoid.configuration.commandsInPanel
+                implicitWidth: compactRepresentation.controlsSize
+                implicitHeight: compactRepresentation.controlsSize
                 icon.name: "media-seek-forward"
                 onClicked: player.startOperation("Next")
             }
