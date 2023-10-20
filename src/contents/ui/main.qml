@@ -53,6 +53,7 @@ Item {
 
             PlasmaComponents3.ToolButton {
                 visible: plasmoid.configuration.commandsInPanel
+                enabled: player.canGoPrevious
                 icon.name: "media-seek-backward"
                 implicitWidth: compactRepresentation.controlsSize
                 implicitHeight: compactRepresentation.controlsSize
@@ -61,6 +62,7 @@ Item {
 
             PlasmaComponents3.ToolButton {
                 visible: plasmoid.configuration.commandsInPanel
+                enabled: player.playbackStatus === "Playing" ? player.canPause : player.canPlay
                 implicitWidth: compactRepresentation.controlsSize
                 implicitHeight: compactRepresentation.controlsSize
                 icon.name: player.playbackStatus === "Playing" ? "media-playback-pause" : "media-playback-start"
@@ -69,6 +71,7 @@ Item {
 
             PlasmaComponents3.ToolButton {
                 visible: plasmoid.configuration.commandsInPanel
+                enabled: player.canGoNext
                 implicitWidth: compactRepresentation.controlsSize
                 implicitHeight: compactRepresentation.controlsSize
                 icon.name: "media-seek-forward"
@@ -108,6 +111,7 @@ Item {
                 lastSongPositionUpdate: player.lastSongPositionUpdate
                 songLength: player.songLength
                 playing: player.playbackStatus === 'Playing'
+                enableChangePosition: player.canSeek
                 onChangePosition: (delta) => {
                     player.startOperation("Seek", {microseconds: delta})
                 }
@@ -150,6 +154,7 @@ Item {
                     anchors.fill: parent
 
                     CommandIcon {
+                        enabled: player.canChangeShuffle
                         Layout.alignment: Qt.AlignHCenter
                         size: PlasmaCore.Units.iconSizes.medium
                         source: "media-playlist-shuffle"
@@ -158,6 +163,7 @@ Item {
                     }
 
                     CommandIcon {
+                        enabled: player.canGoPrevious
                         Layout.alignment: Qt.AlignHCenter
                         size: PlasmaCore.Units.iconSizes.medium
                         source: "media-seek-backward"
@@ -165,6 +171,7 @@ Item {
                     }
 
                     CommandIcon {
+                        enabled: player.playbackStatus === "Playing" ? player.canPause : player.canPlay
                         Layout.alignment: Qt.AlignHCenter
                         size: PlasmaCore.Units.iconSizes.large
                         source: player.playbackStatus === "Playing" ? "media-playback-pause" : "media-playback-start"
@@ -172,6 +179,7 @@ Item {
                     }
 
                     CommandIcon {
+                        enabled: player.canGoNext
                         Layout.alignment: Qt.AlignHCenter
                         size: PlasmaCore.Units.iconSizes.medium
                         source: "media-seek-forward"
@@ -179,6 +187,7 @@ Item {
                     }
 
                     CommandIcon {
+                        enabled: player.canChangeLoopStatus
                         Layout.alignment: Qt.AlignHCenter
                         size: PlasmaCore.Units.iconSizes.medium
                         source: player.loopStatus === "Track" ? "media-playlist-repeat-song" : "media-playlist-repeat"
