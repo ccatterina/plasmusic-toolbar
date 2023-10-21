@@ -8,6 +8,7 @@ Item {
     property date lastSongPositionUpdate: new Date();  // Datetime of the last songPosition update.
     property int songLength: 0;  // Length of the entire song in microseconds;
     property bool playing: false;
+    property alias enableChangePosition: timeTrackSlider.enabled;
     property alias refreshInterval: timer.interval;
     signal changePosition(delta: int);  // Position difference from current position in microseconds
 
