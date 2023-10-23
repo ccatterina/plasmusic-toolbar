@@ -5,22 +5,36 @@ PlasmaCore.DataSource {
     property string sourceName: "@multiplex"
     readonly property bool ready: (data[sourceName] !== undefined) && (data[sourceName].Metadata !== undefined)
 
-    readonly property var artists: ready ? data[sourceName].Metadata["xesam:artist"] : []
-    readonly property string title: ready ? data[sourceName].Metadata["xesam:title"] : ""
-    readonly property string playbackStatus: ready ? data[sourceName].PlaybackStatus : ""
-    readonly property bool shuffle: ready && data[sourceName].Shuffle ? data[sourceName].Shuffle : false
-    readonly property string artUrl: ready ? data[sourceName].Metadata["mpris:artUrl"] : ""
-    readonly property string loopStatus: ready && data[sourceName].LoopStatus ? data[sourceName].LoopStatus : "None"
-    readonly property var lastSongPositionUpdate: ready ? data[sourceName]["Position last updated (UTC)"] : new Date()
-    readonly property int songPosition: ready ? data[sourceName].Position : 0
-    readonly property int songLength: ready ? data[sourceName].Metadata["mpris:length"] : 0
-    readonly property real volume: ready ? data[sourceName].Volume : 0
+    function getMetadataProp(key, fallback = "") {
+        if (!ready || !(key in data[sourceName].Metadata)) {
+            return fallback
+        }
+        return data[sourceName].Metadata[key]
+    }
 
-    readonly property bool canGoNext: ready ? data[sourceName].CanGoNext : false
-    readonly property bool canGoPrevious: ready ? data[sourceName].CanGoPrevious : false
-    readonly property bool canPlay: ready ? data[sourceName].CanPlay : false
-    readonly property bool canPause: ready ? data[sourceName].CanPause : false
-    readonly property bool canSeek: ready ? data[sourceName].CanSeek : false
+    function getDataProp(key, fallback = "") {
+        if (!ready || !(key in data[sourceName])) {
+            return fallback
+        }
+        return data[sourceName][key]
+    }
+
+    readonly property var artists: getMetadataProp("xesam:artist", [])
+    readonly property string title: getMetadataProp("xesam:title")
+    readonly property string playbackStatus: getDataProp("PlaybackStatus")
+    readonly property bool shuffle: getDataProp("Shuffle", false)
+    readonly property string artUrl: getMetadataProp("mpris:artUrl")
+    readonly property string loopStatus: getDataProp("LoopStatus", "None")
+    readonly property var lastSongPositionUpdate: getDataProp("Position last updated (UTC)", new Date())
+    readonly property int songPosition: getDataProp("Position", 0)
+    readonly property int songLength: getMetadataProp("mpris:length", 0)
+    readonly property real volume: getDataProp("Volume", 0)
+
+    readonly property bool canGoNext: getDataProp("CanGoNext", false)
+    readonly property bool canGoPrevious: getDataProp("CanGoPrevious", false)
+    readonly property bool canPlay: getDataProp("CanPlay", false)
+    readonly property bool canPause: getDataProp("CanPause", false)
+    readonly property bool canSeek: getDataProp("CanSeek", false)
 
     // To know whether Shuffle and Loop can be changed we have to check if the property is defined,
     // unlike the other commands, LoopStatus and Shuffle hasn't a specific property such as
