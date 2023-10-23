@@ -36,6 +36,7 @@ Item {
 
         RowLayout {
             id: row
+            spacing: 0
 
             anchors.fill: parent
 
