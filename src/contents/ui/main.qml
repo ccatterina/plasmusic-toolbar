@@ -51,7 +51,7 @@ Item {
             ScrollingText {
                 scrollingUpdateInterval: widget.textScrollingUpdateInterval
                 maxWidth: plasmoid.configuration.maxSongWidthInPanel * units.devicePixelRatio
-                text: `${player.artists.join(", ")} - ${player.title}`
+                text: [player.artists.join(", "), player.title].filter((x) => x).join(" - ")
             }
 
             PlasmaComponents3.ToolButton {
