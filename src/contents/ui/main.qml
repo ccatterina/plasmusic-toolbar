@@ -13,10 +13,12 @@ Item {
     // can goes from 50ms to 500 ms.
     readonly property var textScrollingUpdateInterval: Math.round(500 / plasmoid.configuration.textScrollingSpeed)
 
+    Plasmoid.status: PlasmaCore.Types.HiddenStatus
     PlayerDataSource {
         id: player
         sourceName: plasmoid.configuration.sources[plasmoid.configuration.sourceIndex]
         onReadyChanged: () => {
+            console.log("PlayerDataSource ready changed: " + ready)
             plasmoid.status = ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
         }
     }
