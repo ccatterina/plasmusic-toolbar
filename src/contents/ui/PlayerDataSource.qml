@@ -46,13 +46,13 @@ PlasmaCore.DataSource {
     connectedSources: []
 
     Component.onCompleted: () => {
-        if (this.sources.find(s => this.sourceName)) {
+        if (this.sources.find(s => s === this.sourceName)) {
             this.connectSource(this.sourceName)
         }
     }
 
     onSourceNameChanged: () => {
-        if (this.sources.find(s => this.sourceName)) {
+        if (this.sources.find(s => s === this.sourceName)) {
             this.connectSource(this.sourceName)
         }
     }
