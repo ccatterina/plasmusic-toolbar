@@ -13,7 +13,6 @@ Item {
         id: player
         sourceName: plasmoid.configuration.sources[plasmoid.configuration.sourceIndex]
         onReadyChanged: () => {
-            console.log("PlayerDataSource ready changed: " + ready)
             plasmoid.status = ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
         }
     }
