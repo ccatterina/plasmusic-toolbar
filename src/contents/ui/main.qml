@@ -8,11 +8,6 @@ import org.kde.plasma.plasmoid 2.0
 Item {
     id: widget
 
-    // `textScrollingSpeed` config is converted into the update interval of the scrolling text,
-    // considering that the `textScrollingSpeed` config range is 1-10, the scroll update interval
-    // can goes from 50ms to 500 ms.
-    readonly property var textScrollingUpdateInterval: Math.round(500 / plasmoid.configuration.textScrollingSpeed)
-
     Plasmoid.status: PlasmaCore.Types.HiddenStatus
     PlayerDataSource {
         id: player
@@ -49,7 +44,7 @@ Item {
             }
 
             ScrollingText {
-                scrollingUpdateInterval: widget.textScrollingUpdateInterval
+                speed: plasmoid.configuration.textScrollingSpeed
                 maxWidth: plasmoid.configuration.maxSongWidthInPanel * units.devicePixelRatio
                 text: [player.artists.join(", "), player.title].filter((x) => x).join(" - ")
             }
@@ -121,16 +116,14 @@ Item {
             }
 
             ScrollingText {
-                scrollingUpdateInterval: widget.textScrollingUpdateInterval
-                Layout.alignment: Qt.AlignHCenter
+                speed: plasmoid.configuration.textScrollingSpeed
                 font.bold: true
                 maxWidth: 250 * units.devicePixelRatio
                 text: player.title
             }
 
             ScrollingText {
-                scrollingUpdateInterval: widget.textScrollingUpdateInterval
-                Layout.alignment: Qt.AlignHCenter
+                speed: plasmoid.configuration.textScrollingSpeed
                 maxWidth: 250 * units.devicePixelRatio
                 text: player.artists.join(", ")
             }
