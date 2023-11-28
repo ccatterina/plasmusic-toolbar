@@ -98,6 +98,7 @@ Item {
                     anchors.fill: parent
                     visible: player.artUrl
                     source: player.artUrl
+                    fillMode: Image.PreserveAspectFit
                 }
             }
 
