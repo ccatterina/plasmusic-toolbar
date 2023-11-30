@@ -20,15 +20,25 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
 
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: "Panel icon"
+        }
+
         ConfigIcon {
             id: panelIcon
-            Kirigami.FormData.label: i18n("Panel icon:")
+            Kirigami.FormData.label: i18n("Choose icon:")
         }
 
         CheckBox {
             id: useAlbumCoverAsPanelIcon
             Kirigami.FormData.label: i18n("Album cover:")
             text: i18n("Use album cover as panel icon")
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: "Sources"
         }
 
         ComboBox {
@@ -43,6 +53,10 @@ Item {
             Kirigami.FormData.label: i18n("Preferred MPRIS2 source:")
         }
 
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: "Song text"
+        }
         SpinBox {
             id: maxSongWidthInPanel
             from: 0
@@ -58,6 +72,10 @@ Item {
             Kirigami.FormData.label: i18n("Text scrolling speed:")
         }
 
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: "Music controls"
+        }
         CheckBox {
             id: commandsInPanel
             text: "Show music controls in the panel (play/pause/previous/next)"
