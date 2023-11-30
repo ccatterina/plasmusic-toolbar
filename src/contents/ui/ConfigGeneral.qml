@@ -9,6 +9,7 @@ Item {
     height: childrenRect.height
 
     property alias cfg_panelIcon: panelIcon.value
+    property alias cfg_useAlbumCoverAsPanelIcon: useAlbumCoverAsPanelIcon.checked
     property alias cfg_commandsInPanel: commandsInPanel.checked
     property alias cfg_maxSongWidthInPanel: maxSongWidthInPanel.value
     property alias cfg_sourceIndex: sourceComboBox.currentIndex
@@ -22,6 +23,12 @@ Item {
         ConfigIcon {
             id: panelIcon
             Kirigami.FormData.label: i18n("Panel icon:")
+        }
+
+        CheckBox {
+            id: useAlbumCoverAsPanelIcon
+            Kirigami.FormData.label: i18n("Album cover:")
+            text: i18n("Use album cover as panel icon")
         }
 
         ComboBox {
