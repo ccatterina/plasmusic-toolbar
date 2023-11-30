@@ -36,10 +36,12 @@ Item {
 
             anchors.fill: parent
 
-            PlasmaCore.IconItem {
-                source: plasmoid.configuration.panelIcon
-                implicitHeight: compactRepresentation.controlsSize
-                implicitWidth: compactRepresentation.controlsSize
+            PanelIcon {
+                size: compactRepresentation.controlsSize
+                icon: plasmoid.configuration.panelIcon
+                imageUrl: player.artUrl
+                type: plasmoid.configuration.useAlbumCoverAsPanelIcon ? "image": "icon"
+                Layout.rightMargin: PlasmaCore.Units.smallSpacing * 2
             }
 
             ScrollingText {
