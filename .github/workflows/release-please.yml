@@ -26,14 +26,8 @@ jobs:
           cd ./src
           zip -r ../plasmusic-toolbar-${{steps.release.outputs.tag_name}}.plasmoid .
 
-      - uses: actions/upload-artifact@v3
-        if: ${{ steps.release.outputs.release_created }}
-        with:
-          name: plasmusic-toolbar-${{steps.release.outputs.tag_name}}.plasmoid
-          path: plasmusic-toolbar-${{steps.release.outputs.tag_name}}.plasmoid
-
       - name: Upload Release Artifact
         if: ${{ steps.release.outputs.release_created }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload ${{ steps.release.outputs.tag_name }} ./artifact/plasmusic-toolbar-${{steps.release.outputs.tag_name}}.plasmoid
+        run: gh release upload ${{ steps.release.outputs.tag_name }} ./plasmusic-toolbar-${{steps.release.outputs.tag_name}}.plasmoid
