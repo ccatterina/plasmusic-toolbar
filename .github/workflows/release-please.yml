@@ -22,7 +22,7 @@ jobs:
 
       - name: Generate plasmoid package
         run: |
-          cd ./contents
+          cd ./src
           zip -r ../plasmusic-toolbar-${{steps.release.outputs.tag_name}}.plasmoid .
 
       - uses: actions/upload-artifact@v3
