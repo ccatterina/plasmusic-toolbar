@@ -20,6 +20,10 @@ jobs:
           token: ${{ secrets.TOKEN_RELEASE_PLEASE }}
           release-type: simple
           target-branch: test-release-please
+          extra-files:
+            - type: json
+              path: ./src/metadata.json
+              jsonpath: "$.json.KPlugin.Version"
 
       - name: Generate plasmoid package
         run: |
