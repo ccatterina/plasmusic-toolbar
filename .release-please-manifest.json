@@ -4,7 +4,7 @@
     {
       "type": "json",
       "path": "./src/metadata.json",
-      "jsonpath": "$.json.KPlugin.Version"
+      "jsonpath": "$.KPlugin.Version"
     }
   ]
 }
