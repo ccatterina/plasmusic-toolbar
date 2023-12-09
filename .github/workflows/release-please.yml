@@ -1,0 +1,39 @@
+on:
+  push:
+    branches:
+      - test-release-please
+
+permissions:
+  contents: write
+  pull-requests: write
+
+name: release-please
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google-github-actions/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.TOKEN_RELEASE_PLEASE }}
+          target-branch: test-release-please
+
+      - name: Generate plasmoid package
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          cd ./src
+          zip -r ../plasmusic-toolbar-${{steps.release.outputs.tag_name}}.plasmoid .
+
+      - uses: actions/upload-artifact@v3
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          name: plasmusic-toolbar-${{steps.release.outputs.tag_name}}.plasmoid
+          path: plasmusic-toolbar-${{steps.release.outputs.tag_name}}.plasmoid
+
+      - name: Upload Release Artifact
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload ${{ steps.release.outputs.tag_name }} ./artifact/plasmusic-toolbar-${{steps.release.outputs.tag_name}}.plasmoid
