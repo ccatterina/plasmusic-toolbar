@@ -5,5 +5,6 @@
       "path": "./src/metadata.json",
       "jsonpath": "$.json.KPlugin.Version"
     }
-  ]
+  ],
+  ".": "0.6.0"
 }
