@@ -1,0 +1,9 @@
+{
+  "extra-files": [
+    {
+      "type": "json",
+      "path": "./src/metadata.json",
+      "jsonpath": "$.json.KPlugin.Version"
+    }
+  ]
+}
