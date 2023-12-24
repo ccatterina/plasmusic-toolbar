@@ -24,5 +24,8 @@
         <entry name="textScrollingSpeed" type="Int">
             <default>3</default>
         </entry>
+        <entry name="textScrollingBehaviour" type="int">
+            <default>0</default>
+        </entry>
     </group>
 </kcfg>

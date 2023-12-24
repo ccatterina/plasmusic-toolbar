@@ -45,6 +45,7 @@ Item {
             }
 
             ScrollingText {
+                overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
                 speed: plasmoid.configuration.textScrollingSpeed
                 maxWidth: plasmoid.configuration.maxSongWidthInPanel * units.devicePixelRatio
                 text: [player.artists.join(", "), player.title].filter((x) => x).join(" - ")

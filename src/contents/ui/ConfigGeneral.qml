@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.5
 import org.kde.kirigami 2.4 as Kirigami
 import org.kde.plasma.components 3.0 as PlasmaComponents3
+import QtQuick.Layouts 1.15
 
 Item {
     id: page
@@ -15,6 +16,7 @@ Item {
     property alias cfg_sourceIndex: sourceComboBox.currentIndex
     property alias cfg_sources: sourceComboBox.model
     property alias cfg_textScrollingSpeed: textScrollingSpeed.value
+    property alias cfg_textScrollingBehaviour: scrollingBehaviourRadio.value
 
     Kirigami.FormLayout {
         anchors.left: parent.left
@@ -70,6 +72,40 @@ Item {
             to: 10
             stepSize: 1
             Kirigami.FormData.label: i18n("Text scrolling speed:")
+        }
+
+        ColumnLayout {
+            id: scrollingBehaviourRadio
+            property int value: ScrollingText.OverflowBehaviour.AlwaysScroll
+
+            Kirigami.FormData.label: i18n("Scrolling behaviour when song text overflows:")
+            RadioButton {
+                text: i18n("Always scroll")
+                checked: scrollingBehaviourRadio.value == ScrollingText.OverflowBehaviour.AlwaysScroll
+                onCheckedChanged: () => {
+                    if (checked) {
+                        scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.AlwaysScroll
+                    }
+                }
+            }
+            RadioButton {
+                text: i18n("Scroll only on mouse over")
+                checked: scrollingBehaviourRadio.value == ScrollingText.OverflowBehaviour.ScrollOnMouseOver
+                onCheckedChanged: () => {
+                    if (checked) {
+                        scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.ScrollOnMouseOver
+                    }
+                }
+            }
+            RadioButton {
+                text: i18n("Always scroll except on mouse over")
+                checked: scrollingBehaviourRadio.value == ScrollingText.OverflowBehaviour.StopScrollOnMouseOver
+                onCheckedChanged: () => {
+                    if (checked) {
+                        scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.StopScrollOnMouseOver
+                    }
+                }
+            }
         }
 
         Kirigami.Separator {
