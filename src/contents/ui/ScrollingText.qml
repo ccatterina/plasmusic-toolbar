@@ -6,6 +6,14 @@ import org.kde.plasma.components 3.0 as PlasmaComponents3
 Item {
     id: root
 
+    enum OverflowBehaviour {
+        AlwaysScroll,
+        ScrollOnMouseOver,
+        StopScrollOnMouseOver
+    }
+
+    property int overflowBehaviour: ScrollingText.OverflowBehaviour.AlwaysScroll
+
     property string text: ""
     readonly property string spacing: "     "
     readonly property string textAndSpacing: text + spacing
@@ -15,6 +23,16 @@ Item {
     property int speed: 5;
     readonly property int duration: (25 * (11 - speed) + 25)* textAndSpacing.length;
 
+    readonly property bool pauseScrolling: {
+        if (overflowBehaviour === ScrollingText.OverflowBehaviour.AlwaysScroll) {
+            return false;
+        } else if (overflowBehaviour === ScrollingText.OverflowBehaviour.ScrollOnMouseOver) {
+            return !mouse.hovered;
+        } else if (overflowBehaviour === ScrollingText.OverflowBehaviour.StopScrollOnMouseOver) {
+            return mouse.hovered;
+        }
+    }
+
     property alias font: label.font
 
     width: overflow ? maxWidth : textMetrics.width + 10
@@ -23,6 +41,11 @@ Item {
     Layout.preferredHeight: label.implicitHeight
     Layout.preferredWidth: width
     Layout.alignment: Qt.AlignHCenter
+
+    HoverHandler {
+        id: mouse
+        acceptedDevices: PointerDevice.Mouse
+    }
 
     TextMetrics {
         id: textMetrics
@@ -36,6 +59,7 @@ Item {
 
         NumberAnimation on x {
             running: root.overflow
+            paused: root.pauseScrolling
             from: 0
             to: -label.implicitWidth
             duration: root.duration
@@ -45,6 +69,9 @@ Item {
                 label.x = 0;
                 if (running) {
                     restart()
+                }
+                if (root.pauseScrolling) {
+                    pause()
                 }
             }
 
