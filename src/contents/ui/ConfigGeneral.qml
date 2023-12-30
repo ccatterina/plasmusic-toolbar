@@ -16,6 +16,7 @@ Item {
     property alias cfg_sourceIndex: sourceComboBox.currentIndex
     property alias cfg_sources: sourceComboBox.model
     property alias cfg_textScrollingSpeed: textScrollingSpeed.value
+    property alias cfg_seperateText: seperateText.checked
     property alias cfg_textScrollingBehaviour: scrollingBehaviourRadio.value
 
     Kirigami.FormLayout {
@@ -73,6 +74,12 @@ Item {
             stepSize: 1
             Kirigami.FormData.label: i18n("Text scrolling speed:")
         }
+        
+        CheckBox {
+            id: seperateText
+            text: i18n("Display title and artist in seperate lines")
+            Kirigami.FormData.label: i18n("Seperate text:")
+        }
 
         ColumnLayout {
             id: scrollingBehaviourRadio
@@ -114,7 +121,7 @@ Item {
         }
         CheckBox {
             id: commandsInPanel
-            text: "Show music controls in the panel (play/pause/previous/next)"
+            text: i18n("Show music controls in the panel (play/pause/previous/next)")
             Kirigami.FormData.label: i18n("Show controls:")
         }
     }

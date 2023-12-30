@@ -44,13 +44,39 @@ Item {
                 Layout.rightMargin: PlasmaCore.Units.smallSpacing * 2
             }
 
+            Item {
+                visible: plasmoid.configuration.seperateText
+                Layout.preferredHeight: column.implicitHeight
+                Layout.preferredWidth: column.implicitWidth
+                    
+                ColumnLayout {
+                    id: column
+                    spacing: 0
+                    anchors.fill: parent
+                    ScrollingText {
+                        overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
+                        font.bold: true
+                        speed: plasmoid.configuration.textScrollingSpeed
+                        maxWidth: plasmoid.configuration.maxSongWidthInPanel * units.devicePixelRatio
+                        text: player.title
+                    }   
+                    ScrollingText {
+                        overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
+                        speed: plasmoid.configuration.textScrollingSpeed
+                        maxWidth: plasmoid.configuration.maxSongWidthInPanel * units.devicePixelRatio
+                        text: player.artists.join(", ")
+                    }
+                } 
+            } 
+            
             ScrollingText {
+                visible: !plasmoid.configuration.seperateText
                 overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
                 speed: plasmoid.configuration.textScrollingSpeed
                 maxWidth: plasmoid.configuration.maxSongWidthInPanel * units.devicePixelRatio
                 text: [player.artists.join(", "), player.title].filter((x) => x).join(" - ")
             }
-
+            
             PlasmaComponents3.ToolButton {
                 visible: plasmoid.configuration.commandsInPanel
                 enabled: player.canGoPrevious

@@ -23,6 +23,9 @@
         </entry>
         <entry name="textScrollingSpeed" type="Int">
             <default>3</default>
+        </entry>        
+        <entry name="seperateText" type="bool">
+            <default>false</default>
         </entry>
         <entry name="textScrollingBehaviour" type="int">
             <default>0</default>
