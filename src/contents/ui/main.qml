@@ -45,7 +45,7 @@ Item {
             }
 
             Item {
-                visible: plasmoid.configuration.seperateText
+                visible: plasmoid.configuration.separateText
                 Layout.preferredHeight: column.implicitHeight
                 Layout.preferredWidth: column.implicitWidth
                     
@@ -70,7 +70,7 @@ Item {
             } 
             
             ScrollingText {
-                visible: !plasmoid.configuration.seperateText
+                visible: !plasmoid.configuration.separateText
                 overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
                 speed: plasmoid.configuration.textScrollingSpeed
                 maxWidth: plasmoid.configuration.maxSongWidthInPanel * units.devicePixelRatio

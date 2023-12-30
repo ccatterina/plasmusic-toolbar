@@ -16,7 +16,7 @@ Item {
     property alias cfg_sourceIndex: sourceComboBox.currentIndex
     property alias cfg_sources: sourceComboBox.model
     property alias cfg_textScrollingSpeed: textScrollingSpeed.value
-    property alias cfg_seperateText: seperateText.checked
+    property alias cfg_separateText: separateText.checked
     property alias cfg_textScrollingBehaviour: scrollingBehaviourRadio.value
 
     Kirigami.FormLayout {
@@ -76,9 +76,9 @@ Item {
         }
         
         CheckBox {
-            id: seperateText
-            text: i18n("Display title and artist in seperate lines")
-            Kirigami.FormData.label: i18n("Seperate text:")
+            id: separateText
+            text: i18n("Display title and artist in separate lines")
+            Kirigami.FormData.label: i18n("separate text:")
         }
 
         ColumnLayout {
