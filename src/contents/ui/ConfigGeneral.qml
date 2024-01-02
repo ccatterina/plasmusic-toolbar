@@ -74,7 +74,7 @@ Item {
             stepSize: 1
             Kirigami.FormData.label: i18n("Text scrolling speed:")
         }
-        
+
         CheckBox {
             id: separateText
             text: i18n("Display title and artist in separate lines")
