@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.6.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v0.5.0...v0.6.0) (2024-01-02)
+
+
+### Features
+
+* add new scrolling options for song text overflow ([b97cda3](https://github.com/ccatterina/plasmusic-toolbar/commit/b97cda3e4d20434cadbdf62a2f79c58ba68ea5f8))
+* add option to separate title from artist into two lines (#44) ([d0a1a44](https://github.com/ccatterina/plasmusic-toolbar/commit/d0a1a448f13f5f08437b9bbd495424344e1d6b61))
+
+
 ## [0.5.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v0.4.0...v0.5.0) (2023-12-09)
 
 
