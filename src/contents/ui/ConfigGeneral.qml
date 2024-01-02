@@ -78,7 +78,7 @@ Item {
         CheckBox {
             id: separateText
             text: i18n("Display title and artist in separate lines")
-            Kirigami.FormData.label: i18n("separate text:")
+            Kirigami.FormData.label: i18n("Separate text:")
         }
 
         ColumnLayout {
