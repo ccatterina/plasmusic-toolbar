@@ -1,8 +1,9 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
-import org.kde.plasma.components 3.0 as PlasmaComponents3
-import org.kde.plasma.core 2.0 as PlasmaCore
-import QtGraphicalEffects 1.12
+import org.kde.plasma.components as PlasmaComponents3
+import org.kde.plasma.core as PlasmaCore
+import Qt5Compat.GraphicalEffects
+import org.kde.kirigami as Kirigami
 
 Item {
     id: container
@@ -14,9 +15,9 @@ Item {
     Layout.preferredWidth: size
     Layout.preferredHeight: size
 
-    PlasmaCore.IconItem {
+    Kirigami.Icon {
         id: icon
-        width: PlasmaCore.Units.iconSizes.small;
+        width: Kirigami.Units.iconSizes.small;
         height: width;
 
         MouseArea {

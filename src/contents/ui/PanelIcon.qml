@@ -2,13 +2,15 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.kirigami as Kirigami
+
 
 Item {
     id: root
     property string type: "icon"
     property var imageUrl: null
     property var icon: null
-    property real size: PlasmaCore.Units.iconSizes.medium
+    property real size: Kirigami.Units.iconSizes.medium
 
     Layout.preferredHeight: size
     Layout.preferredWidth: size
@@ -25,7 +27,7 @@ Item {
         }
     }
 
-    PlasmaCore.IconItem {
+    Kirigami.Icon {
         visible: type === "icon"
         id: iconComponent
         source: root.icon

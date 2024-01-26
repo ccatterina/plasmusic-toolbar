@@ -1,29 +1,31 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
-import org.kde.plasma.components 3.0 as PlasmaComponents3
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.extras 2.0 as PlasmaExtras
-import org.kde.plasma.plasmoid 2.0
+import org.kde.plasma.components as PlasmaComponents3
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.extras as PlasmaExtras
+import org.kde.plasma.plasmoid
+import org.kde.kirigami as Kirigami
 
-Item {
+PlasmoidItem {
     id: widget
 
     Plasmoid.status: PlasmaCore.Types.HiddenStatus
     PlayerDataSource {
         id: player
-        sourceName: plasmoid.configuration.sources[plasmoid.configuration.sourceIndex]
+        // sourceName: plasmoid.configuration.sources[plasmoid.configuration.sourceIndex]
+        sourceName: "spotify"
         onReadyChanged: () => {
             plasmoid.status = ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
         }
     }
 
-    Plasmoid.compactRepresentation: Item {
+    compactRepresentation: Item {
         id: compactRepresentation
 
-        Layout.preferredWidth: row.implicitWidth + PlasmaCore.Units.smallSpacing * 2
+        Layout.preferredWidth: row.implicitWidth + Kirigami.Units.smallSpacing * 2
         Layout.fillHeight: true
 
-        readonly property real controlsSize: Math.min(height, PlasmaCore.Units.iconSizes.medium)
+        readonly property real controlsSize: Math.min(height, Kirigami.Units.iconSizes.medium)
 
         MouseArea {
             anchors.fill: parent
@@ -41,8 +43,9 @@ Item {
                 icon: plasmoid.configuration.panelIcon
                 imageUrl: player.artUrl
                 type: plasmoid.configuration.useAlbumCoverAsPanelIcon ? "image": "icon"
-                Layout.rightMargin: PlasmaCore.Units.smallSpacing * 2
+                Layout.rightMargin: Kirigami.Units.smallSpacing * 2
             }
+
 
             Item {
                 visible: plasmoid.configuration.separateText
@@ -73,7 +76,7 @@ Item {
                 visible: !plasmoid.configuration.separateText
                 overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
                 speed: plasmoid.configuration.textScrollingSpeed
-                maxWidth: plasmoid.configuration.maxSongWidthInPanel * units.devicePixelRatio
+                maxWidth: plasmoid.configuration.maxSongWidthInPanel
                 text: [player.artists.join(", "), player.title].filter((x) => x).join(" - ")
             }
 
@@ -107,7 +110,7 @@ Item {
 
     }
 
-    Plasmoid.fullRepresentation: Item {
+    fullRepresentation: Item {
         Layout.preferredHeight: column.implicitHeight
         Layout.preferredWidth: column.implicitWidth
 
@@ -181,7 +184,7 @@ Item {
                     CommandIcon {
                         enabled: player.canChangeShuffle
                         Layout.alignment: Qt.AlignHCenter
-                        size: PlasmaCore.Units.iconSizes.medium
+                        size: Kirigami.Units.iconSizes.medium
                         source: "media-playlist-shuffle"
                         onClicked: player.startOperation("SetShuffle", { on: !player.shuffle })
                         active: player.shuffle
@@ -190,7 +193,7 @@ Item {
                     CommandIcon {
                         enabled: player.canGoPrevious
                         Layout.alignment: Qt.AlignHCenter
-                        size: PlasmaCore.Units.iconSizes.medium
+                        size: Kirigami.Units.iconSizes.medium
                         source: "media-seek-backward"
                         onClicked: player.startOperation("Previous")
                     }
@@ -198,7 +201,7 @@ Item {
                     CommandIcon {
                         enabled: player.playbackStatus === "Playing" ? player.canPause : player.canPlay
                         Layout.alignment: Qt.AlignHCenter
-                        size: PlasmaCore.Units.iconSizes.large
+                        size: Kirigami.Units.iconSizes.large
                         source: player.playbackStatus === "Playing" ? "media-playback-pause" : "media-playback-start"
                         onClicked: player.startOperation("PlayPause")
                     }
@@ -206,7 +209,7 @@ Item {
                     CommandIcon {
                         enabled: player.canGoNext
                         Layout.alignment: Qt.AlignHCenter
-                        size: PlasmaCore.Units.iconSizes.medium
+                        size: Kirigami.Units.iconSizes.medium
                         source: "media-seek-forward"
                         onClicked: player.startOperation("Next")
                     }
@@ -214,7 +217,7 @@ Item {
                     CommandIcon {
                         enabled: player.canChangeLoopStatus
                         Layout.alignment: Qt.AlignHCenter
-                        size: PlasmaCore.Units.iconSizes.medium
+                        size: Kirigami.Units.iconSizes.medium
                         source: player.loopStatus === "Track" ? "media-playlist-repeat-song" : "media-playlist-repeat"
                         active: player.loopStatus != "None"
                         onClicked: () => {
