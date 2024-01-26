@@ -2,6 +2,26 @@ import QtQuick 2.15
 import org.kde.plasma.core 2.0 as PlasmaCore
 
 PlasmaCore.DataSource {
+    enum LoopStatus {
+        Unknown,
+        None,
+        Playlist,
+        Track
+    }
+
+    enum PlaybackStatus {
+        Unknown,
+        Stopped,
+        Playing,
+        Paused
+    }
+
+    enum ShuffleStatus {
+        Unknown,
+        Off,
+        On
+    }
+
     property string sourceName: "@multiplex"
     readonly property bool ready: (data[sourceName] !== undefined) && (data[sourceName].Metadata !== undefined)
 
@@ -21,11 +41,21 @@ PlasmaCore.DataSource {
 
     readonly property var artists: getMetadataProp("xesam:artist", [])
     readonly property string title: getMetadataProp("xesam:title")
-    readonly property string playbackStatus: getDataProp("PlaybackStatus")
-    readonly property bool shuffle: getDataProp("Shuffle", false)
+    readonly property int playbackStatus: Player.PlaybackStatus[getDataProp("PlaybackStatus", "Unknown")]
+    readonly property int shuffle: {
+        switch (getDataProp("Shuffle")) {
+            case false:
+                return Player.ShuffleStatus.Off;
+                break;
+            case true:
+                return Player.ShuffleStatus.On;
+                break;
+            default:
+                return Player.ShuffleStatus.Unknown;
+        }
+    }
     readonly property string artUrl: getMetadataProp("mpris:artUrl")
-    readonly property string loopStatus: getDataProp("LoopStatus", "None")
-    readonly property var lastSongPositionUpdate: getDataProp("Position last updated (UTC)", new Date())
+    readonly property int loopStatus: Player.LoopStatus[getDataProp("LoopStatus", "Unknown")]
     readonly property int songPosition: getDataProp("Position", 0)
     readonly property int songLength: getMetadataProp("mpris:length", 0)
     readonly property real volume: getDataProp("Volume", 0)
@@ -68,5 +98,45 @@ PlasmaCore.DataSource {
         const operation = service.operationDescription(op);
         Object.assign(operation, params);
         service.startOperationCall(operation);
+    }
+
+    function playPause() {
+        this.startOperation("PlayPause");
+    }
+
+    function seek(offset) {
+        this.startOperation("Seek", {microseconds: offset});
+    }
+
+    function next() {
+        this.startOperation("Next");
+    }
+
+    function previous() {
+        this.startOperation("Previous");
+    }
+
+    function updatePosition() {
+        this.startOperation("GetPosition");
+    }
+
+    function setVolume(volume) {
+        this.startOperation("SetVolume", {level: volume});
+    }
+
+    function setLoopStatus(loopStatus) {
+        const loopStatusMapping = {
+            1: "None",
+            2: "Playlist",
+            3: "Track"
+        };
+        const status = loopStatusMapping[loopStatus];
+        if (status) {
+            this.startOperation("SetLoopStatus", {status});
+        }
+    }
+
+    function setShuffle(shuffle) {
+        this.startOperation("SetShuffle", {on: shuffle === Player.ShuffleStatus.On});
     }
 }

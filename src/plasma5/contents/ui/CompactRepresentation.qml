@@ -1,0 +1,1 @@
+../../../shared_components/CompactRepresentation.qml

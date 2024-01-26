@@ -7,7 +7,7 @@
 
 ## Overview
 
-PlasMusic Toolbar is a widget for KDE Plasma 5 that shows currently playing song information and provide playback controls.
+PlasMusic Toolbar is a widget for KDE Plasma 5 and KDE Plasma 6 that shows currently playing song information and provide playback controls.
 
 It leverages MPRIS2 data engine to retrieve information and execute operations.
 
@@ -46,11 +46,29 @@ You can install the widget directly from the kde store:
 2. Install the widget:
 
     ```sh
-    kpackagetool5 -t Plasma/Applet --install /tmp/plasmusic-toolbar/src
+    # plasma5
+    plasmapkg2 -i /tmp/plasmusic-toolbar/src/plasma5
+
+    # plasma6
+    plasmapkg2 -i /tmp/plasmusic-toolbar/src/plasma6
     ```
 
-To uninstall the widget:
+3. Upgrading the widget:
 
-```sh
-kpackagetool5 -t Plasma/Applet --remove /tmp/plasmusic-toolbar/src
-```
+    ```sh
+    # plasma5
+    plasmapkg2 -u /tmp/plasmusic-toolbar/src/plasma5
+
+    # plasma6
+    plasmapkg2 -u /tmp/plasmusic-toolbar/src/plasma6
+    ```
+
+4. Removing the widget:
+
+    ```sh
+    # plasma5
+    plasmapkg2 -r plasmusic-toolbar
+
+    # plasma6
+    plasmapkg2 -r plasmusic-toolbar
+    ```

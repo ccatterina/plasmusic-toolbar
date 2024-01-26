@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import QtQuick.Controls 2.5
 import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.kirigami 2.4 as Kirigami
 import org.kde.kquickcontrolsaddons 2.0 as KQuickAddons
 
 
@@ -11,8 +12,8 @@ Button {
     property string defaultValue: ''
     property string value: ''
 
-    implicitWidth: previewFrame.width + PlasmaCore.Units.smallSpacing * 2
-    implicitHeight: previewFrame.height + PlasmaCore.Units.smallSpacing * 2
+    implicitWidth: previewFrame.width + Kirigami.Units.smallSpacing * 2
+    implicitHeight: previewFrame.height + Kirigami.Units.smallSpacing * 2
 
     KQuickAddons.IconDialog {
         id: iconDialog
@@ -26,8 +27,8 @@ Button {
         anchors.centerIn: parent
         imagePath: plasmoid.location === PlasmaCore.Types.Vertical || plasmoid.location === PlasmaCore.Types.Horizontal
                  ? "widgets/panel-background" : "widgets/background"
-        width: PlasmaCore.Units.iconSizes.large + fixedMargins.left + fixedMargins.right
-        height: PlasmaCore.Units.iconSizes.large + fixedMargins.top + fixedMargins.bottom
+        width: Kirigami.Units.iconSizes.large + fixedMargins.left + fixedMargins.right
+        height: Kirigami.Units.iconSizes.large + fixedMargins.top + fixedMargins.bottom
 
         PlasmaCore.IconItem {
             anchors.centerIn: parent
