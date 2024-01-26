@@ -1,14 +1,11 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.5
-import org.kde.kirigami 2.4 as Kirigami
-import org.kde.plasma.components 3.0 as PlasmaComponents3
 import QtQuick.Layouts 1.15
+import org.kde.kirigami as Kirigami
+import org.kde.plasma.components as PlasmaComponents3
+import org.kde.kcmutils as KCM
 
-Item {
-    id: page
-    width: childrenRect.width
-    height: childrenRect.height
-
+KCM.SimpleKCM {
     property alias cfg_panelIcon: panelIcon.value
     property alias cfg_useAlbumCoverAsPanelIcon: useAlbumCoverAsPanelIcon.checked
     property alias cfg_commandsInPanel: commandsInPanel.checked
@@ -20,9 +17,6 @@ Item {
     property alias cfg_textScrollingBehaviour: scrollingBehaviourRadio.value
 
     Kirigami.FormLayout {
-        anchors.left: parent.left
-        anchors.right: parent.right
-
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
             Kirigami.FormData.label: "Panel icon"

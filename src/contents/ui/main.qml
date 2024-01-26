@@ -1,15 +1,17 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
-import org.kde.plasma.components 3.0 as PlasmaComponents3
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.extras 2.0 as PlasmaExtras
-import org.kde.plasma.plasmoid 2.0
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.plasmoid
+import org.kde.plasma.components as PlasmaComponents3
+import org.kde.kirigami as Kirigami
+import org.kde.plasma.private.mpris as Mpris
 
-Item {
+PlasmoidItem {
     id: widget
 
     Plasmoid.status: PlasmaCore.Types.HiddenStatus
-    PlayerDataSource {
+
+    Player {
         id: player
         sourceName: plasmoid.configuration.sources[plasmoid.configuration.sourceIndex]
         onReadyChanged: () => {
@@ -17,17 +19,19 @@ Item {
         }
     }
 
-    Plasmoid.compactRepresentation: Item {
-        id: compactRepresentation
+    compactRepresentation: Item {
+        id: compact
 
-        Layout.preferredWidth: row.implicitWidth + PlasmaCore.Units.smallSpacing * 2
+        Layout.preferredWidth: row.implicitWidth + Kirigami.Units.smallSpacing * 2
         Layout.fillHeight: true
 
-        readonly property real controlsSize: Math.min(height, PlasmaCore.Units.iconSizes.medium)
+        readonly property real controlsSize: Math.min(height, Kirigami.Units.iconSizes.medium)
 
         MouseArea {
             anchors.fill: parent
-            onClicked: () => { plasmoid.expanded = !plasmoid.expanded; }
+            onClicked: {
+                widget.expanded = !widget.expanded;
+            }
         }
 
         RowLayout {
@@ -37,12 +41,13 @@ Item {
             anchors.fill: parent
 
             PanelIcon {
-                size: compactRepresentation.controlsSize
+                size: compact.controlsSize
                 icon: plasmoid.configuration.panelIcon
                 imageUrl: player.artUrl
                 type: plasmoid.configuration.useAlbumCoverAsPanelIcon ? "image": "icon"
-                Layout.rightMargin: PlasmaCore.Units.smallSpacing * 2
+                Layout.rightMargin: Kirigami.Units.smallSpacing * 2
             }
+
 
             Item {
                 visible: plasmoid.configuration.separateText
@@ -57,14 +62,14 @@ Item {
                         overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
                         font.bold: true
                         speed: plasmoid.configuration.textScrollingSpeed
-                        maxWidth: plasmoid.configuration.maxSongWidthInPanel * units.devicePixelRatio
+                        maxWidth: plasmoid.configuration.maxSongWidthInPanel
                         text: player.title
                     }
                     ScrollingText {
                         overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
                         speed: plasmoid.configuration.textScrollingSpeed
-                        maxWidth: plasmoid.configuration.maxSongWidthInPanel * units.devicePixelRatio
-                        text: player.artists.join(", ")
+                        maxWidth: plasmoid.configuration.maxSongWidthInPanel
+                        text: player.artists
                     }
                 }
             }
@@ -73,41 +78,40 @@ Item {
                 visible: !plasmoid.configuration.separateText
                 overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
                 speed: plasmoid.configuration.textScrollingSpeed
-                maxWidth: plasmoid.configuration.maxSongWidthInPanel * units.devicePixelRatio
-                text: [player.artists.join(", "), player.title].filter((x) => x).join(" - ")
+                maxWidth: plasmoid.configuration.maxSongWidthInPanel
+                text: [player.artists, player.title].filter((x) => x).join(" - ")
             }
 
             PlasmaComponents3.ToolButton {
                 visible: plasmoid.configuration.commandsInPanel
                 enabled: player.canGoPrevious
                 icon.name: "media-seek-backward"
-                implicitWidth: compactRepresentation.controlsSize
-                implicitHeight: compactRepresentation.controlsSize
-                onClicked: player.startOperation("Previous")
+                implicitWidth: compact.controlsSize
+                implicitHeight: compact.controlsSize
+                onClicked: player.previous()
             }
 
             PlasmaComponents3.ToolButton {
                 visible: plasmoid.configuration.commandsInPanel
-                enabled: player.playbackStatus === "Playing" ? player.canPause : player.canPlay
-                implicitWidth: compactRepresentation.controlsSize
-                implicitHeight: compactRepresentation.controlsSize
-                icon.name: player.playbackStatus === "Playing" ? "media-playback-pause" : "media-playback-start"
-                onClicked: player.startOperation("PlayPause")
+                enabled: player.playbackStatus === Mpris.PlaybackStatus.Playing ? player.canPause : player.canPlay
+                implicitWidth: compact.controlsSize
+                implicitHeight: compact.controlsSize
+                icon.name: player.playbackStatus === Mpris.PlaybackStatus.Playing ? "media-playback-pause" : "media-playback-start"
+                onClicked: player.playPause()
             }
 
             PlasmaComponents3.ToolButton {
                 visible: plasmoid.configuration.commandsInPanel
                 enabled: player.canGoNext
-                implicitWidth: compactRepresentation.controlsSize
-                implicitHeight: compactRepresentation.controlsSize
+                implicitWidth: compact.controlsSize
+                implicitHeight: compact.controlsSize
                 icon.name: "media-seek-forward"
-                onClicked: player.startOperation("Next")
+                onClicked: player.next()
             }
         }
-
     }
 
-    Plasmoid.fullRepresentation: Item {
+    fullRepresentation: Item {
         Layout.preferredHeight: column.implicitHeight
         Layout.preferredWidth: column.implicitWidth
 
@@ -119,8 +123,8 @@ Item {
 
             Rectangle {
                 Layout.alignment: Qt.AlignHCenter
-                Layout.margins: 10 * units.devicePixelRatio
-                width: 300 * units.devicePixelRatio
+                Layout.margins: 10
+                width: 300
                 height: width
 
                 Image {
@@ -132,45 +136,47 @@ Item {
             }
 
             TrackPositionSlider {
-                Layout.leftMargin: 20 * units.devicePixelRatio
-                Layout.rightMargin: 20 * units.devicePixelRatio
+                Layout.leftMargin: 20
+                Layout.rightMargin: 20
                 songPosition: player.songPosition
-                lastSongPositionUpdate: player.lastSongPositionUpdate
                 songLength: player.songLength
-                playing: player.playbackStatus === 'Playing'
+                playing: player.playbackStatus === Mpris.PlaybackStatus.Playing
                 enableChangePosition: player.canSeek
-                onChangePosition: (delta) => {
-                    player.startOperation("Seek", {microseconds: delta})
+                onRequireChangePosition: (delta) => {
+                    player.seek(delta)
+                }
+                onRequireUpdatePosition: () => {
+                    player.updatePosition()
                 }
             }
 
             ScrollingText {
                 speed: plasmoid.configuration.textScrollingSpeed
                 font.bold: true
-                maxWidth: 250 * units.devicePixelRatio
+                maxWidth: 250
                 text: player.title
             }
 
             ScrollingText {
                 speed: plasmoid.configuration.textScrollingSpeed
-                maxWidth: 250 * units.devicePixelRatio
-                text: player.artists.join(", ")
+                maxWidth: 250
+                text: player.artists
             }
 
             VolumeBar {
-                Layout.leftMargin: 40 * units.devicePixelRatio
-                Layout.rightMargin: 40 * units.devicePixelRatio
-                Layout.topMargin: 10 * units.devicePixelRatio
+                Layout.leftMargin: 40
+                Layout.rightMargin: 40
+                Layout.topMargin: 10
                 volume: player.volume
                 onChangeVolume: (vol) => {
-                    player.startOperation("SetVolume", {level: vol})
+                    player.setVolume(vol)
                 }
             }
 
             Item {
-                Layout.leftMargin: 20 * units.devicePixelRatio
-                Layout.rightMargin: 20 * units.devicePixelRatio
-                Layout.bottomMargin: 10 * units.devicePixelRatio
+                Layout.leftMargin: 20
+                Layout.rightMargin: 20
+                Layout.bottomMargin: 10
                 Layout.fillWidth: true
                 Layout.preferredHeight: row.implicitHeight
                 RowLayout {
@@ -181,49 +187,49 @@ Item {
                     CommandIcon {
                         enabled: player.canChangeShuffle
                         Layout.alignment: Qt.AlignHCenter
-                        size: PlasmaCore.Units.iconSizes.medium
+                        size: Kirigami.Units.iconSizes.medium
                         source: "media-playlist-shuffle"
-                        onClicked: player.startOperation("SetShuffle", { on: !player.shuffle })
-                        active: player.shuffle
+                        onClicked: player.setShuffle(player.shuffle === Mpris.ShuffleStatus.Off ? Mpris.ShuffleStatus.On : Mpris.ShuffleStatus.Off)
+                        active: player.shuffle === Mpris.ShuffleStatus.On
                     }
 
                     CommandIcon {
                         enabled: player.canGoPrevious
                         Layout.alignment: Qt.AlignHCenter
-                        size: PlasmaCore.Units.iconSizes.medium
+                        size: Kirigami.Units.iconSizes.medium
                         source: "media-seek-backward"
-                        onClicked: player.startOperation("Previous")
+                        onClicked: player.previous()
                     }
 
                     CommandIcon {
-                        enabled: player.playbackStatus === "Playing" ? player.canPause : player.canPlay
+                        enabled: player.playbackStatus === Mpris.PlaybackStatus.Playing ? player.canPause : player.canPlay
                         Layout.alignment: Qt.AlignHCenter
-                        size: PlasmaCore.Units.iconSizes.large
-                        source: player.playbackStatus === "Playing" ? "media-playback-pause" : "media-playback-start"
-                        onClicked: player.startOperation("PlayPause")
+                        size: Kirigami.Units.iconSizes.large
+                        source: player.playbackStatus === Mpris.PlaybackStatus.Playing ? "media-playback-pause" : "media-playback-start"
+                        onClicked: player.playPause()
                     }
 
                     CommandIcon {
                         enabled: player.canGoNext
                         Layout.alignment: Qt.AlignHCenter
-                        size: PlasmaCore.Units.iconSizes.medium
+                        size: Kirigami.Units.iconSizes.medium
                         source: "media-seek-forward"
-                        onClicked: player.startOperation("Next")
+                        onClicked: player.next()
                     }
 
                     CommandIcon {
                         enabled: player.canChangeLoopStatus
                         Layout.alignment: Qt.AlignHCenter
-                        size: PlasmaCore.Units.iconSizes.medium
-                        source: player.loopStatus === "Track" ? "media-playlist-repeat-song" : "media-playlist-repeat"
-                        active: player.loopStatus != "None"
+                        size: Kirigami.Units.iconSizes.medium
+                        source: player.loopStatus === Mpris.LoopStatus.Track ? "media-playlist-repeat-song" : "media-playlist-repeat"
+                        active: player.loopStatus != Mpris.LoopStatus.None
                         onClicked: () => {
-                            let status = "None";
-                            if (player.loopStatus == "None")
-                                status = "Track";
-                            else if (player.loopStatus === "Track")
-                                status = "Playlist";
-                            player.startOperation("SetLoopStatus", { status });
+                            let status = Mpris.LoopStatus.None;
+                            if (player.loopStatus == Mpris.LoopStatus.None)
+                                status = Mpris.LoopStatus.Track;
+                            else if (player.loopStatus === Mpris.LoopStatus.Track)
+                                status = Mpris.LoopStatus.Playlist;
+                            player.setLoopStatus(status);
                         }
                     }
 
@@ -232,6 +238,5 @@ Item {
             }
 
         }
-
     }
 }

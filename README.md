@@ -7,9 +7,9 @@
 
 ## Overview
 
-PlasMusic Toolbar is a widget for KDE Plasma 5 that shows currently playing song information and provide playback controls.
+PlasMusic Toolbar is a widget for KDE Plasma 6 that shows currently playing song information and provide playback controls.
 
-It leverages MPRIS2 data engine to retrieve information and execute operations.
+A Plasma 5 version of the widget is available in the [plasma5 branch](https://github.com/ccatterina/plasmusic-toolbar/tree/plasma5).
 
 ## Features
 
@@ -23,11 +23,12 @@ It leverages MPRIS2 data engine to retrieve information and execute operations.
 - Full View provides the album image, along with Play, Pause, Next, Previous, Shuffle, and Repeat controls. Adjust the volume and track position with ease.
 
 ### 🛠️ Configurations
-- **Icon customization:** Change the widget's icon in the panel view to suit your preferences.
+- **Icon customization:** Change the widget's icon in the panel view to suit your preferences. You can also choose to display the album cover.
 - **Playback controls visibility:** Choose whether to display Play, Pause, Next, and Previous controls in the panel view.
-- **Preferred source**: Change the widget preferred source for music information (spotify, vlc, etc). As default the widget use `@multiplex` source.
+- **Preferred source**: Change the widget preferred source for music information (spotify, vlc, etc). The name of the source is the same as the desktop file name of the application (see `/usr/share/applications/`).
 - **Playing song max display width**: Determine the maximum width for displaying the currently playing song in the panel. When the song's text exceeds this maximum width, the text will scroll horizontally.
 - **Playing song scrolling speed**: Change the scrolling speed of the song's text.
+- and more...
 
 ## Installation
 
@@ -35,7 +36,7 @@ It leverages MPRIS2 data engine to retrieve information and execute operations.
 
 You can install the widget directly from the kde store:
 
-- https://store.kde.org/p/2088872
+- https://store.kde.org/p/2128143
 
 ### Manual
 1. Clone the repository:
@@ -46,11 +47,17 @@ You can install the widget directly from the kde store:
 2. Install the widget:
 
     ```sh
-    kpackagetool5 -t Plasma/Applet --install /tmp/plasmusic-toolbar/src
+    plasmapkg2 -i /tmp/plasmusic-toolbar/src/
     ```
 
-To uninstall the widget:
+3. Upgrading the widget:
 
-```sh
-kpackagetool5 -t Plasma/Applet --remove /tmp/plasmusic-toolbar/src
-```
+    ```sh
+    plasmapkg2 -u /tmp/plasmusic-toolbar/src/
+    ```
+
+4. Removing the widget:
+
+    ```sh
+    plasmapkg2 -r plasmusic-toolbar
+    ```
