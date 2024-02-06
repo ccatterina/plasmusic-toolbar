@@ -7,8 +7,13 @@
             "extra-files": [
                 {
                   "type": "json",
-                  "path": "src/metadata.json",
+                  "path": "src/plasma5/metadata.json",
                   "jsonpath": "$.KPlugin.Version"
+                },
+                {
+                  "type": "json",
+                  "path": "src/plasma6/metadata.json",
+                  "jsonpath": "$.KPlugin.Name"
                 }
             ]
         }

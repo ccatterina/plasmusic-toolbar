@@ -20,14 +20,21 @@ jobs:
         with:
           token: ${{ secrets.TOKEN_RELEASE_PLEASE }}
 
-      - name: Generate plasmoid package
+      - name: Generate plasma 5 plasmoid package
         if: ${{ steps.release.outputs.release_created }}
         run: |
-          cd ./src
-          zip -r ../plasmusic-toolbar-${{steps.release.outputs.tag_name}}.plasmoid .
+          cd ./src/plasma5
+          zip -r ../../plasmusic-toolbar-${{steps.release.outputs.tag_name}}-plasma5.plasmoid .
+
+      - name: Generate plasma 6 plasmoid package
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          cd ./src/plasma6
+          zip -r ../../plasmusic-toolbar-${{steps.release.outputs.tag_name}}-plasma6.plasmoid .
 
       - name: Upload plasmoid package to release
         if: ${{ steps.release.outputs.release_created }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload ${{ steps.release.outputs.tag_name }} ./plasmusic-toolbar-${{steps.release.outputs.tag_name}}.plasmoid
+        run:
+          - gh release upload ${{ steps.release.outputs.tag_name }} ./plasmusic-toolbar-${{steps.release.outputs.tag_name}}-plasma5.plasmoid ./plasmusic-toolbar-${{steps.release.outputs.tag_name}}-plasma6.plasmoid
