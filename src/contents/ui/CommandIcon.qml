@@ -18,7 +18,7 @@ Item {
         id: icon
         width: Kirigami.Units.iconSizes.small;
         height: width;
-        color: container.active ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.textColor
+        color: container.active ? Kirigami.Theme.highlightColor : Kirigami.Theme.textColor
 
         MouseArea {
             anchors.fill: parent

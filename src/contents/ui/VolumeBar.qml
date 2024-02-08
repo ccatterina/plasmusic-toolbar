@@ -40,7 +40,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft
                 height: container.size
                 width: full.width * container.volume
-                color: Kirigami.Theme.positiveTextColor
+                color: Kirigami.Theme.highlightColor
             }
         }
         CommandIcon {
