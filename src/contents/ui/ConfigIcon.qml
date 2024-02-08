@@ -1,7 +1,9 @@
 import QtQuick 2.5
 import QtQuick.Controls 2.5
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.kquickcontrolsaddons 2.0 as KQuickAddons
+import org.kde.plasma.core as PlasmaCore
+import org.kde.iconthemes as KIconThemes
+import org.kde.kirigami as Kirigami
+import org.kde.ksvg as KSvg
 
 
 // from https://develop.kde.org/docs/plasma/widget/examples/#configurable-icon
@@ -11,27 +13,27 @@ Button {
     property string defaultValue: ''
     property string value: ''
 
-    implicitWidth: previewFrame.width + PlasmaCore.Units.smallSpacing * 2
-    implicitHeight: previewFrame.height + PlasmaCore.Units.smallSpacing * 2
+    implicitWidth: previewFrame.width + Kirigami.Units.smallSpacing * 2
+    implicitHeight: previewFrame.height + Kirigami.Units.smallSpacing * 2
 
-    KQuickAddons.IconDialog {
+    KIconThemes.IconDialog {
         id: iconDialog
         onIconNameChanged: configIcon.value = iconName || configIcon.defaultValue
     }
 
     onPressed: iconMenu.opened ? iconMenu.close() : iconMenu.open()
 
-    PlasmaCore.FrameSvgItem {
+    KSvg.FrameSvgItem {
         id: previewFrame
         anchors.centerIn: parent
         imagePath: plasmoid.location === PlasmaCore.Types.Vertical || plasmoid.location === PlasmaCore.Types.Horizontal
                  ? "widgets/panel-background" : "widgets/background"
-        width: PlasmaCore.Units.iconSizes.large + fixedMargins.left + fixedMargins.right
-        height: PlasmaCore.Units.iconSizes.large + fixedMargins.top + fixedMargins.bottom
+        width: Kirigami.Units.iconSizes.large + fixedMargins.left + fixedMargins.right
+        height: Kirigami.Units.iconSizes.large + fixedMargins.top + fixedMargins.bottom
 
-        PlasmaCore.IconItem {
+        Kirigami.Icon {
             anchors.centerIn: parent
-            width: PlasmaCore.Units.iconSizes.large
+            width: Kirigami.Units.iconSizes.large
             height: width
             source: configIcon.value
         }

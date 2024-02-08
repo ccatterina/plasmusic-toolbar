@@ -1,13 +1,13 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
-import org.kde.plasma.components 3.0 as PlasmaComponents3
-import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.plasma.components as PlasmaComponents3
+import org.kde.kirigami as Kirigami
 
 Item {
     id: container
     property real volume: 0.5;
-    property real size: 3 * units.devicePixelRatio;
-    property real iconSize: PlasmaCore.Units.iconSizes.small;
+    property real size: 3;
+    property real iconSize: Kirigami.Units.iconSizes.small;
     signal changeVolume(newVolume: real);
 
     Layout.fillWidth: true
@@ -34,13 +34,13 @@ Item {
             height: container.size
             Layout.fillWidth: true
             id: full
-            color: PlasmaCore.Theme.disabledTextColor
+            color: Kirigami.Theme.disabledTextColor
 
             Rectangle {
                 Layout.alignment: Qt.AlignLeft
                 height: container.size
                 width: full.width * container.volume
-                color: PlasmaCore.Theme.positiveTextColor
+                color: Kirigami.Theme.positiveTextColor
             }
         }
         CommandIcon {
