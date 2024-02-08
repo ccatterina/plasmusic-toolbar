@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v0.6.0...v1.0.0) (2024-02-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Porting to KDE Plasma 6
+
+### Features
+
+* Porting to KDE Plasma 6 ([d8a35c9](https://github.com/ccatterina/plasmusic-toolbar/commit/d8a35c90db5a6c052a051b56076a0fc2e5ec030d)), closes [#16](https://github.com/ccatterina/plasmusic-toolbar/issues/16)
+* use highlightColor instead of positiveTextColor ([d7e06c8](https://github.com/ccatterina/plasmusic-toolbar/commit/d7e06c8b52f5fe5803700387478cdb1905472ddd))
+
 ## [0.6.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v0.5.0...v0.6.0) (2024-01-02)
 
 
