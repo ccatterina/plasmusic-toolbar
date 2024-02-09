@@ -18,7 +18,7 @@ QtObject {
     property string sourceName: "any"
 
     readonly property bool ready: {
-        if (mpris2Model.currentPlayer === undefined) {
+        if (!mpris2Model.currentPlayer) {
             return false
         }
         return mpris2Model.currentPlayer.desktopEntry === sourceName || sourceName === "any";
