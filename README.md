@@ -1,10 +1,5 @@
 # PlasMusic Toolbar
 
-
-<p align="center">
-  <img src="./plasmusic-toolbar-demo.gif" />
-</p>
-
 ## Overview
 
 PlasMusic Toolbar is a widget for KDE Plasma 6 that shows currently playing song information and provide playback controls.
@@ -61,3 +56,9 @@ You can install the widget directly from the kde store:
     ```sh
     plasmapkg2 -r plasmusic-toolbar
     ```
+
+## Screenshots
+
+<p align="center">
+  <img src="./screenshots/screenshot_dark.png" /><img src="./screenshots/screenshot_light.png" />
+</p>
