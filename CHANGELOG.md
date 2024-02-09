@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.0.0...v1.0.1) (2024-02-09)
+
+
+### Bug Fixes
+
+* currentPlayer existance check ([f462e02](https://github.com/ccatterina/plasmusic-toolbar/commit/f462e026cf36ef7b752ecf806f28eb77eff8c9a8))
+
 ## [1.0.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v0.6.0...v1.0.0) (2024-02-08)
 
 
