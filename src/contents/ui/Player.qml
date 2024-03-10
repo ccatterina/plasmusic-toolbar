@@ -6,12 +6,29 @@ QtObject {
     id: root
 
     property var mpris2Model: Mpris.Mpris2Model {
-        onRowsInserted: (_, rowIndex) => {
-            const CONTAINER_ROLE = Qt.UserRole + 1
-            const player = this.data(this.index(rowIndex, 0), CONTAINER_ROLE)
-            if (player.desktopEntry === root.sourceName) {
-                this.currentIndex = rowIndex;
+        readonly property string sourceName: root.sourceName
+        function chooseCurrentPlayer() {
+            if (sourceName === "any") {
+                currentIndex = 0
+                console.debug("setting current source to multiplex");
+                return
             }
+
+            const CONTAINER_ROLE = Qt.UserRole + 1
+            for (let i = 1; i < rowCount(); i++) {
+                const player = data(index(i, 0), CONTAINER_ROLE)
+                if (player.desktopEntry === sourceName) {
+                    currentIndex = i
+                    console.debug(`setting current source to ${player.desktopEntry} (index ${i})`);
+                    return;
+                }
+            }
+        }
+        onRowsInserted: {
+            chooseCurrentPlayer()
+        }
+        onSourceNameChanged: {
+            chooseCurrentPlayer()
         }
     }
 
