@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.2](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.0.1...v1.0.2) (2024-03-16)
+
+
+### Bug Fixes
+
+* Player sources handling improvements ([0844cbc](https://github.com/ccatterina/plasmusic-toolbar/commit/0844cbc3d390a661121c01d62d17c97a758c0453)), closes [#60](https://github.com/ccatterina/plasmusic-toolbar/issues/60)
+* set position instead of use seek function ([bbf1a93](https://github.com/ccatterina/plasmusic-toolbar/commit/bbf1a93aad561bacc373e7553e2c4a4bc89dbba7))
+
 ## [1.0.1](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.0.0...v1.0.1) (2024-02-09)
 
 
