@@ -142,8 +142,8 @@ PlasmoidItem {
                 songLength: player.songLength
                 playing: player.playbackStatus === Mpris.PlaybackStatus.Playing
                 enableChangePosition: player.canSeek
-                onRequireChangePosition: (delta) => {
-                    player.seek(delta)
+                onRequireChangePosition: (position) => {
+                    player.setPosition(position)
                 }
                 onRequireUpdatePosition: () => {
                     player.updatePosition()

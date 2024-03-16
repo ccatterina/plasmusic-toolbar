@@ -47,13 +47,12 @@ Item {
                 if (pressed) {
                     return
                 }
-                changingPosition = true
 
+                changingPosition = true
                 const targetPosition = timeTrackSlider.value * container.songLength
                 if (targetPosition != container.songPosition) {
-                    container.requireChangePosition(Math.round(targetPosition - container.songPosition))
+                    container.requireChangePosition(targetPosition)
                 }
-
                 changingPosition = false
             }
         }
