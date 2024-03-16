@@ -50,8 +50,8 @@ QtObject {
         mpris2Model.currentPlayer?.PlayPause();
     }
 
-    function seek(offset) {
-        mpris2Model.currentPlayer?.Seek(offset);
+    function setPosition(position) {
+        mpris2Model.currentPlayer.position = position;
     }
 
     function next() {
