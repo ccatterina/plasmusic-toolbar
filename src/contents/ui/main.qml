@@ -8,11 +8,15 @@ import org.kde.plasma.private.mpris as Mpris
 
 PlasmoidItem {
     id: widget
-    Plasmoid.status: player.ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
+    Plasmoid.status: PlasmaCore.Types.HiddenStatus
 
     Player {
         id: player
         sourceName: plasmoid.configuration.sources[plasmoid.configuration.sourceIndex]
+        onReadyChanged: {
+          Plasmoid.status = player.ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
+          console.debug(`Player ready changed: ${player.ready} -> plasmoid status changed: ${Plasmoid.status}`)
+        }
     }
 
     compactRepresentation: Item {
