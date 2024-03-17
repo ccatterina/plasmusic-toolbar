@@ -1,5 +1,7 @@
 # PlasMusic Toolbar
 
+[![AUR Version](https://img.shields.io/aur/version/plasma6-applets-plasmusic-toolbar)](https://aur.archlinux.org/packages/plasma6-applets-plasmusic-toolbar)
+
 ## Overview
 
 PlasMusic Toolbar is a widget for KDE Plasma 6 that shows currently playing song information and provide playback controls.
@@ -32,6 +34,13 @@ A Plasma 5 version of the widget is available in the [plasma5 branch](https://gi
 You can install the widget directly from the kde store:
 
 - https://store.kde.org/p/2128143
+
+### AUR package
+
+For those using an Arch-based distribution, an AUR package is available:
+ - https://aur.archlinux.org/packages/plasma6-applets-plasmusic-toolbar
+
+Thanks to [@D3SOX](https://www.github.com/D3SOX) for creating and maintaining the package! 
 
 ### Manual
 1. Clone the repository:
