@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.0.2...v1.0.3) (2024-03-17)
+
+
+### Bug Fixes
+
+* plasmashell crashing after commit 0844cbc3d ([0e96fb9](https://github.com/ccatterina/plasmusic-toolbar/commit/0e96fb9fbbf3ce8ed6b7f330adfe8afe6cf0d053))
+
 ## [1.0.2](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.0.1...v1.0.2) (2024-03-16)
 
 
