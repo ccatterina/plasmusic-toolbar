@@ -51,19 +51,19 @@ Thanks to [@D3SOX](https://www.github.com/D3SOX) for creating and maintaining th
 2. Install the widget:
 
     ```sh
-    plasmapkg2 -i /tmp/plasmusic-toolbar/src/
+    kpackagetool6 -i /tmp/plasmusic-toolbar/src/
     ```
 
 3. Upgrading the widget:
 
     ```sh
-    plasmapkg2 -u /tmp/plasmusic-toolbar/src/
+    kpackagetool6 -u /tmp/plasmusic-toolbar/src/
     ```
 
 4. Removing the widget:
 
     ```sh
-    plasmapkg2 -r plasmusic-toolbar
+    kpackagetool6 -r plasmusic-toolbar
     ```
 
 ## Screenshots
