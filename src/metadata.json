@@ -7,7 +7,7 @@
                 "Name": "Claudio Catterina"
             }
         ],
-        "Description": "KDE Plasma widget that shows currently playing song information and provide playback controls.",
+        "Description": "Show currently playing song information and provide playback controls",
         "EnabledByDefault": true,
         "Icon": "view-media-track",
         "Id": "plasmusic-toolbar",
