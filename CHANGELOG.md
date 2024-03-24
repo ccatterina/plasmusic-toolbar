@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.0.3...v1.0.4) (2024-03-24)
+
+
+### Bug Fixes
+
+* widget visibile when there is no active player ([ceb1a7d](https://github.com/ccatterina/plasmusic-toolbar/commit/ceb1a7d4c2c69efee7f118f582e7b87b42d54a06)), closes [#60](https://github.com/ccatterina/plasmusic-toolbar/issues/60)
+
 ## [1.0.3](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.0.2...v1.0.3) (2024-03-17)
 
 

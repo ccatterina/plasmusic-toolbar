@@ -14,12 +14,12 @@
         "Id": "plasmusic-toolbar",
         "License": "GPL3",
         "Name": "PlasMusic Toolbar",
-        "Version": "1.0.3",
+        "Version": "1.0.4",
         "Category": "Multimedia"
     },
     "X-Plasma-API-Minimum-Version": "6.0",
     "X-Plasma-Provides": [
-      "org.kde.plasma.multimediacontrols"
+        "org.kde.plasma.multimediacontrols"
     ]
 }
 
