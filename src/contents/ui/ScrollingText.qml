@@ -44,7 +44,7 @@ Item {
 
     HoverHandler {
         id: mouse
-        acceptedDevices: PointerDevice.Mouse
+        acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
     }
 
     TextMetrics {
