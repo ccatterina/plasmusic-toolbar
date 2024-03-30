@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.5](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.0.4...v1.0.5) (2024-03-30)
+
+
+### Bug Fixes
+
+* Enable song text hover behaviours for touchpad ([74c6ddc](https://github.com/ccatterina/plasmusic-toolbar/commit/74c6ddcb42f9c68fcfca9d820c88ff7783918046)), closes [#83](https://github.com/ccatterina/plasmusic-toolbar/issues/83)
+* Track position slider doesn't work properly with long track ([0b2bd17](https://github.com/ccatterina/plasmusic-toolbar/commit/0b2bd175f2239845838e9ceee8907d39b65362e2)), closes [#81](https://github.com/ccatterina/plasmusic-toolbar/issues/81)
+
 ## [1.0.4](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.0.3...v1.0.4) (2024-03-24)
 
 
