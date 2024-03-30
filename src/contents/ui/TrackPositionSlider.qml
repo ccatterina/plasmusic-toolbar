@@ -1,15 +1,16 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import org.kde.plasma.components as PlasmaComponents3
+import org.kde.coreaddons 1.0 as KCoreAddons
 
 Item {
     property bool disableUpdatePosition: false;
-    property int songPosition: 0;  // Last song position detected in microseconds
-    property int songLength: 0;  // Length of the entire song in microseconds;
+    property double songPosition: 0;  // Last song position detected in microseconds
+    property double songLength: 0;  // Length of the entire song in microseconds;
     property bool playing: false;
     property alias enableChangePosition: timeTrackSlider.enabled;
     property alias refreshInterval: timer.interval;
-    signal requireChangePosition(delta: int);  // delta: Position difference from current position in microseconds
+    signal requireChangePosition(position: double);
     signal requireUpdatePosition();
 
     Layout.preferredHeight: column.implicitHeight
@@ -60,19 +61,19 @@ Item {
         RowLayout {
             Layout.preferredWidth: parent.width
             id: timeLabels
-            function formatTommss(ms) {
-                const date = new Date(null);
-                date.setMilliseconds(ms);
-                return date.toISOString().substr(14, 5);
+            function formatDuration(duration) {
+                const hideHours = container.songLength < 3600000000 // 1 hour in microseconds
+                const durationFormatOption = hideHours ? KCoreAddons.FormatTypes.FoldHours : KCoreAddons.FormatTypes.DefaultDuration
+                return KCoreAddons.Format.formatDuration(duration / 1000, durationFormatOption)
             }
 
             PlasmaComponents3.Label {
                 Layout.alignment: Qt.AlignLeft
-                text: timeLabels.formatTommss(songPosition / 1000)
+                text: timeLabels.formatDuration(container.songPosition)
             }
             PlasmaComponents3.Label {
                 Layout.alignment: Qt.AlignRight
-                text: timeLabels.formatTommss((songLength - songPosition) / 1000)
+                text: timeLabels.formatDuration(container.songLength - container.songPosition)
             }
         }
     }
