@@ -30,8 +30,8 @@ QtObject {
     readonly property int shuffle: ready ? mpris2Model.currentPlayer.shuffle : Mpris.ShuffleStatus.Unknown
     readonly property string artUrl: ready ? mpris2Model.currentPlayer.artUrl : ""
     readonly property int loopStatus: ready ? mpris2Model.currentPlayer.loopStatus : Mpris.LoopStatus.Unknown
-    readonly property int songPosition: ready ? mpris2Model.currentPlayer.position : 0
-    readonly property int songLength: ready ? mpris2Model.currentPlayer.length : 0
+    readonly property double songPosition: ready ? mpris2Model.currentPlayer.position : 0
+    readonly property double songLength: ready ? mpris2Model.currentPlayer.length : 0
     readonly property real volume: ready ? mpris2Model.currentPlayer.volume : 0
 
     readonly property bool canGoNext: ready ? mpris2Model.currentPlayer.canGoNext : false
