@@ -45,6 +45,7 @@ PlasmoidItem {
                 size: compact.controlsSize
                 icon: plasmoid.configuration.panelIcon
                 imageUrl: player.artUrl
+                imageRadius: plasmoid.configuration.albumCoverRadius
                 type: plasmoid.configuration.useAlbumCoverAsPanelIcon ? "image": "icon"
                 Layout.rightMargin: Kirigami.Units.smallSpacing * 2
             }
