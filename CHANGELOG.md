@@ -1,5 +1,14 @@
 # Changelog
 
+
+## [0.7.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v0.6.0...v0.7.0) (2024-04-04)
+
+
+### Features
+
+* radius with album image ([9a8ce61](https://github.com/ccatterina/plasmusic-toolbar/commit/9a8ce61713f319e05209a358a34c75e5eeb774ff))
+
+
 ## [0.6.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v0.5.0...v0.6.0) (2024-01-02)
 
 
