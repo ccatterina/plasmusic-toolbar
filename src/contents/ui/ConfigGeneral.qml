@@ -11,6 +11,7 @@ Item {
 
     property alias cfg_panelIcon: panelIcon.value
     property alias cfg_useAlbumCoverAsPanelIcon: useAlbumCoverAsPanelIcon.checked
+    property alias cfg_albumCoverRadius: albumCoverRadius.value
     property alias cfg_commandsInPanel: commandsInPanel.checked
     property alias cfg_maxSongWidthInPanel: maxSongWidthInPanel.value
     property alias cfg_sourceIndex: sourceComboBox.currentIndex
@@ -37,6 +38,14 @@ Item {
             id: useAlbumCoverAsPanelIcon
             Kirigami.FormData.label: i18n("Album cover:")
             text: i18n("Use album cover as panel icon")
+        }
+
+        Slider {
+            id: albumCoverRadius
+            from: 0
+            to: 25
+            stepSize: 2
+            Kirigami.FormData.label: i18n("Album cover radius:")
         }
 
         Kirigami.Separator {
