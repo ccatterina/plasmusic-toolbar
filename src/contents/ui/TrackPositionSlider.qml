@@ -1,16 +1,18 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import org.kde.plasma.components 3.0 as PlasmaComponents3
+import org.kde.kcoreaddons 1.0 as KCoreAddons
+
 
 Item {
     property var startWaitingForPositionChange: null;
-    property int songPosition: 0;  // Last song position detected in microseconds
+    property double songPosition: 0;  // Last song position detected in microseconds
     property date lastSongPositionUpdate: new Date();  // Datetime of the last songPosition update.
-    property int songLength: 0;  // Length of the entire song in microseconds;
+    property double songLength: 0;  // Length of the entire song in microseconds;
     property bool playing: false;
     property alias enableChangePosition: timeTrackSlider.enabled;
     property alias refreshInterval: timer.interval;
-    signal changePosition(delta: int);  // Position difference from current position in microseconds
+    signal changePosition(delta: double);  // Position difference from current position in microseconds
 
     Layout.preferredHeight: column.implicitHeight
     Layout.fillWidth: true
@@ -22,10 +24,10 @@ Item {
     id: container
 
     Timer {
-        function formatTommss(ms) {
-            const date = new Date(null);
-            date.setMilliseconds(ms);
-            return date.toISOString().substr(14, 5);
+        function formatDuration(ms) {
+            const hideHours = container.songLength < 3600000000 // 1 hour in microseconds
+            const durationFormatOption = hideHours ? KCoreAddons.FormatTypes.FoldHours : KCoreAddons.FormatTypes.DefaultDuration
+            return KCoreAddons.Format.formatDuration(ms, durationFormatOption)
         }
 
         id: timer
@@ -41,9 +43,9 @@ Item {
             }
 
             const msSinceStart = (container.songPosition / 1000) + (new Date() - container.lastSongPositionUpdate)
-            timeSinceStart.text = formatTommss(msSinceStart)
+            timeSinceStart.text = timer.formatDuration(msSinceStart)
             const msToEnd = (container.songLength / 1000) - msSinceStart
-            timeToEnd.text = `-${formatTommss(msToEnd)}`
+            timeToEnd.text = `-${timer.formatDuration(msToEnd)}`
             timeTrackSlider.value = msSinceStart / (container.songLength / 1000)
         }
     }
