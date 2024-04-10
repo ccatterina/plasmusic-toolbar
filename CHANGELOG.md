@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/ccatterina/plasmusic-toolbar/compare/v0.7.0...v0.7.1) (2024-04-04)
+
+
+### Features
+
+* Track position slider doesn't work properly with long track ([20a9110](https://github.com/ccatterina/plasmusic-toolbar/commit/20a911058f959dac39c86b887399a76970241b65))
+
 
 ## [0.7.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v0.6.0...v0.7.0) (2024-04-04)
 
