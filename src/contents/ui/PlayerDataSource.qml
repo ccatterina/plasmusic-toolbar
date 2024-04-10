@@ -26,8 +26,8 @@ PlasmaCore.DataSource {
     readonly property string artUrl: getMetadataProp("mpris:artUrl")
     readonly property string loopStatus: getDataProp("LoopStatus", "None")
     readonly property var lastSongPositionUpdate: getDataProp("Position last updated (UTC)", new Date())
-    readonly property int songPosition: getDataProp("Position", 0)
-    readonly property int songLength: getMetadataProp("mpris:length", 0)
+    readonly property double songPosition: getDataProp("Position", 0)
+    readonly property double songLength: getMetadataProp("mpris:length", 0)
     readonly property real volume: getDataProp("Volume", 0)
 
     readonly property bool canGoNext: getDataProp("CanGoNext", false)
