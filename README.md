@@ -45,7 +45,7 @@ Thanks to [@D3SOX](https://www.github.com/D3SOX) for creating and maintaining th
 ### Manual
 1. Clone the repository:
     ```sh
-    git clone git@github.com:ccatterina/plasmusic-toolbar.git /tmp/plasmusic-toolbar
+    git clone https://github.com/ccatterina/plasmusic-toolbar.git /tmp/plasmusic-toolbar
     ```
 
 2. Install the widget:
