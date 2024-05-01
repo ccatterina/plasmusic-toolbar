@@ -4,8 +4,11 @@ import QtQuick.Layouts 1.15
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kcmutils as KCM
+import QtQuick.Dialogs as QtDialogs
 
 KCM.SimpleKCM {
+    id: configPage
+
     property alias cfg_panelIcon: panelIcon.value
     property alias cfg_useAlbumCoverAsPanelIcon: useAlbumCoverAsPanelIcon.checked
     property alias cfg_albumCoverRadius: albumCoverRadius.value
@@ -16,6 +19,9 @@ KCM.SimpleKCM {
     property alias cfg_textScrollingSpeed: textScrollingSpeed.value
     property alias cfg_separateText: separateText.checked
     property alias cfg_textScrollingBehaviour: scrollingBehaviourRadio.value
+
+    property alias cfg_useCustomFont: customFontCheckbox.checked
+    property alias cfg_customFont: fontDialog.fontChosen
 
     Kirigami.FormLayout {
         Kirigami.Separator {
@@ -63,6 +69,32 @@ KCM.SimpleKCM {
             Kirigami.FormData.isSection: true
             Kirigami.FormData.label: "Song text"
         }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Font:")
+
+            CheckBox {
+                id: customFontCheckbox
+                text: i18n("Use custom font style")
+            }
+
+            Button {
+                text: i18n("Choose Style…")
+                icon.name: "settings-configure"
+                enabled: customFontCheckbox.checked
+                onClicked: {
+                    fontDialog.open()
+                }
+            }
+
+            Label {
+                visible: customFontCheckbox.checked && fontDialog.fontChosen.family && fontDialog.fontChosen.pointSize
+                text: i18n("%1pt %2", fontDialog.fontChosen.pointSize, fontDialog.fontChosen.family)
+                textFormat: Text.PlainText
+                font: fontDialog.fontChosen
+            }
+        }
+
         SpinBox {
             id: maxSongWidthInPanel
             from: 0
@@ -128,4 +160,16 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Show controls:")
         }
     }
+
+    QtDialogs.FontDialog {
+        id: fontDialog
+        title: i18n("Choose a Font")
+        modality: Qt.WindowModal
+        parentWindow: configPage.Window.window
+        property font fontChosen: Qt.font()
+        onAccepted: {
+            fontChosen = selectedFont
+        }
+    }
+
 }
