@@ -11,6 +11,11 @@ PlasmoidItem {
 
     Plasmoid.status: PlasmaCore.Types.HiddenStatus
 
+    readonly property font textFont: {
+        return plasmoid.configuration.useCustomFont ? plasmoid.configuration.customFont : Kirigami.Theme.defaultFont
+    }
+    readonly property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
+
     Player {
         id: player
         sourceName: plasmoid.configuration.sources[plasmoid.configuration.sourceIndex]
@@ -62,13 +67,14 @@ PlasmoidItem {
                     anchors.fill: parent
                     ScrollingText {
                         overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
-                        font.bold: true
+                        font: widget.boldTextFont
                         speed: plasmoid.configuration.textScrollingSpeed
                         maxWidth: plasmoid.configuration.maxSongWidthInPanel
                         text: player.title
                     }
                     ScrollingText {
                         overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
+                        font: widget.textFont
                         speed: plasmoid.configuration.textScrollingSpeed
                         maxWidth: plasmoid.configuration.maxSongWidthInPanel
                         text: player.artists
@@ -82,6 +88,7 @@ PlasmoidItem {
                 speed: plasmoid.configuration.textScrollingSpeed
                 maxWidth: plasmoid.configuration.maxSongWidthInPanel
                 text: [player.artists, player.title].filter((x) => x).join(" - ")
+                font: widget.textFont
             }
 
             PlasmaComponents3.ToolButton {
@@ -154,13 +161,14 @@ PlasmoidItem {
 
             ScrollingText {
                 speed: plasmoid.configuration.textScrollingSpeed
-                font.bold: true
+                font: widget.boldTextFont
                 maxWidth: 250
                 text: player.title
             }
 
             ScrollingText {
                 speed: plasmoid.configuration.textScrollingSpeed
+                font: widget.textFont
                 maxWidth: 250
                 text: player.artists
             }
