@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.1.0...v1.2.0) (2024-05-02)
+
+
+### Features
+
+* add ability to choose font style ([0d72980](https://github.com/ccatterina/plasmusic-toolbar/commit/0d72980811abb7cdaa4c687054c3bbe15d4e52f0)), closes [#94](https://github.com/ccatterina/plasmusic-toolbar/issues/94)
+
 ## [1.1.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.0.5...v1.1.0) (2024-04-05)
 
 
