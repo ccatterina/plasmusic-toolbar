@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.2.0...v1.2.1) (2024-05-03)
+
+
+### Bug Fixes
+
+* Use correct back/next icon ([daf3627](https://github.com/ccatterina/plasmusic-toolbar/commit/daf3627a86208b0541bde5641be5849c30e886d9))
+
 ## [1.2.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.1.0...v1.2.0) (2024-05-02)
 
 
