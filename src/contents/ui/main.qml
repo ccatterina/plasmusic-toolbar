@@ -94,7 +94,7 @@ PlasmoidItem {
             PlasmaComponents3.ToolButton {
                 visible: plasmoid.configuration.commandsInPanel
                 enabled: player.canGoPrevious
-                icon.name: "media-seek-backward"
+                icon.name: "media-skip-backward"
                 implicitWidth: compact.controlsSize
                 implicitHeight: compact.controlsSize
                 onClicked: player.previous()
@@ -114,7 +114,7 @@ PlasmoidItem {
                 enabled: player.canGoNext
                 implicitWidth: compact.controlsSize
                 implicitHeight: compact.controlsSize
-                icon.name: "media-seek-forward"
+                icon.name: "media-skip-forward"
                 onClicked: player.next()
             }
         }
@@ -207,7 +207,7 @@ PlasmoidItem {
                         enabled: player.canGoPrevious
                         Layout.alignment: Qt.AlignHCenter
                         size: Kirigami.Units.iconSizes.medium
-                        source: "media-seek-backward"
+                        source: "media-skip-backward"
                         onClicked: player.previous()
                     }
 
@@ -223,7 +223,7 @@ PlasmoidItem {
                         enabled: player.canGoNext
                         Layout.alignment: Qt.AlignHCenter
                         size: Kirigami.Units.iconSizes.medium
-                        source: "media-seek-forward"
+                        source: "media-skip-forward"
                         onClicked: player.next()
                     }
 
