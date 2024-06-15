@@ -75,6 +75,13 @@ Item {
                 }
             }
 
+            onRunningChanged: () => {
+                // When `running` becomes true the animation start regardless of the `pauseScrolling` value.
+                // Manually pause the animation if the `pauseScrolling` value is true.
+                if (running && root.pauseScrolling) {
+                    pause()
+                }
+            }
             onToChanged: () => reset()
             onDurationChanged: () =>  reset()
         }
