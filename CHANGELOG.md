@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.2.1...v1.2.2) (2024-06-15)
+
+
+### Bug Fixes
+
+* text scroll on mouse over not working as expected ([a193ee7](https://github.com/ccatterina/plasmusic-toolbar/commit/a193ee78301a8b3077566e52c73df6982c4c0c9c)), closes [#103](https://github.com/ccatterina/plasmusic-toolbar/issues/103)
+
 ## [1.2.1](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.2.0...v1.2.1) (2024-05-03)
 
 
