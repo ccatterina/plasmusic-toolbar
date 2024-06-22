@@ -3,7 +3,7 @@
     <kcfgfile name=""/>
 
     <group name="General">
-        <entry name="panelIcon" type="string">
+        <entry name="panelIcon" type="String">
             <default>view-media-track</default>
         </entry>
         <entry name="useAlbumCoverAsPanelIcon" type="Bool">
@@ -18,7 +18,7 @@
         <entry name="sources" type="StringList">
             <default>any,spotify,vlc</default>
         </entry>
-        <entry name="maxSongWidthInPanel" type="string">
+        <entry name="maxSongWidthInPanel" type="String">
             <default>200</default>
         </entry>
         <entry name="commandsInPanel" type="Bool">
@@ -27,10 +27,10 @@
         <entry name="textScrollingSpeed" type="Int">
             <default>3</default>
         </entry>
-        <entry name="separateText" type="bool">
+        <entry name="separateText" type="Bool">
             <default>false</default>
         </entry>
-        <entry name="textScrollingBehaviour" type="int">
+        <entry name="textScrollingBehaviour" type="Int">
             <default>0</default>
         </entry>
         <entry name="useCustomFont" type="Bool">
