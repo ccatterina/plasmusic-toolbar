@@ -28,12 +28,12 @@ Button {
         anchors.centerIn: parent
         imagePath: plasmoid.location === PlasmaCore.Types.Vertical || plasmoid.location === PlasmaCore.Types.Horizontal
                  ? "widgets/panel-background" : "widgets/background"
-        width: Kirigami.Units.iconSizes.large + fixedMargins.left + fixedMargins.right
-        height: Kirigami.Units.iconSizes.large + fixedMargins.top + fixedMargins.bottom
+        width: Kirigami.Units.iconSizes.small + fixedMargins.left + fixedMargins.right
+        height: Kirigami.Units.iconSizes.small + fixedMargins.top + fixedMargins.bottom
 
         Kirigami.Icon {
             anchors.centerIn: parent
-            width: Kirigami.Units.iconSizes.large
+            width: Kirigami.Units.iconSizes.small
             height: width
             source: configIcon.value
         }
