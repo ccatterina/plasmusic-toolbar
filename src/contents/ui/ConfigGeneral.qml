@@ -1,13 +1,15 @@
-import QtQuick 2.0
-import QtQuick.Controls 2.5
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kcmutils as KCM
 import QtQuick.Dialogs as QtDialogs
 
+
 KCM.SimpleKCM {
     id: configPage
+    Layout.preferredWidth: form.implicitWidth;
 
     property alias cfg_panelIcon: panelIcon.value
     property alias cfg_useAlbumCoverAsPanelIcon: useAlbumCoverAsPanelIcon.checked
@@ -25,24 +27,28 @@ KCM.SimpleKCM {
     property alias cfg_customFont: fontDialog.fontChosen
     property alias cfg_volumeStep: volumeStepSpinbox.value
 
+
     Kirigami.FormLayout {
+        id: form
+
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
-            Kirigami.FormData.label: "Panel icon"
+            Kirigami.FormData.label: i18n("Panel icon")
         }
 
         ConfigIcon {
             id: panelIcon
-            Kirigami.FormData.label: i18n("Choose icon:")
+            Kirigami.FormData.label: i18n("Icon:")
         }
 
         CheckBox {
             id: useAlbumCoverAsPanelIcon
-            Kirigami.FormData.label: i18n("Album cover:")
-            text: i18n("Use album cover as panel icon")
+            Kirigami.FormData.label: i18n("Use album cover as panel icon")
         }
 
         Slider {
+            Layout.preferredWidth: 10 * Kirigami.Units.gridUnit
+            enabled: useAlbumCoverAsPanelIcon.checked
             id: albumCoverRadius
             from: 0
             to: 25
@@ -52,7 +58,7 @@ KCM.SimpleKCM {
 
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
-            Kirigami.FormData.label: "Sources"
+            Kirigami.FormData.label: i18n("Playback source")
         }
 
         ComboBox {
@@ -69,32 +75,7 @@ KCM.SimpleKCM {
 
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
-            Kirigami.FormData.label: "Song text"
-        }
-
-        RowLayout {
-            Kirigami.FormData.label: i18n("Font:")
-
-            CheckBox {
-                id: customFontCheckbox
-                text: i18n("Use custom font style")
-            }
-
-            Button {
-                text: i18n("Choose Style…")
-                icon.name: "settings-configure"
-                enabled: customFontCheckbox.checked
-                onClicked: {
-                    fontDialog.open()
-                }
-            }
-
-            Label {
-                visible: customFontCheckbox.checked && fontDialog.fontChosen.family && fontDialog.fontChosen.pointSize
-                text: i18n("%1pt %2", fontDialog.fontChosen.pointSize, fontDialog.fontChosen.family)
-                textFormat: Text.PlainText
-                font: fontDialog.fontChosen
-            }
+            Kirigami.FormData.label: i18n("Song text customization")
         }
 
         SpinBox {
@@ -106,8 +87,7 @@ KCM.SimpleKCM {
 
         CheckBox {
             id: separateText
-            text: i18n("Display title and artist in separate lines")
-            Kirigami.FormData.label: i18n("Separate text:")
+            Kirigami.FormData.label: i18n("Title and artist in separate lines")
         }
 
         CheckBox {
@@ -116,6 +96,7 @@ KCM.SimpleKCM {
         }
 
         Slider {
+            Layout.preferredWidth: 10 * Kirigami.Units.gridUnit
             id: textScrollingSpeed
             from: 1
             to: 10
@@ -124,39 +105,47 @@ KCM.SimpleKCM {
             enabled: textScrollingEnabledCheckbox.checked
         }
 
-        ColumnLayout {
+        ButtonGroup {
             id: scrollingBehaviourRadio
             property int value: ScrollingText.OverflowBehaviour.AlwaysScroll
-            enabled: textScrollingEnabledCheckbox.checked
+        }
 
-            Kirigami.FormData.label: i18n("Scrolling behaviour when song text overflows:")
-            RadioButton {
-                text: i18n("Always scroll")
-                checked: scrollingBehaviourRadio.value == ScrollingText.OverflowBehaviour.AlwaysScroll
-                onCheckedChanged: () => {
-                    if (checked) {
-                        scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.AlwaysScroll
-                    }
+        RadioButton {
+            Kirigami.FormData.label: i18n("When text overflows:")
+            id: alwaysScroll
+            text: i18n("Always scroll")
+            checked: scrollingBehaviourRadio.value == ScrollingText.OverflowBehaviour.AlwaysScroll
+            onCheckedChanged: () => {
+                if (checked) {
+                    scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.AlwaysScroll
                 }
             }
-            RadioButton {
-                text: i18n("Scroll only on mouse over")
-                checked: scrollingBehaviourRadio.value == ScrollingText.OverflowBehaviour.ScrollOnMouseOver
-                onCheckedChanged: () => {
-                    if (checked) {
-                        scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.ScrollOnMouseOver
-                    }
+            ButtonGroup.group: scrollingBehaviourRadio
+            enabled: textScrollingEnabledCheckbox.checked
+        }
+        RadioButton {
+            id: scrollOnMouseOver
+            text: i18n("Scroll only on mouse over")
+            checked: scrollingBehaviourRadio.value == ScrollingText.OverflowBehaviour.ScrollOnMouseOver
+            onCheckedChanged: () => {
+                if (checked) {
+                    scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.ScrollOnMouseOver
                 }
             }
-            RadioButton {
-                text: i18n("Always scroll except on mouse over")
-                checked: scrollingBehaviourRadio.value == ScrollingText.OverflowBehaviour.StopScrollOnMouseOver
-                onCheckedChanged: () => {
-                    if (checked) {
-                        scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.StopScrollOnMouseOver
-                    }
+            ButtonGroup.group: scrollingBehaviourRadio
+            enabled: textScrollingEnabledCheckbox.checked
+        }
+        RadioButton {
+            id: stopOnMouseOver
+            text: i18n("Always scroll except on mouse over")
+            checked: scrollingBehaviourRadio.value == ScrollingText.OverflowBehaviour.StopScrollOnMouseOver
+            onCheckedChanged: () => {
+                if (checked) {
+                    scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.StopScrollOnMouseOver
                 }
             }
+            ButtonGroup.group: scrollingBehaviourRadio
+            enabled: textScrollingEnabledCheckbox.checked
         }
 
         CheckBox {
@@ -165,14 +154,38 @@ KCM.SimpleKCM {
             enabled: textScrollingEnabledCheckbox.checked
         }
 
+        RowLayout {
+            Kirigami.FormData.label: i18n("Custom font:")
+
+            CheckBox {
+                id: customFontCheckbox
+            }
+
+            Button {
+                text: i18n("Choose…")
+                icon.name: "settings-configure"
+                enabled: customFontCheckbox.checked
+                onClicked: {
+                    fontDialog.open()
+                }
+            }
+        }
+
+        Label {
+            visible: customFontCheckbox.checked && fontDialog.fontChosen.family && fontDialog.fontChosen.pointSize
+            text: i18n("%1pt %2", fontDialog.fontChosen.pointSize, fontDialog.fontChosen.family)
+            textFormat: Text.PlainText
+            font: fontDialog.fontChosen
+        }
+
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
-            Kirigami.FormData.label: "Music controls"
+            Kirigami.FormData.label: i18n("Playback controls")
         }
+
         CheckBox {
             id: commandsInPanel
-            text: i18n("Show music controls in the panel (play/pause/previous/next)")
-            Kirigami.FormData.label: i18n("Show controls:")
+            Kirigami.FormData.label: i18n("Playback controls in the panel")
         }
 
         SpinBox {
@@ -195,5 +208,4 @@ KCM.SimpleKCM {
             fontChosen = selectedFont
         }
     }
-
 }
