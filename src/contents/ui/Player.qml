@@ -9,19 +9,18 @@ QtObject {
         onRowsInserted: (_, rowIndex) => {
             const CONTAINER_ROLE = Qt.UserRole + 1
             const player = this.data(this.index(rowIndex, 0), CONTAINER_ROLE)
-            if (player.desktopEntry === root.sourceName) {
+            if (player.identity === root.sourceIdentity) {
                 this.currentIndex = rowIndex;
             }
         }
     }
 
-    property string sourceName: "any"
-
+    property var sourceIdentity: null
     readonly property bool ready: {
         if (!mpris2Model.currentPlayer) {
             return false
         }
-        return mpris2Model.currentPlayer.desktopEntry === sourceName || sourceName === "any";
+        return mpris2Model.currentPlayer.identity === sourceIdentity || sourceIdentity === null;
     }
 
     readonly property string artists: ready ? mpris2Model.currentPlayer.artist : ""

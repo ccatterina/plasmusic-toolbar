@@ -33,7 +33,12 @@ PlasmoidItem {
 
     Player {
         id: player
-        sourceName: plasmoid.configuration.sources[plasmoid.configuration.sourceIndex]
+        sourceIdentity: {
+            if (plasmoid.configuration.choosePlayerAutomatically) {
+                return null
+            }
+            return plasmoid.configuration.playersIdentities[plasmoid.configuration.preferredPlayerIdentityIndex]
+        }
         onReadyChanged: {
           Plasmoid.status = player.ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
           console.debug(`Player ready changed: ${player.ready} -> plasmoid status changed: ${Plasmoid.status}`)

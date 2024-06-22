@@ -6,6 +6,7 @@ import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kcmutils as KCM
 import QtQuick.Dialogs as QtDialogs
 import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.private.mpris as Mpris
 
 
 KCM.SimpleKCM {
@@ -18,13 +19,14 @@ KCM.SimpleKCM {
     property alias cfg_albumCoverRadius: albumCoverRadius.value
     property alias cfg_commandsInPanel: commandsInPanel.checked
     property alias cfg_maxSongWidthInPanel: maxSongWidthInPanel.value
-    property alias cfg_sourceIndex: sourceComboBox.currentIndex
-    property alias cfg_sources: sourceComboBox.model
     property alias cfg_textScrollingSpeed: textScrollingSpeed.value
     property alias cfg_separateText: separateText.checked
     property alias cfg_textScrollingBehaviour: scrollingBehaviourRadio.value
     property alias cfg_textScrollingEnabled: textScrollingEnabledCheckbox.checked
     property alias cfg_textScrollingResetOnPause: textScrollingResetOnPauseCheckbox.checked
+    property alias cfg_choosePlayerAutomatically: choosePlayerAutomatically.checked
+    property alias cfg_preferredPlayerIdentityIndex: playerComboBox.currentIndex
+    property alias cfg_playersIdentities: playerComboBox.model
     property alias cfg_useCustomFont: customFontCheckbox.checked
     property alias cfg_customFont: fontDialog.fontChosen
     property alias cfg_volumeStep: volumeStepSpinbox.value
@@ -71,16 +73,44 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Playback source")
         }
 
-        ComboBox {
-            id: sourceComboBox
-            editable: true
+        ButtonGroup {
+            id: playerSourceRadio
+        }
 
-            onAccepted: () => {
-                if (find(editText) === -1)
-                    model = [...model, editText]
+        RowLayout {
+            Kirigami.FormData.label: i18n("Player:")
+            RadioButton {
+                id: choosePlayerAutomatically
+                text: i18n("Choose automatically")
+                ButtonGroup.group: playerSourceRadio
+            }
+            Kirigami.ContextualHelpButton {
+                toolTipText: i18n("The player will be chosen automatically based on the currently playing song. If two or more players are playing at the same time, the widget will choose the one that started playing first.")
+            }
+        }
+
+        RowLayout {
+            RadioButton {
+                id: selectPreferredPlayer
+                text: i18n("Always:")
+                checked: !choosePlayerAutomatically.checked
+                ButtonGroup.group: playerSourceRadio
             }
 
-            Kirigami.FormData.label: i18n("Preferred MPRIS2 source:")
+            ComboBox {
+                enabled: selectPreferredPlayer.checked
+                id: playerComboBox
+            }
+
+            Button {
+                enabled: selectPreferredPlayer.checked
+                icon.name: 'list-add'
+                onClicked: sourceDialog.open()
+            }
+
+            Kirigami.ContextualHelpButton {
+                toolTipText: i18n("Always display information from the selected player, if it's not running the widget will be hidden. To add a new player to the combobox click on + button.")
+            }
         }
 
         Kirigami.Separator {
@@ -308,5 +338,15 @@ KCM.SimpleKCM {
         id: albumPlaceholderDialog
         property var value: null
         onAccepted: value = selectedFile
+    }
+
+    SourceDialog {
+        id: sourceDialog
+        title: "Add a new player source"
+        onSourceSelected: (identity) => {
+            if (!playerComboBox.model.includes(identity)) {
+                playerComboBox.model = [...playerComboBox.model,  identity]
+            }
+        }
     }
 }
