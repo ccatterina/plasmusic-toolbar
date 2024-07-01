@@ -41,7 +41,50 @@ You can install the widget directly from the kde store:
 For those using an Arch-based distribution, an AUR package is available:
  - https://aur.archlinux.org/packages/plasma6-applets-plasmusic-toolbar
 
-Thanks to [@D3SOX](https://www.github.com/D3SOX) for creating and maintaining the package! 
+Thanks to [@D3SOX](https://www.github.com/D3SOX) for creating and maintaining the package!
+
+### Nix package
+
+For those using NixOS or the nix package manager, a Nix package is available in nixpkgs-unstable.
+
+To install the widget use one of these methods:
+
+- NixOS
+  
+  ```nix
+  environment.systemPackages = with pkgs; [
+    plasmusic-toolbar
+  ];
+  ```
+
+- [Home-manager](https://github.com/nix-community/home-manager)
+
+  ```nix
+  home.packages = with pkgs; [
+    plasmusic-toolbar
+  ];
+  ```
+
+- [Plasma-manager](https://github.com/nix-community/plasma-manager)
+
+  ```nix
+  programs.plasma = {
+    enable = true;
+    extraWidgets = ["plasmusic-toolbar"];
+  };
+  ```
+
+- Other distros using nix package manager
+
+  ```
+  # without flakes:
+  nix-env -iA nixpkgs.plasmusic-toolbar
+  # with flakes:
+  nix profile install nixpkgs#plasmusic-toolbar
+  ```
+
+
+
 
 ### Manual
 1. Clone the repository:
