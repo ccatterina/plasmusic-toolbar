@@ -24,10 +24,15 @@ Item {
         }
         Rectangle {
             MouseArea {
-                anchors.fill: parent
+                anchors.centerIn: parent
+                height: parent.height + 8
+                width: parent.width
                 cursorShape: Qt.PointingHandCursor
                 onClicked: ({x}) => {
                     container.changeVolume(x/parent.width)
+                }
+                onPositionChanged: (mouse) => {
+                    if (pressed) container.changeVolume(mouse.x/parent.width)
                 }
             }
 
