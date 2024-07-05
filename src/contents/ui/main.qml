@@ -123,6 +123,8 @@ PlasmoidItem {
     fullRepresentation: Item {
         Layout.preferredHeight: column.implicitHeight
         Layout.preferredWidth: column.implicitWidth
+        Layout.minimumWidth: column.implicitWidth
+        Layout.minimumHeight: column.implicitHeight
 
         ColumnLayout {
             id: column
