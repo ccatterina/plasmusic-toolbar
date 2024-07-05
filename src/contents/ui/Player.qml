@@ -39,6 +39,7 @@ QtObject {
     readonly property bool canPlay: ready ? mpris2Model.currentPlayer.canPlay : false
     readonly property bool canPause: ready ? mpris2Model.currentPlayer.canPause : false
     readonly property bool canSeek: ready ? mpris2Model.currentPlayer.canSeek : false
+    readonly property bool canRaise: ready ? mpris2Model.currentPlayer.canRaise : false
 
     // To know whether Shuffle and Loop can be changed we have to check if the property is defined,
     // unlike the other commands, LoopStatus and Shuffle hasn't a specific propety such as
@@ -76,5 +77,9 @@ QtObject {
 
     function setLoopStatus(loopStatus) {
         mpris2Model.currentPlayer.loopStatus = loopStatus
+    }
+
+    function raise() {
+        mpris2Model.currentPlayer.Raise();
     }
 }

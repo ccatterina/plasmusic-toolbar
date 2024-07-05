@@ -16,6 +16,8 @@ PlasmoidItem {
     }
     readonly property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
 
+    toolTipSubText: player.canRaise ? i18n("Ctrl+Click to bring player to the front") : i18n("This player can't be raised")
+
     Player {
         id: player
         sourceName: plasmoid.configuration.sources[plasmoid.configuration.sourceIndex]
@@ -38,6 +40,19 @@ PlasmoidItem {
             onClicked: {
                 widget.expanded = !widget.expanded;
             }
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            propagateComposedEvents: true
+            onClicked: (mouse) => {
+                if (mouse.modifiers & Qt.ControlModifier) {
+                    if (player.canRaise) player.raise()
+                } else {
+                    mouse.accepted = false
+                }
+            }
+            z: 999
         }
 
         RowLayout {
@@ -97,7 +112,10 @@ PlasmoidItem {
                 icon.name: "media-skip-backward"
                 implicitWidth: compact.controlsSize
                 implicitHeight: compact.controlsSize
-                onClicked: player.previous()
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: player.previous()
+                }
             }
 
             PlasmaComponents3.ToolButton {
@@ -106,7 +124,10 @@ PlasmoidItem {
                 implicitWidth: compact.controlsSize
                 implicitHeight: compact.controlsSize
                 icon.name: player.playbackStatus === Mpris.PlaybackStatus.Playing ? "media-playback-pause" : "media-playback-start"
-                onClicked: player.playPause()
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: player.playPause()
+                }
             }
 
             PlasmaComponents3.ToolButton {
@@ -115,7 +136,10 @@ PlasmoidItem {
                 implicitWidth: compact.controlsSize
                 implicitHeight: compact.controlsSize
                 icon.name: "media-skip-forward"
-                onClicked: player.next()
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: player.next()
+                }
             }
         }
     }
@@ -141,6 +165,21 @@ PlasmoidItem {
                     visible: player.artUrl
                     source: player.artUrl
                     fillMode: Image.PreserveAspectFit
+                    MouseArea {
+                        id: coverMouseArea
+                        anchors.fill: parent
+                        cursorShape: player.canRaise ? Qt.PointingHandCursor : Qt.ArrowCursor
+                        onClicked: {
+                            if (player.canRaise) player.raise()
+                        }
+                        hoverEnabled: true
+                    }
+                    PlasmaComponents3.ToolTip {
+                        id: raisePlayerTooltip
+                        anchors.centerIn: parent
+                        text: player.canRaise ? i18n("Bring player to the front") : i18n("This player can't be raised")
+                        visible: coverMouseArea.containsMouse
+                    }
                 }
             }
 
