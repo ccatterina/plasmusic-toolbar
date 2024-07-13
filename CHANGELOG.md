@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.2.2...v1.3.0) (2024-07-13)
+
+
+### Features
+
+* Raise player on cover click in full view or ctrl+click in panel ([d24b2fa](https://github.com/ccatterina/plasmusic-toolbar/commit/d24b2fa706f5cdb98031c5786edf7f6dbee171ae)), closes [#14](https://github.com/ccatterina/plasmusic-toolbar/issues/14)
+* Increase volume bar clickable area and make it draggable ([b04f6bd](https://github.com/ccatterina/plasmusic-toolbar/commit/b04f6bd3f95e3e8c36b5749d056908fc1af7fb16)), closes [#58](https://github.com/ccatterina/plasmusic-toolbar/issues/58)
+
+
+### Bug Fixes
+
+* Limit minimum expanded representation size to content ([657546c](https://github.com/ccatterina/plasmusic-toolbar/commit/657546c63da297f2d93ced7aecee13bf1f07bb6b)), closes [#102](https://github.com/ccatterina/plasmusic-toolbar/issues/102)
+
 ## [1.2.2](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.2.1...v1.2.2) (2024-06-15)
 
 
