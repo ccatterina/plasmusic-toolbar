@@ -17,12 +17,15 @@ PlasmoidItem {
     readonly property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
     readonly property bool textScrollingEnabled: plasmoid.configuration.textScrollingEnabled
     readonly property bool textScrollingResetOnPause: plasmoid.configuration.textScrollingResetOnPause
+    readonly property int volumeStep: 5
 
     toolTipTextFormat: Text.PlainText
     toolTipMainText: player.playbackStatus > Mpris.PlaybackStatus.Stopped ? player.title : i18n("No media playing")
     toolTipSubText: {
         let text = player.artists ? i18nc("%1 is the media artist/author and %2 is the player name", "by %1 (%2)", player.artists, player.identity)
             : i18nc("%1 is the player name", "%1", player.identity)
+        text += "\n" + (player.playbackStatus === Mpris.PlaybackStatus.Playing ? i18n("Middle-click to pause") : i18n("Middle-click to play"))
+        text += "\n" + i18n("Scroll to adjust volume")
         text += "\n" + (player.canRaise ? i18n("Ctrl+Click to bring player to the front") : i18n("This player can't be raised"))
         return text
     }
@@ -51,15 +54,39 @@ PlasmoidItem {
             }
         }
 
-        MouseArea {
+        MouseAreaWithWheelHandler {
             anchors.fill: parent
+            acceptedButtons: Qt.LeftButton | Qt.MiddleButton | Qt.BackButton | Qt.ForwardButton
             propagateComposedEvents: true
+            property int wheelDelta: 0
             onClicked: (mouse) => {
-                if (mouse.modifiers & Qt.ControlModifier) {
-                    if (player.canRaise) player.raise()
-                } else {
-                    mouse.accepted = false
+                switch (mouse.button) {
+                case Qt.MiddleButton:
+                    player.playPause()
+                    break
+                case Qt.BackButton:
+                    if (player.canGoPrevious) {
+                        player.previous();
+                    }
+                    break
+                case Qt.ForwardButton:
+                    if (player.canGoNext) {
+                        player.next();
+                    }
+                    break
+                default:
+                    if (mouse.modifiers & Qt.ControlModifier) {
+                        if (player.canRaise) player.raise()
+                    } else {
+                        mouse.accepted = false
+                    }
                 }
+            }
+            onWheelUp: {
+                player.changeVolume(volumeStep / 100, true);
+            }
+            onWheelDown: {
+                player.changeVolume(-volumeStep / 100, true);
             }
             z: 999
         }
@@ -234,8 +261,14 @@ PlasmoidItem {
                 Layout.rightMargin: 40
                 Layout.topMargin: 10
                 volume: player.volume
-                onChangeVolume: (vol) => {
+                onSetVolume: (vol) => {
                     player.setVolume(vol)
+                }
+                onVolumeUp: {
+                    player.changeVolume(volumeStep / 100, false)
+                }
+                onVolumeDown: {
+                    player.changeVolume(-volumeStep / 100, false)
                 }
             }
 
