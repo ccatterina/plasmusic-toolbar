@@ -1,6 +1,6 @@
 # PlasMusic Toolbar
 
-[![AUR Version](https://img.shields.io/aur/version/plasma6-applets-plasmusic-toolbar)](https://aur.archlinux.org/packages/plasma6-applets-plasmusic-toolbar)
+[![AUR Version](https://img.shields.io/aur/version/plasma6-applets-plasmusic-toolbar)](https://aur.archlinux.org/packages/plasma6-applets-plasmusic-toolbar) [![nixpkgs unstable package](https://repology.org/badge/version-for-repo/nix_unstable/plasmusic-toolbar.svg)](https://repology.org/project/plasmusic-toolbar/versions)
 
 ## Overview
 
