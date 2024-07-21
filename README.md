@@ -65,14 +65,7 @@ To install the widget use one of these methods:
   ];
   ```
 
-- [Plasma-manager](https://github.com/nix-community/plasma-manager)
-
-  ```nix
-  programs.plasma = {
-    enable = true;
-    extraWidgets = ["plasmusic-toolbar"];
-  };
-  ```
+- [Plasma-manager](https://github.com/nix-community/plasma-manager): If the widget gets added to a panel it will automatically be installed
 
 - Other distros using nix package manager
 
