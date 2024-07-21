@@ -72,6 +72,10 @@ QtObject {
         mpris2Model.currentPlayer.volume = volume
     }
 
+    function changeVolume(delta, showOSD) {
+        mpris2Model.currentPlayer.changeVolume(delta, showOSD);
+    }
+
     function setShuffle(shuffle) {
         mpris2Model.currentPlayer.shuffle = shuffle
     }

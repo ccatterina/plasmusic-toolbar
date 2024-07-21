@@ -8,7 +8,9 @@ Item {
     property real volume: 0.5;
     property real size: 3;
     property real iconSize: Kirigami.Units.iconSizes.small;
-    signal changeVolume(newVolume: real);
+    signal setVolume(newVolume: real)
+    signal volumeUp()
+    signal volumeDown()
 
     Layout.fillWidth: true
     Layout.preferredHeight: row.implicitHeight
@@ -19,20 +21,26 @@ Item {
 
         CommandIcon {
             size: iconSize;
-            onClicked: container.changeVolume(container.volume - 0.1 > 1 ? 1 : container.volume - 0.1)
+            onClicked: container.volumeDown()
             source: 'audio-volume-low';
         }
         Rectangle {
-            MouseArea {
+            MouseAreaWithWheelHandler {
                 anchors.centerIn: parent
                 height: parent.height + 8
                 width: parent.width
                 cursorShape: Qt.PointingHandCursor
                 onClicked: ({x}) => {
-                    container.changeVolume(x/parent.width)
+                    container.setVolume(x/parent.width)
                 }
                 onPositionChanged: (mouse) => {
-                    if (pressed) container.changeVolume(mouse.x/parent.width)
+                    if (pressed) container.setVolume(mouse.x/parent.width)
+                }
+                onWheelUp: {
+                    container.volumeUp();
+                }
+                onWheelDown: {
+                    container.volumeDown();
                 }
             }
 
@@ -50,7 +58,7 @@ Item {
         }
         CommandIcon {
             size: iconSize;
-            onClicked: container.changeVolume(container.volume + 0.1 > 1 ? 1 : container.volume + 0.1);
+            onClicked: container.volumeUp()
             source: 'audio-volume-high';
         }
     }
