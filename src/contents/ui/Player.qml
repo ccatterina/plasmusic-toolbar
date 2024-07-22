@@ -33,6 +33,7 @@ QtObject {
     readonly property double songPosition: ready ? mpris2Model.currentPlayer.position : 0
     readonly property double songLength: ready ? mpris2Model.currentPlayer.length : 0
     readonly property real volume: ready ? mpris2Model.currentPlayer.volume : 0
+    readonly property string identity: ready ? mpris2Model.currentPlayer.identity : ""
 
     readonly property bool canGoNext: ready ? mpris2Model.currentPlayer.canGoNext : false
     readonly property bool canGoPrevious: ready ? mpris2Model.currentPlayer.canGoPrevious : false

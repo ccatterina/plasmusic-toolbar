@@ -16,7 +16,14 @@ PlasmoidItem {
     }
     readonly property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
 
-    toolTipSubText: player.canRaise ? i18n("Ctrl+Click to bring player to the front") : i18n("This player can't be raised")
+    toolTipTextFormat: Text.PlainText
+    toolTipMainText: player.playbackStatus > Mpris.PlaybackStatus.Stopped ? player.title : i18n("No media playing")
+    toolTipSubText: {
+        let text = player.artists ? i18nc("%1 is the media artist/author and %2 is the player name", "by %1 (%2)", player.artists, player.identity)
+            : i18nc("%1 is the player name", "%1", player.identity)
+        text += "\n" + (player.canRaise ? i18n("Ctrl+Click to bring player to the front") : i18n("This player can't be raised"))
+        return text
+    }
 
     Player {
         id: player
