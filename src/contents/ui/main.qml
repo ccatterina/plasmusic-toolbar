@@ -15,6 +15,8 @@ PlasmoidItem {
         return plasmoid.configuration.useCustomFont ? plasmoid.configuration.customFont : Kirigami.Theme.defaultFont
     }
     readonly property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
+    readonly property bool textScrollingEnabled: plasmoid.configuration.textScrollingEnabled
+    readonly property bool textScrollingResetOnPause: plasmoid.configuration.textScrollingResetOnPause
 
     toolTipTextFormat: Text.PlainText
     toolTipMainText: player.playbackStatus > Mpris.PlaybackStatus.Stopped ? player.title : i18n("No media playing")
@@ -93,6 +95,8 @@ PlasmoidItem {
                         speed: plasmoid.configuration.textScrollingSpeed
                         maxWidth: plasmoid.configuration.maxSongWidthInPanel
                         text: player.title
+                        scrollingEnabled: textScrollingEnabled
+                        scrollResetOnPause: textScrollingResetOnPause
                     }
                     ScrollingText {
                         overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
@@ -100,6 +104,8 @@ PlasmoidItem {
                         speed: plasmoid.configuration.textScrollingSpeed
                         maxWidth: plasmoid.configuration.maxSongWidthInPanel
                         text: player.artists
+                        scrollingEnabled: textScrollingEnabled
+                        scrollResetOnPause: textScrollingResetOnPause
                     }
                 }
             }
@@ -111,6 +117,8 @@ PlasmoidItem {
                 maxWidth: plasmoid.configuration.maxSongWidthInPanel
                 text: [player.artists, player.title].filter((x) => x).join(" - ")
                 font: widget.textFont
+                scrollingEnabled: textScrollingEnabled
+                scrollResetOnPause: textScrollingResetOnPause
             }
 
             PlasmaComponents3.ToolButton {

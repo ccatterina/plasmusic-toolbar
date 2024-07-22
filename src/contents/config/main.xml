@@ -39,5 +39,11 @@
         <entry name="customFont" type="Font">
             <default></default>
         </entry>
+        <entry name="textScrollingEnabled" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="textScrollingResetOnPause" type="Bool">
+            <default>false</default>
+        </entry>
     </group>
 </kcfg>

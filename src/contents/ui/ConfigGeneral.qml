@@ -19,6 +19,8 @@ KCM.SimpleKCM {
     property alias cfg_textScrollingSpeed: textScrollingSpeed.value
     property alias cfg_separateText: separateText.checked
     property alias cfg_textScrollingBehaviour: scrollingBehaviourRadio.value
+    property alias cfg_textScrollingEnabled: textScrollingEnabledCheckbox.checked
+    property alias cfg_textScrollingResetOnPause: textScrollingResetOnPauseCheckbox.checked
 
     property alias cfg_useCustomFont: customFontCheckbox.checked
     property alias cfg_customFont: fontDialog.fontChosen
@@ -102,23 +104,30 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Panel song max width:")
         }
 
-        Slider {
-            id: textScrollingSpeed
-            from: 1
-            to: 10
-            stepSize: 1
-            Kirigami.FormData.label: i18n("Text scrolling speed:")
-        }
-
         CheckBox {
             id: separateText
             text: i18n("Display title and artist in separate lines")
             Kirigami.FormData.label: i18n("Separate text:")
         }
 
+        CheckBox {
+            id: textScrollingEnabledCheckbox
+            Kirigami.FormData.label: i18n("Text scrolling:")
+        }
+
+        Slider {
+            id: textScrollingSpeed
+            from: 1
+            to: 10
+            stepSize: 1
+            Kirigami.FormData.label: i18n("Text scrolling speed:")
+            enabled: textScrollingEnabledCheckbox.checked
+        }
+
         ColumnLayout {
             id: scrollingBehaviourRadio
             property int value: ScrollingText.OverflowBehaviour.AlwaysScroll
+            enabled: textScrollingEnabledCheckbox.checked
 
             Kirigami.FormData.label: i18n("Scrolling behaviour when song text overflows:")
             RadioButton {
@@ -148,6 +157,12 @@ KCM.SimpleKCM {
                     }
                 }
             }
+        }
+
+        CheckBox {
+            id: textScrollingResetOnPauseCheckbox
+            Kirigami.FormData.label: i18n("Reset position when scrolling is paused:")
+            enabled: textScrollingEnabledCheckbox.checked
         }
 
         Kirigami.Separator {

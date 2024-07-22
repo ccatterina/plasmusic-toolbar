@@ -23,6 +23,9 @@ Item {
     property int speed: 5;
     readonly property int duration: (25 * (11 - speed) + 25)* textAndSpacing.length;
 
+    property bool scrollingEnabled: true
+    property bool scrollResetOnPause: false
+
     readonly property bool pauseScrolling: {
         if (overflowBehaviour === ScrollingText.OverflowBehaviour.AlwaysScroll) {
             return false;
@@ -58,8 +61,8 @@ Item {
         text: overflow ? root.textAndSpacing : root.text
 
         NumberAnimation on x {
-            running: root.overflow
-            paused: root.pauseScrolling
+            running: root.overflow && root.scrollingEnabled
+            paused: root.pauseScrolling && running
             from: 0
             to: -label.implicitWidth
             duration: root.duration
@@ -70,7 +73,7 @@ Item {
                 if (running) {
                     restart()
                 }
-                if (root.pauseScrolling) {
+                if (running && root.pauseScrolling) {
                     pause()
                 }
             }
@@ -84,6 +87,9 @@ Item {
             }
             onToChanged: () => reset()
             onDurationChanged: () =>  reset()
+            onPausedChanged: (paused) => {
+                if (paused && scrollResetOnPause) label.x = 0
+            }
         }
 
         PlasmaComponents3.Label {
