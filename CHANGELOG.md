@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.3.0...v1.4.0) (2024-07-28)
+
+
+### Features
+
+* Add option to change volume step size ([7f850bc](https://github.com/ccatterina/plasmusic-toolbar/commit/7f850bcf8e03c5bf2169710f00905ee910ea20fd))
+* Mouse wheel click to play/pause and scroll to adjust volume ([b2718d9](https://github.com/ccatterina/plasmusic-toolbar/commit/b2718d91ea421a566758dfeab4a288ee92754d67))
+* Show title and artist in Tooltip ([9302daf](https://github.com/ccatterina/plasmusic-toolbar/commit/9302dafe6c62910b7fb436cb412161af998b2c8b))
+* Text scrolling: allow to disable and reset on pause ([e61fe90](https://github.com/ccatterina/plasmusic-toolbar/commit/e61fe9047d6cb0d2510e6c566acfbaca6e5f5afe))
+
 ## [1.3.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.2.2...v1.3.0) (2024-07-13)
 
 
