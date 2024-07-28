@@ -45,5 +45,8 @@
         <entry name="textScrollingResetOnPause" type="Bool">
             <default>false</default>
         </entry>
+        <entry name="volumeStep" type="Int">
+            <default>5</default>
+        </entry>
     </group>
 </kcfg>

@@ -21,9 +21,9 @@ KCM.SimpleKCM {
     property alias cfg_textScrollingBehaviour: scrollingBehaviourRadio.value
     property alias cfg_textScrollingEnabled: textScrollingEnabledCheckbox.checked
     property alias cfg_textScrollingResetOnPause: textScrollingResetOnPauseCheckbox.checked
-
     property alias cfg_useCustomFont: customFontCheckbox.checked
     property alias cfg_customFont: fontDialog.fontChosen
+    property alias cfg_volumeStep: volumeStepSpinbox.value
 
     Kirigami.FormLayout {
         Kirigami.Separator {
@@ -173,6 +173,15 @@ KCM.SimpleKCM {
             id: commandsInPanel
             text: i18n("Show music controls in the panel (play/pause/previous/next)")
             Kirigami.FormData.label: i18n("Show controls:")
+        }
+
+        SpinBox {
+            id: volumeStepSpinbox
+            Kirigami.FormData.label: i18n("Volume step:")
+            from: 1
+            to: 100
+            textFromValue: function(text) { return text + "%"; }
+            valueFromText: function(value) { return parseInt(value); }
         }
     }
 
