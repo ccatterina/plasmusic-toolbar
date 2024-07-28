@@ -17,7 +17,7 @@ PlasmoidItem {
     readonly property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
     readonly property bool textScrollingEnabled: plasmoid.configuration.textScrollingEnabled
     readonly property bool textScrollingResetOnPause: plasmoid.configuration.textScrollingResetOnPause
-    readonly property int volumeStep: 5
+    readonly property int volumeStep: plasmoid.configuration.volumeStep
 
     toolTipTextFormat: Text.PlainText
     toolTipMainText: player.playbackStatus > Mpris.PlaybackStatus.Stopped ? player.title : i18n("No media playing")
