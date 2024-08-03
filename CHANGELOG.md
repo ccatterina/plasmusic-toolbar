@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.4.0...v1.5.0) (2024-08-03)
+
+
+### Features
+
+* improve settings labels and layout ([cdf3f06](https://github.com/ccatterina/plasmusic-toolbar/commit/cdf3f06a60d0c5d9f8a7d7d34c922cf5fc869ec6))
+
 ## [1.4.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.3.0...v1.4.0) (2024-07-28)
 
 
