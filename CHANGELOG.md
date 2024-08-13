@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.5.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.4.0...v1.5.0) (2024-08-13)
+
+
+### Features
+
+* add an option to make the widget bg transparent (desktop) ([f8d0a26](https://github.com/ccatterina/plasmusic-toolbar/commit/f8d0a266cc4ff4ff23afae4dff87f9a1e3a8ef5e)), closes [#122](https://github.com/ccatterina/plasmusic-toolbar/issues/122)
+* fallback to selected icon when no album cover available ([f1502ad](https://github.com/ccatterina/plasmusic-toolbar/commit/f1502ade5a50097568183e481344517fda3bb22d))
+* improve settings labels and layout ([cdf3f06](https://github.com/ccatterina/plasmusic-toolbar/commit/cdf3f06a60d0c5d9f8a7d7d34c922cf5fc869ec6))
+
 ## [1.4.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.3.0...v1.4.0) (2024-07-28)
 
 
