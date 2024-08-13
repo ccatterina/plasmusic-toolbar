@@ -5,6 +5,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kcmutils as KCM
 import QtQuick.Dialogs as QtDialogs
+import org.kde.plasma.core as PlasmaCore
 
 
 KCM.SimpleKCM {
@@ -27,6 +28,7 @@ KCM.SimpleKCM {
     property alias cfg_useCustomFont: customFontCheckbox.checked
     property alias cfg_customFont: fontDialog.fontChosen
     property alias cfg_volumeStep: volumeStepSpinbox.value
+    property alias cfg_desktopWidgetBg: desktopWidgetBackgroundRadio.value
 
 
     Kirigami.FormLayout {
@@ -202,6 +204,63 @@ KCM.SimpleKCM {
             to: 100
             textFromValue: function(text) { return text + "%"; }
             valueFromText: function(value) { return parseInt(value); }
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("Background")
+        }
+
+        ButtonGroup {
+            id: desktopWidgetBackgroundRadio
+            property int value: PlasmaCore.Types.StandardBackground
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Background (only for desktop applet):")
+            RadioButton {
+                text: i18n("Standard")
+                checked: desktopWidgetBackgroundRadio.value == PlasmaCore.Types.StandardBackground
+                onCheckedChanged: () => {
+                    if (checked) {
+                        desktopWidgetBackgroundRadio.value = PlasmaCore.Types.StandardBackground
+                    }
+                }
+                ButtonGroup.group: desktopWidgetBackgroundRadio
+            }
+            Kirigami.ContextualHelpButton {
+                toolTipText: (
+                    "The standard background from the theme."
+                )
+            }
+        }
+        RadioButton {
+            text: i18n("Transparent")
+            checked: desktopWidgetBackgroundRadio.value == PlasmaCore.Types.NoBackground
+            onCheckedChanged: () => {
+                if (checked) {
+                    desktopWidgetBackgroundRadio.value = PlasmaCore.Types.NoBackground
+                }
+            }
+            ButtonGroup.group: desktopWidgetBackgroundRadio
+        }
+        RowLayout {
+            RadioButton {
+                text: i18n("Transparent (Shadow content)")
+                checked: desktopWidgetBackgroundRadio.value == PlasmaCore.Types.ShadowBackground
+                onCheckedChanged: () => {
+                    if (checked) {
+                        desktopWidgetBackgroundRadio.value = PlasmaCore.Types.ShadowBackground
+                    }
+                }
+                ButtonGroup.group: desktopWidgetBackgroundRadio
+            }
+            Kirigami.ContextualHelpButton {
+                toolTipText: (
+                    "The applet won't have a background but a drop shadow of " +
+                    "its content done via a shader. The text color will also invert."
+                )
+            }
         }
     }
 

@@ -10,6 +10,7 @@ PlasmoidItem {
     id: widget
 
     Plasmoid.status: PlasmaCore.Types.HiddenStatus
+    Plasmoid.backgroundHints: plasmoid.configuration.desktopWidgetBg
 
     readonly property font textFont: {
         return plasmoid.configuration.useCustomFont ? plasmoid.configuration.customFont : Kirigami.Theme.defaultFont
