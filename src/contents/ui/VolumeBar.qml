@@ -8,6 +8,8 @@ Item {
     property real volume: 0.5;
     property real size: 3;
     property real iconSize: Kirigami.Units.iconSizes.small;
+    property string activeColor: Kirigami.Theme.highlightColor
+    property string disabledColor: Kirigami.Theme.disabledTextColor
     signal setVolume(newVolume: real)
     signal volumeUp()
     signal volumeDown()
@@ -47,13 +49,13 @@ Item {
             height: container.size
             Layout.fillWidth: true
             id: full
-            color: Kirigami.Theme.disabledTextColor
+            color: container.disabledColor
 
             Rectangle {
                 Layout.alignment: Qt.AlignLeft
                 height: container.size
                 width: full.width * container.volume
-                color: Kirigami.Theme.highlightColor
+                color: container.activeColor
             }
         }
         CommandIcon {

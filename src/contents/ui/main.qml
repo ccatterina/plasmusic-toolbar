@@ -5,6 +5,7 @@ import org.kde.plasma.plasmoid
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.private.mpris as Mpris
+import Qt5Compat.GraphicalEffects
 
 PlasmoidItem {
     id: widget
@@ -208,13 +209,22 @@ PlasmoidItem {
         Layout.preferredWidth: column.implicitWidth
         Layout.minimumWidth: column.implicitWidth
         Layout.minimumHeight: column.implicitHeight
+        Kirigami.Theme.backgroundColor: imageColors.bgColor
+        Kirigami.Theme.textColor: imageColors.fgColor
+        Kirigami.Theme.highlightColor: imageColors.fgHighlightColor
+
+
+        Rectangle {
+            anchors.fill: parent
+            color: imageColors.bgColor
+            radius: 5
+        }
 
         ColumnLayout {
             id: column
 
             spacing: 0
             anchors.fill: parent
-
             Rectangle {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.margins: 10
@@ -222,6 +232,7 @@ PlasmoidItem {
                 height: width
 
                 Image {
+                    id: albumArt
                     anchors.fill: parent
                     source: player.artUrl || plasmoid.configuration.albumPlaceholder
                     fillMode: Image.PreserveAspectFit
@@ -240,7 +251,52 @@ PlasmoidItem {
                         text: player.canRaise ? i18n("Bring player to the front") : i18n("This player can't be raised")
                         visible: coverMouseArea.containsMouse
                     }
+
+
+                    onStatusChanged: {
+                        if (status == Image.Ready) {
+                            imageColors.update()
+                        }
+                    }
                 }
+
+                OpacityMask {
+                    source: mask
+                    maskSource: albumArt
+                }
+                LinearGradient {
+                    id: mask
+                    anchors.fill: albumArt
+                    gradient: Gradient {
+                        GradientStop { position: 0; color: imageColors.bgColor }
+                        GradientStop { position: 0.3; color: "transparent"}
+                        GradientStop { position: 0.7; color: "transparent"}
+                        GradientStop { position: 1; color: imageColors.bgColor }
+                    }
+                }
+
+                LinearGradient {
+                    id: mask2
+                    anchors.fill: albumArt
+                    gradient: Gradient {
+                        orientation: Gradient.Horizontal
+                        GradientStop { position: 0; color: imageColors.bgColor }
+                        GradientStop { position: 0.3; color: "transparent"}
+                        GradientStop { position: 0.7; color: "transparent"}
+                        GradientStop { position: 1; color: imageColors.bgColor }
+                    }
+                }
+            }
+
+            Kirigami.ImageColors {
+                id: imageColors
+                source: albumArt
+                property string bgColor: Kirigami.ColorUtils.tintWithAlpha(imageColors.dominant, "#000000", .3)
+                property string fgColor: Kirigami.ColorUtils.tintWithAlpha(imageColors.dominant, tintFg, .6)
+                property string fgHighlightColor: Kirigami.ColorUtils.tintWithAlpha(imageColors.dominant, tintFg, 0.8)
+                property string tintFg: Kirigami.ColorUtils.brightnessForColor(bgColor) ===
+                                            Kirigami.ColorUtils.Dark ?
+                                            "#ffffff" : "#000000"
             }
 
             TrackPositionSlider {
