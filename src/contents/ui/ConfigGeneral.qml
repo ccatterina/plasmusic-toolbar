@@ -13,6 +13,7 @@ KCM.SimpleKCM {
 
     property alias cfg_panelIcon: panelIcon.value
     property alias cfg_useAlbumCoverAsPanelIcon: useAlbumCoverAsPanelIcon.checked
+    property alias cfg_fallbackToIconWhenArtNotAvailable: fallbackToIconWhenArtNotAvailable.checked
     property alias cfg_albumCoverRadius: albumCoverRadius.value
     property alias cfg_commandsInPanel: commandsInPanel.checked
     property alias cfg_maxSongWidthInPanel: maxSongWidthInPanel.value
@@ -44,6 +45,12 @@ KCM.SimpleKCM {
         CheckBox {
             id: useAlbumCoverAsPanelIcon
             Kirigami.FormData.label: i18n("Use album cover as panel icon")
+        }
+
+        CheckBox {
+            id: fallbackToIconWhenArtNotAvailable
+            enabled: useAlbumCoverAsPanelIcon.checked
+            Kirigami.FormData.label: i18n("Fallback to icon if cover is not available")
         }
 
         Slider {

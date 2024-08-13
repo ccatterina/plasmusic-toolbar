@@ -102,7 +102,15 @@ PlasmoidItem {
                 icon: plasmoid.configuration.panelIcon
                 imageUrl: player.artUrl
                 imageRadius: plasmoid.configuration.albumCoverRadius
-                type: plasmoid.configuration.useAlbumCoverAsPanelIcon ? PanelIcon.Type.Image: PanelIcon.Type.Icon
+                type: {
+                    if (!plasmoid.configuration.useAlbumCoverAsPanelIcon) {
+                        return PanelIcon.Type.Icon;
+                    }
+                    if (plasmoid.configuration.fallbackToIconWhenArtNotAvailable && !player.artUrl) {
+                        return PanelIcon.Type.Icon;
+                    }
+                    return PanelIcon.Type.Image;
+                }
                 Layout.rightMargin: Kirigami.Units.smallSpacing * 2
             }
 
