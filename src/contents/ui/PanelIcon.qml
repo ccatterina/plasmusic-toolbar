@@ -5,8 +5,13 @@ import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kirigami as Kirigami
 
 Item {
+    enum Type {
+        Icon,
+        Image
+    }
+
     id: root
-    property string type: "icon"
+    property int type: PanelIcon.Type.Icon
     property var imageUrl: null
     property var imageRadius: null
     property var icon: null
@@ -15,20 +20,8 @@ Item {
     Layout.preferredHeight: size
     Layout.preferredWidth: size
 
-    onTypeChanged: () => {
-        if ([ "icon", "image" ].includes(type)) {
-            console.error("Panel icon type not supported")
-        }
-        if (type === "icon" && !icon) {
-            console.error("Panel icon type is icon but no icon is set")
-        }
-        if (type === "image" && !imageUrl) {
-            console.error("Panel icon type is image but no image url is set")
-        }
-    }
-
     Kirigami.Icon {
-        visible: type === "icon"
+        visible: type === PanelIcon.Type.Icon
         id: iconComponent
         source: root.icon
         implicitHeight: root.size
@@ -37,7 +30,7 @@ Item {
     }
 
     Image {
-        visible: type === "image"
+        visible: type === PanelIcon.Type.Image
         width: root.size
         height: root.size
         id: imageComponent
