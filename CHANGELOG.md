@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.5.0...v1.6.0) (2024-08-31)
+
+
+### Features
+
+* album cover placeholder ([e1b41ac](https://github.com/ccatterina/plasmusic-toolbar/commit/e1b41ac413c5515d1556466ee516e138faf7b834)), closes [#17](https://github.com/ccatterina/plasmusic-toolbar/issues/17)
+* remove default album placeholder ([2cd18f3](https://github.com/ccatterina/plasmusic-toolbar/commit/2cd18f382110ff60014824142aeefffbc83d4a9d))
+
 ## [1.5.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.4.0...v1.5.0) (2024-08-13)
 
 
