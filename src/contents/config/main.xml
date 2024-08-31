@@ -54,10 +54,7 @@
         <entry name="desktopWidgetBg" type="Int">
             <default>1</default>
         </entry>
-        <entry name="useCustomAlbumPlaceholder" type="Bool">
-            <default>false</default>
-        </entry>
-        <entry name="customAlbumPlaceholder" type="String">
+        <entry name="albumPlaceholder" type="String">
             <default></default>
         </entry>
     </group>
