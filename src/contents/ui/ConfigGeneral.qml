@@ -29,8 +29,7 @@ KCM.SimpleKCM {
     property alias cfg_customFont: fontDialog.fontChosen
     property alias cfg_volumeStep: volumeStepSpinbox.value
     property alias cfg_desktopWidgetBg: desktopWidgetBackgroundRadio.value
-    property alias cfg_useCustomAlbumPlaceholder: customAlbumPlaceholderCheckbox.checked
-    property alias cfg_customAlbumPlaceholder: customAlbumPlaceholderDialog.value
+    property alias cfg_albumPlaceholder: albumPlaceholderDialog.value
 
 
     Kirigami.FormLayout {
@@ -214,30 +213,25 @@ KCM.SimpleKCM {
         }
 
         RowLayout {
-            Kirigami.FormData.label: i18n("Custom album placeholder:")
-
-            CheckBox {
-                id: customAlbumPlaceholderCheckbox
-            }
+            Kirigami.FormData.label: i18n("Album placeholder:")
 
             Button {
                 text: i18n("Choose…")
                 icon.name: "settings-configure"
-                enabled: customAlbumPlaceholderCheckbox.checked
                 onClicked: {
-                    customAlbumPlaceholderDialog.open()
+                    albumPlaceholderDialog.open()
                 }
             }
         }
 
         ColumnLayout {
             anchors.horizontalCenter: parent.horizontalCenter
-            visible: customAlbumPlaceholderCheckbox.checked && customAlbumPlaceholderDialog.value
+            visible: albumPlaceholderDialog.value
             Image {
                 Layout.preferredWidth: 200
                 Layout.preferredHeight: 200
                 Layout.alignment: Qt.AlignHCenter
-                source: customAlbumPlaceholderDialog.value
+                source: albumPlaceholderDialog.value
             }
         }
 
@@ -311,7 +305,7 @@ KCM.SimpleKCM {
     }
 
     QtDialogs.FileDialog {
-        id: customAlbumPlaceholderDialog
+        id: albumPlaceholderDialog
         property var value: null
         onAccepted: value = selectedFile
     }

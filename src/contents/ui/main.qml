@@ -214,15 +214,8 @@ PlasmoidItem {
                 height: width
 
                 Image {
-                    readonly property string albumPlaceholder: {
-                        if (plasmoid.configuration.useCustomAlbumPlaceholder) {
-                            return plasmoid.configuration.customAlbumPlaceholder
-                        }
-                        return '../images/vinyl-disk.jpg'
-                    }
-
                     anchors.fill: parent
-                    source: player.artUrl || albumPlaceholder
+                    source: player.artUrl || plasmoid.configuration.albumPlaceholder
                     fillMode: Image.PreserveAspectFit
                     MouseArea {
                         id: coverMouseArea
