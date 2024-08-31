@@ -111,4 +111,4 @@ To install the widget use one of these methods:
 
 ## Credits
 
-Album cover placeholder photo by [Brett Jordan](https://unsplash.com/@brett_jordan) on [Unsplash](https://unsplash.com/)
+Album cover placeholder [photo](https://unsplash.com/photos/black-vinyl-record-on-white-background-aZVuQWEtX5Y) by [Brett Jordan](https://unsplash.com/@brett_jordan) on [Unsplash](https://unsplash.com/)
