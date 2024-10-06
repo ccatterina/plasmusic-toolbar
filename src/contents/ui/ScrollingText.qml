@@ -38,7 +38,7 @@ Item {
 
     property alias font: label.font
 
-    width: overflow ? maxWidth : textMetrics.width + 10
+    width: overflow ? maxWidth : textMetrics.width
     clip: true
 
     Layout.preferredHeight: label.implicitHeight
