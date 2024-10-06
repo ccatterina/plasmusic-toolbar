@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.0.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.6.0...v2.0.0) (2024-10-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* Brake old source config, the preferred source must be reconfigured with the new UI.
+
+### Features
+
+* improve preferred source config ([987106d](https://github.com/ccatterina/plasmusic-toolbar/commit/987106d0cf60f667af3168cf56db110079c7a4b8)), closes [#1078](https://github.com/ccatterina/plasmusic-toolbar/issues/1078)
+
+
+### Bug Fixes
+
+* same spacing for left/right side of text ([7d68cf8](https://github.com/ccatterina/plasmusic-toolbar/commit/7d68cf878cda50e904c70082eb89af81162e3815)), closes [#136](https://github.com/ccatterina/plasmusic-toolbar/issues/136)
+
 ## [1.6.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.5.0...v1.6.0) (2024-08-31)
 
 
