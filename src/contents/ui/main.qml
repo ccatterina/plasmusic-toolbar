@@ -112,7 +112,6 @@ PlasmoidItem {
                     }
                     return PanelIcon.Type.Image;
                 }
-                Layout.rightMargin: Kirigami.Units.smallSpacing * 2
             }
 
 
@@ -120,6 +119,8 @@ PlasmoidItem {
                 visible: plasmoid.configuration.separateText
                 Layout.preferredHeight: column.implicitHeight
                 Layout.preferredWidth: column.implicitWidth
+                Layout.rightMargin: Kirigami.Units.smallSpacing
+                Layout.leftMargin: Kirigami.Units.smallSpacing
 
                 ColumnLayout {
                     id: column
@@ -148,6 +149,9 @@ PlasmoidItem {
 
             ScrollingText {
                 visible: !plasmoid.configuration.separateText
+                Layout.rightMargin: Kirigami.Units.smallSpacing
+                Layout.leftMargin: Kirigami.Units.smallSpacing
+
                 overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
                 speed: plasmoid.configuration.textScrollingSpeed
                 maxWidth: plasmoid.configuration.maxSongWidthInPanel
