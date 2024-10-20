@@ -23,7 +23,7 @@ A Plasma 5 version of the widget is available in the [plasma5 branch](https://gi
 - **Icon customization:** Change the widget's icon in the panel view to suit your preferences. You can also choose to display the album cover.
 - **Font customization:** Change the widget's text font to suit your preferences.
 - **Playback controls visibility:** Choose whether to display Play, Pause, Next, and Previous controls in the panel view.
-- **Preferred source**: Change the widget preferred source for music information (spotify, vlc, etc). The name of the source is the same as the desktop file name of the application (see `/usr/share/applications/`).
+- **Preferred source**: Change the widget preferred source for music information.
 - **Playing song max display width**: Determine the maximum width for displaying the currently playing song in the panel. When the song's text exceeds this maximum width, the text will scroll horizontally.
 - **Playing song scrolling speed**: Change the scrolling speed of the song's text.
 - and more...
