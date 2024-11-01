@@ -63,5 +63,11 @@
         <entry name="panelBackgroundRadius" type="Int">
             <default>8</default>
         </entry>
+        <entry name="fillAvailableSpace" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="songTextAlignment" type="Int">
+            <default>2</default>
+        </entry>
     </group>
 </kcfg>
