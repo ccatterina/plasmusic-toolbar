@@ -48,10 +48,10 @@ PlasmoidItem {
     compactRepresentation: Item {
         id: compact
 
-        Layout.preferredWidth: grid.implicitWidth + (horizontal ? lengthMargin : 0)
-        Layout.preferredHeight: grid.implicitHeight + (horizontal ? 0 : lengthMargin)
-        Layout.fillHeight: horizontal
-        Layout.fillWidth: !horizontal
+        Layout.preferredWidth: grid.implicitWidth
+        Layout.preferredHeight: grid.implicitHeight
+        Layout.fillHeight: horizontal || plasmoid.configuration.fillAvailableSpace
+        Layout.fillWidth: !horizontal || plasmoid.configuration.fillAvailableSpace
         readonly property bool colorsFromAlbumCover: plasmoid.configuration.colorsFromAlbumCover
         property color imageColor: Kirigami.Theme.textColor
         property bool imageReady: false
@@ -131,9 +131,11 @@ PlasmoidItem {
             rowSpacing: Kirigami.Units.smallSpacing
             columns: horizontal ? grid.children.length : 1
             rows: horizontal ? 1 : grid.children.length
-            anchors.centerIn: parent
+            anchors.fill: parent
 
             PanelIcon {
+                Layout.leftMargin: horizontal ? lengthMargin / 2: 0
+                Layout.topMargin: horizontal ? 0 : lengthMargin / 2
                 size: compact.controlsSize
                 icon: plasmoid.configuration.panelIcon
                 imageUrl: player.artUrl
@@ -159,25 +161,101 @@ PlasmoidItem {
             }
 
             Item {
+                id: panelScrollingText
                 implicitWidth: horizontal ? column.implicitWidth : column.implicitHeight
                 implicitHeight: horizontal ? column.implicitHeight : column.implicitWidth
+                Layout.fillHeight: horizontal || plasmoid.configuration.fillAvailableSpace
+                Layout.fillWidth: !horizontal || plasmoid.configuration.fillAvailableSpace
                 Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
+                Layout.rightMargin: horizontal ? Kirigami.Units.smallSpacing : 0
+                Layout.leftMargin: horizontal ? Kirigami.Units.smallSpacing : 0
+                Layout.topMargin: horizontal ? 0 : Kirigami.Units.smallSpacing
+                Layout.bottomMargin: horizontal ? 0: Kirigami.Units.smallSpacings
+                readonly property int length: horizontal ? width : height
+
                 ColumnLayout {
                     id: column
                     spacing: 0
-                    anchors.centerIn: parent
+
+                    // The components are anchored before they are rotated. This means that when the widget is placed on a vertical panel
+                    // and the state is `vertical-top` or `vertical-bottom`, the song text may overlap with the PanelIcon or the ToolButtons.
+                    // As a workaround, the component's height is set equal to its width.
+                    height: width
                     visible: plasmoid.configuration.maxSongWidthInPanel !== 0
                     rotation: {
                         if (horizontal) return 0
                         if (plasmoid.location === PlasmaCore.Types.LeftEdge) return -90
                         if (plasmoid.location === PlasmaCore.Types.RightEdge) return 90
                     }
+
+                    readonly property int songTextAlignment: plasmoid.configuration.songTextAlignment
+                    state: {
+                        if (songTextAlignment == Qt.AlignCenter || !plasmoid.configuration.fillAvailableSpace) {
+                            return 'centered'
+                        }
+                        if (horizontal && songTextAlignment == Qt.AlignLeft) {
+                            return 'horizontal-left'
+                        }
+                        if (horizontal && songTextAlignment == Qt.AlignRight) {
+                            return 'horizontal-right'
+                        }
+                        if (!horizontal && songTextAlignment == Qt.AlignLeft) {
+                            return 'vertical-top'
+                        }
+                        if (!horizontal && songTextAlignment == Qt.AlignRight) {
+                            return 'vertical-bottom'
+                        }
+                    }
+
+                    states: [
+                        State {
+                            name: "centered"
+                            AnchorChanges {
+                                target: column
+                                anchors.horizontalCenter: panelScrollingText.horizontalCenter
+                                anchors.verticalCenter: panelScrollingText.verticalCenter
+                            }
+                        },
+                        State {
+                            name: "horizontal-left"
+                            AnchorChanges {
+                                target: column
+                                anchors.left: panelScrollingText.left
+                                anchors.verticalCenter: panelScrollingText.verticalCenter
+                            }
+                        },
+                        State {
+                            name: "horizontal-right"
+                            AnchorChanges {
+                                target: column
+                                anchors.right: panelScrollingText.right
+                                anchors.verticalCenter: panelScrollingText.verticalCenter
+                            }
+                        },
+                        State {
+                            name: "vertical-top"
+                            AnchorChanges {
+                                target: column
+                                anchors.top: panelScrollingText.top
+                                anchors.horizontalCenter: panelScrollingText.horizontalCenter
+                            }
+                        },
+                        State {
+                            name: "vertical-bottom"
+                            AnchorChanges {
+                                target: column
+                                anchors.bottom: panelScrollingText.bottom
+                                anchors.horizontalCenter: panelScrollingText.horizontalCenter
+                            }
+                        }
+                    ]
+
                     ScrollingText {
                         visible: plasmoid.configuration.separateText
                         overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
                         font: widget.boldTextFont
                         speed: plasmoid.configuration.textScrollingSpeed
-                        maxWidth: plasmoid.configuration.maxSongWidthInPanel
+                        maxWidth: plasmoid.configuration.fillAvailableSpace ? panelScrollingText.length : plasmoid.configuration.maxSongWidthInPanel
                         text: player.title
                         scrollingEnabled: textScrollingEnabled
                         scrollResetOnPause: textScrollingResetOnPause
@@ -187,7 +265,7 @@ PlasmoidItem {
                         overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
                         font: widget.textFont
                         speed: plasmoid.configuration.textScrollingSpeed
-                        maxWidth: plasmoid.configuration.maxSongWidthInPanel
+                        maxWidth: plasmoid.configuration.fillAvailableSpace ? panelScrollingText.length : plasmoid.configuration.maxSongWidthInPanel
                         text: plasmoid.configuration.separateText ? player.artists : [player.artists, player.title].filter((x) => x).join(" - ")
                         scrollingEnabled: textScrollingEnabled
                         scrollResetOnPause: textScrollingResetOnPause
@@ -197,46 +275,57 @@ PlasmoidItem {
                 }
             }
 
-            PlasmaComponents3.ToolButton {
-                visible: plasmoid.configuration.commandsInPanel
-                enabled: player.canGoPrevious
-                icon.name: "media-skip-backward"
-                implicitWidth: compact.controlsSize
-                implicitHeight: compact.controlsSize
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: player.previous()
-                }
-                Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
-                icon.color: foregroundColor
-            }
 
-            PlasmaComponents3.ToolButton {
-                visible: plasmoid.configuration.commandsInPanel
-                enabled: player.playbackStatus === Mpris.PlaybackStatus.Playing ? player.canPause : player.canPlay
-                implicitWidth: compact.controlsSize
-                implicitHeight: compact.controlsSize
-                icon.name: player.playbackStatus === Mpris.PlaybackStatus.Playing ? "media-playback-pause" : "media-playback-start"
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: player.playPause()
-                }
+            GridLayout {
+                Layout.rightMargin: horizontal ? lengthMargin / 2 : 0
+                Layout.bottomMargin: horizontal ? 0: lengthMargin / 2
+                columns: horizontal ? grid.children.length : 1
+                rows: horizontal ? 1 : grid.children.length
+                Layout.fillHeight: horizontal
+                Layout.fillWidth: !horizontal
                 Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
-                icon.color: foregroundColor
-            }
 
-            PlasmaComponents3.ToolButton {
-                visible: plasmoid.configuration.commandsInPanel
-                enabled: player.canGoNext
-                implicitWidth: compact.controlsSize
-                implicitHeight: compact.controlsSize
-                icon.name: "media-skip-forward"
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: player.next()
+                PlasmaComponents3.ToolButton {
+                    visible: plasmoid.configuration.commandsInPanel
+                    enabled: player.canGoPrevious
+                    icon.name: "media-skip-backward"
+                    icon.color: foregroundColor
+                    implicitWidth: compact.controlsSize
+                    implicitHeight: compact.controlsSize
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: player.previous()
+                    }
+                    Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
                 }
-                Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
-                icon.color: foregroundColor
+
+                PlasmaComponents3.ToolButton {
+                    visible: plasmoid.configuration.commandsInPanel
+                    enabled: player.playbackStatus === Mpris.PlaybackStatus.Playing ? player.canPause : player.canPlay
+                    implicitWidth: compact.controlsSize
+                    implicitHeight: compact.controlsSize
+                    icon.name: player.playbackStatus === Mpris.PlaybackStatus.Playing ? "media-playback-pause" : "media-playback-start"
+                    icon.color: foregroundColor
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: player.playPause()
+                    }
+                    Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
+                }
+
+                PlasmaComponents3.ToolButton {
+                    visible: plasmoid.configuration.commandsInPanel
+                    enabled: player.canGoNext
+                    implicitWidth: compact.controlsSize
+                    implicitHeight: compact.controlsSize
+                    icon.name: "media-skip-forward"
+                    icon.color: foregroundColor
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: player.next()
+                    }
+                    Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
+                }
             }
         }
     }

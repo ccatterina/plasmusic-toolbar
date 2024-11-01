@@ -33,10 +33,70 @@ KCM.SimpleKCM {
     property alias cfg_albumPlaceholder: albumPlaceholderDialog.value
     property alias cfg_colorsFromAlbumCover: colorsFromAlbumCover.checked
     property alias cfg_panelBackgroundRadius: panelBackgroundRadius.value
-
+    property alias cfg_fillAvailableSpace: fillAvailableSpaceCheckbox.checked
+    property alias cfg_songTextAlignment: songTextPositionRadio.value
 
     Kirigami.FormLayout {
         id: form
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("Panel view layout")
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Fill available space")
+            CheckBox {
+                id: fillAvailableSpaceCheckbox
+            }
+            Kirigami.ContextualHelpButton {
+                toolTipText: i18n(
+                    "The widget fill all available width (if placed in horizontal panel, height otherwise) in the panel, " +
+                    "the panel icon is aligned to the left (or top) and the playback controls are aligned to the right (or bottom). " +
+                    "The song text can be positioned based on user preference."
+                )
+            }
+        }
+
+        ButtonGroup {
+            id: songTextPositionRadio
+            property int value: Qt.AlignLeft
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Song text alignment:")
+            text: i18n("Left (Top for vertical panel)")
+            checked: songTextPositionRadio.value == Qt.AlignLeft
+            onCheckedChanged: () => {
+                if (checked) {
+                    songTextPositionRadio.value = Qt.AlignLeft
+                }
+            }
+            ButtonGroup.group: songTextPositionRadio
+            enabled: fillAvailableSpaceCheckbox.checked
+        }
+        RadioButton {
+            text: i18n("Center")
+            checked: songTextPositionRadio.value == Qt.AlignCenter
+            onCheckedChanged: () => {
+                if (checked) {
+                    songTextPositionRadio.value = Qt.AlignCenter
+                }
+            }
+            ButtonGroup.group: songTextPositionRadio
+            enabled: fillAvailableSpaceCheckbox.checked
+        }
+        RadioButton {
+            text: i18n("Right (Bottom for vertical panel)")
+            checked: songTextPositionRadio.value == Qt.AlignRight
+            onCheckedChanged: () => {
+                if (checked) {
+                    songTextPositionRadio.value = Qt.AlignRight
+                }
+            }
+            ButtonGroup.group: songTextPositionRadio
+            enabled: fillAvailableSpaceCheckbox.checked
+        }
 
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
