@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.0.0...v2.1.0) (2024-11-15)
+
+
+### Features
+
+* vertical panel support ([93a1a3b](https://github.com/ccatterina/plasmusic-toolbar/commit/93a1a3b44b53ee85c481a8d3231fa66d9537cb8f))
+
+
+### Bug Fixes
+
+* use correct type for maxSongWidthInPanel ([00f9049](https://github.com/ccatterina/plasmusic-toolbar/commit/00f90496c5d7b892690471105f039e1332a8e840))
+
 ## [2.0.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.6.0...v2.0.0) (2024-10-06)
 
 
