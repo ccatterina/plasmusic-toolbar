@@ -120,6 +120,7 @@ PlasmoidItem {
         Rectangle {
             anchors.fill: parent
             color: backgroundColor
+            radius: plasmoid.configuration.panelBackgroundRadius
         }
 
         GridLayout {

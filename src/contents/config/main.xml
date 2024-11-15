@@ -60,5 +60,8 @@
         <entry name="colorsFromAlbumCover" type="Bool">
             <default>false</default>
         </entry>
+        <entry name="panelBackgroundRadius" type="Int">
+            <default>8</default>
+        </entry>
     </group>
 </kcfg>
