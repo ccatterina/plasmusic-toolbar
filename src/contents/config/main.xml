@@ -21,7 +21,7 @@
         <entry name="preferredPlayerIdentity" type="String">
             <default></default>
         </entry>
-        <entry name="maxSongWidthInPanel" type="String">
+        <entry name="maxSongWidthInPanel" type="Int">
             <default>200</default>
         </entry>
         <entry name="commandsInPanel" type="Bool">
