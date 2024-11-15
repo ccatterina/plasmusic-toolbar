@@ -26,6 +26,7 @@ Item {
     property real size: Kirigami.Units.iconSizes.medium
     property bool imageReady: false
     visible: type === PanelIcon.Type.Icon || imageReady
+    signal imageColorChanged(color: var)
 
     Layout.preferredHeight: size
     Layout.preferredWidth: size
@@ -57,6 +58,7 @@ Item {
         fillMode: Image.PreserveAspectFit
         onStatusChanged: {
             imageStatusTimer.restart()
+            if (status === Image.Ready) imageColors.update()
         }
 
         // enables round corners while the radius is set
@@ -71,6 +73,14 @@ Item {
                     radius: imageRadius
                 }
             }
+        }
+    }
+
+    Kirigami.ImageColors {
+        id: imageColors
+        source: imageComponent
+        onPaletteChanged: {
+            imageColorChanged(dominant)
         }
     }
 }
