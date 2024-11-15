@@ -1,5 +1,5 @@
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Layouts
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
 import org.kde.plasma.components as PlasmaComponents3
@@ -11,6 +11,7 @@ PlasmoidItem {
 
     Plasmoid.status: PlasmaCore.Types.HiddenStatus
     Plasmoid.backgroundHints: plasmoid.configuration.desktopWidgetBg
+    readonly property bool horizontal: Plasmoid.formFactor === PlasmaCore.Types.Horizontal
 
     readonly property font textFont: {
         return plasmoid.configuration.useCustomFont ? plasmoid.configuration.customFont : Kirigami.Theme.defaultFont
@@ -47,8 +48,10 @@ PlasmoidItem {
     compactRepresentation: Item {
         id: compact
 
-        Layout.preferredWidth: row.implicitWidth + Kirigami.Units.smallSpacing * 2
-        Layout.fillHeight: true
+        Layout.preferredWidth: grid.implicitWidth + Kirigami.Units.smallSpacing * 2
+        Layout.preferredHeight: grid.implicitHeight + Kirigami.Units.smallSpacing * 2
+        Layout.fillHeight: horizontal
+        Layout.fillWidth: !horizontal
 
         readonly property real controlsSize: Math.min(height, Kirigami.Units.iconSizes.medium)
 
@@ -96,10 +99,12 @@ PlasmoidItem {
             z: 999
         }
 
-        RowLayout {
-            id: row
-            spacing: 0
-
+        GridLayout {
+            id: grid
+            columnSpacing: Kirigami.Units.smallSpacing
+            rowSpacing: Kirigami.Units.smallSpacing
+            columns: horizontal ? grid.children.length : 1
+            rows: horizontal ? 1 : grid.children.length
             anchors.fill: parent
 
             PanelIcon {
@@ -116,21 +121,25 @@ PlasmoidItem {
                     }
                     return PanelIcon.Type.Image;
                 }
+                Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
             }
 
-
             Item {
-                visible: plasmoid.configuration.separateText
-                Layout.preferredHeight: column.implicitHeight
-                Layout.preferredWidth: column.implicitWidth
-                Layout.rightMargin: Kirigami.Units.smallSpacing
-                Layout.leftMargin: Kirigami.Units.smallSpacing
-
+                implicitWidth: horizontal ? column.implicitWidth : column.implicitHeight
+                implicitHeight: horizontal ? column.implicitHeight : column.implicitWidth
+                Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
                 ColumnLayout {
                     id: column
                     spacing: 0
-                    anchors.fill: parent
+                    anchors.centerIn: parent
+                    visible: plasmoid.configuration.maxSongWidthInPanel !== 0
+                    rotation: {
+                        if (horizontal) return 0
+                        if (plasmoid.location === PlasmaCore.Types.LeftEdge) return -90
+                        if (plasmoid.location === PlasmaCore.Types.RightEdge) return 90
+                    }
                     ScrollingText {
+                        visible: plasmoid.configuration.separateText
                         overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
                         font: widget.boldTextFont
                         speed: plasmoid.configuration.textScrollingSpeed
@@ -144,25 +153,12 @@ PlasmoidItem {
                         font: widget.textFont
                         speed: plasmoid.configuration.textScrollingSpeed
                         maxWidth: plasmoid.configuration.maxSongWidthInPanel
-                        text: player.artists
+                        text: plasmoid.configuration.separateText ? player.artists : [player.artists, player.title].filter((x) => x).join(" - ")
                         scrollingEnabled: textScrollingEnabled
                         scrollResetOnPause: textScrollingResetOnPause
+                        visible: text.length !== 0
                     }
                 }
-            }
-
-            ScrollingText {
-                visible: !plasmoid.configuration.separateText
-                Layout.rightMargin: Kirigami.Units.smallSpacing
-                Layout.leftMargin: Kirigami.Units.smallSpacing
-
-                overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
-                speed: plasmoid.configuration.textScrollingSpeed
-                maxWidth: plasmoid.configuration.maxSongWidthInPanel
-                text: [player.artists, player.title].filter((x) => x).join(" - ")
-                font: widget.textFont
-                scrollingEnabled: textScrollingEnabled
-                scrollResetOnPause: textScrollingResetOnPause
             }
 
             PlasmaComponents3.ToolButton {
@@ -175,6 +171,7 @@ PlasmoidItem {
                     anchors.fill: parent
                     onClicked: player.previous()
                 }
+                Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
             }
 
             PlasmaComponents3.ToolButton {
@@ -187,6 +184,7 @@ PlasmoidItem {
                     anchors.fill: parent
                     onClicked: player.playPause()
                 }
+                Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
             }
 
             PlasmaComponents3.ToolButton {
@@ -199,6 +197,7 @@ PlasmoidItem {
                     anchors.fill: parent
                     onClicked: player.next()
                 }
+                Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
             }
         }
     }
