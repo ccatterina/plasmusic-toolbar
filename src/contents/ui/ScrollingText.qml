@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import org.kde.plasma.components as PlasmaComponents3
+import org.kde.kirigami as Kirigami
 
 // inspired by https://stackoverflow.com/a/49031115/2568933
 Item {
@@ -17,6 +18,7 @@ Item {
     property string text: ""
     readonly property string spacing: "     "
     readonly property string textAndSpacing: text + spacing
+    property color textColor: Kirigami.Theme.textColor
 
     property int maxWidth: 200 * units.devicePixelRatio
     readonly property bool overflow: maxWidth <= textMetrics.width
@@ -59,6 +61,7 @@ Item {
     PlasmaComponents3.Label {
         id: label
         text: overflow ? root.textAndSpacing : root.text
+        color: root.textColor
 
         NumberAnimation on x {
             running: root.overflow && root.scrollingEnabled
@@ -95,7 +98,7 @@ Item {
         PlasmaComponents3.Label {
             visible: overflow
             anchors.left: parent.right
-
+            color: root.textColor
             font: label.font
             text: label.text
         }

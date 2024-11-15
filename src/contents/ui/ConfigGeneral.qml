@@ -31,6 +31,7 @@ KCM.SimpleKCM {
     property alias cfg_volumeStep: volumeStepSpinbox.value
     property alias cfg_desktopWidgetBg: desktopWidgetBackgroundRadio.value
     property alias cfg_albumPlaceholder: albumPlaceholderDialog.value
+    property alias cfg_colorsFromAlbumCover: colorsFromAlbumCover.checked
 
 
     Kirigami.FormLayout {
@@ -342,6 +343,12 @@ KCM.SimpleKCM {
                     "its content done via a shader. The text color will also invert."
                 )
             }
+        }
+
+        CheckBox {
+            id: colorsFromAlbumCover
+            Kirigami.FormData.label: i18n("Colors from album cover (only for panel applet)")
+            enabled: useAlbumCoverAsPanelIcon.checked
         }
     }
 
