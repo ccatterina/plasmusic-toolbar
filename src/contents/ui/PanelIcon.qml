@@ -19,6 +19,7 @@ Item {
     property bool imageReady: false
     property bool fallbackToIconWhenImageNotAvailable: false
     visible: type === PanelIcon.Type.Icon || imageReady || (fallbackToIconWhenImageNotAvailable && !imageReady)
+    signal imageColorChanged(color: var)
 
     Layout.preferredHeight: size
     Layout.preferredWidth: size
@@ -50,6 +51,13 @@ Item {
         fillMode: Image.PreserveAspectFit
         onStatusChanged: {
             imageStatusTimer.restart()
+            if (status === Image.Ready) imageColors.update()
+        }
+
+        // update color when image becomes visible, otherwise we get black color
+        // sometimes, specially when the widget first loads
+        onVisibleChanged: {
+            if (status === Image.Ready) imageColors.update()
         }
 
         // enables round corners while the radius is set
@@ -64,6 +72,14 @@ Item {
                     radius: imageRadius
                 }
             }
+        }
+    }
+
+    Kirigami.ImageColors {
+        id: imageColors
+        source: imageComponent
+        onPaletteChanged: {
+            imageColorChanged(dominant)
         }
     }
 }
