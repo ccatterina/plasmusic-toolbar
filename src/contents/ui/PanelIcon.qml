@@ -16,17 +16,28 @@ Item {
     property var imageRadius: null
     property var icon: null
     property real size: Kirigami.Units.iconSizes.medium
+    property bool imageReady: false
+    property bool fallbackToIconWhenImageNotAvailable: false
+    visible: type === PanelIcon.Type.Icon || imageReady || (fallbackToIconWhenImageNotAvailable && !imageReady)
 
     Layout.preferredHeight: size
     Layout.preferredWidth: size
 
     Kirigami.Icon {
-        visible: type === PanelIcon.Type.Icon
+        visible: type === PanelIcon.Type.Icon || (fallbackToIconWhenImageNotAvailable && !imageReady)
         id: iconComponent
         source: root.icon
         implicitHeight: root.size
         implicitWidth: root.size
         color: Kirigami.Theme.textColor
+    }
+
+    Timer {
+        id: imageStatusTimer
+        interval: 500
+        onTriggered: {
+            imageReady = imageComponent.status === Image.Ready
+        }
     }
 
     Image {
@@ -37,6 +48,9 @@ Item {
         anchors.fill: parent
         source: root.imageUrl
         fillMode: Image.PreserveAspectFit
+        onStatusChanged: {
+            imageStatusTimer.restart()
+        }
 
         // enables round corners while the radius is set
         // ref: https://stackoverflow.com/questions/6090740/image-rounded-corners-in-qml
