@@ -48,8 +48,8 @@ PlasmoidItem {
     compactRepresentation: Item {
         id: compact
 
-        Layout.preferredWidth: grid.implicitWidth + Kirigami.Units.smallSpacing * 2
-        Layout.preferredHeight: grid.implicitHeight + Kirigami.Units.smallSpacing * 2
+        Layout.preferredWidth: grid.implicitWidth + (horizontal ? lengthMargin : 0)
+        Layout.preferredHeight: grid.implicitHeight + (horizontal ? 0 : lengthMargin)
         Layout.fillHeight: horizontal
         Layout.fillWidth: !horizontal
         readonly property bool colorsFromAlbumCover: plasmoid.configuration.colorsFromAlbumCover
@@ -131,7 +131,7 @@ PlasmoidItem {
             rowSpacing: Kirigami.Units.smallSpacing
             columns: horizontal ? grid.children.length : 1
             rows: horizontal ? 1 : grid.children.length
-            anchors.fill: parent
+            anchors.centerIn: parent
 
             PanelIcon {
                 size: compact.controlsSize
