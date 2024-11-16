@@ -20,6 +20,24 @@ PlasmoidItem {
     readonly property bool textScrollingEnabled: plasmoid.configuration.textScrollingEnabled
     readonly property bool textScrollingResetOnPause: plasmoid.configuration.textScrollingResetOnPause
     readonly property int volumeStep: plasmoid.configuration.volumeStep
+    readonly property bool colorsFromAlbumCover: plasmoid.configuration.colorsFromAlbumCover
+    property color imageColor: Kirigami.Theme.textColor
+    property bool imageReady: false
+    property string backgroundColor: imageReady && colorsFromAlbumCover ? Kirigami.ColorUtils.tintWithAlpha(imageColor, "#000000", 0.5) : "transparent"
+    property string foregroundColor: imageReady && colorsFromAlbumCover ? Kirigami.ColorUtils.tintWithAlpha(imageColor, contrastColor, .6) : Kirigami.Theme.textColor
+    property string contrastColor: Kirigami.ColorUtils.brightnessForColor(backgroundColor) === Kirigami.ColorUtils.Dark ? "#ffffff" : "#000000"
+
+    Behavior on backgroundColor {
+        ColorAnimation {
+            duration: Kirigami.Units.longDuration
+        }
+    }
+
+    Behavior on foregroundColor {
+        ColorAnimation {
+            duration: Kirigami.Units.longDuration
+        }
+    }
 
     toolTipTextFormat: Text.PlainText
     toolTipMainText: player.playbackStatus > Mpris.PlaybackStatus.Stopped ? player.title : i18n("No media playing")
@@ -48,12 +66,14 @@ PlasmoidItem {
     compactRepresentation: Item {
         id: compact
 
-        Layout.preferredWidth: grid.implicitWidth + Kirigami.Units.smallSpacing * 2
-        Layout.preferredHeight: grid.implicitHeight + Kirigami.Units.smallSpacing * 2
+        Layout.preferredWidth: grid.implicitWidth + (horizontal ? lengthMargin : 0)
+        Layout.preferredHeight: grid.implicitHeight + (horizontal ? 0 : lengthMargin)
         Layout.fillHeight: horizontal
         Layout.fillWidth: !horizontal
 
-        readonly property real controlsSize: Math.min(height, Kirigami.Units.iconSizes.medium)
+        readonly property int widgetThickness: Math.min(height, width)
+        readonly property int controlsSize: Math.round(widgetThickness * 0.75)
+        readonly property int lengthMargin: Math.round((widgetThickness - controlsSize))
 
         MouseArea {
             anchors.fill: parent
@@ -99,29 +119,36 @@ PlasmoidItem {
             z: 999
         }
 
+        Rectangle {
+            anchors.fill: parent
+            color: backgroundColor
+            radius: plasmoid.configuration.panelBackgroundRadius
+        }
+
         GridLayout {
             id: grid
             columnSpacing: Kirigami.Units.smallSpacing
             rowSpacing: Kirigami.Units.smallSpacing
             columns: horizontal ? grid.children.length : 1
             rows: horizontal ? 1 : grid.children.length
-            anchors.fill: parent
+            anchors.centerIn: parent
 
             PanelIcon {
                 size: compact.controlsSize
                 icon: plasmoid.configuration.panelIcon
                 imageUrl: player.artUrl
                 imageRadius: plasmoid.configuration.albumCoverRadius
-                type: {
-                    if (!plasmoid.configuration.useAlbumCoverAsPanelIcon) {
-                        return PanelIcon.Type.Icon;
-                    }
-                    if (plasmoid.configuration.fallbackToIconWhenArtNotAvailable && !player.artUrl) {
-                        return PanelIcon.Type.Icon;
-                    }
-                    return PanelIcon.Type.Image;
-                }
                 Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
+                onTypeChanged: {
+                    widget.imageReady = type === PanelIcon.Type.Image && imageReady
+                }
+                onImageColorChanged: (color) => {
+                    imageColor = color
+                }
+                onImageReadyChanged: {
+                    if (type === PanelIcon.Type.Image)
+                    widget.imageReady = imageReady
+                }
             }
 
             Item {
@@ -147,6 +174,7 @@ PlasmoidItem {
                         text: player.title
                         scrollingEnabled: textScrollingEnabled
                         scrollResetOnPause: textScrollingResetOnPause
+                        textColor: foregroundColor
                     }
                     ScrollingText {
                         overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
@@ -157,6 +185,7 @@ PlasmoidItem {
                         scrollingEnabled: textScrollingEnabled
                         scrollResetOnPause: textScrollingResetOnPause
                         visible: text.length !== 0
+                        textColor: foregroundColor
                     }
                 }
             }
@@ -172,6 +201,7 @@ PlasmoidItem {
                     onClicked: player.previous()
                 }
                 Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
+                icon.color: foregroundColor
             }
 
             PlasmaComponents3.ToolButton {
@@ -185,6 +215,7 @@ PlasmoidItem {
                     onClicked: player.playPause()
                 }
                 Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
+                icon.color: foregroundColor
             }
 
             PlasmaComponents3.ToolButton {
@@ -198,6 +229,7 @@ PlasmoidItem {
                     onClicked: player.next()
                 }
                 Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
+                icon.color: foregroundColor
             }
         }
     }

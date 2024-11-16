@@ -31,6 +31,8 @@ KCM.SimpleKCM {
     property alias cfg_volumeStep: volumeStepSpinbox.value
     property alias cfg_desktopWidgetBg: desktopWidgetBackgroundRadio.value
     property alias cfg_albumPlaceholder: albumPlaceholderDialog.value
+    property alias cfg_colorsFromAlbumCover: colorsFromAlbumCover.checked
+    property alias cfg_panelBackgroundRadius: panelBackgroundRadius.value
 
 
     Kirigami.FormLayout {
@@ -342,6 +344,22 @@ KCM.SimpleKCM {
                     "its content done via a shader. The text color will also invert."
                 )
             }
+        }
+
+        CheckBox {
+            id: colorsFromAlbumCover
+            Kirigami.FormData.label: i18n("Colors from album cover (only for panel applet)")
+            enabled: useAlbumCoverAsPanelIcon.checked
+        }
+
+        Slider {
+            Layout.preferredWidth: 10 * Kirigami.Units.gridUnit
+            enabled: colorsFromAlbumCover.checked
+            id: panelBackgroundRadius
+            from: 0
+            to: 25
+            stepSize: 2
+            Kirigami.FormData.label: i18n("Colored background radius:")
         }
     }
 
