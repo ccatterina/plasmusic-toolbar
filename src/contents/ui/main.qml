@@ -66,12 +66,14 @@ PlasmoidItem {
     compactRepresentation: Item {
         id: compact
 
-        Layout.preferredWidth: grid.implicitWidth + Kirigami.Units.smallSpacing * 2
-        Layout.preferredHeight: grid.implicitHeight + Kirigami.Units.smallSpacing * 2
+        Layout.preferredWidth: grid.implicitWidth + (horizontal ? lengthMargin : 0)
+        Layout.preferredHeight: grid.implicitHeight + (horizontal ? 0 : lengthMargin)
         Layout.fillHeight: horizontal
         Layout.fillWidth: !horizontal
 
-        readonly property real controlsSize: Math.min(height, Kirigami.Units.iconSizes.medium)
+        readonly property int widgetThickness: Math.min(height, width)
+        readonly property int controlsSize: Math.round(widgetThickness * 0.75)
+        readonly property int lengthMargin: Math.round((widgetThickness - controlsSize))
 
         MouseArea {
             anchors.fill: parent
@@ -129,7 +131,7 @@ PlasmoidItem {
             rowSpacing: Kirigami.Units.smallSpacing
             columns: horizontal ? grid.children.length : 1
             rows: horizontal ? 1 : grid.children.length
-            anchors.fill: parent
+            anchors.centerIn: parent
 
             PanelIcon {
                 size: compact.controlsSize
