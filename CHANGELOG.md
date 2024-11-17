@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.1.0...v2.1.1) (2024-11-17)
+
+
+### Bug Fixes
+
+* song text overflows when splitted in 2 lines ([c7627dc](https://github.com/ccatterina/plasmusic-toolbar/commit/c7627dcec9986bdb06277afe204f48fb8c0f54d2))
+
 ## [2.1.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.0.0...v2.1.0) (2024-11-17)
 
 
