@@ -166,7 +166,7 @@ PlasmoidItem {
                 implicitHeight: horizontal ? column.implicitHeight : column.implicitWidth
                 Layout.fillHeight: horizontal || plasmoid.configuration.fillAvailableSpace
                 Layout.fillWidth: !horizontal || plasmoid.configuration.fillAvailableSpace
-                Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
                 Layout.rightMargin: horizontal ? Kirigami.Units.smallSpacing : 0
                 Layout.leftMargin: horizontal ? Kirigami.Units.smallSpacing : 0
                 Layout.topMargin: horizontal ? 0 : Kirigami.Units.smallSpacing
@@ -250,27 +250,32 @@ PlasmoidItem {
                         }
                     ]
 
-                    ScrollingText {
-                        visible: plasmoid.configuration.separateText
-                        overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
-                        font: widget.boldTextFont
-                        speed: plasmoid.configuration.textScrollingSpeed
-                        maxWidth: plasmoid.configuration.fillAvailableSpace ? panelScrollingText.length : plasmoid.configuration.maxSongWidthInPanel
-                        text: player.title
-                        scrollingEnabled: textScrollingEnabled
-                        scrollResetOnPause: textScrollingResetOnPause
-                        textColor: foregroundColor
-                    }
-                    ScrollingText {
-                        overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
-                        font: widget.textFont
-                        speed: plasmoid.configuration.textScrollingSpeed
-                        maxWidth: plasmoid.configuration.fillAvailableSpace ? panelScrollingText.length : plasmoid.configuration.maxSongWidthInPanel
-                        text: plasmoid.configuration.separateText ? player.artists : [player.artists, player.title].filter((x) => x).join(" - ")
-                        scrollingEnabled: textScrollingEnabled
-                        scrollResetOnPause: textScrollingResetOnPause
-                        visible: text.length !== 0
-                        textColor: foregroundColor
+                    ColumnLayout {
+                        spacing: 0
+                        anchors.centerIn: parent
+
+                        ScrollingText {
+                            visible: plasmoid.configuration.separateText
+                            overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
+                            font: widget.boldTextFont
+                            speed: plasmoid.configuration.textScrollingSpeed
+                            maxWidth: plasmoid.configuration.fillAvailableSpace ? panelScrollingText.length : plasmoid.configuration.maxSongWidthInPanel
+                            text: player.title
+                            scrollingEnabled: textScrollingEnabled
+                            scrollResetOnPause: textScrollingResetOnPause
+                            textColor: foregroundColor
+                        }
+                        ScrollingText {
+                            overflowBehaviour: plasmoid.configuration.textScrollingBehaviour
+                            font: widget.textFont
+                            speed: plasmoid.configuration.textScrollingSpeed
+                            maxWidth: plasmoid.configuration.fillAvailableSpace ? panelScrollingText.length : plasmoid.configuration.maxSongWidthInPanel
+                            text: plasmoid.configuration.separateText ? player.artists : [player.artists, player.title].filter((x) => x).join(" - ")
+                            scrollingEnabled: textScrollingEnabled
+                            scrollResetOnPause: textScrollingResetOnPause
+                            visible: text.length !== 0
+                            textColor: foregroundColor
+                        }
                     }
                 }
             }
