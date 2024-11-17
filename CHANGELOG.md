@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.1.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.0.0...v2.1.0) (2024-11-17)
+
+
+### Features
+
+* fallback to panel icon if cover image doesn't load ([577582a](https://github.com/ccatterina/plasmusic-toolbar/commit/577582a6eac008a1aafcbe61b2a2a1f00308450d))
+* fill available space in the panel ([90c683f](https://github.com/ccatterina/plasmusic-toolbar/commit/90c683f18d25dd9cea533571ba5e45db7574453a)), closes [#142](https://github.com/ccatterina/plasmusic-toolbar/issues/142)
+* option to change radius of colored background ([d164517](https://github.com/ccatterina/plasmusic-toolbar/commit/d1645175ebf7a44eb96f73d7003eb60c0263645f))
+* option to tint widget with cover image dominant color ([081f169](https://github.com/ccatterina/plasmusic-toolbar/commit/081f1699f1c3d97f3aa1720661b18cf72543496c))
+* scale widget content with panel ([b7c4ed1](https://github.com/ccatterina/plasmusic-toolbar/commit/b7c4ed1ff6dd5d224354c3aa05289f8b2612e541))
+* vertical panel support ([93a1a3b](https://github.com/ccatterina/plasmusic-toolbar/commit/93a1a3b44b53ee85c481a8d3231fa66d9537cb8f))
+
+
+### Bug Fixes
+
+* use correct type for maxSongWidthInPanel ([00f9049](https://github.com/ccatterina/plasmusic-toolbar/commit/00f90496c5d7b892690471105f039e1332a8e840))
+
 ## [2.0.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v1.6.0...v2.0.0) (2024-10-06)
 
 
