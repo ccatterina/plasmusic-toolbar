@@ -5,6 +5,6 @@ ConfigModel {
     ConfigCategory {
         name: i18n("General")
         icon: "configure"
-        source: "ConfigGeneral.qml"
+        source: "config/General.qml"
     }
 }
