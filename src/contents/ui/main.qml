@@ -16,8 +16,7 @@ PlasmoidItem {
     readonly property int formFactor: Plasmoid.formFactor
     readonly property int location: Plasmoid.location
 
-    readonly property font textFont: plasmoid.configuration.useCustomFont ? plasmoid.configuration.customFont : Kirigami.Theme.defaultFont
-    readonly property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
+    readonly property font baseFont: plasmoid.configuration.useCustomFont ? plasmoid.configuration.customFont : Kirigami.Theme.defaultFont
 
     toolTipTextFormat: Text.PlainText
     toolTipMainText: player.playbackStatus > Mpris.PlaybackStatus.Stopped ? player.title : i18n("No media playing")
