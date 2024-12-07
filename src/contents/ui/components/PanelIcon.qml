@@ -16,10 +16,10 @@ Item {
     property var imageRadius: null
     property var icon: null
     property real size: Kirigami.Units.iconSizes.medium
-    property bool imageReady: false
+    property bool imageReady: imageComponent.status == Image.Ready
+    property string imageColor: imageColors.dominant
     property bool fallbackToIconWhenImageNotAvailable: false
     visible: type === PanelIcon.Type.Icon || imageReady || (fallbackToIconWhenImageNotAvailable && !imageReady)
-    signal imageColorChanged(color: var)
 
     Layout.preferredHeight: size
     Layout.preferredWidth: size
@@ -78,8 +78,5 @@ Item {
     Kirigami.ImageColors {
         id: imageColors
         source: imageComponent
-        onPaletteChanged: {
-            imageColorChanged(dominant)
-        }
     }
 }

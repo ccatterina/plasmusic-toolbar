@@ -10,9 +10,6 @@ import org.kde.plasma.private.mpris as Mpris
 
 Item {
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
-    property font songTextFont: textFont
-    property font songTextBoldFont: boldTextFont
-    property int songTextScrollingSpeed: plasmoid.configuration.textScrollingSpeed
     property real volumeStep: plasmoid.configuration.volumeStep
 
     Layout.preferredHeight: column.implicitHeight
@@ -69,18 +66,14 @@ Item {
             }
         }
 
-        ScrollingText {
-            speed: songTextScrollingSpeed
-            font: songTextBoldFont
+        SongAndArtistText {
+            Layout.alignment: Qt.AlignHCenter
+            scrollingSpeed: plasmoid.configuration.textScrollingSpeed
+            splitSongAndArtists: true
+            title: player.title
+            artists: player.artists
+            textFont: baseFont
             maxWidth: 250
-            text: player.title
-        }
-
-        ScrollingText {
-            speed: songTextScrollingSpeed
-            font: songTextFont
-            maxWidth: 250
-            text: player.artists
         }
 
         VolumeBar {
