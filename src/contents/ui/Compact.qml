@@ -104,7 +104,7 @@ Item {
 
             Layout.leftMargin: horizontal ? lengthMargin: 0
             Layout.topMargin: horizontal ? 0 : lengthMargin
-            Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
 
             size: compact.controlsSize
             icon: plasmoid.configuration.panelIcon
@@ -120,14 +120,23 @@ Item {
         }
 
         GridLayout {
-            id: middleSpace
+            id: songGrid
 
-            columns: horizontal ? middleSpace.children.length : 1
-            rows: horizontal ? 1 : middleSpace.children.length
+            columns: horizontal ? songGrid.children.length : 1
+            rows: horizontal ? 1 : songGrid.children.length
 
-            readonly property int textAlignment: plasmoid.configuration.songTextAlignment
+            readonly property int textAlignment: {
+                if (fillAvailableSpace) {
+                    return plasmoid.configuration.songTextAlignment
+                }
+                return Qt.AlignCenter
+            }
+            readonly property int fxdWidth: plasmoid.configuration.songTextFixedWidth + 2 * Kirigami.Units.smallSpacing
+            readonly property bool useFixedWidth: plasmoid.configuration.useSongTextFixedWidth
             readonly property int length: horizontal ? width : height
 
+            Layout.preferredWidth: horizontal && useFixedWidth && !fillAvailableSpace ? fxdWidth : -1
+            Layout.preferredHeight: !horizontal && useFixedWidth && !fillAvailableSpace ? fxdWidth : -1
             Layout.fillHeight: horizontal || fillAvailableSpace
             Layout.fillWidth: !horizontal || fillAvailableSpace
             Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
@@ -137,7 +146,7 @@ Item {
             Layout.bottomMargin: horizontal ? 0: Kirigami.Units.smallSpacings
 
             Item {
-                readonly property bool fill: middleSpace.textAlignment == Qt.AlignRight || middleSpace.textAlignment == Qt.AlignCenter
+                readonly property bool fill: [Qt.AlignRight, Qt.AlignCenter].includes(songGrid.textAlignment)
                 Layout.fillHeight: !horizontal && fill
                 Layout.fillWidth: horizontal && fill
             }
@@ -158,7 +167,12 @@ Item {
                         if (widget.location === PlasmaCore.Types.RightEdge) return 90
                     }
 
-                    maxWidth: fillAvailableSpace ? middleSpace.length : plasmoid.configuration.maxSongWidthInPanel
+                    maxWidth: {
+                        if (fillAvailableSpace || songGrid.useFixedWidth) {
+                            return songGrid.length
+                        }
+                        return plasmoid.configuration.maxSongWidthInPanel
+                    }
                     splitSongAndArtists: plasmoid.configuration.separateText
                     scrollingBehaviour: plasmoid.configuration.textScrollingBehaviour
                     scrollingSpeed: plasmoid.configuration.textScrollingSpeed
@@ -172,7 +186,7 @@ Item {
             }
 
             Item {
-                readonly property bool fill: middleSpace.textAlignment == Qt.AlignLeft || middleSpace.textAlignment == Qt.AlignCenter
+                readonly property bool fill: [Qt.AlignLeft, Qt.AlignCenter].includes(songGrid.textAlignment)
                 Layout.fillHeight: !horizontal && fill
                 Layout.fillWidth: horizontal && fill
             }

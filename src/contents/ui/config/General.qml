@@ -20,6 +20,8 @@ KCM.SimpleKCM {
     property alias cfg_albumCoverRadius: albumCoverRadius.value
     property alias cfg_commandsInPanel: commandsInPanel.checked
     property alias cfg_maxSongWidthInPanel: maxSongWidthInPanel.value
+    property alias cfg_songTextFixedWidth: songTextFixedWidth.value
+    property alias cfg_useSongTextFixedWidth: useSongTextFixedWidth.checked
     property alias cfg_textScrollingSpeed: textScrollingSpeed.value
     property alias cfg_separateText: separateText.checked
     property alias cfg_textScrollingBehaviour: scrollingBehaviourRadio.value
@@ -203,11 +205,25 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Song text customization")
         }
 
+        CheckBox {
+            id: useSongTextFixedWidth
+            Kirigami.FormData.label: i18n("Fixed width:")
+        }
+
+        SpinBox {
+            id: songTextFixedWidth
+            from: 0
+            to: 1000
+            Kirigami.FormData.label: i18n("Text fixed width:")
+            enabled: useSongTextFixedWidth.checked
+        }
+
         SpinBox {
             id: maxSongWidthInPanel
             from: 0
             to: 1000
-            Kirigami.FormData.label: i18n("Panel song max width:")
+            Kirigami.FormData.label: i18n("Text max width:")
+            enabled: !useSongTextFixedWidth.checked
         }
 
         CheckBox {

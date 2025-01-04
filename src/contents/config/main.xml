@@ -69,5 +69,11 @@
         <entry name="songTextAlignment" type="Int">
             <default>2</default>
         </entry>
+        <entry name="songTextFixedWidth" type="Int">
+            <default>200</default>
+        </entry>
+        <entry name="useSongTextFixedWidth" type="Bool">
+            <default>false</default>
+        </entry>
     </group>
 </kcfg>
