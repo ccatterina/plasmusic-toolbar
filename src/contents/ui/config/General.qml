@@ -377,7 +377,7 @@ KCM.SimpleKCM {
         }
 
         RowLayout {
-            Kirigami.FormData.label: i18n("Background (only for desktop applet):")
+            Kirigami.FormData.label: i18n("Background (desktop applet only):")
             RadioButton {
                 text: i18n("Standard")
                 checked: desktopWidgetBackgroundRadio.value == PlasmaCore.Types.StandardBackground
@@ -425,7 +425,7 @@ KCM.SimpleKCM {
 
         CheckBox {
             id: colorsFromAlbumCover
-            Kirigami.FormData.label: i18n("Colors from album cover (only for panel applet)")
+            Kirigami.FormData.label: i18n("Colors from album cover (panel applet only)")
             enabled: useAlbumCoverAsPanelIcon.checked
         }
 
