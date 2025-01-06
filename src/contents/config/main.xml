@@ -30,6 +30,9 @@
         <entry name="songTextInPanel" type="Bool">
             <default>true</default>
         </entry>
+        <entry name="iconInPanel" type="Bool">
+            <default>true</default>
+        </entry>
         <entry name="textScrollingSpeed" type="Int">
             <default>3</default>
         </entry>

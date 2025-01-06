@@ -14,12 +14,12 @@ Item {
     readonly property bool horizontal: widget.formFactor === PlasmaCore.Types.Horizontal
     readonly property bool fillAvailableSpace: plasmoid.configuration.fillAvailableSpace
 
-    Layout.preferredWidth: grid.implicitWidth
-    Layout.preferredHeight: grid.implicitHeight
+    Layout.preferredWidth: horizontal ? grid.implicitWidth + lengthMargin * 2 : grid.implicitWidth
+    Layout.preferredHeight: !horizontal ? grid.implicitHeight + lengthMargin * 2 : grid.implicitHeight
     Layout.fillHeight: horizontal || fillAvailableSpace
     Layout.fillWidth: !horizontal || fillAvailableSpace
 
-    readonly property int widgetThickness: Math.min(height, width)
+    readonly property int widgetThickness: horizontal ? height : width
     readonly property int controlsSize: Math.round(widgetThickness * 0.75)
     readonly property int lengthMargin: Math.round((widgetThickness - controlsSize)) / 2
 
@@ -94,16 +94,19 @@ Item {
 
         columns: horizontal ? grid.children.length : 1
         rows: horizontal ? 1 : grid.children.length
-        columnSpacing: Kirigami.Units.smallSpacing
-        rowSpacing: Kirigami.Units.smallSpacing
+        columnSpacing: lengthMargin
+        rowSpacing: lengthMargin
 
+        anchors.leftMargin: horizontal ? lengthMargin: 0
+        anchors.rightMargin: horizontal ? lengthMargin : 0
+        anchors.bottomMargin: horizontal ? 0: lengthMargin
+        anchors.topMargin: horizontal ? 0 : lengthMargin
         anchors.fill: parent
 
         PanelIcon {
             id: panelIcon
+            visible: plasmoid.configuration.iconInPanel
 
-            Layout.leftMargin: horizontal ? lengthMargin: 0
-            Layout.topMargin: horizontal ? 0 : lengthMargin
             Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
 
             size: compact.controlsSize
@@ -148,10 +151,6 @@ Item {
             Layout.fillHeight: horizontal || fillAvailableSpace
             Layout.fillWidth: !horizontal || fillAvailableSpace
             Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
-            Layout.rightMargin: horizontal ? Kirigami.Units.smallSpacing : 0
-            Layout.leftMargin: horizontal ? Kirigami.Units.smallSpacing : 0
-            Layout.topMargin: horizontal ? 0 : Kirigami.Units.smallSpacing
-            Layout.bottomMargin: horizontal ? 0: Kirigami.Units.smallSpacings
 
             Item {
                 readonly property bool fill: [Qt.AlignRight, Qt.AlignCenter].includes(songGrid.textAlignment)
@@ -206,8 +205,6 @@ Item {
             columns: horizontal ? grid.children.length : 1
             rows: horizontal ? 1 : grid.children.length
 
-            Layout.rightMargin: horizontal ? lengthMargin : 0
-            Layout.bottomMargin: horizontal ? 0: lengthMargin
             Layout.fillHeight: horizontal
             Layout.fillWidth: !horizontal
             Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter

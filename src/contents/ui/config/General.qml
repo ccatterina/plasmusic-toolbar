@@ -20,6 +20,7 @@ KCM.SimpleKCM {
     property alias cfg_albumCoverRadius: albumCoverRadius.value
     property alias cfg_commandsInPanel: commandsInPanel.checked
     property alias cfg_songTextInPanel: songTextInPanel.checked
+    property alias cfg_iconInPanel: iconInPanel.checked
     property alias cfg_maxSongWidthInPanel: maxSongWidthInPanel.value
     property alias cfg_songTextFixedWidth: songTextFixedWidth.value
     property alias cfg_useSongTextFixedWidth: useSongTextFixedWidth.checked
@@ -105,6 +106,11 @@ KCM.SimpleKCM {
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
             Kirigami.FormData.label: i18n("Panel icon")
+        }
+
+        CheckBox {
+            id: iconInPanel
+            Kirigami.FormData.label: i18n("Show icon in the panel:")
         }
 
         ConfigIcon {
