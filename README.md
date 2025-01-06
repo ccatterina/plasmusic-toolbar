@@ -19,14 +19,17 @@ A Plasma 5 version of the widget is available in the [plasma5 branch](https://gi
 ### 📸 Full View
 - Full View provides the album image, along with Play, Pause, Next, Previous, Shuffle, and Repeat controls. Adjust the volume and track position with ease.
 
+### 🖥️ Compatibility
+- Compatible with both vertical and horizontal KDE Plasma panels, can also be used as a desktop widget.
+
 ### 🛠️ Configurations
 - **Icon customization:** Change the widget's icon in the panel view to suit your preferences. You can also choose to display the album cover.
 - **Font customization:** Change the widget's text font to suit your preferences.
-- **Playback controls visibility:** Choose whether to display Play, Pause, Next, and Previous controls in the panel view.
-- **Preferred source**: Change the widget preferred source for music information.
-- **Playing song max display width**: Determine the maximum width for displaying the currently playing song in the panel. When the song's text exceeds this maximum width, the text will scroll horizontally.
-- **Playing song scrolling speed**: Change the scrolling speed of the song's text.
+- **Panel song/icon/controls visibility:** Choose whether to show icon, song text and playback controls in the panel view.
+- **Preferred source**: Change the widget preferred source for music information (choose between active MPRIS2 sources).
+- **Song text customization**: Customize the maximum (or fixed) text width and scrolling behavior with adjustable scroll speed.
 - and more...
+
 
 ## Installation
 
@@ -50,7 +53,7 @@ For those using NixOS or the nix package manager, a Nix package is available in 
 To install the widget use one of these methods:
 
 - NixOS
-  
+
   ```nix
   environment.systemPackages = with pkgs; [
     plasmusic-toolbar
@@ -106,5 +109,9 @@ To install the widget use one of these methods:
 ## Screenshots
 
 <p align="center">
-  <img src="./screenshots/screenshot_dark.png" /><img src="./screenshots/screenshot_light.png" />
-</p>
+  <img src="./screenshots/screenshot_dark_2.png"/>
+  <img src="./screenshots/screenshot_light_2.png"/>
+  <br>
+  <img src="./screenshots/screenshot_colors_1_2.png" />
+  <img src="./screenshots/screenshot_colors_2_2.png" />
+<p>
