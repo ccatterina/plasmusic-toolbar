@@ -109,9 +109,9 @@ To install the widget use one of these methods:
 ## Screenshots
 
 <p align="center">
-  <img src="./screenshots/screenshot_dark_2.png"/>
-  <img src="./screenshots/screenshot_light_2.png"/>
+  <img src="./screenshots/screenshot_dark.png"/>
+  <img src="./screenshots/screenshot_light.png"/>
   <br>
-  <img src="./screenshots/screenshot_colors_1_2.png" />
-  <img src="./screenshots/screenshot_colors_2_2.png" />
+  <img src="./screenshots/screenshot_colors_1.png" />
+  <img src="./screenshots/screenshot_colors_2.png" />
 <p>
