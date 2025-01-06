@@ -19,6 +19,7 @@ KCM.SimpleKCM {
     property alias cfg_fallbackToIconWhenArtNotAvailable: fallbackToIconWhenArtNotAvailable.checked
     property alias cfg_albumCoverRadius: albumCoverRadius.value
     property alias cfg_commandsInPanel: commandsInPanel.checked
+    property alias cfg_songTextInPanel: songTextInPanel.checked
     property alias cfg_maxSongWidthInPanel: maxSongWidthInPanel.value
     property alias cfg_songTextFixedWidth: songTextFixedWidth.value
     property alias cfg_useSongTextFixedWidth: useSongTextFixedWidth.checked
@@ -203,6 +204,11 @@ KCM.SimpleKCM {
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
             Kirigami.FormData.label: i18n("Song text customization")
+        }
+
+        CheckBox {
+            id: songTextInPanel
+            Kirigami.FormData.label: i18n("Show song text in the panel:")
         }
 
         CheckBox {

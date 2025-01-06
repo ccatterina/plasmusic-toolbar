@@ -119,8 +119,16 @@ Item {
             }
         }
 
+        // This item is used to fill the available space when the song text is not enabled.
+        Item {
+            visible: !plasmoid.configuration.songTextInPanel && fillAvailableSpace
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
         GridLayout {
             id: songGrid
+            visible: plasmoid.configuration.songTextInPanel
 
             columns: horizontal ? songGrid.children.length : 1
             rows: horizontal ? 1 : songGrid.children.length
