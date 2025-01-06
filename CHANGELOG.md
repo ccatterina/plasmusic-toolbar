@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.2.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.1.1...v2.2.0) (2025-01-06)
+
+
+### Features
+
+* hide icon in panel ([f0d4d2d](https://github.com/ccatterina/plasmusic-toolbar/commit/f0d4d2d38c32159b9ab55521a1fb7b31047c2339))
+* hide song text in panel ([8a22dc3](https://github.com/ccatterina/plasmusic-toolbar/commit/8a22dc33fc0cb9ddfd2ac438f2a26ff6374c952d))
+* song text fixed width ([2235456](https://github.com/ccatterina/plasmusic-toolbar/commit/22354564eddc0b42f99b76f6dcac5d18c4373cb6))
+
 ## [2.1.1](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.1.0...v2.1.1) (2024-11-17)
 
 
