@@ -114,4 +114,7 @@ To install the widget use one of these methods:
   <br>
   <img src="./screenshots/screenshot_colors_1.png" />
   <img src="./screenshots/screenshot_colors_2.png" />
+  <br>
+  <img src="./screenshots/screenshot_vertical_1.png" />
+  <img src="./screenshots/screenshot_vertical_2.png" />
 <p>
