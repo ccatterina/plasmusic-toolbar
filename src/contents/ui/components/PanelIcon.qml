@@ -21,15 +21,14 @@ Item {
     property bool fallbackToIconWhenImageNotAvailable: false
     visible: type === PanelIcon.Type.Icon || imageReady || (fallbackToIconWhenImageNotAvailable && !imageReady)
 
-    Layout.preferredHeight: size
-    Layout.preferredWidth: size
+    implicitHeight: size
+    implicitWidth: size
 
     Kirigami.Icon {
         visible: type === PanelIcon.Type.Icon || (fallbackToIconWhenImageNotAvailable && !imageReady)
         id: iconComponent
         source: root.icon
-        implicitHeight: root.size
-        implicitWidth: root.size
+        anchors.fill: parent
         color: Kirigami.Theme.textColor
     }
 
