@@ -81,5 +81,8 @@
         <entry name="useSongTextFixedWidth" type="Bool">
             <default>false</default>
         </entry>
+        <entry name="fullViewTextScrollingSpeed" type="Int">
+            <default>3</default>
+        </entry>
     </group>
 </kcfg>

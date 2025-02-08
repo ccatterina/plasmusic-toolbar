@@ -13,6 +13,7 @@ KCM.SimpleKCM {
 
     property alias cfg_desktopWidgetBg: desktopWidgetBackgroundRadio.value
     property alias cfg_albumPlaceholder: albumPlaceholderDialog.value
+    property alias cfg_fullViewTextScrollingSpeed: fullViewTextScrollingSpeed.value
 
     Kirigami.FormLayout {
         id: form
@@ -43,6 +44,20 @@ KCM.SimpleKCM {
                 Layout.alignment: Qt.AlignHCenter
                 source: albumPlaceholderDialog.value
             }
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: "Song Text scrolling"
+        }
+
+        Slider {
+            Layout.preferredWidth: 10 * Kirigami.Units.gridUnit
+            id: fullViewTextScrollingSpeed
+            from: 1
+            to: 10
+            stepSize: 1
+            Kirigami.FormData.label: i18n("Speed:")
         }
 
         Kirigami.Separator {
