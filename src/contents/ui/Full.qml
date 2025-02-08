@@ -68,7 +68,7 @@ Item {
 
         SongAndArtistText {
             Layout.alignment: Qt.AlignHCenter
-            scrollingSpeed: plasmoid.configuration.textScrollingSpeed
+            scrollingSpeed: plasmoid.configuration.fullViewTextScrollingSpeed
             splitSongAndArtists: true
             title: player.title
             artists: player.artists
