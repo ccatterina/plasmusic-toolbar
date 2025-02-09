@@ -29,6 +29,8 @@ KCM.SimpleKCM {
     property alias cfg_panelBackgroundRadius: panelBackgroundRadius.value
     property alias cfg_fillAvailableSpace: fillAvailableSpaceCheckbox.checked
     property alias cfg_songTextAlignment: songTextPositionRadio.value
+    property alias cfg_panelIconSizeRatio: panelIconSizeRatio.value
+    property alias cfg_panelControlsSizeRatio: panelControlsSizeRatio.value
 
     Kirigami.FormLayout {
         id: form
@@ -120,6 +122,15 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Icon:")
         }
 
+        Slider {
+            Layout.preferredWidth: 10 * Kirigami.Units.gridUnit
+            id: panelIconSizeRatio
+            from: 0.6
+            to: 0.95
+            stepSize: 0.05
+            Kirigami.FormData.label: i18n("Size:")
+        }
+
         CheckBox {
             id: useAlbumCoverAsPanelIcon
             Kirigami.FormData.label: i18n("Use album cover as icon")
@@ -140,7 +151,6 @@ KCM.SimpleKCM {
             stepSize: 2
             Kirigami.FormData.label: i18n("Album cover radius:")
         }
-
 
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
@@ -244,6 +254,20 @@ KCM.SimpleKCM {
             id: textScrollingResetOnPauseCheckbox
             Kirigami.FormData.label: i18n("Reset position when scrolling is paused:")
             enabled: textScrollingEnabledCheckbox.checked
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("Playback controls customization")
+        }
+
+        Slider {
+            Layout.preferredWidth: 10 * Kirigami.Units.gridUnit
+            id: panelControlsSizeRatio
+            from: 0.6
+            to: 0.95
+            stepSize: 0.05
+            Kirigami.FormData.label: i18n("Size:")
         }
 
         Kirigami.Separator {
