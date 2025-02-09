@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.3.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.2.0...v2.3.0) (2025-02-09)
+
+
+### Features
+
+* new configuration page arrangement ([e3e55df](https://github.com/ccatterina/plasmusic-toolbar/commit/e3e55dfeb88221451298cc725c6a717a74c036bd))
+* panel controls and icon size configuration ([13e19ef](https://github.com/ccatterina/plasmusic-toolbar/commit/13e19ef991742240cae937c86534ab61d1e66a26))
+* scrolling speed config for full view ([9d40fc9](https://github.com/ccatterina/plasmusic-toolbar/commit/9d40fc9b62b0e361b188b00736b5044c9b07d3b5))
+
 ## [2.2.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.1.1...v2.2.0) (2025-01-06)
 
 
