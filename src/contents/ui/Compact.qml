@@ -20,8 +20,9 @@ Item {
     Layout.fillWidth: !horizontal || fillAvailableSpace
 
     readonly property int widgetThickness: horizontal ? height : width
-    readonly property int controlsSize: Math.round(widgetThickness * 0.75)
-    readonly property int lengthMargin: Math.round((widgetThickness - controlsSize)) / 2
+    readonly property int controlsSize: Math.round(widgetThickness * plasmoid.configuration.panelControlsSizeRatio)
+    readonly property int iconSize: Math.round(widgetThickness * plasmoid.configuration.panelIconSizeRatio)
+    readonly property int lengthMargin: Math.round((widgetThickness - Math.max(controlsSize, iconSize))) / 2
 
     readonly property bool colorsFromAlbumCover: plasmoid.configuration.colorsFromAlbumCover
     readonly property bool useImageColors: panelIcon.imageReady && panelIcon.type == PanelIcon.Type.Image && colorsFromAlbumCover
@@ -94,8 +95,8 @@ Item {
 
         columns: horizontal ? grid.children.length : 1
         rows: horizontal ? 1 : grid.children.length
-        columnSpacing: lengthMargin
-        rowSpacing: lengthMargin
+        columnSpacing: Kirigami.Units.smallSpacing
+        rowSpacing: Kirigami.Units.smallSpacing
 
         anchors.leftMargin: horizontal ? lengthMargin: 0
         anchors.rightMargin: horizontal ? lengthMargin : 0
@@ -109,7 +110,7 @@ Item {
 
             Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
 
-            size: compact.controlsSize
+            size: compact.iconSize
             icon: plasmoid.configuration.panelIcon
             imageUrl: player.artUrl
             imageRadius: plasmoid.configuration.albumCoverRadius

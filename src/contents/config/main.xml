@@ -84,5 +84,11 @@
         <entry name="fullViewTextScrollingSpeed" type="Int">
             <default>3</default>
         </entry>
+        <entry name="panelIconSizeRatio" type="Double">
+            <default>0.75</default>
+        </entry>
+        <entry name="panelControlsSizeRatio" type="Double">
+            <default>0.75</default>
+        </entry>
     </group>
 </kcfg>
