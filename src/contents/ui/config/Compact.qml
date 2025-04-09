@@ -275,10 +275,17 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Background")
         }
 
-        CheckBox {
-            id: colorsFromAlbumCover
-            enabled: useAlbumCoverAsPanelIcon.checked
+        RowLayout {
             Kirigami.FormData.label: i18n("Colors from album cover")
+            enabled: useAlbumCoverAsPanelIcon.checked
+
+            CheckBox {
+                id: colorsFromAlbumCover
+            }
+
+            Kirigami.ContextualHelpButton {
+                toolTipText: i18n("Use album cover as icon should be checked for background to work.")
+            }
         }
 
         Slider {
