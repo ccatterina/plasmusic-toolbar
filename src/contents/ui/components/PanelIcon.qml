@@ -21,16 +21,17 @@ Item {
     property bool fallbackToIconWhenImageNotAvailable: false
     visible: type === PanelIcon.Type.Icon || imageReady || (fallbackToIconWhenImageNotAvailable && !imageReady)
 
-    implicitHeight: size
-    implicitWidth: size
 
-    Kirigami.Icon {
-        visible: type === PanelIcon.Type.Icon || (fallbackToIconWhenImageNotAvailable && !imageReady)
-        id: iconComponent
-        source: root.icon
-        anchors.fill: parent
-        color: Kirigami.Theme.textColor
-    }
+    implicitHeight: size
+    implicitWidth: images.implicitWidth
+
+    // Kirigami.Icon {
+    //     visible: type === PanelIcon.Type.Icon || (fallbackToIconWhenImageNotAvailable && !imageReady)
+    //     id: iconComponent
+    //     source: root.icon
+    //     anchors.fill: parent
+    //     color: Kirigami.Theme.textColor
+    // }
 
     Timer {
         id: imageStatusTimer
@@ -40,35 +41,90 @@ Item {
         }
     }
 
-    Image {
-        visible: type === PanelIcon.Type.Image
-        width: root.size
-        height: root.size
-        id: imageComponent
+    RowLayout {
+        id: images
         anchors.fill: parent
-        source: root.imageUrl
-        fillMode: Image.PreserveAspectFit
-        onStatusChanged: {
-            imageStatusTimer.restart()
-            if (status === Image.Ready) imageColors.update()
+        Image {
+            // visible: type === PanelIcon.Type.Image
+            Layout.preferredHeight: root.size
+            Layout.preferredWidth: root.size
+            id: imageComponent
+            source: root.imageUrl
+            fillMode: Image.PreserveAspectFit
+            cache: false
+            onStatusChanged: {
+                imageStatusTimer.restart()
+                if (status === Image.Ready) imageColors.update()
+            }
+
+            // update color when image becomes visible, otherwise we get black color
+            // sometimes, specially when the widget first loads
+            onVisibleChanged: {
+                if (status === Image.Ready) imageColors.update()
+            }
+
+            // enables round corners while the radius is set
+            // ref: https://stackoverflow.com/questions/6090740/image-rounded-corners-in-qml
+            layer.enabled: imageRadius > 0
+            layer.effect: OpacityMask {
+                maskSource: Item {
+                    width: imageComponent.width
+                    height: imageComponent.height
+                    Rectangle {
+                        anchors.fill: parent
+                        radius: imageRadius
+                    }
+                }
+            }
         }
 
-        // update color when image becomes visible, otherwise we get black color
-        // sometimes, specially when the widget first loads
-        onVisibleChanged: {
-            if (status === Image.Ready) imageColors.update()
+        Image {
+            // visible: type === PanelIcon.Type.Image
+            Layout.preferredHeight: root.size
+            Layout.preferredWidth: root.size
+            smooth: true
+            id: imageComponent1
+            source: root.imageUrl
+            fillMode: Image.PreserveAspectFit
+            cache: false
+
+            // enables round corners while the radius is set
+            // ref: https://stackoverflow.com/questions/6090740/image-rounded-corners-in-qml
+            layer.enabled: imageRadius > 0
+            layer.effect: OpacityMask {
+                maskSource: Item {
+                    width: imageComponent1.width
+                    height: imageComponent1.height
+                    Rectangle {
+                        anchors.fill: parent
+                        radius: imageRadius
+                    }
+                }
+            }
         }
 
-        // enables round corners while the radius is set
-        // ref: https://stackoverflow.com/questions/6090740/image-rounded-corners-in-qml
-        layer.enabled: imageRadius > 0
-        layer.effect: OpacityMask {
-            maskSource: Item {
-                width: imageComponent.width
-                height: imageComponent.height
-                Rectangle {
-                    anchors.fill: parent
-                    radius: imageRadius
+
+        Image {
+            // visible: type === PanelIcon.Type.Image
+            Layout.preferredHeight: root.size
+            Layout.preferredWidth: root.size
+            mipmap: true
+            id: imageComponent2
+            source: root.imageUrl
+            fillMode: Image.PreserveAspectFit
+            cache: false
+
+            // enables round corners while the radius is set
+            // ref: https://stackoverflow.com/questions/6090740/image-rounded-corners-in-qml
+            layer.enabled: imageRadius > 0
+            layer.effect: OpacityMask {
+                maskSource: Item {
+                    width: imageComponent2.width
+                    height: imageComponent2.height
+                    Rectangle {
+                        anchors.fill: parent
+                        radius: imageRadius
+                    }
                 }
             }
         }
