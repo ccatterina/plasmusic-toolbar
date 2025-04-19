@@ -99,5 +99,26 @@
         <entry name="panelControlsSizeRatio" type="Double">
             <default>0.75</default>
         </entry>
+        <entry name="shuffleIcon" type="String">
+            <default>media-playlist-shuffle</default>
+        </entry>
+        <entry name="skipBackwardIcon" type="String">
+            <default>media-skip-backward</default>
+        </entry>
+        <entry name="playIcon" type="String">
+            <default>media-playback-start</default>
+        </entry>
+        <entry name="pauseIcon" type="String">
+            <default>media-playback-pause</default>
+        </entry>
+        <entry name="skipForwardIcon" type="String">
+            <default>media-skip-forward</default>
+        </entry>
+        <entry name="repeatIcon" type="String">
+            <default>media-playlist-repeat</default>
+        </entry>
+        <entry name="repeatOneIcon" type="String">
+            <default>media-playlist-repeat-song</default>
+        </entry>
     </group>
 </kcfg>

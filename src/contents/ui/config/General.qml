@@ -15,6 +15,13 @@ KCM.SimpleKCM {
     property alias cfg_useCustomFont: customFontCheckbox.checked
     property alias cfg_customFont: fontDialog.fontChosen
     property alias cfg_volumeStep: volumeStepSpinbox.value
+    property alias cfg_shuffleIcon: shuffleIcon.value
+    property alias cfg_skipBackwardIcon: skipBackwardIcon.value
+    property alias cfg_playIcon: playIcon.value
+    property alias cfg_pauseIcon: pauseIcon.value
+    property alias cfg_skipForwardIcon: skipForwardIcon.value
+    property alias cfg_repeatIcon: repeatIcon.value
+    property alias cfg_repeatOneIcon: repeatOneIcon.value
 
     Kirigami.FormLayout {
         id: form
@@ -129,6 +136,46 @@ KCM.SimpleKCM {
             to: 100
             textFromValue: function(text) { return text + "%"; }
             valueFromText: function(value) { return parseInt(value); }
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("Playback controls icons")
+        }
+
+        ConfigIcon {
+            id: shuffleIcon
+            Kirigami.FormData.label: i18n("Shuffle:")
+        }
+
+        ConfigIcon {
+            id: skipBackwardIcon
+            Kirigami.FormData.label: i18n("Skip backward:")
+        }
+
+        ConfigIcon {
+            id: playIcon
+            Kirigami.FormData.label: i18n("Play:")
+        }
+
+        ConfigIcon {
+            id: pauseIcon
+            Kirigami.FormData.label: i18n("Pause:")
+        }
+
+        ConfigIcon {
+            id: skipForwardIcon
+            Kirigami.FormData.label: i18n("Skip forward:")
+        }
+
+        ConfigIcon {
+            id: repeatIcon
+            Kirigami.FormData.label: i18n("Repeat:")
+        }
+
+        ConfigIcon {
+            id: repeatOneIcon
+            Kirigami.FormData.label: i18n("Repeat one:")
         }
     }
 
