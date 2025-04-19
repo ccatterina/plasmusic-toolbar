@@ -27,6 +27,15 @@
         <entry name="commandsInPanel" type="Bool">
             <default>true</default>
         </entry>
+        <entry name="skipBackwardControlInPanel" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="playPauseControlInPanel" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="skipForwardControlInPanel" type="Bool">
+            <default>true</default>
+        </entry>
         <entry name="songTextInPanel" type="Bool">
             <default>true</default>
         </entry>
