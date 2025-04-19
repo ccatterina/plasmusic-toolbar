@@ -211,10 +211,11 @@ Item {
             Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
 
             PlasmaComponents3.ToolButton {
+                visible: plasmoid.configuration.skipBackwardControlInPanel
                 Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
 
                 enabled: player.canGoPrevious
-                icon.name: "media-skip-backward"
+                icon.name: plasmoid.configuration.skipBackwardIcon
                 icon.color: foregroundColor
                 implicitWidth: compact.controlsSize
                 implicitHeight: compact.controlsSize
@@ -222,23 +223,30 @@ Item {
             }
 
             PlasmaComponents3.ToolButton {
+                visible: plasmoid.configuration.playPauseControlInPanel
                 Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
 
                 enabled: player.playbackStatus === Mpris.PlaybackStatus.Playing ? player.canPause : player.canPlay
                 implicitWidth: compact.controlsSize
                 implicitHeight: compact.controlsSize
-                icon.name: player.playbackStatus === Mpris.PlaybackStatus.Playing ? "media-playback-pause" : "media-playback-start"
+                icon.name: {
+                    if (player.playbackStatus === Mpris.PlaybackStatus.Playing) {
+                        return plasmoid.configuration.pauseIcon;
+                    }
+                    return plasmoid.configuration.playIcon;
+                }
                 icon.color: foregroundColor
                 onClicked: player.playPause()
             }
 
             PlasmaComponents3.ToolButton {
+                visible: plasmoid.configuration.skipForwardControlInPanel
                 Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
 
                 enabled: player.canGoNext
                 implicitWidth: compact.controlsSize
                 implicitHeight: compact.controlsSize
-                icon.name: "media-skip-forward"
+                icon.name: plasmoid.configuration.skipForwardIcon
                 icon.color: foregroundColor
                 onClicked: player.next()
             }

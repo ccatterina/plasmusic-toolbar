@@ -107,7 +107,7 @@ Item {
                     enabled: player.canChangeShuffle
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.medium
-                    source: "media-playlist-shuffle"
+                    source: plasmoid.configuration.shuffleIcon
                     onClicked: player.setShuffle(player.shuffle === Mpris.ShuffleStatus.Off ? Mpris.ShuffleStatus.On : Mpris.ShuffleStatus.Off)
                     active: player.shuffle === Mpris.ShuffleStatus.On
                 }
@@ -116,7 +116,7 @@ Item {
                     enabled: player.canGoPrevious
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.medium
-                    source: "media-skip-backward"
+                    source: plasmoid.configuration.skipBackwardIcon
                     onClicked: player.previous()
                 }
 
@@ -124,7 +124,12 @@ Item {
                     enabled: player.playbackStatus === Mpris.PlaybackStatus.Playing ? player.canPause : player.canPlay
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.large
-                    source: player.playbackStatus === Mpris.PlaybackStatus.Playing ? "media-playback-pause" : "media-playback-start"
+                    source: {
+                        if (player.playbackStatus === Mpris.PlaybackStatus.Playing) {
+                            return plasmoid.configuration.pauseIcon;
+                        }
+                        return plasmoid.configuration.playIcon;
+                    }
                     onClicked: player.playPause()
                 }
 
@@ -132,7 +137,7 @@ Item {
                     enabled: player.canGoNext
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.medium
-                    source: "media-skip-forward"
+                    source: plasmoid.configuration.skipForwardIcon
                     onClicked: player.next()
                 }
 
@@ -140,7 +145,12 @@ Item {
                     enabled: player.canChangeLoopStatus
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.medium
-                    source: player.loopStatus === Mpris.LoopStatus.Track ? "media-playlist-repeat-song" : "media-playlist-repeat"
+                    source: {
+                        if (player.loopStatus === Mpris.LoopStatus.Track) {
+                            return plasmoid.configuration.repeatOneIcon;
+                        }
+                        return plasmoid.configuration.repeatIcon;
+                    }
                     active: player.loopStatus != Mpris.LoopStatus.None
                     onClicked: () => {
                         let status = Mpris.LoopStatus.None;
