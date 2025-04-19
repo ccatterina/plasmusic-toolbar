@@ -211,6 +211,7 @@ Item {
             Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
 
             PlasmaComponents3.ToolButton {
+                visible: plasmoid.configuration.skipBackwardControlInPanel
                 Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
 
                 enabled: player.canGoPrevious
@@ -222,6 +223,7 @@ Item {
             }
 
             PlasmaComponents3.ToolButton {
+                visible: plasmoid.configuration.playPauseControlInPanel
                 Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
 
                 enabled: player.playbackStatus === Mpris.PlaybackStatus.Playing ? player.canPause : player.canPlay
@@ -233,6 +235,7 @@ Item {
             }
 
             PlasmaComponents3.ToolButton {
+                visible: plasmoid.configuration.skipForwardControlInPanel
                 Layout.alignment : Qt.AlignVCenter | Qt.AlignHCenter
 
                 enabled: player.canGoNext
