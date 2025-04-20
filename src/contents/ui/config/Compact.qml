@@ -144,7 +144,7 @@ KCM.SimpleKCM {
             Layout.preferredWidth: 10 * Kirigami.Units.gridUnit
             id: panelIconSizeRatio
             from: 0.6
-            to: 0.95
+            to: 1
             stepSize: 0.05
             Kirigami.FormData.label: i18n("Size:")
         }
@@ -288,7 +288,7 @@ KCM.SimpleKCM {
             Layout.preferredWidth: 10 * Kirigami.Units.gridUnit
             id: panelControlsSizeRatio
             from: 0.6
-            to: 0.95
+            to: 1
             stepSize: 0.05
             Kirigami.FormData.label: i18n("Size:")
         }
