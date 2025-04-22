@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.4.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.3.0...v2.4.0) (2025-04-22)
+
+
+### Features
+
+* pause scrolling while media is not playing ([2d4ab37](https://github.com/ccatterina/plasmusic-toolbar/commit/2d4ab37c0ffb68ecaf9e31207b23317c260adca4))
+* show option for each playback control ([883f61c](https://github.com/ccatterina/plasmusic-toolbar/commit/883f61c59af9f0bff2c1607e7b704d8039ebadf8))
+* add contextual help for background color option ([05d0539](https://github.com/ccatterina/plasmusic-toolbar/commit/05d053932a953b8853ec32dc2a4cef5708c78209))
+
 ## [2.3.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.2.0...v2.3.0) (2025-02-09)
 
 
