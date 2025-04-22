@@ -23,6 +23,7 @@ KCM.SimpleKCM {
     property alias cfg_textScrollingSpeed: textScrollingSpeed.value
     property alias cfg_separateText: separateText.checked
     property alias cfg_textScrollingBehaviour: scrollingBehaviourRadio.value
+    property alias cfg_pauseTextScrollingWhileMediaIsNotPlaying: pauseWhileMediaIsNotPlaying.checked
     property alias cfg_textScrollingEnabled: textScrollingEnabledCheckbox.checked
     property alias cfg_textScrollingResetOnPause: textScrollingResetOnPauseCheckbox.checked
     property alias cfg_colorsFromAlbumCover: colorsFromAlbumCover.checked
@@ -217,7 +218,7 @@ KCM.SimpleKCM {
             checked: scrollingBehaviourRadio.value == ScrollingText.OverflowBehaviour.AlwaysScroll
             onCheckedChanged: () => {
                 if (checked) {
-                    scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.AlwaysScroll
+                    scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.AlwaysScroll;
                 }
             }
             ButtonGroup.group: scrollingBehaviourRadio
@@ -230,7 +231,7 @@ KCM.SimpleKCM {
             checked: scrollingBehaviourRadio.value == ScrollingText.OverflowBehaviour.ScrollOnMouseOver
             onCheckedChanged: () => {
                 if (checked) {
-                    scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.ScrollOnMouseOver
+                    scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.ScrollOnMouseOver;
                 }
             }
             ButtonGroup.group: scrollingBehaviourRadio
@@ -243,11 +244,16 @@ KCM.SimpleKCM {
             checked: scrollingBehaviourRadio.value == ScrollingText.OverflowBehaviour.StopScrollOnMouseOver
             onCheckedChanged: () => {
                 if (checked) {
-                    scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.StopScrollOnMouseOver
+                    scrollingBehaviourRadio.value = ScrollingText.OverflowBehaviour.StopScrollOnMouseOver;
                 }
             }
             ButtonGroup.group: scrollingBehaviourRadio
             enabled: textScrollingEnabledCheckbox.checked
+        }
+
+        CheckBox {
+            id: pauseWhileMediaIsNotPlaying
+            Kirigami.FormData.label: i18n("Pause scrolling while media is not playing:")
         }
 
         CheckBox {
