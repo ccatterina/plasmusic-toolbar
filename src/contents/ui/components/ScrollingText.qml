@@ -27,8 +27,12 @@ Item {
 
     property bool scrollingEnabled: true
     property bool scrollResetOnPause: false
+    property bool forcePauseScrolling: false
 
     readonly property bool pauseScrolling: {
+        if (forcePauseScrolling) {
+            return true;
+        }
         if (overflowBehaviour === ScrollingText.OverflowBehaviour.AlwaysScroll) {
             return false;
         } else if (overflowBehaviour === ScrollingText.OverflowBehaviour.ScrollOnMouseOver) {

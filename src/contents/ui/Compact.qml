@@ -186,6 +186,12 @@ Item {
                     scrollingSpeed: plasmoid.configuration.textScrollingSpeed
                     scrollingResetOnPause: plasmoid.configuration.textScrollingResetOnPause
                     scrollingEnabled: plasmoid.configuration.textScrollingEnabled
+                    forcePauseScrolling: {
+                        if (!plasmoid.configuration.pauseTextScrollingWhileMediaIsNotPlaying) {
+                            return false
+                        }
+                        return player.playbackStatus !== Mpris.PlaybackStatus.Playing
+                    }
                     textFont: baseFont
                     color: foregroundColor
                     title: player.title

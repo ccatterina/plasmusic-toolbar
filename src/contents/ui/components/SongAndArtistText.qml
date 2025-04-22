@@ -11,6 +11,7 @@ ColumnLayout {
     property int scrollingSpeed
     property bool scrollingResetOnPause
     property bool scrollingEnabled
+    property bool forcePauseScrolling
     property bool splitSongAndArtists: false
     property font textFont: Kirigami.Theme.defaultFont
     property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
@@ -30,6 +31,7 @@ ColumnLayout {
         scrollingEnabled: root.scrollingEnabled
         scrollResetOnPause: root.scrollingResetOnPause
         textColor: root.color
+        forcePauseScrolling: root.forcePauseScrolling
     }
 
     ScrollingText {
@@ -42,5 +44,6 @@ ColumnLayout {
         scrollResetOnPause: root.scrollingResetOnPause
         visible: text.length !== 0
         textColor: root.color
+        forcePauseScrolling: root.forcePauseScrolling
     }
 }
