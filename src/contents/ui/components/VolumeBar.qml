@@ -8,9 +8,17 @@ Item {
     property real volume: 0.5;
     property real size: 3;
     property real iconSize: Kirigami.Units.iconSizes.small;
+    readonly property real minVolume: 0.0;
+    readonly property real maxVolume: 1.0;
+    readonly property real clampedVolume: clampVolume(volume);
+
     signal setVolume(newVolume: real)
     signal volumeUp()
     signal volumeDown()
+
+    function clampVolume(value) {
+        return Math.max(minVolume, Math.min(maxVolume, value));
+    }
 
     Layout.fillWidth: true
     Layout.preferredHeight: row.implicitHeight
@@ -21,26 +29,29 @@ Item {
 
         CommandIcon {
             size: iconSize;
-            onClicked: container.volumeDown()
+            onClicked: () => {
+                if (container.volume > container.minVolume) container.volumeDown();
+            }
             source: 'audio-volume-low';
         }
+
         Rectangle {
             MouseAreaWithWheelHandler {
                 anchors.centerIn: parent
                 height: parent.height + 8
                 width: parent.width
                 cursorShape: Qt.PointingHandCursor
-                onClicked: ({x}) => {
-                    container.setVolume(x/parent.width)
+                onClicked: (mouse) => {
+                    container.setVolume(container.clampVolume(mouse.x / parent.width))
                 }
                 onPositionChanged: (mouse) => {
-                    if (pressed) container.setVolume(mouse.x/parent.width)
+                    if (pressed) container.setVolume(container.clampVolume(mouse.x / parent.width));
                 }
-                onWheelUp: {
-                    container.volumeUp();
+                onWheelUp: () => {
+                    if (container.volume < container.maxVolume) container.volumeUp();
                 }
-                onWheelDown: {
-                    container.volumeDown();
+                onWheelDown: () => {
+                    if (container.volume > container.minVolume) container.volumeDown();
                 }
             }
 
@@ -52,13 +63,16 @@ Item {
             Rectangle {
                 Layout.alignment: Qt.AlignLeft
                 height: container.size
-                width: full.width * container.volume
+                width: full.width * clampedVolume;
                 color: Kirigami.Theme.highlightColor
             }
         }
+
         CommandIcon {
             size: iconSize;
-            onClicked: container.volumeUp()
+            onClicked: () => {
+                if (container.volume < container.maxVolume) container.volumeUp();
+            }
             source: 'audio-volume-high';
         }
     }
