@@ -16,6 +16,8 @@ Item {
 
     Layout.preferredWidth: horizontal ? grid.implicitWidth + lengthMargin * 2 : grid.implicitWidth
     Layout.preferredHeight: !horizontal ? grid.implicitHeight + lengthMargin * 2 : grid.implicitHeight
+    Layout.minimumWidth: Layout.preferredWidth
+    Layout.minimumHeight: Layout.preferredHeight
     Layout.fillHeight: horizontal || fillAvailableSpace
     Layout.fillWidth: !horizontal || fillAvailableSpace
 
