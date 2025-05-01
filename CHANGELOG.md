@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.4.1](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.4.0...v2.4.1) (2025-05-01)
+
+
+### Bug Fixes
+
+* plasmusic overlaps with other widgets in the panel ([809473e](https://github.com/ccatterina/plasmusic-toolbar/commit/809473ef211f30e24e03f5d34d1241f9c11f7ece))
+* VolumeBar must allow only values between 0 and 1 ([6139da7](https://github.com/ccatterina/plasmusic-toolbar/commit/6139da718c360edd6e573586b3489e309d54a43f))
+
 ## [2.4.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.3.0...v2.4.0) (2025-04-22)
 
 
