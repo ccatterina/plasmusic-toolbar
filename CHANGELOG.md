@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.4.1...v2.5.0) (2025-05-03)
+
+
+### Features
+
+* improve album cover icon quality ([484d236](https://github.com/ccatterina/plasmusic-toolbar/commit/484d2369e6b6c6169449e69ce4f24b71234bc023)), closes [#178](https://github.com/ccatterina/plasmusic-toolbar/issues/178)
+* increase panel icon and controls size ratio limit to 1 ([2ea7c28](https://github.com/ccatterina/plasmusic-toolbar/commit/2ea7c28bb6471d112fd2daf09073716ed7733876))
+
 ## [2.4.1](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.4.0...v2.4.1) (2025-05-01)
 
 
