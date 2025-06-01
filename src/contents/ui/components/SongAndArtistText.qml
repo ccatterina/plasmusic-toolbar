@@ -6,12 +6,12 @@ import org.kde.kirigami as Kirigami
 ColumnLayout {
     id: root
 
-    property int maxWidth
-    property int scrollingBehaviour
-    property int scrollingSpeed
-    property bool scrollingResetOnPause
-    property bool scrollingEnabled
-    property bool forcePauseScrolling
+    property var maxWidth: undefined
+    property var scrollingBehaviour: undefined
+    property var scrollingSpeed: undefined
+    property var scrollingResetOnPause: undefined
+    property var scrollingEnabled: undefined
+    property var forcePauseScrolling: undefined
     property bool splitSongAndArtists: false
     property font textFont: Kirigami.Theme.defaultFont
     property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
