@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.6.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.5.0...v2.6.0) (2025-06-14)
+
+
+### Features
+
+* show placeholder image when album art loading fails ([#194](https://github.com/ccatterina/plasmusic-toolbar/issues/194)) ([eeb5de3](https://github.com/ccatterina/plasmusic-toolbar/commit/eeb5de3fa52e2dabc42801cb18682788b7ae8d5d))
+
+
+### Bug Fixes
+
+* SongTextArtistText properties fallback to ScrollingText defaults ([#195](https://github.com/ccatterina/plasmusic-toolbar/issues/195)) ([d9d542b](https://github.com/ccatterina/plasmusic-toolbar/commit/d9d542bef3a5c716fb0c953eeccc143b31f84554))
+
 ## [2.5.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.4.1...v2.5.0) (2025-05-03)
 
 
