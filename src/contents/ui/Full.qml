@@ -31,7 +31,13 @@ Item {
 
             Image {
                 anchors.fill: parent
-                source: player.artUrl || albumPlaceholder
+                source: {
+                    if (status === Image.Error || !player.artUrl) {
+                        return albumPlaceholder;
+                    }
+                    return player.artUrl;
+                }
+
                 fillMode: Image.PreserveAspectFit
                 MouseArea {
                     id: coverMouseArea
