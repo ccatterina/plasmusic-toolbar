@@ -139,12 +139,7 @@ Item {
             columns: horizontal ? songGrid.children.length : 1
             rows: horizontal ? 1 : songGrid.children.length
 
-            readonly property int textAlignment: {
-                if (fillAvailableSpace) {
-                    return plasmoid.configuration.songTextAlignment
-                }
-                return Qt.AlignCenter
-            }
+            readonly property int textAlignment: plasmoid.configuration.songTextAlignment
             readonly property int fxdWidth: plasmoid.configuration.songTextFixedWidth + 2 * Kirigami.Units.smallSpacing
             readonly property bool useFixedWidth: plasmoid.configuration.useSongTextFixedWidth
             readonly property int length: horizontal ? width : height
@@ -198,6 +193,7 @@ Item {
                     color: foregroundColor
                     title: player.title
                     artists: player.artists
+                    textAlignment: songGrid.textAlignment
                 }
             }
 

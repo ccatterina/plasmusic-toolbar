@@ -18,6 +18,7 @@ ColumnLayout {
     property string color: Kirigami.Theme.textColor
     property string title
     property string artists
+    property int textAlignment: Qt.AlignHCenter
 
     spacing: 0
 
@@ -32,6 +33,7 @@ ColumnLayout {
         scrollResetOnPause: root.scrollingResetOnPause
         textColor: root.color
         forcePauseScrolling: root.forcePauseScrolling
+        Layout.alignment: root.textAlignment
     }
 
     ScrollingText {
@@ -45,5 +47,6 @@ ColumnLayout {
         visible: text.length !== 0
         textColor: root.color
         forcePauseScrolling: root.forcePauseScrolling
+        Layout.alignment: root.textAlignment
     }
 }
