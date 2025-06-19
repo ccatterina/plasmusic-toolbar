@@ -6,19 +6,19 @@ import org.kde.kirigami as Kirigami
 ColumnLayout {
     id: root
 
-    property var maxWidth: undefined
-    property var scrollingBehaviour: undefined
-    property var scrollingSpeed: undefined
-    property var scrollingResetOnPause: undefined
-    property var scrollingEnabled: undefined
-    property var forcePauseScrolling: undefined
+    property int maxWidth: undefined
+    property int scrollingBehaviour: undefined
+    property int scrollingSpeed: undefined
+    property bool scrollingResetOnPause: undefined
+    property bool scrollingEnabled: undefined
+    property bool forcePauseScrolling: undefined
     property bool splitSongAndArtists: false
     property bool showAlbumTitle: true
     property bool albumBeneathSongAndArtists: true
 
     property font textFont: Kirigami.Theme.defaultFont
-    property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
-    property font italicTextFont: Qt.font(Object.assign({}, textFont, {italic: true}))
+    // property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
+    // property font italicTextFont: Qt.font(Object.assign({}, textFont, {italic: true}))
     property string color: Kirigami.Theme.textColor
     property string title
     property string artists

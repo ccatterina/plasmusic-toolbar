@@ -7,6 +7,10 @@ import org.kde.kirigami as Kirigami
 Item {
     id: root
 
+    function removeHTML (htmlString) {
+        return htmlString.replace(/<[^>]*>/g,"");
+    }
+
     enum OverflowBehaviour {
         AlwaysScroll,
         ScrollOnMouseOver,
@@ -46,8 +50,12 @@ Item {
 
     property alias font: label.font
 
-    width: overflow ? maxWidth : label.implicitWidth
-    clip: true
+    width: overflow ? maxWidth : textMetrics.width // to account for the bolded/italicised text
+    
+    clip: overflow 
+    // only clip if overflowing. this stops the song title from being clipped because it is bolded,
+    // so it is slightly wider than textMetrics.width expects
+
 
     Layout.preferredHeight: label.implicitHeight
     Layout.preferredWidth: width
@@ -61,7 +69,7 @@ Item {
     TextMetrics {
         id: textMetrics
         font: label.font
-        text: root.text
+        text: root.removeHTML(root.text)
     }
 
     PlasmaComponents3.Label {
