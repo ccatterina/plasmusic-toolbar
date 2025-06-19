@@ -83,6 +83,9 @@ Item {
             album: player.album
             textFont: baseFont
             maxWidth: 250
+
+            italiciseAlbumTitle: true
+            boldSongTitle: true
         }
 
         VolumeBar {

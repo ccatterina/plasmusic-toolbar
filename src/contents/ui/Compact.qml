@@ -186,6 +186,8 @@ Item {
                     scrollingEnabled: plasmoid.configuration.textScrollingEnabled
                     showAlbumTitle: plasmoid.configuration.showAlbumTitle
                     albumBeneathSongAndArtists: plasmoid.configuration.albumBeneathSongAndArtists
+                    italiciseAlbumTitle: plasmoid.configuration.italiciseAlbumTitle
+                    boldSongTitle: plasmoid.configuration.boldSongTitle
                     forcePauseScrolling: {
                         if (!plasmoid.configuration.pauseTextScrollingWhileMediaIsNotPlaying) {
                             return false

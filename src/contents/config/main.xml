@@ -108,5 +108,11 @@
         <entry name="albumBeneathSongAndArtists" type="Bool">
             <default>true</default>
         </entry>
+        <entry name="boldSongTitle" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="italiciseAlbumTitle" type="Bool">
+            <default>true</default>
+        </entry>
     </group>
 </kcfg>

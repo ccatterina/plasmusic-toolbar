@@ -6,15 +6,17 @@ import org.kde.kirigami as Kirigami
 ColumnLayout {
     id: root
 
-    property int maxWidth: undefined
-    property int scrollingBehaviour: undefined
-    property int scrollingSpeed: undefined
-    property bool scrollingResetOnPause: undefined
-    property bool scrollingEnabled: undefined
-    property bool forcePauseScrolling: undefined
+    property var maxWidth: undefined
+    property var scrollingBehaviour: undefined
+    property var scrollingSpeed: undefined
+    property var scrollingResetOnPause: undefined
+    property var scrollingEnabled: undefined
+    property var forcePauseScrolling: undefined
     property bool splitSongAndArtists: false
     property bool showAlbumTitle: true
     property bool albumBeneathSongAndArtists: true
+    property bool italiciseAlbumTitle: true
+    property bool boldSongTitle: true
 
     property font textFont: Kirigami.Theme.defaultFont
     // property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
@@ -29,9 +31,9 @@ ColumnLayout {
 
     // [root.artists, root.title].filter((x) => x).join(" - ")
 
-    property string formattedTitle: `<b>${root.title}</b>`
+    property string formattedTitle: boldSongTitle ? `<b>${root.title}</b>` : root.title
     property string formattedArtists: `${root.artists}`
-    property string formattedAlbum: `<i>${root.album}</i>`
+    property string formattedAlbum: italiciseAlbumTitle ? `<i>${root.album}</i>` : root.album
 
     property string finalFirstText: {
         if (root.showAlbumTitle) {
