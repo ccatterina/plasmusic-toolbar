@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.6.0...v2.7.0) (2025-06-19)
+
+
+### Features
+
+* align multi line song and artist text ([#198](https://github.com/ccatterina/plasmusic-toolbar/issues/198)) ([b7aa65e](https://github.com/ccatterina/plasmusic-toolbar/commit/b7aa65eabce0b4fcb9ee612554c6b43443b4f9d6))
+
 ## [2.6.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.5.0...v2.6.0) (2025-06-14)
 
 
