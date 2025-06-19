@@ -73,7 +73,6 @@ KCM.SimpleKCM {
                 }
             }
             ButtonGroup.group: songTextPositionRadio
-            enabled: fillAvailableSpaceCheckbox.checked
         }
 
         RadioButton {
@@ -85,7 +84,6 @@ KCM.SimpleKCM {
                 }
             }
             ButtonGroup.group: songTextPositionRadio
-            enabled: fillAvailableSpaceCheckbox.checked
         }
 
         RadioButton {
@@ -97,7 +95,6 @@ KCM.SimpleKCM {
                 }
             }
             ButtonGroup.group: songTextPositionRadio
-            enabled: fillAvailableSpaceCheckbox.checked
         }
 
         CheckBox {

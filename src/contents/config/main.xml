@@ -85,7 +85,7 @@
             <default>false</default>
         </entry>
         <entry name="songTextAlignment" type="Int">
-            <default>2</default>
+            <default>1</default>
         </entry>
         <entry name="songTextFixedWidth" type="Int">
             <default>200</default>
