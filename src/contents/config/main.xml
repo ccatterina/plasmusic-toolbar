@@ -102,5 +102,11 @@
         <entry name="panelControlsSizeRatio" type="Double">
             <default>0.75</default>
         </entry>
+        <entry name="showAlbumTitle" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="albumBeneathSongAndArtists" type="Bool">
+            <default>true</default>
+        </entry>
     </group>
 </kcfg>

@@ -76,8 +76,11 @@ Item {
             Layout.alignment: Qt.AlignHCenter
             scrollingSpeed: plasmoid.configuration.fullViewTextScrollingSpeed
             splitSongAndArtists: true
+            showAlbumTitle: true
+            albumBeneathSongAndArtists: true
             title: player.title
             artists: player.artists
+            album: player.album
             textFont: baseFont
             maxWidth: 250
         }

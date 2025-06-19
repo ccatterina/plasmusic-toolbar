@@ -16,7 +16,9 @@ Item {
     property int overflowBehaviour: ScrollingText.OverflowBehaviour.AlwaysScroll
 
     property string text: ""
-    readonly property string spacing: "     "
+
+    // 15 spaces. use &nbsp; because it works with the html tags used for styling the song text
+    readonly property string spacing: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
     readonly property string textAndSpacing: text + spacing
     property color textColor: Kirigami.Theme.textColor
 
@@ -44,7 +46,7 @@ Item {
 
     property alias font: label.font
 
-    width: overflow ? maxWidth : textMetrics.width
+    width: overflow ? maxWidth : label.implicitWidth
     clip: true
 
     Layout.preferredHeight: label.implicitHeight

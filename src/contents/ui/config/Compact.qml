@@ -35,6 +35,8 @@ KCM.SimpleKCM {
     property alias cfg_songTextAlignment: songTextPositionRadio.value
     property alias cfg_panelIconSizeRatio: panelIconSizeRatio.value
     property alias cfg_panelControlsSizeRatio: panelControlsSizeRatio.value
+    property alias cfg_showAlbumTitle: showAlbumTitle.checked
+    property alias cfg_albumBeneathSongAndArtists: albumBeneathSongAndArtists.checked
 
     Kirigami.FormLayout {
         id: form
@@ -125,6 +127,17 @@ KCM.SimpleKCM {
         CheckBox {
             id: skipForwardControlInPanel
             Kirigami.FormData.label: i18n("Show skip forward control:")
+        }
+
+        CheckBox {
+            id: showAlbumTitle
+            Kirigami.FormData.label: i18n("Show album title:")
+        }
+
+        CheckBox {
+            id: albumBeneathSongAndArtists
+            Kirigami.FormData.label: i18n("Show album title below song and artists:")
+            enabled: showAlbumTitle.checked
         }
 
         Kirigami.Separator {

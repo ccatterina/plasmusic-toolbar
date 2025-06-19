@@ -28,6 +28,7 @@ QtObject {
 
     readonly property string artists: ready ? mpris2Model.currentPlayer.artist : ""
     readonly property string title: ready ? mpris2Model.currentPlayer.track : ""
+    readonly property string album: ready ? mpris2Model.currentPlayer.album : ""
     readonly property int playbackStatus: ready ? mpris2Model.currentPlayer.playbackStatus : Mpris.PlaybackStatus.Unknown
     readonly property int shuffle: ready ? mpris2Model.currentPlayer.shuffle : Mpris.ShuffleStatus.Unknown
     readonly property string artUrl: ready ? mpris2Model.currentPlayer.artUrl : ""

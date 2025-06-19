@@ -159,8 +159,9 @@ Item {
             Item {
                 Layout.fillHeight: horizontal
                 Layout.fillWidth: !horizontal
-                Layout.preferredHeight: !horizontal ? songAndArtistText.width : null
-                Layout.preferredWidth: horizontal ? songAndArtistText.width : null
+                Layout.preferredHeight: !horizontal ? songAndArtistText.width : null // is this not supposed to be height?
+                Layout.preferredWidth: horizontal ? songAndArtistText.width + 10 : null
+                //                                               the +10 is for padding
 
                 SongAndArtistText {
                     id: songAndArtistText
@@ -183,6 +184,8 @@ Item {
                     scrollingSpeed: plasmoid.configuration.textScrollingSpeed
                     scrollingResetOnPause: plasmoid.configuration.textScrollingResetOnPause
                     scrollingEnabled: plasmoid.configuration.textScrollingEnabled
+                    showAlbumTitle: plasmoid.configuration.showAlbumTitle
+                    albumBeneathSongAndArtists: plasmoid.configuration.albumBeneathSongAndArtists
                     forcePauseScrolling: {
                         if (!plasmoid.configuration.pauseTextScrollingWhileMediaIsNotPlaying) {
                             return false
@@ -193,6 +196,7 @@ Item {
                     color: foregroundColor
                     title: player.title
                     artists: player.artists
+                    album: player.album
                     textAlignment: songGrid.textAlignment
                 }
             }
