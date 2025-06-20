@@ -20,8 +20,7 @@ ColumnLayout {
     property int albumPosition: 0
 
     property font textFont: Kirigami.Theme.defaultFont
-    // property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
-    // property font italicTextFont: Qt.font(Object.assign({}, textFont, {italic: true}))
+    property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
     property string color: Kirigami.Theme.textColor
     property string title
     property string artists
@@ -30,16 +29,12 @@ ColumnLayout {
 
     spacing: 0
 
-    property string formattedTitle: `${root.title}`
-    property string formattedArtists: `${root.artists}`
-    property string formattedAlbum: `${root.album}`
-
     property var firstLineArray: {
         const arr = [];
 
-        if (artistsPosition == 1) arr.push(root.formattedArtists);
-        if (titlePosition   == 1) arr.push(root.formattedTitle);
-        if (albumPosition   == 1) arr.push(root.formattedAlbum);
+        if (artistsPosition == 1) arr.push(root.artists);
+        if (titlePosition   == 1) arr.push(root.title);
+        if (albumPosition   == 1) arr.push(root.album);
 
         return arr;
     }
@@ -47,9 +42,9 @@ ColumnLayout {
     property var secondLineArray: {
         const arr = [];
 
-        if (artistsPosition == 2) arr.push(root.formattedArtists);
-        if (titlePosition   == 2) arr.push(root.formattedTitle);
-        if (albumPosition   == 2) arr.push(root.formattedAlbum);
+        if (artistsPosition == 2) arr.push(root.artists);
+        if (titlePosition   == 2) arr.push(root.title);
+        if (albumPosition   == 2) arr.push(root.album);
 
         return arr;        
     }
@@ -61,9 +56,9 @@ ColumnLayout {
     property var thirdLineArray: {
         const arr = [];
 
-        if (artistsPosition == 3) arr.push(root.formattedArtists);
-        if (titlePosition   == 3) arr.push(root.formattedTitle);
-        if (albumPosition   == 3) arr.push(root.formattedAlbum);
+        if (artistsPosition == 3) arr.push(root.artists);
+        if (titlePosition   == 3) arr.push(root.title);
+        if (albumPosition   == 3) arr.push(root.album);
 
         return arr;   
     }
@@ -75,7 +70,7 @@ ColumnLayout {
         // visible only when necessary
         visible: text.length !== 0
         overflowBehaviour: root.scrollingBehaviour
-        font: root.textFont
+        font: root.boldTextFont
         speed: root.scrollingSpeed
         maxWidth: root.maxWidth
 

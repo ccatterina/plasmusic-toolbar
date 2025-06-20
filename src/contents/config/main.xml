@@ -103,7 +103,7 @@
             <default>1</default>
         </entry>
         <entry name="artistsPosition" type="Int">
-            <default>2</default>
+            <default>1</default>
         </entry>
         <entry name="albumPosition" type="Int">
             <default>0</default>

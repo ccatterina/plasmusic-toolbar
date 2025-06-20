@@ -7,10 +7,6 @@ import org.kde.kirigami as Kirigami
 Item {
     id: root
 
-    function removeHTML (htmlString) {
-        return htmlString.replace(/<[^>]*>/g,"");
-    }
-
     enum OverflowBehaviour {
         AlwaysScroll,
         ScrollOnMouseOver,
@@ -66,7 +62,7 @@ Item {
     TextMetrics {
         id: textMetrics
         font: label.font
-        text: root.removeHTML(root.text)
+        text: root.text
     }
 
     PlasmaComponents3.Label {

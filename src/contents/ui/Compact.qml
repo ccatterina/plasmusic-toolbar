@@ -159,8 +159,8 @@ Item {
             Item {
                 Layout.fillHeight: horizontal
                 Layout.fillWidth: !horizontal
-                Layout.preferredHeight: !horizontal ? songAndArtistText.width : null // is this not supposed to be height?
-                Layout.preferredWidth: horizontal ? songAndArtistText.width + 10 : null
+                Layout.preferredHeight: !horizontal ? songAndArtistText.width : null
+                Layout.preferredWidth: horizontal ? songAndArtistText.width : null
                 //                                               the +10 is for padding
 
                 SongAndArtistText {
