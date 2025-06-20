@@ -21,8 +21,7 @@ Item {
 
     property string text: ""
 
-    // 15 spaces. use &nbsp; because it works with the html tags used for styling the song text
-    readonly property string spacing: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+    readonly property string spacing: "          "
     readonly property string textAndSpacing: text + spacing
     property color textColor: Kirigami.Theme.textColor
 
