@@ -52,8 +52,6 @@ Item {
     width: overflow ? maxWidth : textMetrics.width
     
     clip: overflow 
-    // only clip if overflowing. this stops the song title from being clipped because it is bolded / italicised / whatever,
-    // causing it to be slightly wider than textMetrics.width expects
 
 
     Layout.preferredHeight: label.implicitHeight
