@@ -16,8 +16,7 @@ Item {
     property int overflowBehaviour: ScrollingText.OverflowBehaviour.AlwaysScroll
 
     property string text: ""
-
-    readonly property string spacing: "          "
+    readonly property string spacing: "     "
     readonly property string textAndSpacing: text + spacing
     property color textColor: Kirigami.Theme.textColor
 
@@ -46,9 +45,7 @@ Item {
     property alias font: label.font
 
     width: overflow ? maxWidth : textMetrics.width
-    
     clip: overflow 
-
 
     Layout.preferredHeight: label.implicitHeight
     Layout.preferredWidth: width

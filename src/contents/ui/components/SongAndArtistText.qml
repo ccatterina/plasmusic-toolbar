@@ -6,6 +6,13 @@ import org.kde.kirigami as Kirigami
 ColumnLayout {
     id: root
 
+    enum TextPosition {
+        Hidden,
+        FirstLine,
+        SecondLine,
+        ThirdLine
+    }
+
     property var maxWidth: undefined
     property var scrollingBehaviour: undefined
     property var scrollingSpeed: undefined
@@ -15,9 +22,9 @@ ColumnLayout {
 
     // 0 is hidden, 1 is first line, 2 is second line
 
-    property int titlePosition: 1
-    property int artistsPosition: 1
-    property int albumPosition: 0
+    property int titlePosition: SongAndArtistText.TextPosition.FirstLine
+    property int artistsPosition: SongAndArtistText.TextPosition.FirstLine
+    property int albumPosition: SongAndArtistText.TextPosition.Hidden
 
     property font textFont: Kirigami.Theme.defaultFont
     property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
@@ -29,12 +36,13 @@ ColumnLayout {
 
     spacing: 0
 
+
     property var firstLineArray: {
         const arr = [];
 
-        if (artistsPosition == 1) arr.push(root.artists);
-        if (titlePosition   == 1) arr.push(root.title);
-        if (albumPosition   == 1) arr.push(root.album);
+        if (artistsPosition == SongAndArtistText.TextPosition.FirstLine) arr.push(root.artists);
+        if (titlePosition   == SongAndArtistText.TextPosition.FirstLine) arr.push(root.title);
+        if (albumPosition   == SongAndArtistText.TextPosition.FirstLine) arr.push(root.album);
 
         return arr;
     }
@@ -42,27 +50,25 @@ ColumnLayout {
     property var secondLineArray: {
         const arr = [];
 
-        if (artistsPosition == 2) arr.push(root.artists);
-        if (titlePosition   == 2) arr.push(root.title);
-        if (albumPosition   == 2) arr.push(root.album);
+        if (artistsPosition == SongAndArtistText.TextPosition.SecondLine) arr.push(root.artists);
+        if (titlePosition   == SongAndArtistText.TextPosition.SecondLine) arr.push(root.title);
+        if (albumPosition   == SongAndArtistText.TextPosition.SecondLine) arr.push(root.album);
 
         return arr;        
     }
 
-    property string finalFirstText:  firstLineArray.filter((x) => x).join(" - ")
-    property string finalSecondText: secondLineArray.filter((x) => x).join(" - ")
-
-    // ONLY USED FOR FULL.qml
     property var thirdLineArray: {
         const arr = [];
 
-        if (artistsPosition == 3) arr.push(root.artists);
-        if (titlePosition   == 3) arr.push(root.title);
-        if (albumPosition   == 3) arr.push(root.album);
+        if (artistsPosition == SongAndArtistText.TextPosition.ThirdLine) arr.push(root.artists);
+        if (albumPosition   == SongAndArtistText.TextPosition.ThirdLine) arr.push(root.album);
+        if (titlePosition   == SongAndArtistText.TextPosition.ThirdLine) arr.push(root.title);
 
         return arr;   
     }
 
+    property string finalFirstText:  firstLineArray.filter((x) => x).join(" - ")
+    property string finalSecondText: secondLineArray.filter((x) => x).join(" - ")
     property string finalThirdText: thirdLineArray.filter((x) => x).join(" - ")
 
     // first row of text (the only row, if there is only one)

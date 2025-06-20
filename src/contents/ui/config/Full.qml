@@ -1,3 +1,4 @@
+import "../components"
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -58,16 +59,16 @@ KCM.SimpleKCM {
 
         ButtonGroup {
             id: fullTitlePosition
-            property int value: 1
+            property int value: SongAndArtistText.TextPosition.FirstLine
         }
 
         RadioButton {
             Kirigami.FormData.label: i18n("Song title position:")
             text: i18n("Hidden")
-            checked: fullTitlePosition.value == 0
+            checked: fullTitlePosition.value == SongAndArtistText.TextPosition.Hidden
             onCheckedChanged: () => {
                 if (checked) {
-                    fullTitlePosition.value = 0
+                    fullTitlePosition.value = SongAndArtistText.TextPosition.Hidden
                 }
             }
             ButtonGroup.group: fullTitlePosition
@@ -75,10 +76,10 @@ KCM.SimpleKCM {
 
         RadioButton {
             text: i18n("First line")
-            checked: fullTitlePosition.value == 1
+            checked: fullTitlePosition.value == SongAndArtistText.TextPosition.FirstLine
             onCheckedChanged: () => {
                 if (checked) {
-                    fullTitlePosition.value = 1
+                    fullTitlePosition.value = SongAndArtistText.TextPosition.FirstLine
                 }
             }
             ButtonGroup.group: fullTitlePosition
@@ -86,10 +87,10 @@ KCM.SimpleKCM {
 
         RadioButton {
             text: i18n("Second line")
-            checked: fullTitlePosition.value == 2
+            checked: fullTitlePosition.value == SongAndArtistText.TextPosition.SecondLine
             onCheckedChanged: () => {
                 if (checked) {
-                    fullTitlePosition.value = 2
+                    fullTitlePosition.value = SongAndArtistText.TextPosition.SecondLine
                 }
             }
             ButtonGroup.group: fullTitlePosition
@@ -97,10 +98,10 @@ KCM.SimpleKCM {
 
         RadioButton {
             text: i18n("Third line")
-            checked: fullTitlePosition.value == 3
+            checked: fullTitlePosition.value == SongAndArtistText.TextPosition.ThirdLine
             onCheckedChanged: () => {
                 if (checked) {
-                    fullTitlePosition.value = 3
+                    fullTitlePosition.value = SongAndArtistText.TextPosition.ThirdLine
                 }
             }
             ButtonGroup.group: fullTitlePosition
@@ -116,16 +117,16 @@ KCM.SimpleKCM {
 
         ButtonGroup {
             id: fullArtistsPosition
-            property int value: 2
+            property int value: SongAndArtistText.TextPosition.SecondLine
         }
 
         RadioButton {
             Kirigami.FormData.label: i18n("Artists position:")
             text: i18n("Hidden")
-            checked: fullArtistsPosition.value == 0
+            checked: fullArtistsPosition.value == SongAndArtistText.TextPosition.Hidden
             onCheckedChanged: () => {
                 if (checked) {
-                    fullArtistsPosition.value = 0
+                    fullArtistsPosition.value = SongAndArtistText.TextPosition.Hidden
                 }
             }
             ButtonGroup.group: fullArtistsPosition
@@ -133,10 +134,10 @@ KCM.SimpleKCM {
 
         RadioButton {
             text: i18n("First line")
-            checked: fullArtistsPosition.value == 1
+            checked: fullArtistsPosition.value == SongAndArtistText.TextPosition.FirstLine
             onCheckedChanged: () => {
                 if (checked) {
-                    fullArtistsPosition.value = 1
+                    fullArtistsPosition.value = SongAndArtistText.TextPosition.FirstLine
                 }
             }
             ButtonGroup.group: fullArtistsPosition
@@ -144,10 +145,10 @@ KCM.SimpleKCM {
 
         RadioButton {
             text: i18n("Second line")
-            checked: fullArtistsPosition.value == 2
+            checked: fullArtistsPosition.value == SongAndArtistText.TextPosition.SecondLine
             onCheckedChanged: () => {
                 if (checked) {
-                    fullArtistsPosition.value = 2
+                    fullArtistsPosition.value = SongAndArtistText.TextPosition.SecondLine
                 }
             }
             ButtonGroup.group: fullArtistsPosition
@@ -155,10 +156,10 @@ KCM.SimpleKCM {
 
         RadioButton {
             text: i18n("Third line")
-            checked: fullArtistsPosition.value == 3
+            checked: fullArtistsPosition.value == SongAndArtistText.TextPosition.ThirdLine
             onCheckedChanged: () => {
                 if (checked) {
-                    fullArtistsPosition.value = 3
+                    fullArtistsPosition.value = SongAndArtistText.TextPosition.ThirdLine
                 }
             }
             ButtonGroup.group: fullArtistsPosition
@@ -172,16 +173,16 @@ KCM.SimpleKCM {
 
         ButtonGroup {
             id: fullAlbumPosition
-            property int value: 3
+            property int value: SongAndArtistText.TextPosition.ThirdLine
         }
 
         RadioButton {
             Kirigami.FormData.label: i18n("Album title position:")
             text: i18n("Hidden")
-            checked: fullAlbumPosition.value == 0
+            checked: fullAlbumPosition.value == SongAndArtistText.TextPosition.Hidden
             onCheckedChanged: () => {
                 if (checked) {
-                    fullAlbumPosition.value = 0
+                    fullAlbumPosition.value = SongAndArtistText.TextPosition.Hidden
                 }
             }
             ButtonGroup.group: fullAlbumPosition
@@ -189,10 +190,10 @@ KCM.SimpleKCM {
 
         RadioButton {
             text: i18n("First line")
-            checked: fullAlbumPosition.value == 1
+            checked: fullAlbumPosition.value == SongAndArtistText.TextPosition.FirstLine
             onCheckedChanged: () => {
                 if (checked) {
-                    fullAlbumPosition.value = 1
+                    fullAlbumPosition.value = SongAndArtistText.TextPosition.FirstLine
                 }
             }
             ButtonGroup.group: fullAlbumPosition
@@ -200,10 +201,10 @@ KCM.SimpleKCM {
 
         RadioButton {
             text: i18n("Second line")
-            checked: fullAlbumPosition.value == 2
+            checked: fullAlbumPosition.value == SongAndArtistText.TextPosition.SecondLine
             onCheckedChanged: () => {
                 if (checked) {
-                    fullAlbumPosition.value = 2
+                    fullAlbumPosition.value = SongAndArtistText.TextPosition.SecondLine
                 }
             }
             ButtonGroup.group: fullAlbumPosition
@@ -211,10 +212,10 @@ KCM.SimpleKCM {
 
         RadioButton {
             text: i18n("Third line")
-            checked: fullAlbumPosition.value == 3
+            checked: fullAlbumPosition.value == SongAndArtistText.TextPosition.ThirdLine
             onCheckedChanged: () => {
                 if (checked) {
-                    fullAlbumPosition.value = 3
+                    fullAlbumPosition.value = SongAndArtistText.TextPosition.ThirdLine
                 }
             }
             ButtonGroup.group: fullAlbumPosition
