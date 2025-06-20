@@ -50,11 +50,11 @@ Item {
 
     property alias font: label.font
 
-    width: overflow ? maxWidth : textMetrics.width // to account for the bolded/italicised text
+    width: overflow ? maxWidth : textMetrics.width
     
     clip: overflow 
-    // only clip if overflowing. this stops the song title from being clipped because it is bolded,
-    // so it is slightly wider than textMetrics.width expects
+    // only clip if overflowing. this stops the song title from being clipped because it is bolded / italicised / whatever,
+    // causing it to be slightly wider than textMetrics.width expects
 
 
     Layout.preferredHeight: label.implicitHeight

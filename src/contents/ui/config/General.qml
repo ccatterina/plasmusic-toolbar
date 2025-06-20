@@ -16,9 +16,6 @@ KCM.SimpleKCM {
     property alias cfg_customFont: fontDialog.fontChosen
     property alias cfg_volumeStep: volumeStepSpinbox.value
 
-    property alias cfg_italiciseAlbumTitle: italiciseAlbumTitle.checked
-    property alias cfg_boldSongTitle: boldSongTitle.checked
-
     Kirigami.FormLayout {
         id: form
 
@@ -111,16 +108,6 @@ KCM.SimpleKCM {
                     fontDialog.open()
                 }
             }
-        }
-
-        CheckBox {
-            id: italiciseAlbumTitle
-            Kirigami.FormData.label: i18n("Italicise album title:")
-        }
-
-        CheckBox {
-            id: boldSongTitle
-            Kirigami.FormData.label: i18n("Bold song title:")
         }
 
         Label {

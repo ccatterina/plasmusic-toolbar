@@ -15,8 +15,6 @@ ColumnLayout {
     property bool splitSongAndArtists: false
     property bool showAlbumTitle: true
     property bool albumBeneathSongAndArtists: true
-    property bool italiciseAlbumTitle: true
-    property bool boldSongTitle: true
 
     property font textFont: Kirigami.Theme.defaultFont
     // property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
@@ -29,11 +27,9 @@ ColumnLayout {
 
     spacing: 0
 
-    // [root.artists, root.title].filter((x) => x).join(" - ")
-
-    property string formattedTitle: boldSongTitle ? `<b>${root.title}</b>` : root.title
+    property string formattedTitle: `${root.title}`
     property string formattedArtists: `${root.artists}`
-    property string formattedAlbum: italiciseAlbumTitle ? `<i>${root.album}</i>` : root.album
+    property string formattedAlbum: `${root.album}`
 
     property string finalFirstText: {
         if (root.showAlbumTitle) {
