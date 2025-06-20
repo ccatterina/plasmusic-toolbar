@@ -24,7 +24,6 @@ KCM.SimpleKCM {
     property alias cfg_songTextFixedWidth: songTextFixedWidth.value
     property alias cfg_useSongTextFixedWidth: useSongTextFixedWidth.checked
     property alias cfg_textScrollingSpeed: textScrollingSpeed.value
-    property alias cfg_separateText: separateText.checked
     property alias cfg_textScrollingBehaviour: scrollingBehaviourRadio.value
     property alias cfg_pauseTextScrollingWhileMediaIsNotPlaying: pauseWhileMediaIsNotPlaying.checked
     property alias cfg_textScrollingEnabled: textScrollingEnabledCheckbox.checked
@@ -35,8 +34,9 @@ KCM.SimpleKCM {
     property alias cfg_songTextAlignment: songTextPositionRadio.value
     property alias cfg_panelIconSizeRatio: panelIconSizeRatio.value
     property alias cfg_panelControlsSizeRatio: panelControlsSizeRatio.value
-    property alias cfg_showAlbumTitle: showAlbumTitle.checked
-    property alias cfg_albumBeneathSongAndArtists: albumBeneathSongAndArtists.checked
+    property alias cfg_artistsPosition: artistsPosition.value
+    property alias cfg_titlePosition: titlePosition.value
+    property alias cfg_albumPosition: albumPosition.value
 
     Kirigami.FormLayout {
         id: form
@@ -129,17 +129,6 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Show skip forward control:")
         }
 
-        CheckBox {
-            id: showAlbumTitle
-            Kirigami.FormData.label: i18n("Show album title:")
-        }
-
-        CheckBox {
-            id: albumBeneathSongAndArtists
-            Kirigami.FormData.label: i18n("Show album title below song and artists:")
-            enabled: showAlbumTitle.checked
-        }
-
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
             Kirigami.FormData.label: i18n("Icon customization")
@@ -185,10 +174,142 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Song text customization")
         }
 
+        // group for title
 
-        CheckBox {
-            id: separateText
-            Kirigami.FormData.label: i18n("Title and artist in separate lines")
+        ButtonGroup {
+            id: titlePosition
+            property int value: 1
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Song title position:")
+            text: i18n("Hidden")
+            checked: titlePosition.value == 0
+            onCheckedChanged: () => {
+                if (checked) {
+                    titlePosition.value = 0
+                }
+            }
+            ButtonGroup.group: titlePosition
+        }
+
+        RadioButton {
+            text: i18n("First line")
+            checked: titlePosition.value == 1
+            onCheckedChanged: () => {
+                if (checked) {
+                    titlePosition.value = 1
+                }
+            }
+            ButtonGroup.group: titlePosition
+        }
+
+        RadioButton {
+            text: i18n("Second line")
+            checked: titlePosition.value == 2
+            onCheckedChanged: () => {
+                if (checked) {
+                    titlePosition.value = 2
+                }
+            }
+            ButtonGroup.group: titlePosition
+        }
+
+
+        // group for artists
+
+        Item {
+            // adds spacing between the groups
+            height: 0.5 * Kirigami.Units.gridUnit
+        }
+
+        ButtonGroup {
+            id: artistsPosition
+            property int value: 1
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Artist names position:")
+            text: i18n("Hidden")
+            checked: artistsPosition.value == 0
+            onCheckedChanged: () => {
+                if (checked) {
+                    artistsPosition.value = 0
+                }
+            }
+            ButtonGroup.group: artistsPosition
+        }
+
+        RadioButton {
+            text: i18n("First line")
+            checked: artistsPosition.value == 1
+            onCheckedChanged: () => {
+                if (checked) {
+                    artistsPosition.value = 1
+                }
+            }
+            ButtonGroup.group: artistsPosition
+        }
+
+        RadioButton {
+            text: i18n("Second line")
+            checked: artistsPosition.value == 2
+            onCheckedChanged: () => {
+                if (checked) {
+                    artistsPosition.value = 2
+                }
+            }
+            ButtonGroup.group: artistsPosition
+        }
+
+        // group for album
+        Item {
+            // adds spacing between the groups
+            height: 0.5 * Kirigami.Units.gridUnit
+        }
+
+        ButtonGroup {
+            id: albumPosition
+            property int value: 0
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Album title position:")
+            text: i18n("Hidden")
+            checked: albumPosition.value == 0
+            onCheckedChanged: () => {
+                if (checked) {
+                    albumPosition.value = 0
+                }
+            }
+            ButtonGroup.group: albumPosition
+        }
+
+        RadioButton {
+            text: i18n("First line")
+            checked: albumPosition.value == 1
+            onCheckedChanged: () => {
+                if (checked) {
+                    albumPosition.value = 1
+                }
+            }
+            ButtonGroup.group: albumPosition
+        }
+
+        RadioButton {
+            text: i18n("Second line")
+            checked: albumPosition.value == 2
+            onCheckedChanged: () => {
+                if (checked) {
+                    albumPosition.value = 2
+                }
+            }
+            ButtonGroup.group: albumPosition
+        }
+
+        Item {
+            // adds spacing between the groups
+            height: 0.5 * Kirigami.Units.gridUnit
         }
 
         CheckBox {
