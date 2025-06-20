@@ -14,6 +14,9 @@ KCM.SimpleKCM {
     property alias cfg_desktopWidgetBg: desktopWidgetBackgroundRadio.value
     property alias cfg_albumPlaceholder: albumPlaceholderDialog.value
     property alias cfg_fullViewTextScrollingSpeed: fullViewTextScrollingSpeed.value
+    property alias cfg_fullArtistsPosition: fullArtistsPosition.value
+    property alias cfg_fullTitlePosition: fullTitlePosition.value
+    property alias cfg_fullAlbumPosition: fullAlbumPosition.value
 
     Kirigami.FormLayout {
         id: form
@@ -44,6 +47,177 @@ KCM.SimpleKCM {
                 Layout.alignment: Qt.AlignHCenter
                 source: albumPlaceholderDialog.value
             }
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("Song Text Customization")
+        }
+
+        // group for title
+
+        ButtonGroup {
+            id: fullTitlePosition
+            property int value: 1
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Song title position:")
+            text: i18n("Hidden")
+            checked: fullTitlePosition.value == 0
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullTitlePosition.value = 0
+                }
+            }
+            ButtonGroup.group: fullTitlePosition
+        }
+
+        RadioButton {
+            text: i18n("First line")
+            checked: fullTitlePosition.value == 1
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullTitlePosition.value = 1
+                }
+            }
+            ButtonGroup.group: fullTitlePosition
+        }
+
+        RadioButton {
+            text: i18n("Second line")
+            checked: fullTitlePosition.value == 2
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullTitlePosition.value = 2
+                }
+            }
+            ButtonGroup.group: fullTitlePosition
+        }
+
+        RadioButton {
+            text: i18n("Third line")
+            checked: fullTitlePosition.value == 3
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullTitlePosition.value = 3
+                }
+            }
+            ButtonGroup.group: fullTitlePosition
+        }
+
+
+        // group for artists
+
+        Item {
+            // adds spacing between the groups
+            height: 0.5 * Kirigami.Units.gridUnit
+        }
+
+        ButtonGroup {
+            id: fullArtistsPosition
+            property int value: 2
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Artists position:")
+            text: i18n("Hidden")
+            checked: fullArtistsPosition.value == 0
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullArtistsPosition.value = 0
+                }
+            }
+            ButtonGroup.group: fullArtistsPosition
+        }
+
+        RadioButton {
+            text: i18n("First line")
+            checked: fullArtistsPosition.value == 1
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullArtistsPosition.value = 1
+                }
+            }
+            ButtonGroup.group: fullArtistsPosition
+        }
+
+        RadioButton {
+            text: i18n("Second line")
+            checked: fullArtistsPosition.value == 2
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullArtistsPosition.value = 2
+                }
+            }
+            ButtonGroup.group: fullArtistsPosition
+        }
+
+        RadioButton {
+            text: i18n("Third line")
+            checked: fullArtistsPosition.value == 3
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullArtistsPosition.value = 3
+                }
+            }
+            ButtonGroup.group: fullArtistsPosition
+        }
+
+        // group for album
+        Item {
+            // adds spacing between the groups
+            height: 0.5 * Kirigami.Units.gridUnit
+        }
+
+        ButtonGroup {
+            id: fullAlbumPosition
+            property int value: 3
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Album title position:")
+            text: i18n("Hidden")
+            checked: fullAlbumPosition.value == 0
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullAlbumPosition.value = 0
+                }
+            }
+            ButtonGroup.group: fullAlbumPosition
+        }
+
+        RadioButton {
+            text: i18n("First line")
+            checked: fullAlbumPosition.value == 1
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullAlbumPosition.value = 1
+                }
+            }
+            ButtonGroup.group: fullAlbumPosition
+        }
+
+        RadioButton {
+            text: i18n("Second line")
+            checked: fullAlbumPosition.value == 2
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullAlbumPosition.value = 2
+                }
+            }
+            ButtonGroup.group: fullAlbumPosition
+        }
+
+        RadioButton {
+            text: i18n("Third line")
+            checked: fullAlbumPosition.value == 3
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullAlbumPosition.value = 3
+                }
+            }
+            ButtonGroup.group: fullAlbumPosition
         }
 
         Kirigami.Separator {

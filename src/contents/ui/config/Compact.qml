@@ -229,7 +229,7 @@ KCM.SimpleKCM {
         }
 
         RadioButton {
-            Kirigami.FormData.label: i18n("Artist names position:")
+            Kirigami.FormData.label: i18n("Artists position:")
             text: i18n("Hidden")
             checked: artistsPosition.value == 0
             onCheckedChanged: () => {

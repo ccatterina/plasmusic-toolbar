@@ -57,6 +57,19 @@ ColumnLayout {
     property string finalFirstText:  firstLineArray.filter((x) => x).join(" - ")
     property string finalSecondText: secondLineArray.filter((x) => x).join(" - ")
 
+    // ONLY USED FOR FULL.qml
+    property var thirdLineArray: {
+        const arr = [];
+
+        if (artistsPosition == 3) arr.push(root.formattedArtists);
+        if (titlePosition   == 3) arr.push(root.formattedTitle);
+        if (albumPosition   == 3) arr.push(root.formattedAlbum);
+
+        return arr;   
+    }
+
+    property string finalThirdText: thirdLineArray.filter((x) => x).join(" - ")
+
     // first row of text (the only row, if there is only one)
     ScrollingText {
         // visible only when necessary
@@ -85,6 +98,23 @@ ColumnLayout {
         maxWidth: root.maxWidth
 
         text: root.finalSecondText
+        
+        scrollingEnabled: root.scrollingEnabled
+        scrollResetOnPause: root.scrollingResetOnPause
+        textColor: root.color
+        forcePauseScrolling: root.forcePauseScrolling
+        Layout.alignment: root.textAlignment
+    }
+
+    ScrollingText {
+        // visible only when necessary
+        visible: text.length !== 0
+        overflowBehaviour: root.scrollingBehaviour
+        font: root.textFont
+        speed: root.scrollingSpeed
+        maxWidth: root.maxWidth
+
+        text: root.finalThirdText
         
         scrollingEnabled: root.scrollingEnabled
         scrollResetOnPause: root.scrollingResetOnPause

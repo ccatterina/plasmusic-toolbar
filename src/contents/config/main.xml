@@ -99,14 +99,23 @@
         <entry name="panelControlsSizeRatio" type="Double">
             <default>0.75</default>
         </entry>
-        <entry name="titleDisplay" type="Int">
+        <entry name="titlePosition" type="Int">
             <default>1</default>
         </entry>
-        <entry name="artistsDisplay" type="Int">
+        <entry name="artistsPosition" type="Int">
             <default>2</default>
         </entry>
-        <entry name="albumDisplay" type="Int">
+        <entry name="albumPosition" type="Int">
             <default>0</default>
+        </entry>
+        <entry name="fullTitlePosition" type="Int">
+            <default>1</default>
+        </entry>
+        <entry name="fullArtistsPosition" type="Int">
+            <default>2</default>
+        </entry>
+        <entry name="fullAlbumPosition" type="Int">
+            <default>3</default>
         </entry>
     </group>
 </kcfg>

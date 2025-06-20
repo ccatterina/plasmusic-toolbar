@@ -80,9 +80,9 @@ Item {
             album: player.album
             textFont: baseFont
             maxWidth: 250
-            titlePosition: 1
-            artistsPosition: 2
-            albumPosition: 2
+            titlePosition: plasmoid.configuration.fullTitlePosition
+            artistsPosition: plasmoid.configuration.fullArtistsPosition
+            albumPosition: plasmoid.configuration.fullAlbumPosition
         }
 
         VolumeBar {
