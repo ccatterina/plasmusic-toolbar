@@ -4,7 +4,6 @@ import org.kde.plasma.components as PlasmaComponents3
 import org.kde.coreaddons 1.0 as KCoreAddons
 
 Item {
-    property bool disableUpdatePosition: false;
     property double songPosition: 0;  // Last song position detected in microseconds
     property double songLength: 0;  // Length of the entire song in microseconds;
     property bool playing: false;
@@ -34,9 +33,10 @@ Item {
         spacing: 0
 
         PlasmaComponents3.Slider {
-            Layout.fillWidth: true
             id: timeTrackSlider
-            value: songPosition / songLength
+
+            Layout.fillWidth: true
+            value: container.songPosition / container.songLength
             property bool changingPosition: false
 
             onPressedChanged: () => {
@@ -56,12 +56,26 @@ Item {
                 }
                 changingPosition = false
             }
+
+            MouseArea {
+                id: sliderDisabler
+                enabled: conainer.songLength <= 0
+
+                anchors.fill: parent
+                onWheel: (wheel) => { wheel.accepted = true }
+                onClicked: (mouse) => { mouse.accepted = true }
+                onPressed: (mouse) => { mouse.accepted = true }
+            }
         }
 
         RowLayout {
             Layout.preferredWidth: parent.width
             id: timeLabels
             function formatDuration(duration) {
+                if (container.songLength <= 0) {
+                    return "-:--"
+                }
+
                 const hideHours = container.songLength < 3600000000 // 1 hour in microseconds
                 const durationFormatOption = hideHours ? KCoreAddons.FormatTypes.FoldHours : KCoreAddons.FormatTypes.DefaultDuration
                 return KCoreAddons.Format.formatDuration(duration / 1000, durationFormatOption)
