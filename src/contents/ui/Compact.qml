@@ -205,8 +205,6 @@ Item {
         }
 
         GridLayout {
-            visible: plasmoid.configuration.commandsInPanel
-
             columns: horizontal ? grid.children.length : 1
             rows: horizontal ? 1 : grid.children.length
 

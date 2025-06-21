@@ -24,9 +24,6 @@
         <entry name="maxSongWidthInPanel" type="Int">
             <default>200</default>
         </entry>
-        <entry name="commandsInPanel" type="Bool">
-            <default>true</default>
-        </entry>
         <entry name="skipBackwardControlInPanel" type="Bool">
             <default>true</default>
         </entry>
