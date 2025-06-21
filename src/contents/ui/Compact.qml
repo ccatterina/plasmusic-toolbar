@@ -161,7 +161,6 @@ Item {
                 Layout.fillWidth: !horizontal
                 Layout.preferredHeight: !horizontal ? songAndArtistText.width : null
                 Layout.preferredWidth: horizontal ? songAndArtistText.width : null
-                //                                               the +10 is for padding
 
                 SongAndArtistText {
                     id: songAndArtistText
