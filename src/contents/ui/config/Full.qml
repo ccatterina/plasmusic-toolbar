@@ -96,17 +96,6 @@ KCM.SimpleKCM {
             ButtonGroup.group: fullTitlePosition
         }
 
-        RadioButton {
-            text: i18n("Third line")
-            checked: fullTitlePosition.value == SongAndArtistText.TextPosition.SecondLine
-            onCheckedChanged: () => {
-                if (checked) {
-                    fullTitlePosition.value = SongAndArtistText.TextPosition.SecondLine
-                }
-            }
-            ButtonGroup.group: fullTitlePosition
-        }
-
 
         // group for artists
 
@@ -154,17 +143,6 @@ KCM.SimpleKCM {
             ButtonGroup.group: fullArtistsPosition
         }
 
-        RadioButton {
-            text: i18n("Third line")
-            checked: fullArtistsPosition.value == SongAndArtistText.TextPosition.SecondLine
-            onCheckedChanged: () => {
-                if (checked) {
-                    fullArtistsPosition.value = SongAndArtistText.TextPosition.SecondLine
-                }
-            }
-            ButtonGroup.group: fullArtistsPosition
-        }
-
         // group for album
         Item {
             // adds spacing between the groups
@@ -201,17 +179,6 @@ KCM.SimpleKCM {
 
         RadioButton {
             text: i18n("Second line")
-            checked: fullAlbumPosition.value == SongAndArtistText.TextPosition.SecondLine
-            onCheckedChanged: () => {
-                if (checked) {
-                    fullAlbumPosition.value = SongAndArtistText.TextPosition.SecondLine
-                }
-            }
-            ButtonGroup.group: fullAlbumPosition
-        }
-
-        RadioButton {
-            text: i18n("Third line")
             checked: fullAlbumPosition.value == SongAndArtistText.TextPosition.SecondLine
             onCheckedChanged: () => {
                 if (checked) {
