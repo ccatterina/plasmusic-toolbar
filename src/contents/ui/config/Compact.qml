@@ -14,7 +14,6 @@ KCM.SimpleKCM {
     property alias cfg_useAlbumCoverAsPanelIcon: useAlbumCoverAsPanelIcon.checked
     property alias cfg_fallbackToIconWhenArtNotAvailable: fallbackToIconWhenArtNotAvailable.checked
     property alias cfg_albumCoverRadius: albumCoverRadius.value
-    property alias cfg_commandsInPanel: commandsInPanel.checked
     property alias cfg_skipBackwardControlInPanel: skipBackwardControlInPanel.checked
     property alias cfg_playPauseControlInPanel: playPauseControlInPanel.checked
     property alias cfg_skipForwardControlInPanel: skipForwardControlInPanel.checked
@@ -107,11 +106,6 @@ KCM.SimpleKCM {
         CheckBox {
             id: songTextInPanel
             Kirigami.FormData.label: i18n("Show song text:")
-        }
-
-        CheckBox {
-            id: commandsInPanel
-            Kirigami.FormData.label: i18n("Show playback controls (⚠ deprecated):")
         }
 
         CheckBox {
