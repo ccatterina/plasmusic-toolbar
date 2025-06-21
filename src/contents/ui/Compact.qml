@@ -178,11 +178,13 @@ Item {
                         }
                         return plasmoid.configuration.maxSongWidthInPanel
                     }
-                    splitSongAndArtists: plasmoid.configuration.separateText
                     scrollingBehaviour: plasmoid.configuration.textScrollingBehaviour
                     scrollingSpeed: plasmoid.configuration.textScrollingSpeed
                     scrollingResetOnPause: plasmoid.configuration.textScrollingResetOnPause
                     scrollingEnabled: plasmoid.configuration.textScrollingEnabled
+                    titlePosition: plasmoid.configuration.titlePosition
+                    artistsPosition: plasmoid.configuration.artistsPosition
+                    albumPosition: plasmoid.configuration.albumPosition
                     forcePauseScrolling: {
                         if (!plasmoid.configuration.pauseTextScrollingWhileMediaIsNotPlaying) {
                             return false
@@ -193,6 +195,7 @@ Item {
                     color: foregroundColor
                     title: player.title
                     artists: player.artists
+                    album: player.album
                     textAlignment: songGrid.textAlignment
                 }
             }
