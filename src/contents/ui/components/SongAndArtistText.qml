@@ -75,7 +75,7 @@ ColumnLayout {
         // visible only when necessary
         visible: text.length !== 0
         overflowBehaviour: root.scrollingBehaviour
-        font: root.boldTextFont
+        font: finalSecondText.length > 0 ? root.boldTextFont : root.textFont;
         speed: root.scrollingSpeed
         maxWidth: root.maxWidth
 
