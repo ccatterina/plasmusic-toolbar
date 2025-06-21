@@ -98,10 +98,10 @@ KCM.SimpleKCM {
 
         RadioButton {
             text: i18n("Third line")
-            checked: fullTitlePosition.value == SongAndArtistText.TextPosition.ThirdLine
+            checked: fullTitlePosition.value == SongAndArtistText.TextPosition.SecondLine
             onCheckedChanged: () => {
                 if (checked) {
-                    fullTitlePosition.value = SongAndArtistText.TextPosition.ThirdLine
+                    fullTitlePosition.value = SongAndArtistText.TextPosition.SecondLine
                 }
             }
             ButtonGroup.group: fullTitlePosition
@@ -156,10 +156,10 @@ KCM.SimpleKCM {
 
         RadioButton {
             text: i18n("Third line")
-            checked: fullArtistsPosition.value == SongAndArtistText.TextPosition.ThirdLine
+            checked: fullArtistsPosition.value == SongAndArtistText.TextPosition.SecondLine
             onCheckedChanged: () => {
                 if (checked) {
-                    fullArtistsPosition.value = SongAndArtistText.TextPosition.ThirdLine
+                    fullArtistsPosition.value = SongAndArtistText.TextPosition.SecondLine
                 }
             }
             ButtonGroup.group: fullArtistsPosition
@@ -173,7 +173,7 @@ KCM.SimpleKCM {
 
         ButtonGroup {
             id: fullAlbumPosition
-            property int value: SongAndArtistText.TextPosition.ThirdLine
+            property int value: SongAndArtistText.TextPosition.SecondLine
         }
 
         RadioButton {
@@ -212,10 +212,10 @@ KCM.SimpleKCM {
 
         RadioButton {
             text: i18n("Third line")
-            checked: fullAlbumPosition.value == SongAndArtistText.TextPosition.ThirdLine
+            checked: fullAlbumPosition.value == SongAndArtistText.TextPosition.SecondLine
             onCheckedChanged: () => {
                 if (checked) {
-                    fullAlbumPosition.value = SongAndArtistText.TextPosition.ThirdLine
+                    fullAlbumPosition.value = SongAndArtistText.TextPosition.SecondLine
                 }
             }
             ButtonGroup.group: fullAlbumPosition

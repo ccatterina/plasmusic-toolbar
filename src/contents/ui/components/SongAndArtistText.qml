@@ -9,8 +9,7 @@ ColumnLayout {
     enum TextPosition {
         Hidden,
         FirstLine,
-        SecondLine,
-        ThirdLine
+        SecondLine
     }
 
     property var maxWidth: undefined
@@ -56,19 +55,8 @@ ColumnLayout {
         return arr;        
     }
 
-    property var thirdLineArray: {
-        const arr = [];
-
-        if (artistsPosition == SongAndArtistText.TextPosition.ThirdLine) arr.push(root.artists);
-        if (albumPosition   == SongAndArtistText.TextPosition.ThirdLine) arr.push(root.album);
-        if (titlePosition   == SongAndArtistText.TextPosition.ThirdLine) arr.push(root.title);
-
-        return arr;   
-    }
-
     property string finalFirstText:  firstLineArray.filter((x) => x).join(" - ")
     property string finalSecondText: secondLineArray.filter((x) => x).join(" - ")
-    property string finalThirdText: thirdLineArray.filter((x) => x).join(" - ")
 
     // first row of text (the only row, if there is only one)
     ScrollingText {
@@ -98,23 +86,6 @@ ColumnLayout {
         maxWidth: root.maxWidth
 
         text: root.finalSecondText
-        
-        scrollingEnabled: root.scrollingEnabled
-        scrollResetOnPause: root.scrollingResetOnPause
-        textColor: root.color
-        forcePauseScrolling: root.forcePauseScrolling
-        Layout.alignment: root.textAlignment
-    }
-
-    ScrollingText {
-        // visible only when necessary
-        visible: text.length !== 0
-        overflowBehaviour: root.scrollingBehaviour
-        font: root.textFont
-        speed: root.scrollingSpeed
-        maxWidth: root.maxWidth
-
-        text: root.finalThirdText
         
         scrollingEnabled: root.scrollingEnabled
         scrollResetOnPause: root.scrollingResetOnPause
