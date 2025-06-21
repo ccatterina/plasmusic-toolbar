@@ -57,14 +57,18 @@ Item {
                 changingPosition = false
             }
 
-            MouseArea {
-                id: sliderDisabler
-                enabled: conainer.songLength <= 0
-
+            // Disable the slider events when songLength is 0 or less
+            Loader {
                 anchors.fill: parent
-                onWheel: (wheel) => { wheel.accepted = true }
-                onClicked: (mouse) => { mouse.accepted = true }
-                onPressed: (mouse) => { mouse.accepted = true }
+                sourceComponent: container.songLength <= 0 ? sliderDisabler : null
+                Component {
+                    id: sliderDisabler
+                    MouseArea {
+                        onWheel: (wheel) => { wheel.accepted = true }
+                        onClicked: (mouse) => { mouse.accepted = true }
+                        onPressed: (mouse) => { mouse.accepted = true }
+                    }
+                }
             }
         }
 
