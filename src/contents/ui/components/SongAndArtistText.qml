@@ -20,7 +20,6 @@ ColumnLayout {
     property var scrollingEnabled: undefined
     property var forcePauseScrolling: undefined
 
-    // 0 is hidden, 1 is first line, 2 is second line
 
     property int titlePosition: SongAndArtistText.TextPosition.FirstLine
     property int artistsPosition: SongAndArtistText.TextPosition.FirstLine
