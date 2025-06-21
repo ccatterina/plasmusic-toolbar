@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.0.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.7.0...v3.0.0) (2025-06-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove commandsInPanel option ([#202](https://github.com/ccatterina/plasmusic-toolbar/issues/202))
+* option to split title and artists in multiple lines (`separateText`) has been removed. ([#200](https://github.com/ccatterina/plasmusic-toolbar/issues/200))
+
+### Features
+
+* Add an option to display album title and configure where it displays ([#200](https://github.com/ccatterina/plasmusic-toolbar/issues/200)) ([794ddbb](https://github.com/ccatterina/plasmusic-toolbar/commit/794ddbb8e8dd473f8fd1227ecb499b0b1d705bbe))
+* remove commandsInPanel option ([#202](https://github.com/ccatterina/plasmusic-toolbar/issues/202)) ([ee9fa3e](https://github.com/ccatterina/plasmusic-toolbar/commit/ee9fa3eabce22e47f93ee8292eb5a28bd11a7b2e))
+
+
+### Bug Fixes
+
+* disable track slider when songLength &lt;= 0 ([#201](https://github.com/ccatterina/plasmusic-toolbar/issues/201)) ([381117e](https://github.com/ccatterina/plasmusic-toolbar/commit/381117e0af1b364da41c07cba60388fa854fb684))
+
 ## [2.7.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.6.0...v2.7.0) (2025-06-19)
 
 
