@@ -36,6 +36,7 @@ KCM.SimpleKCM {
     property alias cfg_artistsPosition: artistsPosition.value
     property alias cfg_titlePosition: titlePosition.value
     property alias cfg_albumPosition: albumPosition.value
+    property alias cfg_compactTruncatedTextStyle: compactTruncatedTextStyle.value
 
     Kirigami.FormLayout {
         id: form
@@ -324,6 +325,45 @@ KCM.SimpleKCM {
             to: 1000
             Kirigami.FormData.label: i18n("max width:")
             enabled: !useSongTextFixedWidth.checked && songTextInPanel.checked && fillAvailableSpaceCheckbox
+        }
+
+        ButtonGroup {
+            id: compactTruncatedTextStyle
+            property int value: ScrollingText.TruncateStyle.Fade
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Truncated style:")
+            text: i18n("Elide")
+            checked: compactTruncatedTextStyle.value == ScrollingText.TruncateStyle.Elide
+            onCheckedChanged: () => {
+                if (checked) {
+                    compactTruncatedTextStyle.value = ScrollingText.TruncateStyle.Elide
+                }
+            }
+            ButtonGroup.group: compactTruncatedTextStyle
+        }
+
+        RadioButton {
+            text: i18n("Fade")
+            checked: compactTruncatedTextStyle.value == ScrollingText.TruncateStyle.Fade
+            onCheckedChanged: () => {
+                if (checked) {
+                    compactTruncatedTextStyle.value = ScrollingText.TruncateStyle.Fade
+                }
+            }
+            ButtonGroup.group: compactTruncatedTextStyle
+        }
+
+        RadioButton {
+            text: i18n("None")
+            checked: compactTruncatedTextStyle.value == ScrollingText.TruncateStyle.None
+            onCheckedChanged: () => {
+                if (checked) {
+                    compactTruncatedTextStyle.value = ScrollingText.TruncateStyle.None
+                }
+            }
+            ButtonGroup.group: compactTruncatedTextStyle
         }
 
         Kirigami.Separator {

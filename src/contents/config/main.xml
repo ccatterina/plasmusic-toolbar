@@ -123,5 +123,8 @@
         <entry name="showWhenNoMedia" type="Bool">
             <default>False</default>
         </entry>
+        <entry name="compactTruncatedTextStyle" type="Int">
+            <default>1</default>
+        </entry>
     </group>
 </kcfg>

@@ -18,6 +18,7 @@ ColumnLayout {
     property var scrollingResetOnPause: undefined
     property var scrollingEnabled: undefined
     property var forcePauseScrolling: undefined
+    property var truncateStyle: undefined
 
     property string noMediaText: plasmoid.configuration.noMediaText
 
@@ -74,6 +75,7 @@ ColumnLayout {
         scrollResetOnPause: root.scrollingResetOnPause
         textColor: root.color
         forcePauseScrolling: root.forcePauseScrolling
+        truncateStyle: root.truncateStyle
         Layout.alignment: root.textAlignment
     }
 
@@ -92,6 +94,7 @@ ColumnLayout {
         scrollResetOnPause: root.scrollingResetOnPause
         textColor: root.color
         forcePauseScrolling: root.forcePauseScrolling
+        truncateStyle: root.truncateStyle
         Layout.alignment: root.textAlignment
     }
 }
