@@ -19,6 +19,7 @@ ColumnLayout {
     property var scrollingEnabled: undefined
     property var forcePauseScrolling: undefined
 
+    property string noMediaText: plasmoid.configuration.noMediaText
 
     property int titlePosition: SongAndArtistText.TextPosition.FirstLine
     property int artistsPosition: SongAndArtistText.TextPosition.FirstLine
@@ -67,7 +68,7 @@ ColumnLayout {
         speed: root.scrollingSpeed
         maxWidth: root.maxWidth
 
-        text: root.finalFirstText
+        text: root.finalFirstText && root.finalSecondText ? root.finalFirstText : noMediaText
 
         scrollingEnabled: root.scrollingEnabled
         scrollResetOnPause: root.scrollingResetOnPause

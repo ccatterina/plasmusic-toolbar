@@ -10,11 +10,12 @@ import org.kde.plasma.private.mpris as Mpris
 PlasmoidItem {
     id: widget
 
-    Plasmoid.status: PlasmaCore.Types.HiddenStatus
+    Plasmoid.status: showWhenNoMedia ? PlasmaCore.Types.ActiveStatus : player.ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
     Plasmoid.backgroundHints: plasmoid.configuration.desktopWidgetBg
 
     readonly property int formFactor: Plasmoid.formFactor
     readonly property int location: Plasmoid.location
+    readonly property bool showWhenNoMedia: plasmoid.configuration.showWhenNoMedia
 
     readonly property font baseFont: plasmoid.configuration.useCustomFont ? plasmoid.configuration.customFont : Kirigami.Theme.defaultFont
 
@@ -29,6 +30,10 @@ PlasmoidItem {
         return text
     }
 
+    onShowWhenNoMediaChanged: {
+        Plasmoid.status = showWhenNoMedia ? PlasmaCore.Types.ActiveStatus : player.ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
+    }
+
     Player {
         id: player
         sourceIdentity: {
@@ -37,9 +42,10 @@ PlasmoidItem {
             }
         }
         onReadyChanged: {
-          Plasmoid.status = player.ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
-          console.debug(`Player ready changed: ${player.ready} -> plasmoid status changed: ${Plasmoid.status}`)
+            Plasmoid.status = showWhenNoMedia ? PlasmaCore.Types.ActiveStatus : player.ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus;
+            console.debug(`Player ready changed: ${player.ready} -> plasmoid status changed: ${Plasmoid.status}`)
         }
+
     }
 
     compactRepresentation: Compact {}

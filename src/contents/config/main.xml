@@ -114,5 +114,11 @@
         <entry name="fullAlbumPosition" type="Int">
             <default>2</default>
         </entry>
+        <entry name="noMediaText" type="String">
+            <default>No media playing</default>
+        </entry>
+        <entry name="showWhenNoMedia" type="Bool">
+            <default>False</default>
+        </entry>
     </group>
 </kcfg>
