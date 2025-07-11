@@ -121,17 +121,17 @@ KCM.SimpleKCM {
 
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
-            Kirigami.FormData.label: i18n("No media playing")
+            Kirigami.FormData.label: i18n("No media found behavior")
         }
 
         CheckBox {
             id:showWhenNoMedia
-            Kirigami.FormData.label: i18n("Show widget when no media playing:")
+            Kirigami.FormData.label: i18n("Show widget when no media found:")
         }
 
         TextField {
             id: noMediaText
-            Kirigami.FormData.label: i18n("Text displayed when no media playing:")
+            Kirigami.FormData.label: i18n("Text displayed when no media found:")
             enabled: showWhenNoMedia.checked
         }
 

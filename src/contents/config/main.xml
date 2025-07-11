@@ -115,7 +115,7 @@
             <default>2</default>
         </entry>
         <entry name="noMediaText" type="String">
-            <default>No media playing</default>
+            <default>No media found</default>
         </entry>
         <entry name="showWhenNoMedia" type="Bool">
             <default>False</default>
