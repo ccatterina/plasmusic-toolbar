@@ -68,7 +68,7 @@ ColumnLayout {
         speed: root.scrollingSpeed
         maxWidth: root.maxWidth
 
-        text: root.finalFirstText && root.finalSecondText ? root.finalFirstText : noMediaText
+        text: root.finalFirstText || root.finalSecondText ? root.finalFirstText : noMediaText
 
         scrollingEnabled: root.scrollingEnabled
         scrollResetOnPause: root.scrollingResetOnPause
