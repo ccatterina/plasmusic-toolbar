@@ -10,7 +10,7 @@ import org.kde.plasma.private.mpris as Mpris
 PlasmoidItem {
     id: widget
 
-    Plasmoid.status: showWhenNoMedia ? PlasmaCore.Types.ActiveStatus : player.ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
+    Plasmoid.status: (showWhenNoMedia || player.ready) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
     Plasmoid.backgroundHints: plasmoid.configuration.desktopWidgetBg
 
     readonly property int formFactor: Plasmoid.formFactor
@@ -31,7 +31,7 @@ PlasmoidItem {
     }
 
     onShowWhenNoMediaChanged: {
-        Plasmoid.status = showWhenNoMedia ? PlasmaCore.Types.ActiveStatus : player.ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
+        Plasmoid.status = (showWhenNoMedia || player.ready) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
     }
 
     Player {
@@ -42,7 +42,7 @@ PlasmoidItem {
             }
         }
         onReadyChanged: {
-            Plasmoid.status = showWhenNoMedia ? PlasmaCore.Types.ActiveStatus : player.ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus;
+            Plasmoid.status = (showWhenNoMedia || player.ready) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
             console.debug(`Player ready changed: ${player.ready} -> plasmoid status changed: ${Plasmoid.status}`)
         }
 
