@@ -31,7 +31,7 @@ PlasmoidItem {
     }
 
     onShowWhenNoMediaChanged: {
-        Plasmoid.status = showWhenNoMedia ? PlasmaCore.Types.ActiveStatus : player.ready ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
+        Plasmoid.status = (showWhenNoMedia || player.ready) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
     }
 
     Player {
