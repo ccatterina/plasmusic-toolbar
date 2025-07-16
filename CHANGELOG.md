@@ -1,5 +1,90 @@
 # Changelog
 
+## [4.0.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.1.0...v4.0.0) (2025-07-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove commandsInPanel option ([#202](https://github.com/ccatterina/plasmusic-toolbar/issues/202))
+* Add an option to display album title and configure where it displays ([#200](https://github.com/ccatterina/plasmusic-toolbar/issues/200))
+* Brake old source config, the preferred source must be reconfigured with the new UI.
+* Porting to KDE Plasma 6
+
+### Features
+
+* add ability to choose font style ([0d72980](https://github.com/ccatterina/plasmusic-toolbar/commit/0d72980811abb7cdaa4c687054c3bbe15d4e52f0)), closes [#94](https://github.com/ccatterina/plasmusic-toolbar/issues/94)
+* Add an option to display album title and configure where it displays ([#200](https://github.com/ccatterina/plasmusic-toolbar/issues/200)) ([794ddbb](https://github.com/ccatterina/plasmusic-toolbar/commit/794ddbb8e8dd473f8fd1227ecb499b0b1d705bbe))
+* add an option to make the widget bg transparent (desktop) ([f8d0a26](https://github.com/ccatterina/plasmusic-toolbar/commit/f8d0a266cc4ff4ff23afae4dff87f9a1e3a8ef5e)), closes [#122](https://github.com/ccatterina/plasmusic-toolbar/issues/122)
+* add an option to use album cover as panel icon ([280ae68](https://github.com/ccatterina/plasmusic-toolbar/commit/280ae681e5dced3561c8cf9444fc4da9aa0c3283)), closes [#24](https://github.com/ccatterina/plasmusic-toolbar/issues/24)
+* add new scrolling options for song text overflow ([b97cda3](https://github.com/ccatterina/plasmusic-toolbar/commit/b97cda3e4d20434cadbdf62a2f79c58ba68ea5f8))
+* Add option to change volume step size ([7f850bc](https://github.com/ccatterina/plasmusic-toolbar/commit/7f850bcf8e03c5bf2169710f00905ee910ea20fd))
+* album cover placeholder ([e1b41ac](https://github.com/ccatterina/plasmusic-toolbar/commit/e1b41ac413c5515d1556466ee516e138faf7b834)), closes [#17](https://github.com/ccatterina/plasmusic-toolbar/issues/17)
+* align multi line song and artist text ([#198](https://github.com/ccatterina/plasmusic-toolbar/issues/198)) ([b7aa65e](https://github.com/ccatterina/plasmusic-toolbar/commit/b7aa65eabce0b4fcb9ee612554c6b43443b4f9d6))
+* enable/disable controls according to datasource properties ([52ab70b](https://github.com/ccatterina/plasmusic-toolbar/commit/52ab70bf7911cbdd9f96685bf787a5399f5c4d17)), closes [#10](https://github.com/ccatterina/plasmusic-toolbar/issues/10)
+* fallback to panel icon if cover image doesn't load ([577582a](https://github.com/ccatterina/plasmusic-toolbar/commit/577582a6eac008a1aafcbe61b2a2a1f00308450d))
+* fallback to selected icon when no album cover available ([f1502ad](https://github.com/ccatterina/plasmusic-toolbar/commit/f1502ade5a50097568183e481344517fda3bb22d))
+* fill available space in the panel ([90c683f](https://github.com/ccatterina/plasmusic-toolbar/commit/90c683f18d25dd9cea533571ba5e45db7574453a)), closes [#142](https://github.com/ccatterina/plasmusic-toolbar/issues/142)
+* hide icon in panel ([f0d4d2d](https://github.com/ccatterina/plasmusic-toolbar/commit/f0d4d2d38c32159b9ab55521a1fb7b31047c2339))
+* hide song text in panel ([8a22dc3](https://github.com/ccatterina/plasmusic-toolbar/commit/8a22dc33fc0cb9ddfd2ac438f2a26ff6374c952d))
+* improve album cover icon quality ([484d236](https://github.com/ccatterina/plasmusic-toolbar/commit/484d2369e6b6c6169449e69ce4f24b71234bc023)), closes [#178](https://github.com/ccatterina/plasmusic-toolbar/issues/178)
+* improve preferred source config ([987106d](https://github.com/ccatterina/plasmusic-toolbar/commit/987106d0cf60f667af3168cf56db110079c7a4b8)), closes [#1078](https://github.com/ccatterina/plasmusic-toolbar/issues/1078)
+* improve settings labels and layout ([cdf3f06](https://github.com/ccatterina/plasmusic-toolbar/commit/cdf3f06a60d0c5d9f8a7d7d34c922cf5fc869ec6))
+* increase panel icon and controls size ratio limit to 1 ([2ea7c28](https://github.com/ccatterina/plasmusic-toolbar/commit/2ea7c28bb6471d112fd2daf09073716ed7733876))
+* Mouse wheel click to play/pause and scroll to adjust volume ([b2718d9](https://github.com/ccatterina/plasmusic-toolbar/commit/b2718d91ea421a566758dfeab4a288ee92754d67))
+* new configuration page arrangement ([e3e55df](https://github.com/ccatterina/plasmusic-toolbar/commit/e3e55dfeb88221451298cc725c6a717a74c036bd))
+* option to change radius of colored background ([d164517](https://github.com/ccatterina/plasmusic-toolbar/commit/d1645175ebf7a44eb96f73d7003eb60c0263645f))
+* option to tint widget with cover image dominant color ([081f169](https://github.com/ccatterina/plasmusic-toolbar/commit/081f1699f1c3d97f3aa1720661b18cf72543496c))
+* panel controls and icon size configuration ([13e19ef](https://github.com/ccatterina/plasmusic-toolbar/commit/13e19ef991742240cae937c86534ab61d1e66a26))
+* pause scrolling while media is not playing ([2d4ab37](https://github.com/ccatterina/plasmusic-toolbar/commit/2d4ab37c0ffb68ecaf9e31207b23317c260adca4))
+* Porting to KDE Plasma 6 ([d8a35c9](https://github.com/ccatterina/plasmusic-toolbar/commit/d8a35c90db5a6c052a051b56076a0fc2e5ec030d)), closes [#16](https://github.com/ccatterina/plasmusic-toolbar/issues/16)
+* radius with album image ([48a363b](https://github.com/ccatterina/plasmusic-toolbar/commit/48a363b83a390a601c035392c1f901a627bec79b))
+* Raise player on cover click in full view or ctrl+click in panel ([d24b2fa](https://github.com/ccatterina/plasmusic-toolbar/commit/d24b2fa706f5cdb98031c5786edf7f6dbee171ae)), closes [#14](https://github.com/ccatterina/plasmusic-toolbar/issues/14)
+* remove commandsInPanel option ([#202](https://github.com/ccatterina/plasmusic-toolbar/issues/202)) ([ee9fa3e](https://github.com/ccatterina/plasmusic-toolbar/commit/ee9fa3eabce22e47f93ee8292eb5a28bd11a7b2e))
+* remove default album placeholder ([2cd18f3](https://github.com/ccatterina/plasmusic-toolbar/commit/2cd18f382110ff60014824142aeefffbc83d4a9d))
+* remove space between toolbar components ([af8c41f](https://github.com/ccatterina/plasmusic-toolbar/commit/af8c41f63d309a4d370c4c00c05669164f14088e))
+* reorganize configuration page ([aaf7605](https://github.com/ccatterina/plasmusic-toolbar/commit/aaf7605160b5022b411d93b6883bdf39c2595fa3))
+* scale widget content with panel ([b7c4ed1](https://github.com/ccatterina/plasmusic-toolbar/commit/b7c4ed1ff6dd5d224354c3aa05289f8b2612e541))
+* scrolling speed config for full view ([9d40fc9](https://github.com/ccatterina/plasmusic-toolbar/commit/9d40fc9b62b0e361b188b00736b5044c9b07d3b5))
+* show option for each playback control ([883f61c](https://github.com/ccatterina/plasmusic-toolbar/commit/883f61c59af9f0bff2c1607e7b704d8039ebadf8))
+* show placeholder image when album art loading fails ([#194](https://github.com/ccatterina/plasmusic-toolbar/issues/194)) ([eeb5de3](https://github.com/ccatterina/plasmusic-toolbar/commit/eeb5de3fa52e2dabc42801cb18682788b7ae8d5d))
+* Show title and artist in Tooltip ([9302daf](https://github.com/ccatterina/plasmusic-toolbar/commit/9302dafe6c62910b7fb436cb412161af998b2c8b))
+* smoother text scrolling animation ([619d3b0](https://github.com/ccatterina/plasmusic-toolbar/commit/619d3b01335d3dabf6d049245f21b8e50ea79279)), closes [#9](https://github.com/ccatterina/plasmusic-toolbar/issues/9)
+* song text fixed width ([2235456](https://github.com/ccatterina/plasmusic-toolbar/commit/22354564eddc0b42f99b76f6dcac5d18c4373cb6))
+* text scrolling speed configuration ([28f7a9d](https://github.com/ccatterina/plasmusic-toolbar/commit/28f7a9d26199f4d016cef4f66463aa47d0721ff5)), closes [#1](https://github.com/ccatterina/plasmusic-toolbar/issues/1)
+* Text scrolling: allow to disable and reset on pause ([e61fe90](https://github.com/ccatterina/plasmusic-toolbar/commit/e61fe9047d6cb0d2510e6c566acfbaca6e5f5afe))
+* use highlightColor instead of positiveTextColor ([d7e06c8](https://github.com/ccatterina/plasmusic-toolbar/commit/d7e06c8b52f5fe5803700387478cdb1905472ddd))
+* vertical panel support ([93a1a3b](https://github.com/ccatterina/plasmusic-toolbar/commit/93a1a3b44b53ee85c481a8d3231fa66d9537cb8f))
+
+
+### Bug Fixes
+
+* currentPlayer existance check ([f462e02](https://github.com/ccatterina/plasmusic-toolbar/commit/f462e026cf36ef7b752ecf806f28eb77eff8c9a8))
+* disable track slider when songLength &lt;= 0 ([#201](https://github.com/ccatterina/plasmusic-toolbar/issues/201)) ([381117e](https://github.com/ccatterina/plasmusic-toolbar/commit/381117e0af1b364da41c07cba60388fa854fb684))
+* Enable song text hover behaviours for touchpad ([74c6ddc](https://github.com/ccatterina/plasmusic-toolbar/commit/74c6ddcb42f9c68fcfca9d820c88ff7783918046)), closes [#83](https://github.com/ccatterina/plasmusic-toolbar/issues/83)
+* handle datasource reconnection when the preferred source changes ([5a8e967](https://github.com/ccatterina/plasmusic-toolbar/commit/5a8e9677a5d143ef5a2ca568c30dec7b80cadd09))
+* handle missing datasource properties ([5ed31ed](https://github.com/ccatterina/plasmusic-toolbar/commit/5ed31ed39e783068e24a5e9cc5a8e29d1af59ac9)), closes [#13](https://github.com/ccatterina/plasmusic-toolbar/issues/13)
+* Limit minimum expanded representation size to content ([657546c](https://github.com/ccatterina/plasmusic-toolbar/commit/657546c63da297f2d93ced7aecee13bf1f07bb6b)), closes [#102](https://github.com/ccatterina/plasmusic-toolbar/issues/102)
+* plasmashell crashing after commit 0844cbc3d ([0e96fb9](https://github.com/ccatterina/plasmusic-toolbar/commit/0e96fb9fbbf3ce8ed6b7f330adfe8afe6cf0d053))
+* plasmusic overlaps with other widgets in the panel ([809473e](https://github.com/ccatterina/plasmusic-toolbar/commit/809473ef211f30e24e03f5d34d1241f9c11f7ece))
+* Player sources handling improvements ([0844cbc](https://github.com/ccatterina/plasmusic-toolbar/commit/0844cbc3d390a661121c01d62d17c97a758c0453)), closes [#60](https://github.com/ccatterina/plasmusic-toolbar/issues/60)
+* preferred source combobox shows always [@multiplex](https://github.com/multiplex) ([279dd84](https://github.com/ccatterina/plasmusic-toolbar/commit/279dd84a9c35f980dad188f3486726a137f4fc40)), closes [#3](https://github.com/ccatterina/plasmusic-toolbar/issues/3)
+* preserve album image aspect ratio ([cdf137d](https://github.com/ccatterina/plasmusic-toolbar/commit/cdf137d0282cdfc0be38ab16d7f904495fe4dd63)), closes [#21](https://github.com/ccatterina/plasmusic-toolbar/issues/21)
+* remove third line option for text in full view ([#204](https://github.com/ccatterina/plasmusic-toolbar/issues/204)) ([5f537b7](https://github.com/ccatterina/plasmusic-toolbar/commit/5f537b74311e1ec3a2ca917354d9c1f54dab290d))
+* resolve TrackPositionSlider always being disabled ([#205](https://github.com/ccatterina/plasmusic-toolbar/issues/205)) ([6661eba](https://github.com/ccatterina/plasmusic-toolbar/commit/6661eba4bc20d140101e11d424ba469494a40269))
+* responsive controls size in compact representation ([bdfc1f4](https://github.com/ccatterina/plasmusic-toolbar/commit/bdfc1f428b9706cbffcaf0809640aa114a7ff89d)), closes [#2](https://github.com/ccatterina/plasmusic-toolbar/issues/2)
+* same spacing for left/right side of text ([7d68cf8](https://github.com/ccatterina/plasmusic-toolbar/commit/7d68cf878cda50e904c70082eb89af81162e3815)), closes [#136](https://github.com/ccatterina/plasmusic-toolbar/issues/136)
+* set position instead of use seek function ([bbf1a93](https://github.com/ccatterina/plasmusic-toolbar/commit/bbf1a93aad561bacc373e7553e2c4a4bc89dbba7))
+* song text overflows when splitted in 2 lines ([c7627dc](https://github.com/ccatterina/plasmusic-toolbar/commit/c7627dcec9986bdb06277afe204f48fb8c0f54d2))
+* SongTextArtistText properties fallback to ScrollingText defaults ([#195](https://github.com/ccatterina/plasmusic-toolbar/issues/195)) ([d9d542b](https://github.com/ccatterina/plasmusic-toolbar/commit/d9d542bef3a5c716fb0c953eeccc143b31f84554))
+* sourceName comparison in PlayerDatasource lifecycle functions ([103d5f2](https://github.com/ccatterina/plasmusic-toolbar/commit/103d5f2e239d939e11da107190bd16ede1f6f828)), closes [#18](https://github.com/ccatterina/plasmusic-toolbar/issues/18)
+* start the widget in hidden state ([8c35a42](https://github.com/ccatterina/plasmusic-toolbar/commit/8c35a4268c24ef7082b574ececa8ad683eba3fa2))
+* text scroll on mouse over not working as expected ([a193ee7](https://github.com/ccatterina/plasmusic-toolbar/commit/a193ee78301a8b3077566e52c73df6982c4c0c9c)), closes [#103](https://github.com/ccatterina/plasmusic-toolbar/issues/103)
+* Track position slider doesn't work properly with long track ([0b2bd17](https://github.com/ccatterina/plasmusic-toolbar/commit/0b2bd175f2239845838e9ceee8907d39b65362e2)), closes [#81](https://github.com/ccatterina/plasmusic-toolbar/issues/81)
+* Use correct back/next icon ([daf3627](https://github.com/ccatterina/plasmusic-toolbar/commit/daf3627a86208b0541bde5641be5849c30e886d9))
+* use correct type for maxSongWidthInPanel ([00f9049](https://github.com/ccatterina/plasmusic-toolbar/commit/00f90496c5d7b892690471105f039e1332a8e840))
+* VolumeBar must allow only values between 0 and 1 ([6139da7](https://github.com/ccatterina/plasmusic-toolbar/commit/6139da718c360edd6e573586b3489e309d54a43f))
+* widget visibile when there is no active player ([ceb1a7d](https://github.com/ccatterina/plasmusic-toolbar/commit/ceb1a7d4c2c69efee7f118f582e7b87b42d54a06)), closes [#60](https://github.com/ccatterina/plasmusic-toolbar/issues/60)
+
 ## [3.1.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.0.0...v3.1.0) (2025-07-16)
 
 
