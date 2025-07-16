@@ -15,6 +15,8 @@ KCM.SimpleKCM {
     property alias cfg_useCustomFont: customFontCheckbox.checked
     property alias cfg_customFont: fontDialog.fontChosen
     property alias cfg_volumeStep: volumeStepSpinbox.value
+    property alias cfg_noMediaText: noMediaText.text
+    property alias cfg_showWhenNoMedia: showWhenNoMedia.checked
 
     Kirigami.FormLayout {
         id: form
@@ -115,6 +117,22 @@ KCM.SimpleKCM {
             text: i18n("%1pt %2", fontDialog.fontChosen.pointSize, fontDialog.fontChosen.family)
             textFormat: Text.PlainText
             font: fontDialog.fontChosen
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("No media found behavior")
+        }
+
+        CheckBox {
+            id:showWhenNoMedia
+            Kirigami.FormData.label: i18n("Show widget when no media found:")
+        }
+
+        TextField {
+            id: noMediaText
+            Kirigami.FormData.label: i18n("Text displayed when no media found:")
+            enabled: showWhenNoMedia.checked
         }
 
         Kirigami.Separator {
