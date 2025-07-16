@@ -5,7 +5,7 @@
 
 ### Features
 
-* retrigger release-please for previous changes ([80bb58b](https://github.com/ccatterina/plasmusic-toolbar/commit/80bb58b2cd88df3acad4e236a17f280cfe17b323))
+* make an option for the widget to be always visible ([#208](https://github.com/ccatterina/plasmusic-toolbar/issues/208)) ([5d362ec](https://github.com/ccatterina/plasmusic-toolbar/commit/5d362ec47d42b1c5a941d1e9e8730f1a41a28e1d))
 
 ## [3.0.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.7.0...v3.0.0) (2025-06-21)
 
