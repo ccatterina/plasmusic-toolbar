@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.0.0...v3.1.0) (2025-07-16)
+
+
+### Features
+
+* retrigger release-please for previous changes ([80bb58b](https://github.com/ccatterina/plasmusic-toolbar/commit/80bb58b2cd88df3acad4e236a17f280cfe17b323))
+
 ## [3.0.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v2.7.0...v3.0.0) (2025-06-21)
 
 
