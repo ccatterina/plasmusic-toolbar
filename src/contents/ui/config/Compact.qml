@@ -52,9 +52,7 @@ KCM.SimpleKCM {
             }
             Kirigami.ContextualHelpButton {
                 toolTipText: i18n(
-                    "The widget fills all available width in the horizontal panel (or height in the vertical panel); " +
-                    "the icon is aligned to the left (or top) and the playback controls are aligned to " +
-                    "the right (or bottom); The song text can be positioned based on user preference."
+                    "The widget fills all available width in the horizontal panel (or height in the vertical panel);  the icon is aligned to the left (or top) and the playback controls are aligned to the right (or bottom); The song text can be positioned based on user preference."
                 )
             }
         }
@@ -328,9 +326,9 @@ KCM.SimpleKCM {
             enabled: !useSongTextFixedWidth.checked && songTextInPanel.checked && fillAvailableSpaceCheckbox
         }
 
-        Item {
+        Kirigami.Separator {
             Kirigami.FormData.isSection: true
-            Kirigami.FormData.label: "Text scrolling"
+            Kirigami.FormData.label: i18n("Text scrolling")
         }
 
         CheckBox {

@@ -1,0 +1,25 @@
+name: I18n Check
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'src/contents/**/*.qml'
+      - 'src/translate/**'
+
+jobs:
+  i18n-check:
+    name: Check Translations
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install -y gettext
+
+      - name: Check if translations are up-to-date
+        run: |
+          ./bin/i18n check

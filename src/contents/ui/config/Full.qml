@@ -190,7 +190,7 @@ KCM.SimpleKCM {
 
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
-            Kirigami.FormData.label: "Song Text scrolling"
+            Kirigami.FormData.label: i18n("Text scrolling")
         }
 
         Slider {
@@ -252,8 +252,7 @@ KCM.SimpleKCM {
             }
             Kirigami.ContextualHelpButton {
                 toolTipText: (
-                    "The applet won't have a background but a drop shadow of " +
-                    "its content done via a shader. The text color will also invert."
+                    "The applet won't have a background but a drop shadow of its content done via a shader. The text color will also invert."
                 )
             }
         }
