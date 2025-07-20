@@ -1,0 +1,452 @@
+# Italian translations for plasmusic-toolbar package.
+# Copyright (C) 2025 THE plasmusic-toolbar'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the plasmusic-toolbar package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: plasmusic-toolbar\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-20 20:11+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/contents/config/config.qml:6
+#, kde-format
+msgid "General"
+msgstr "Generale"
+
+#: src/contents/config/config.qml:11
+#, kde-format
+msgid "Panel View"
+msgstr "Vista pannello"
+
+#: src/contents/config/config.qml:16
+#, kde-format
+msgid "Full View"
+msgstr "Vista completa"
+
+#: src/contents/ui/Full.qml:54
+#, kde-format
+msgid "Bring player to the front"
+msgstr "Porta il player in primo piano"
+
+#: src/contents/ui/Full.qml:54 src/contents/ui/main.qml:29
+#, kde-format
+msgid "This player can't be raised"
+msgstr "Questo player non può essere portato in primo piano"
+
+#: src/contents/ui/config/Compact.qml:45
+#, kde-format
+msgid "Layout"
+msgstr "Disposizione"
+
+#: src/contents/ui/config/Compact.qml:49
+#, kde-format
+msgid "Fill available space in the panel"
+msgstr "Riempi lo spazio disponibile nel pannello"
+
+#: src/contents/ui/config/Compact.qml:55
+#, kde-format
+msgid ""
+"The widget fills all available width in the horizontal panel (or height in "
+"the vertical panel);  the icon is aligned to the left (or top) and the "
+"playback controls are aligned to the right (or bottom); The song text can be "
+"positioned based on user preference."
+msgstr ""
+"Il widget riempie tutta la larghezza disponibile nel pannello orizzontale (o "
+"l'altezza nel pannello verticale); l'icona è allineata a sinistra (o in "
+"alto) e i comandi di riproduzione sono allineati a destra (o in in basso); "
+"il testo della canzone può essere posizionato in base alle preferenze "
+"dell'utente."
+
+#: src/contents/ui/config/Compact.qml:66
+#, kde-format
+msgid "Song text alignment:"
+msgstr "Allineamento brano:"
+
+#: src/contents/ui/config/Compact.qml:67
+#, kde-format
+msgid "Left (Top for vertical panel)"
+msgstr "Sinistra (Alto per pannello verticale)"
+
+#: src/contents/ui/config/Compact.qml:78
+#, kde-format
+msgid "Center"
+msgstr "Centro"
+
+#: src/contents/ui/config/Compact.qml:89
+#, kde-format
+msgid "Right (Bottom for vertical panel)"
+msgstr "Destra (Basso per pannello verticale)"
+
+#: src/contents/ui/config/Compact.qml:101
+#, kde-format
+msgid "Show icon:"
+msgstr "Mostra icona:"
+
+#: src/contents/ui/config/Compact.qml:106
+#, kde-format
+msgid "Show song text:"
+msgstr "Mostra brano:"
+
+#: src/contents/ui/config/Compact.qml:111
+#, kde-format
+msgid "Show skip backward control:"
+msgstr "Mostra comando indietro:"
+
+#: src/contents/ui/config/Compact.qml:116
+#, kde-format
+msgid "Show play/pause control:"
+msgstr "Mostra comando riproduci/pausa:"
+
+#: src/contents/ui/config/Compact.qml:121
+#, kde-format
+msgid "Show skip forward control:"
+msgstr "Mostra comando avanti:"
+
+#: src/contents/ui/config/Compact.qml:126
+#, kde-format
+msgid "Icon customization"
+msgstr "Personalizzazione icona"
+
+#: src/contents/ui/config/Compact.qml:131
+#, kde-format
+msgid "Icon:"
+msgstr "Icona:"
+
+#: src/contents/ui/config/Compact.qml:140
+#: src/contents/ui/config/Compact.qml:416
+#, kde-format
+msgid "Size:"
+msgstr "Dimensione:"
+
+#: src/contents/ui/config/Compact.qml:145
+#, kde-format
+msgid "Use album cover as icon"
+msgstr "Usa copertina album come icona"
+
+#: src/contents/ui/config/Compact.qml:151
+#, kde-format
+msgid "Fallback to icon if cover is not available"
+msgstr "Usa icona se la copertina non è disponibile"
+
+#: src/contents/ui/config/Compact.qml:161
+#, kde-format
+msgid "Album cover radius:"
+msgstr "Arrotondamento bordo copertina album:"
+
+#: src/contents/ui/config/Compact.qml:166
+#, kde-format
+msgid "Song text customization"
+msgstr "Personalizzazione testo brano"
+
+#: src/contents/ui/config/Compact.qml:177 src/contents/ui/config/Full.qml:66
+#, kde-format
+msgid "Song title position:"
+msgstr "Posizionamento titolo:"
+
+#: src/contents/ui/config/Compact.qml:178
+#: src/contents/ui/config/Compact.qml:225
+#: src/contents/ui/config/Compact.qml:270 src/contents/ui/config/Full.qml:67
+#: src/contents/ui/config/Full.qml:114 src/contents/ui/config/Full.qml:159
+#, kde-format
+msgid "Hidden"
+msgstr "Nascosto"
+
+#: src/contents/ui/config/Compact.qml:189
+#: src/contents/ui/config/Compact.qml:236
+#: src/contents/ui/config/Compact.qml:281 src/contents/ui/config/Full.qml:78
+#: src/contents/ui/config/Full.qml:125 src/contents/ui/config/Full.qml:170
+#, kde-format
+msgid "First line"
+msgstr "Prima riga"
+
+#: src/contents/ui/config/Compact.qml:200
+#: src/contents/ui/config/Compact.qml:247
+#: src/contents/ui/config/Compact.qml:292 src/contents/ui/config/Full.qml:89
+#: src/contents/ui/config/Full.qml:136 src/contents/ui/config/Full.qml:181
+#, kde-format
+msgid "Second line"
+msgstr "Seconda riga"
+
+#: src/contents/ui/config/Compact.qml:224 src/contents/ui/config/Full.qml:113
+#, kde-format
+msgid "Artists position:"
+msgstr "Posizione artista/i:"
+
+#: src/contents/ui/config/Compact.qml:269 src/contents/ui/config/Full.qml:158
+#, kde-format
+msgid "Album title position:"
+msgstr "Posizione titolo album:"
+
+#: src/contents/ui/config/Compact.qml:310
+#, kde-format
+msgid "Use fixed width:"
+msgstr "Usa larghezza fissa:"
+
+#: src/contents/ui/config/Compact.qml:317
+#, kde-format
+msgid "fixed width:"
+msgstr "larghezza fissa:"
+
+#: src/contents/ui/config/Compact.qml:325
+#, kde-format
+msgid "max width:"
+msgstr "larghezza massima:"
+
+#: src/contents/ui/config/Compact.qml:331 src/contents/ui/config/Full.qml:193
+#, kde-format
+msgid "Text scrolling"
+msgstr "Scorrimento testo"
+
+#: src/contents/ui/config/Compact.qml:336
+#, kde-format
+msgid "Enabled:"
+msgstr "Abilitato:"
+
+#: src/contents/ui/config/Compact.qml:345 src/contents/ui/config/Full.qml:202
+#, kde-format
+msgid "Speed:"
+msgstr "Velocità:"
+
+#: src/contents/ui/config/Compact.qml:355
+#, kde-format
+msgid "When text overflows:"
+msgstr "Quando il testo eccede:"
+
+#: src/contents/ui/config/Compact.qml:357
+#, kde-format
+msgid "Always scroll"
+msgstr "Scorri sempre"
+
+#: src/contents/ui/config/Compact.qml:370
+#, kde-format
+msgid "Scroll only on mouse over"
+msgstr "Scorri solo al passaggio del mouse"
+
+#: src/contents/ui/config/Compact.qml:383
+#, kde-format
+msgid "Always scroll except on mouse over"
+msgstr "Scorri sempre tranne al passaggio del mouse"
+
+#: src/contents/ui/config/Compact.qml:396
+#, kde-format
+msgid "Pause scrolling while media is not playing:"
+msgstr "Ferma scorrimento quando il media è in pausa:"
+
+#: src/contents/ui/config/Compact.qml:401
+#, kde-format
+msgid "Reset position when scrolling is paused:"
+msgstr "Reimposta posizione quando lo scorrimento è in pausa:"
+
+#: src/contents/ui/config/Compact.qml:407
+#, kde-format
+msgid "Playback controls customization"
+msgstr "Personalizzazione comandi di riproduzione"
+
+#: src/contents/ui/config/Compact.qml:421
+#, kde-format
+msgid "Background"
+msgstr "Sfondo"
+
+#: src/contents/ui/config/Compact.qml:425
+#, kde-format
+msgid "Colors from album cover"
+msgstr "Colori dalla copertina dell'album"
+
+#: src/contents/ui/config/Compact.qml:433
+#, kde-format
+msgid "Use album cover as icon should be checked for background to work."
+msgstr ""
+"Perché lo sfondo funzioni, deve essere selezionata l'opzione 'Usa copertina "
+"album come icona'."
+
+#: src/contents/ui/config/Compact.qml:444
+#, kde-format
+msgid "Colored background radius:"
+msgstr "Arrotondamento bordi sfondo:"
+
+#: src/contents/ui/config/ConfigIcon.qml:49
+#, kde-format
+msgctxt "@item:inmenu Open icon chooser dialog"
+msgid "Choose..."
+msgstr "Scegli..."
+
+#: src/contents/ui/config/ConfigIcon.qml:54
+#, kde-format
+msgctxt "@item:inmenu Reset icon to default"
+msgid "Clear Icon"
+msgstr "Resetta icona"
+
+#: src/contents/ui/config/Full.qml:27
+#, kde-format
+msgid "Album cover"
+msgstr "Copertina album"
+
+#: src/contents/ui/config/Full.qml:31
+#, kde-format
+msgid "Album placeholder:"
+msgstr "Immagine placeholder per album:"
+
+#: src/contents/ui/config/Full.qml:34 src/contents/ui/config/General.qml:101
+#, kde-format
+msgid "Choose…"
+msgstr "Scegli…"
+
+#: src/contents/ui/config/Full.qml:55
+#, kde-format
+msgid "Song Text Customization"
+msgstr "Personalizzazione testo canzone"
+
+#: src/contents/ui/config/Full.qml:207
+#, kde-format
+msgid "Background (desktop widget only)"
+msgstr "Sfondo (solo per widget desktop)"
+
+#: src/contents/ui/config/Full.qml:217
+#, kde-format
+msgid "Standard"
+msgstr "Standard"
+
+#: src/contents/ui/config/Full.qml:233
+#, kde-format
+msgid "Transparent"
+msgstr "Trasparente"
+
+#: src/contents/ui/config/Full.qml:244
+#, kde-format
+msgid "Transparent (Shadow content)"
+msgstr "Trasparente (Ombra)"
+
+#: src/contents/ui/config/General.qml:26
+#, kde-format
+msgid "Playback source"
+msgstr "Sorgente di riproduzione"
+
+#: src/contents/ui/config/General.qml:34
+#, kde-format
+msgid "Player:"
+msgstr "Player:"
+
+#: src/contents/ui/config/General.qml:37
+#, kde-format
+msgid "Choose automatically"
+msgstr "Scegli automaticamente"
+
+#: src/contents/ui/config/General.qml:42
+#, kde-format
+msgid ""
+"The player will be chosen automatically based on the currently playing song. "
+"If two or more players are playing at the same time, the widget will choose "
+"the one that started playing first."
+msgstr ""
+"Il player sarà scelto automaticamente in base alla canzone attualmente in "
+"riproduzione. Se due o più player sono in riproduzione contemporaneamente, "
+"il widget sceglierà quello che è stato avviato per primo."
+
+#: src/contents/ui/config/General.qml:50
+#, kde-format
+msgid "Always:"
+msgstr "Sempre:"
+
+#: src/contents/ui/config/General.qml:82
+#, kde-format
+msgid ""
+"Always display information from the selected player, if it's not running the "
+"widget will be hidden. In the dropdown you can choose between all the "
+"players that are currently running, if you can't find the one you want, open "
+"the player application and reload the list with reload button."
+msgstr ""
+"Mostra sempre le informazioni dal player selezionato, se il player non è in "
+"esecuzione il widget sarà nascosto. Nel menu puoi scegliere tra tutti i "
+"player attualmente in esecuzione, se non trovi quello che desideri, apri "
+"l'applicazione del player e ricarica la lista con il pulsante apposito."
+
+#: src/contents/ui/config/General.qml:90
+#, kde-format
+msgid "Font customization"
+msgstr "Personalizzazione font"
+
+#: src/contents/ui/config/General.qml:94
+#, kde-format
+msgid "Custom font:"
+msgstr "Font personalizzato:"
+
+#: src/contents/ui/config/General.qml:112
+#, kde-format
+msgid "%1pt %2"
+msgstr "%1pt %2"
+
+#: src/contents/ui/config/General.qml:119
+#, kde-format
+msgid "No media found behavior"
+msgstr "Comportamento in assenza di media"
+
+#: src/contents/ui/config/General.qml:124
+#, kde-format
+msgid "Show widget when no media found:"
+msgstr "Visualizza widget quando non ci sono media:"
+
+#: src/contents/ui/config/General.qml:129
+#, kde-format
+msgid "Text displayed when no media found:"
+msgstr "Testo visualizzato quando non ci sono media:"
+
+#: src/contents/ui/config/General.qml:135
+#, kde-format
+msgid "Controls behaviour"
+msgstr "Comportamento comandi"
+
+#: src/contents/ui/config/General.qml:140
+#, kde-format
+msgid "Volume step:"
+msgstr "Step volume:"
+
+#: src/contents/ui/config/General.qml:150
+#, kde-format
+msgid "Choose a Font"
+msgstr "Scegli un font"
+
+#: src/contents/ui/main.qml:23
+#, kde-format
+msgid "No media playing"
+msgstr "Nessun media in riproduzione"
+
+#: src/contents/ui/main.qml:25
+#, kde-format
+msgctxt "%1 is the media artist/author and %2 is the player name"
+msgid "by %1 (%2)"
+msgstr "di %1 (%2)"
+
+#: src/contents/ui/main.qml:26
+#, kde-format
+msgctxt "%1 is the player name"
+msgid "%1"
+msgstr "%1"
+
+#: src/contents/ui/main.qml:27
+#, kde-format
+msgid "Middle-click to pause"
+msgstr "Click centrale per mettere in pausa"
+
+#: src/contents/ui/main.qml:27
+#, kde-format
+msgid "Middle-click to play"
+msgstr "Click centrale per riprodurre"
+
+#: src/contents/ui/main.qml:28
+#, kde-format
+msgid "Scroll to adjust volume"
+msgstr "Scorri per regolare il volume"
+
+#: src/contents/ui/main.qml:29
+#, kde-format
+msgid "Ctrl+Click to bring player to the front"
+msgstr "Ctrl+Click per portare il player in primo piano"
