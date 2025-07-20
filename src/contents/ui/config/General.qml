@@ -39,9 +39,7 @@ KCM.SimpleKCM {
             }
             Kirigami.ContextualHelpButton {
                 toolTipText: i18n(
-                    "The player will be chosen automatically based on the currently playing song." +
-                    "If two or more players are playing at the same time, the widget will choose " +
-                    "the one that started playing first."
+                    "The player will be chosen automatically based on the currently playing song. If two or more players are playing at the same time, the widget will choose the one that started playing first."
                 )
             }
         }
@@ -81,10 +79,7 @@ KCM.SimpleKCM {
 
             Kirigami.ContextualHelpButton {
                 toolTipText: i18n(
-                    "Always display information from the selected player, if it's not running the widget " +
-                    "will be hidden. In the dropdown you can choose between all the players that are currently " +
-                    "running, if you can't find the one you want, open the player appliacation and reload " +
-                    "the list with reload button."
+                    "Always display information from the selected player, if it's not running the widget will be hidden. In the dropdown you can choose between all the players that are currently running, if you can't find the one you want, open the player application and reload the list with reload button."
                 )
             }
         }

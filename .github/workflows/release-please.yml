@@ -20,6 +20,14 @@ jobs:
         with:
           token: ${{ secrets.TOKEN_RELEASE_PLEASE }}
 
+      - name: Install gettext
+        if: ${{ steps.release.outputs.release_created }}
+        run: sudo apt-get update && sudo apt-get install -y gettext
+
+      - name: Compile translations
+        if: ${{ steps.release.outputs.release_created }}
+        run: ./bin/i18n compile
+
       - name: Generate plasmoid package
         if: ${{ steps.release.outputs.release_created }}
         run: |
