@@ -5,6 +5,7 @@
 
 ### Features
 
+* add dutch translations ([e18ced4](https://github.com/ccatterina/plasmusic-toolbar/commit/e18ced4b61b1c99e7f2cbc6b44ddb42dcdfb7f08))
 * add italian translations ([23e70ff](https://github.com/ccatterina/plasmusic-toolbar/commit/23e70ff7480061ce26ebabd816341cd74127244a))
 * translations setup ([0abe8a2](https://github.com/ccatterina/plasmusic-toolbar/commit/0abe8a24294478b6f46b499e408498028fd010ec))
 
