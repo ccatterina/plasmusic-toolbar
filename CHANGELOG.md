@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.2.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.1.0...v3.2.0) (2025-07-22)
+
+
+### Features
+
+* add italian translations ([23e70ff](https://github.com/ccatterina/plasmusic-toolbar/commit/23e70ff7480061ce26ebabd816341cd74127244a))
+* translations setup ([0abe8a2](https://github.com/ccatterina/plasmusic-toolbar/commit/0abe8a24294478b6f46b499e408498028fd010ec))
+
 ## [3.1.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.0.0...v3.1.0) (2025-07-16)
 
 

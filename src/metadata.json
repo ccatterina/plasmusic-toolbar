@@ -14,7 +14,7 @@
         "Id": "plasmusic-toolbar",
         "License": "GPL3",
         "Name": "PlasMusic Toolbar",
-        "Version": "3.1.0",
+        "Version": "3.2.0",
         "Category": "Multimedia"
     },
     "X-Plasma-API-Minimum-Version": "6.0",
