@@ -6,16 +6,25 @@ import org.kde.plasma.plasmoid
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.private.mpris as Mpris
+import Qt5Compat.GraphicalEffects
 
 
 Item {
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
     property real volumeStep: plasmoid.configuration.volumeStep
+    property bool useImageColors: plasmoid.configuration.fullAlbumCoverAsBackground
+    // property int fullViewImplicitMargins: 5
 
     Layout.preferredHeight: column.implicitHeight
     Layout.preferredWidth: column.implicitWidth
     Layout.minimumWidth: column.implicitWidth
     Layout.minimumHeight: column.implicitHeight
+    Layout.maximumWidth: column.implicitWidth
+    Layout.maximumHeight: column.implicitHeight
+
+    Kirigami.Theme.backgroundColor: useImageColors ? imageColors.bgColor : Kirigami.Theme.backgroundColor
+    Kirigami.Theme.textColor: useImageColors ? imageColors.fgColor : Kirigami.Theme.textColor
+    Kirigami.Theme.highlightColor: useImageColors ? imageColors.fgHighlightColor : Kirigami.Theme.highlightColor
 
     ColumnLayout {
         id: column
@@ -25,12 +34,80 @@ Item {
 
         Rectangle {
             Layout.alignment: Qt.AlignHCenter
-            Layout.margins: 10
+            Layout.margins: plasmoid.configuration.fullAlbumCoverAsBackground ? 0 : 10
             width: 300
             height: width
             color: 'transparent'
 
+            PlasmaComponents3.ToolTip {
+                id: raisePlayerTooltip
+                anchors.centerIn: parent
+                text: player.canRaise ? i18n("Bring player to the front") : i18n("This player can't be raised")
+                visible: coverMouseArea.containsMouse
+            }
+
+            MouseArea {
+                id: coverMouseArea
+                anchors.fill: parent
+                cursorShape: player.canRaise ? Qt.PointingHandCursor : Qt.ArrowCursor
+                onClicked: {
+                    if (player.canRaise) player.raise()
+                }
+                hoverEnabled: true
+            }
+
             Image {
+                visible: plasmoid.configuration.fullAlbumCoverAsBackground
+                id: albumArtFull
+                anchors.horizontalCenter: column.horizontalCenter
+                anchors.verticalCenter: column.verticalCenter
+                height: column.implicitHeight // + fullViewImplicitMargins * 2
+                width: column.implicitWidth // + fullViewImplicitMargins * 2
+                // x: -fullViewImplicitMargins
+                // y: -fullViewImplicitMargins
+                // z: -1
+
+                fillMode: Image.PreserveAspectCrop
+
+                onStatusChanged: {
+                    if (status == Image.Ready) {
+                        imageColors.update()
+                    }
+                }
+
+                source: {
+                    if (status === Image.Error || !player.artUrl) {
+                        return albumPlaceholder;
+                    }
+                    return player.artUrl;
+                }
+
+                LinearGradient {
+                    id: mask
+                    anchors.fill: albumArtFull
+                    gradient: Gradient {
+                        GradientStop { position: 0; color: "transparent" }
+                        GradientStop { position: 0.4; color: "transparent" }
+                        GradientStop { position: 0.7; color: imageColors.bgColor }
+                        GradientStop { position: 1; color: imageColors.bgColor }
+                    }
+                }
+
+                Kirigami.ImageColors {
+                    id: imageColors
+                    source: albumArtFull
+
+                    readonly property color bgColor: Kirigami.ColorUtils.tintWithAlpha(dominant, "black", 0.4)
+                    readonly property var bgColorBrightness: Kirigami.ColorUtils.brightnessForColor(bgColor)
+                    readonly property color contrastColor: bgColorBrightness === Kirigami.ColorUtils.Dark ? "white" : "black"
+                    readonly property color fgColor: Kirigami.ColorUtils.tintWithAlpha(dominant, contrastColor, .6)
+                    readonly property color fgHighlightColor: Kirigami.ColorUtils.tintWithAlpha(dominant, contrastColor, 0.8)
+                }
+            }
+
+            Image {
+                visible: !plasmoid.configuration.fullAlbumCoverAsBackground
+                id: albumArtNormal
                 anchors.fill: parent
                 source: {
                     if (status === Image.Error || !player.artUrl) {
@@ -40,21 +117,6 @@ Item {
                 }
 
                 fillMode: Image.PreserveAspectFit
-                MouseArea {
-                    id: coverMouseArea
-                    anchors.fill: parent
-                    cursorShape: player.canRaise ? Qt.PointingHandCursor : Qt.ArrowCursor
-                    onClicked: {
-                        if (player.canRaise) player.raise()
-                    }
-                    hoverEnabled: true
-                }
-                PlasmaComponents3.ToolTip {
-                    id: raisePlayerTooltip
-                    anchors.centerIn: parent
-                    text: player.canRaise ? i18n("Bring player to the front") : i18n("This player can't be raised")
-                    visible: coverMouseArea.containsMouse
-                }
             }
         }
 
