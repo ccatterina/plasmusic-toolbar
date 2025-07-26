@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-20 20:28+0200\n"
+"POT-Creation-Date: 2025-07-26 08:39+0200\n"
 "PO-Revision-Date: 2025-07-21 13:16+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: none\n"
@@ -33,12 +33,12 @@ msgstr "Paneelweergave"
 msgid "Full View"
 msgstr "Volledige weergave"
 
-#: src/contents/ui/Full.qml:54
+#: src/contents/ui/Full.qml:55
 #, kde-format
 msgid "Bring player to the front"
 msgstr "Speler naar voorgrond halen"
 
-#: src/contents/ui/Full.qml:54 src/contents/ui/main.qml:29
+#: src/contents/ui/Full.qml:55 src/contents/ui/main.qml:29
 #, kde-format
 msgid "This player can't be raised"
 msgstr "Deze speler kan niet naar de voorgrond worden gehaald"
