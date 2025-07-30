@@ -34,7 +34,7 @@ Item {
 
         Rectangle {
             Layout.alignment: Qt.AlignHCenter
-            Layout.margins: plasmoid.configuration.fullAlbumCoverAsBackground ? 0 : 10
+            Layout.margins: useImageColors ? 0 : 10
             width: 300
             height: width
             color: 'transparent'
