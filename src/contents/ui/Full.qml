@@ -19,12 +19,62 @@ Item {
     Layout.preferredWidth: column.implicitWidth
     Layout.minimumWidth: column.implicitWidth
     Layout.minimumHeight: column.implicitHeight
-    Layout.maximumWidth: column.implicitWidth
-    Layout.maximumHeight: column.implicitHeight
+    // Layout.maximumWidth: column.implicitWidth
+    // Layout.maximumHeight: column.implicitHeight
 
     Kirigami.Theme.backgroundColor: useImageColors ? imageColors.bgColor : Kirigami.Theme.backgroundColor
     Kirigami.Theme.textColor: useImageColors ? imageColors.fgColor : Kirigami.Theme.textColor
     Kirigami.Theme.highlightColor: useImageColors ? imageColors.fgHighlightColor : Kirigami.Theme.highlightColor
+
+    Image {
+        visible: useImageColors
+        id: albumArtFull
+        Layout.margins: 0
+        Layout.alignment: Qt.AlignHCenter
+        anchors.horizontalCenter: column.horizontalCenter
+        anchors.verticalCenter: Layout.verticalCenter
+        height: column.height // + fullViewImplicitMargins * 2
+        width: column.width // + fullViewImplicitMargins * 2
+        // x: -fullViewImplicitMargins
+        // y: -fullViewImplicitMargins
+        // z: -1
+        fillMode: Image.PreserveAspectCrop
+        
+        onStatusChanged: {
+            if (status === Image.Ready) {
+                imageColors.update()
+            }
+        }
+
+        source: {
+            if (status === Image.Error || !player.artUrl) {
+                return albumPlaceholder;
+            }
+            return player.artUrl;
+        }
+
+        LinearGradient {
+            id: mask
+            anchors.fill: albumArtFull
+            gradient: Gradient {
+                GradientStop { position: 0; color: "transparent" }
+                GradientStop { position: 0.4; color: "transparent" }
+                GradientStop { position: 0.7; color: imageColors.bgColor }
+                GradientStop { position: 1; color: imageColors.bgColor }
+            }
+        }
+
+        Kirigami.ImageColors {
+            id: imageColors
+            source: albumArtFull
+
+            readonly property color bgColor: Kirigami.ColorUtils.tintWithAlpha(dominant, "black", 0.4)
+            readonly property var bgColorBrightness: Kirigami.ColorUtils.brightnessForColor(bgColor)
+            readonly property color contrastColor: bgColorBrightness === Kirigami.ColorUtils.Dark ? "white" : "black"
+            readonly property color fgColor: Kirigami.ColorUtils.tintWithAlpha(dominant, contrastColor, .6)
+            readonly property color fgHighlightColor: Kirigami.ColorUtils.tintWithAlpha(dominant, contrastColor, 0.8)
+        }
+    }
 
     ColumnLayout {
         id: column
@@ -56,54 +106,6 @@ Item {
                 hoverEnabled: true
             }
 
-            Image {
-                visible: plasmoid.configuration.fullAlbumCoverAsBackground
-                id: albumArtFull
-                anchors.horizontalCenter: column.horizontalCenter
-                anchors.verticalCenter: column.verticalCenter
-                height: column.implicitHeight // + fullViewImplicitMargins * 2
-                width: column.implicitWidth // + fullViewImplicitMargins * 2
-                // x: -fullViewImplicitMargins
-                // y: -fullViewImplicitMargins
-                // z: -1
-
-                fillMode: Image.PreserveAspectCrop
-
-                onStatusChanged: {
-                    if (status == Image.Ready) {
-                        imageColors.update()
-                    }
-                }
-
-                source: {
-                    if (status === Image.Error || !player.artUrl) {
-                        return albumPlaceholder;
-                    }
-                    return player.artUrl;
-                }
-
-                LinearGradient {
-                    id: mask
-                    anchors.fill: albumArtFull
-                    gradient: Gradient {
-                        GradientStop { position: 0; color: "transparent" }
-                        GradientStop { position: 0.4; color: "transparent" }
-                        GradientStop { position: 0.7; color: imageColors.bgColor }
-                        GradientStop { position: 1; color: imageColors.bgColor }
-                    }
-                }
-
-                Kirigami.ImageColors {
-                    id: imageColors
-                    source: albumArtFull
-
-                    readonly property color bgColor: Kirigami.ColorUtils.tintWithAlpha(dominant, "black", 0.4)
-                    readonly property var bgColorBrightness: Kirigami.ColorUtils.brightnessForColor(bgColor)
-                    readonly property color contrastColor: bgColorBrightness === Kirigami.ColorUtils.Dark ? "white" : "black"
-                    readonly property color fgColor: Kirigami.ColorUtils.tintWithAlpha(dominant, contrastColor, .6)
-                    readonly property color fgHighlightColor: Kirigami.ColorUtils.tintWithAlpha(dominant, contrastColor, 0.8)
-                }
-            }
 
             Image {
                 visible: !plasmoid.configuration.fullAlbumCoverAsBackground
