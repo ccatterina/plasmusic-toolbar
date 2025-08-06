@@ -53,17 +53,6 @@ Item {
             return player.artUrl;
         }
 
-        LinearGradient {
-            id: mask
-            anchors.fill: albumArtFull
-            gradient: Gradient {
-                GradientStop { position: 0; color: "transparent" }
-                GradientStop { position: 0.4; color: "transparent" }
-                GradientStop { position: 0.7; color: imageColors.bgColor }
-                GradientStop { position: 1; color: imageColors.bgColor }
-            }
-        }
-
         Kirigami.ImageColors {
             id: imageColors
             source: albumArtFull
@@ -73,6 +62,17 @@ Item {
             readonly property color contrastColor: bgColorBrightness === Kirigami.ColorUtils.Dark ? "white" : "black"
             readonly property color fgColor: Kirigami.ColorUtils.tintWithAlpha(dominant, contrastColor, .6)
             readonly property color fgHighlightColor: Kirigami.ColorUtils.tintWithAlpha(dominant, contrastColor, 0.8)
+        }
+    }
+
+    LinearGradient {
+        id: mask
+        anchors.fill: albumArtFull
+        gradient: Gradient {
+            GradientStop { position: 0; color: "transparent" }
+            GradientStop { position: 0.4; color: "transparent" }
+            GradientStop { position: 0.7; color: imageColors.bgColor }
+            GradientStop { position: 1; color: imageColors.bgColor }
         }
     }
 
