@@ -68,6 +68,7 @@ Item {
     LinearGradient {
         id: mask
         anchors.fill: albumArtFull
+        visible: useImageColors
         gradient: Gradient {
             GradientStop { position: 0; color: "transparent" }
             GradientStop { position: 0.4; color: "transparent" }
