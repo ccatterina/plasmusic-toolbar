@@ -6,16 +6,75 @@ import org.kde.plasma.plasmoid
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.private.mpris as Mpris
+import Qt5Compat.GraphicalEffects
 
 
 Item {
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
     property real volumeStep: plasmoid.configuration.volumeStep
+    property bool albumCoverBackground: plasmoid.configuration.fullAlbumCoverAsBackground
 
     Layout.preferredHeight: column.implicitHeight
     Layout.preferredWidth: column.implicitWidth
     Layout.minimumWidth: column.implicitWidth
     Layout.minimumHeight: column.implicitHeight
+
+
+    Kirigami.Theme.textColor: albumCoverBackground ? imageColors.fgColor : Kirigami.Theme.textColor
+    Kirigami.Theme.highlightColor: albumCoverBackground ? imageColors.hlColor : Kirigami.Theme.highlightColor
+
+    Item {
+        visible: albumCoverBackground
+        Layout.margins: 0
+        anchors.centerIn: parent
+        height: column.height
+        width: column.width
+
+        Image {
+            id: albumArtFull
+            anchors.top: parent.top
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: parent.height * 0.7
+            width: parent.width
+            fillMode: Image.PreserveAspectCrop
+
+            onStatusChanged: {
+                if (status === Image.Ready) {
+                    imageColors.update()
+                }
+            }
+
+            source: {
+                if (status === Image.Error || !player.artUrl) {
+                    return albumPlaceholder;
+                }
+                return player.artUrl;
+            }
+
+            Kirigami.ImageColors {
+                id: imageColors
+                source: albumArtFull
+
+                readonly property color bgColor: average
+                readonly property var bgColorBrightness: Kirigami.ColorUtils.brightnessForColor(bgColor)
+                readonly property color contrastColor: bgColorBrightness === Kirigami.ColorUtils.Dark ? "white" : "black"
+                readonly property color fgColor: Kirigami.ColorUtils.tintWithAlpha(bgColor, contrastColor, .6)
+                readonly property color hlColor: Kirigami.ColorUtils.tintWithAlpha(bgColor, contrastColor, .8)
+            }
+        }
+
+        LinearGradient {
+            id: mask
+            anchors.fill: parent
+            gradient: Gradient {
+                GradientStop { position: 0; color: "transparent" }
+                GradientStop { position: 0.4; color: "transparent" }
+                GradientStop { position: 0.7; color: imageColors.bgColor }
+                GradientStop { position: 1; color: imageColors.bgColor }
+            }
+        }
+    }
+
 
     ColumnLayout {
         id: column
@@ -30,7 +89,26 @@ Item {
             height: width
             color: 'transparent'
 
+            PlasmaComponents3.ToolTip {
+                id: raisePlayerTooltip
+                anchors.centerIn: parent
+                text: player.canRaise ? i18n("Bring player to the front") : i18n("This player can't be raised")
+                visible: coverMouseArea.containsMouse
+            }
+
+            MouseArea {
+                id: coverMouseArea
+                anchors.fill: parent
+                cursorShape: player.canRaise ? Qt.PointingHandCursor : Qt.ArrowCursor
+                onClicked: {
+                    if (player.canRaise) player.raise()
+                }
+                hoverEnabled: true
+            }
+
             Image {
+                visible: !albumCoverBackground
+                id: albumArtNormal
                 anchors.fill: parent
                 source: {
                     if (status === Image.Error || !player.artUrl) {
@@ -40,21 +118,6 @@ Item {
                 }
 
                 fillMode: Image.PreserveAspectFit
-                MouseArea {
-                    id: coverMouseArea
-                    anchors.fill: parent
-                    cursorShape: player.canRaise ? Qt.PointingHandCursor : Qt.ArrowCursor
-                    onClicked: {
-                        if (player.canRaise) player.raise()
-                    }
-                    hoverEnabled: true
-                }
-                PlasmaComponents3.ToolTip {
-                    id: raisePlayerTooltip
-                    anchors.centerIn: parent
-                    text: player.canRaise ? i18n("Bring player to the front") : i18n("This player can't be raised")
-                    visible: coverMouseArea.containsMouse
-                }
             }
         }
 
