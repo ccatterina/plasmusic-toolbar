@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 23:27-0400\n"
+"POT-Creation-Date: 2025-08-28 18:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -32,12 +32,12 @@ msgstr "Vista pannello"
 msgid "Full View"
 msgstr "Vista completa"
 
-#: src/contents/ui/Full.qml:55
+#: src/contents/ui/Full.qml:97
 #, kde-format
 msgid "Bring player to the front"
 msgstr "Porta il player in primo piano"
 
-#: src/contents/ui/Full.qml:55 src/contents/ui/main.qml:29
+#: src/contents/ui/Full.qml:97 src/contents/ui/main.qml:29
 #, kde-format
 msgid "This player can't be raised"
 msgstr "Questo player non può essere portato in primo piano"
@@ -147,41 +147,41 @@ msgstr "Arrotondamento bordo copertina album:"
 msgid "Song text customization"
 msgstr "Personalizzazione testo brano"
 
-#: src/contents/ui/config/Compact.qml:177 src/contents/ui/config/Full.qml:75
+#: src/contents/ui/config/Compact.qml:177 src/contents/ui/config/Full.qml:76
 #, kde-format
 msgid "Song title position:"
 msgstr "Posizionamento titolo:"
 
 #: src/contents/ui/config/Compact.qml:178
 #: src/contents/ui/config/Compact.qml:225
-#: src/contents/ui/config/Compact.qml:270 src/contents/ui/config/Full.qml:76
-#: src/contents/ui/config/Full.qml:123 src/contents/ui/config/Full.qml:168
+#: src/contents/ui/config/Compact.qml:270 src/contents/ui/config/Full.qml:77
+#: src/contents/ui/config/Full.qml:124 src/contents/ui/config/Full.qml:169
 #, kde-format
 msgid "Hidden"
 msgstr "Nascosto"
 
 #: src/contents/ui/config/Compact.qml:189
 #: src/contents/ui/config/Compact.qml:236
-#: src/contents/ui/config/Compact.qml:281 src/contents/ui/config/Full.qml:87
-#: src/contents/ui/config/Full.qml:134 src/contents/ui/config/Full.qml:179
+#: src/contents/ui/config/Compact.qml:281 src/contents/ui/config/Full.qml:88
+#: src/contents/ui/config/Full.qml:135 src/contents/ui/config/Full.qml:180
 #, kde-format
 msgid "First line"
 msgstr "Prima riga"
 
 #: src/contents/ui/config/Compact.qml:200
 #: src/contents/ui/config/Compact.qml:247
-#: src/contents/ui/config/Compact.qml:292 src/contents/ui/config/Full.qml:98
-#: src/contents/ui/config/Full.qml:145 src/contents/ui/config/Full.qml:190
+#: src/contents/ui/config/Compact.qml:292 src/contents/ui/config/Full.qml:99
+#: src/contents/ui/config/Full.qml:146 src/contents/ui/config/Full.qml:191
 #, kde-format
 msgid "Second line"
 msgstr "Seconda riga"
 
-#: src/contents/ui/config/Compact.qml:224 src/contents/ui/config/Full.qml:122
+#: src/contents/ui/config/Compact.qml:224 src/contents/ui/config/Full.qml:123
 #, kde-format
 msgid "Artists position:"
 msgstr "Posizione artista/i:"
 
-#: src/contents/ui/config/Compact.qml:269 src/contents/ui/config/Full.qml:167
+#: src/contents/ui/config/Compact.qml:269 src/contents/ui/config/Full.qml:168
 #, kde-format
 msgid "Album title position:"
 msgstr "Posizione titolo album:"
@@ -201,7 +201,7 @@ msgstr "larghezza fissa:"
 msgid "max width:"
 msgstr "larghezza massima:"
 
-#: src/contents/ui/config/Compact.qml:331 src/contents/ui/config/Full.qml:202
+#: src/contents/ui/config/Compact.qml:331 src/contents/ui/config/Full.qml:203
 #, kde-format
 msgid "Text scrolling"
 msgstr "Scorrimento testo"
@@ -211,7 +211,7 @@ msgstr "Scorrimento testo"
 msgid "Enabled:"
 msgstr "Abilitato:"
 
-#: src/contents/ui/config/Compact.qml:345 src/contents/ui/config/Full.qml:211
+#: src/contents/ui/config/Compact.qml:345 src/contents/ui/config/Full.qml:212
 #, kde-format
 msgid "Speed:"
 msgstr "Velocità:"
@@ -251,7 +251,7 @@ msgstr "Reimposta posizione quando lo scorrimento è in pausa:"
 msgid "Playback controls customization"
 msgstr "Personalizzazione comandi di riproduzione"
 
-#: src/contents/ui/config/Compact.qml:421
+#: src/contents/ui/config/Compact.qml:421 src/contents/ui/config/Full.qml:217
 #, kde-format
 msgid "Background"
 msgstr "Sfondo"
@@ -285,50 +285,60 @@ msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr "Resetta icona"
 
-#: src/contents/ui/config/Full.qml:27
+#: src/contents/ui/config/Full.qml:28
 #, kde-format
 msgid "Album cover"
 msgstr "Copertina album"
 
-#: src/contents/ui/config/Full.qml:31
+#: src/contents/ui/config/Full.qml:32
 #, kde-format
 msgid "Album placeholder:"
 msgstr "Immagine placeholder per album:"
 
-#: src/contents/ui/config/Full.qml:34 src/contents/ui/config/General.qml:101
+#: src/contents/ui/config/Full.qml:35 src/contents/ui/config/General.qml:101
 #, kde-format
 msgid "Choose…"
 msgstr "Scegli…"
 
-#: src/contents/ui/config/Full.qml:42
+#: src/contents/ui/config/Full.qml:43
 #, fuzzy, kde-format
 msgid "Clear"
 msgstr "Resetta icona"
 
-#: src/contents/ui/config/Full.qml:64
+#: src/contents/ui/config/Full.qml:65
 #, kde-format
 msgid "Song Text Customization"
 msgstr "Personalizzazione testo canzone"
 
-#: src/contents/ui/config/Full.qml:216
-#, kde-format
-msgid "Background (desktop widget only)"
-msgstr "Sfondo (solo per widget desktop)"
-
 #: src/contents/ui/config/Full.qml:226
+#, kde-format
+msgid "Background (desktop widget only):"
+msgstr "Sfondo (solo per widget desktop):"
+
+#: src/contents/ui/config/Full.qml:228
 #, kde-format
 msgid "Standard"
 msgstr "Standard"
 
-#: src/contents/ui/config/Full.qml:242
+#: src/contents/ui/config/Full.qml:244
 #, kde-format
 msgid "Transparent"
 msgstr "Trasparente"
 
-#: src/contents/ui/config/Full.qml:253
+#: src/contents/ui/config/Full.qml:255
 #, kde-format
 msgid "Transparent (Shadow content)"
 msgstr "Trasparente (Ombra)"
+
+#: src/contents/ui/config/Full.qml:272
+#, fuzzy, kde-format
+msgid "Use album cover as background:"
+msgstr "Usa copertina album come icona"
+
+#: src/contents/ui/config/Full.qml:274
+#, kde-format
+msgid "(Experimental feature)"
+msgstr ""
 
 #: src/contents/ui/config/General.qml:26
 #, kde-format
