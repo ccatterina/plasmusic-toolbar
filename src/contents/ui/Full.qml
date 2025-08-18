@@ -18,8 +18,6 @@ Item {
     Layout.preferredWidth: column.implicitWidth
     Layout.minimumWidth: column.implicitWidth
     Layout.minimumHeight: column.implicitHeight
-    Layout.maximumWidth: column.implicitWidth
-    Layout.maximumHeight: column.implicitHeight
 
 
     Kirigami.Theme.textColor: albumCoverBackground ? imageColors.fgColor : Kirigami.Theme.textColor
