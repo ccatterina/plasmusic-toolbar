@@ -18,6 +18,7 @@ KCM.SimpleKCM {
     property alias cfg_fullArtistsPosition: fullArtistsPosition.value
     property alias cfg_fullTitlePosition: fullTitlePosition.value
     property alias cfg_fullAlbumPosition: fullAlbumPosition.value
+    property alias cfg_fullAlbumCoverAsBackground: fullAlbumCoverAsBackground.checked
 
     Kirigami.FormLayout {
         id: form
@@ -213,7 +214,7 @@ KCM.SimpleKCM {
 
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
-            Kirigami.FormData.label: i18n("Background (desktop widget only)")
+            Kirigami.FormData.label: i18n("Background")
         }
 
         ButtonGroup {
@@ -222,6 +223,7 @@ KCM.SimpleKCM {
         }
 
         RowLayout {
+            Kirigami.FormData.label: i18n("Background (desktop widget only):")
             RadioButton {
                 text: i18n("Standard")
                 checked: desktopWidgetBackgroundRadio.value == PlasmaCore.Types.StandardBackground
@@ -264,6 +266,12 @@ KCM.SimpleKCM {
                     "The applet won't have a background but a drop shadow of its content done via a shader. The text color will also invert."
                 )
             }
+        }
+
+        CheckBox {
+            Kirigami.FormData.label: i18n("Use album cover as background:")
+            id: fullAlbumCoverAsBackground
+            text: i18n("(Experimental feature)")
         }
     }
 
