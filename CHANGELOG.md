@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.4.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.3.0...v3.4.0) (2025-08-28)
+
+
+### Features
+
+* add a clear button for the album placeholder option ([#224](https://github.com/ccatterina/plasmusic-toolbar/issues/224)) ([f7edd06](https://github.com/ccatterina/plasmusic-toolbar/commit/f7edd0617b5e95e62c94b9c82e777fc3e2db69ca))
+* use album cover as background in full view - experimental ([#220](https://github.com/ccatterina/plasmusic-toolbar/issues/220)) ([545250a](https://github.com/ccatterina/plasmusic-toolbar/commit/545250a13dfbc0ae7eb45129ed1695babbd0dcc2))
+
 ## [3.3.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.2.0...v3.3.0) (2025-07-26)
 
 
