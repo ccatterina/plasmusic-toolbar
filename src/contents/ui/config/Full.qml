@@ -37,6 +37,15 @@ KCM.SimpleKCM {
                     albumPlaceholderDialog.open()
                 }
             }
+
+            Button {
+                text: i18n("Clear")
+                icon.name: "edit-delete"
+                visible: albumPlaceholderDialog.value
+                onClicked: {
+                    albumPlaceholderDialog.value = ""
+                }
+            }
         }
 
         ColumnLayout {
