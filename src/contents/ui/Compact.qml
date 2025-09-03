@@ -1,6 +1,7 @@
 import "./components"
 import QtQuick
 import QtQuick.Layouts
+import Qt5Compat.GraphicalEffects
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
 import org.kde.plasma.components as PlasmaComponents3
@@ -28,6 +29,7 @@ Item {
     readonly property int lengthMargin: Math.round((widgetThickness - Math.max(controlsSize, iconSize))) / 2
 
     readonly property bool colorsFromAlbumCover: plasmoid.configuration.colorsFromAlbumCover
+    readonly property int panelBackgroundRadius: plasmoid.configuration.panelBackgroundRadius
     readonly property bool useImageColors: panelIcon.imageReady && panelIcon.type == PanelIcon.Type.Image && colorsFromAlbumCover
     readonly property color imageColor: useImageColors ? panelIcon.imageColor : Kirigami.Theme.textColor
     readonly property color backgroundColorFromImage: Kirigami.ColorUtils.tintWithAlpha(imageColor, "black", 0.5)
@@ -52,7 +54,26 @@ Item {
     Rectangle {
         anchors.fill: parent
         color: backgroundColor
-        radius: plasmoid.configuration.panelBackgroundRadius
+        radius: compact.panelBackgroundRadius
+        Rectangle {
+            color: foregroundColor
+            height: parent.height //3
+            width: parent.width * (player.songPosition / player.songLength)
+            radius: 0 //compact.panelBackgroundRadius //height / 2
+            anchors.bottom: parent.bottom
+            opacity: player.playbackStatus === Mpris.PlaybackStatus.Playing ? 0.15 : 0.07
+        }
+        layer.enabled: compact.panelBackgroundRadius > 0
+        layer.effect: OpacityMask {
+            maskSource: Item {
+                width: compact.width
+                height: compact.height
+                Rectangle {
+                    anchors.fill: parent
+                    radius: compact.panelBackgroundRadius
+                }
+            }
+        }
     }
 
     MouseAreaWithWheelHandler {
@@ -199,6 +220,7 @@ Item {
                     album: player.album
                     textAlignment: songGrid.textAlignment
                     truncateStyle: plasmoid.configuration.compactTruncatedTextStyle
+                    opacity: player.playbackStatus === Mpris.PlaybackStatus.Playing ? 1 : 0.75
                 }
             }
 
