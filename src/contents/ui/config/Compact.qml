@@ -327,13 +327,22 @@ KCM.SimpleKCM {
             enabled: !useSongTextFixedWidth.checked && songTextInPanel.checked && fillAvailableSpaceCheckbox
         }
 
+        Item {
+            // adds spacing between the groups
+            height: 0.5 * Kirigami.Units.gridUnit
+        }
+
+        Kirigami.ContextualHelpButton {
+            Kirigami.FormData.label: i18n("Truncated text style:")
+            toolTipText: i18n("Works only when the text is not scrolling and in the initial position")
+        }
+
         ButtonGroup {
             id: compactTruncatedTextStyle
-            property int value: ScrollingText.TruncateStyle.Fade
+            property int value: ScrollingText.TruncateStyle.FadeOut
         }
 
         RadioButton {
-            Kirigami.FormData.label: i18n("Truncated style:")
             text: i18n("Elide")
             checked: compactTruncatedTextStyle.value == ScrollingText.TruncateStyle.Elide
             onCheckedChanged: () => {
@@ -345,11 +354,11 @@ KCM.SimpleKCM {
         }
 
         RadioButton {
-            text: i18n("Fade")
-            checked: compactTruncatedTextStyle.value == ScrollingText.TruncateStyle.Fade
+            text: i18n("Fade out")
+            checked: compactTruncatedTextStyle.value == ScrollingText.TruncateStyle.FadeOut
             onCheckedChanged: () => {
                 if (checked) {
-                    compactTruncatedTextStyle.value = ScrollingText.TruncateStyle.Fade
+                    compactTruncatedTextStyle.value = ScrollingText.TruncateStyle.FadeOut
                 }
             }
             ButtonGroup.group: compactTruncatedTextStyle

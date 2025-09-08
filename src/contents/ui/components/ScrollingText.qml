@@ -16,7 +16,7 @@ Item {
 
     enum TruncateStyle {
         Elide,
-        Fade,
+        FadeOut,
         None
     }
 
@@ -37,7 +37,7 @@ Item {
     property bool scrollResetOnPause: false
     property bool forcePauseScrolling: false
     readonly property bool overflowElides: truncateStyle === ScrollingText.TruncateStyle.Elide
-    readonly property bool overflowFades: truncateStyle === ScrollingText.TruncateStyle.Fade
+    readonly property bool overflowFades: truncateStyle === ScrollingText.TruncateStyle.FadeOut
 
     readonly property bool pauseScrolling: {
         if (forcePauseScrolling) {
@@ -80,17 +80,11 @@ Item {
         elideWidth: root.maxWidth
     }
 
-    TextMetrics {
-        id: letterMetrics
-        font: label.font
-        text: "o"
-    }
-
     PlasmaComponents3.Label {
         id: label
         text: overflow ? (root.overflowElides && !animationRunning ? elidedMetrics.elidedText : root.textAndSpacing) : root.text
         color: root.textColor
-        property bool animationRunning: animation.running && !animation.paused
+        property bool animationRunning: label.x !== 0 || !animation.paused
 
         NumberAnimation on x {
             id: animation
@@ -126,26 +120,26 @@ Item {
         }
 
         PlasmaComponents3.Label {
-            visible: overflow && label.animationRunning
+            visible: root.overflow && label.animationRunning
             anchors.left: parent.right
             color: root.textColor
             font: label.font
             text: label.text
         }
     }
-    layer.enabled: overflow && !label.animationRunning && overflowFades
+    layer.enabled: overflow && overflowFades && !label.animationRunning
     layer.effect: OpacityMask {
         invert: true
         maskSource: Item {
             width: root.width
             height: root.height
             LinearGradient {
-                id: mask2
                 height: parent.height
-                width: letterMetrics.width
+                width: (textMetrics.width / textMetrics.text.length) * 2
                 anchors.right: parent.right
                 gradient: Gradient {
                     GradientStop { position: 0.0; color: Qt.rgba(1.0,1.0,1.0,0.0) }
+                    GradientStop { position: 0.5; color: Qt.rgba(1.0,1.0,1.0,0.5) }
                     GradientStop { position: 1.0; color: Qt.rgba(1.0,1.0,1.0,1.0) }
                     orientation: Gradient.Horizontal
                 }
