@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kirigami as Kirigami
+import QtQuick.Effects
 
 // inspired by https://stackoverflow.com/a/49031115/2568933
 Item {
@@ -20,10 +21,10 @@ Item {
     readonly property string textAndSpacing: text + spacing
     property color textColor: Kirigami.Theme.textColor
 
-    property int maxWidth: 200 * units.devicePixelRatio
-    readonly property bool overflow: maxWidth <= textMetrics.width
+    property int maxWidth: 200
+    readonly property bool overflow: maxWidth < textMetrics.width
     property int speed: 5;
-    readonly property int duration: (25 * (11 - speed) + 25)* textAndSpacing.length;
+    readonly property int duration: (10 / speed) * 10000 * (textAndSpacing.length / maxWidth)
 
     property bool scrollingEnabled: true
     property bool scrollResetOnPause: false
@@ -44,8 +45,7 @@ Item {
 
     property alias font: label.font
 
-    width: overflow ? maxWidth : textMetrics.width
-    clip: overflow 
+    width: overflow ? maxWidth : label.width
 
     Layout.preferredHeight: label.implicitHeight
     Layout.preferredWidth: width
@@ -64,19 +64,44 @@ Item {
 
     PlasmaComponents3.Label {
         id: label
-        text: overflow ? root.textAndSpacing : root.text
+        text: root.overflow ? root.textAndSpacing : root.text
         color: root.textColor
+        property bool animationRunning: shader.animationRunning && !shader.animationPaused
+    }
 
-        NumberAnimation on x {
-            running: root.overflow && root.scrollingEnabled
-            paused: root.pauseScrolling && running
-            from: 0
-            to: -label.implicitWidth
+    ShaderEffect {
+        id: shader
+        property var effectsSource: label
+        property real scrollOffset
+        property real clipWidth: root.width
+        height: effectsSource.height
+        width: effectsSource.width
+        property bool animationRunning: animation.running
+        property bool animationPaused: animation.paused
+        property vector2d textureResolution: Qt.vector2d(effectsSource.width, effectsSource.height)
+
+        property var source: ShaderEffectSource {
+            sourceItem: {
+                if (!shader.visible) {
+                    return null;
+                }
+                return shader.effectsSource
+            }
+            live: true
+            hideSource: shader.visible
+        }
+        visible: root.overflow
+        fragmentShader: visible ? Qt.resolvedUrl("../shaders/scrollTextMask.frag.qsb") : ""
+
+        NumberAnimation on scrollOffset {
+            id: animation
+            from: 0.0
+            to: 1
             duration: root.duration
             loops: Animation.Infinite
-
+            running: root.overflow && root.scrollingEnabled
+            paused: root.pauseScrolling && running
             function reset() {
-                label.x = 0;
                 if (running) {
                     restart()
                 }
@@ -84,27 +109,14 @@ Item {
                     pause()
                 }
             }
-
-            onRunningChanged: () => {
-                // When `running` becomes true the animation start regardless of the `pauseScrolling` value.
-                // Manually pause the animation if the `pauseScrolling` value is true.
-                if (running && root.pauseScrolling) {
+            onDurationChanged: () => complete()
+            onPausedChanged: (paused) => {
+                if (paused && root.scrollResetOnPause) {
+                    complete()
                     pause()
                 }
             }
-            onToChanged: () => reset()
-            onDurationChanged: () =>  reset()
-            onPausedChanged: (paused) => {
-                if (paused && scrollResetOnPause) label.x = 0
-            }
         }
-
-        PlasmaComponents3.Label {
-            visible: overflow
-            anchors.left: parent.right
-            color: root.textColor
-            font: label.font
-            text: label.text
-        }
+        onWidthChanged: () => animation.reset()
     }
 }
