@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.4.0...v3.5.0) (2025-09-09)
+
+
+### Features
+
+* truncated text style ([#227](https://github.com/ccatterina/plasmusic-toolbar/issues/227)) ([a59dc80](https://github.com/ccatterina/plasmusic-toolbar/commit/a59dc8099ef9fc3d576edfb090dddff130e81395))
+
 ## [3.4.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.3.0...v3.4.0) (2025-08-28)
 
 
