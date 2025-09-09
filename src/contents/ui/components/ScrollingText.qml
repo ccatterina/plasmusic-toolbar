@@ -84,7 +84,7 @@ Item {
         id: label
         text: overflow ? (root.overflowElides && !animationRunning ? elidedMetrics.elidedText : root.textAndSpacing) : root.text
         color: root.textColor
-        property bool animationRunning: label.x !== 0 || !animation.paused
+        property bool animationRunning: label.x !== 0 || (!animation.paused && animation.running)
 
         NumberAnimation on x {
             id: animation
