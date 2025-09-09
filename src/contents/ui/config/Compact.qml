@@ -36,6 +36,7 @@ KCM.SimpleKCM {
     property alias cfg_artistsPosition: artistsPosition.value
     property alias cfg_titlePosition: titlePosition.value
     property alias cfg_albumPosition: albumPosition.value
+    property alias cfg_compactTruncatedTextStyle: compactTruncatedTextStyle.value
 
     Kirigami.FormLayout {
         id: form
@@ -324,6 +325,54 @@ KCM.SimpleKCM {
             to: 1000
             Kirigami.FormData.label: i18n("max width:")
             enabled: !useSongTextFixedWidth.checked && songTextInPanel.checked && fillAvailableSpaceCheckbox
+        }
+
+        Item {
+            // adds spacing between the groups
+            height: 0.5 * Kirigami.Units.gridUnit
+        }
+
+        Kirigami.ContextualHelpButton {
+            Kirigami.FormData.label: i18n("Truncated text style:")
+            toolTipText: i18n("Works only when the text is not scrolling and in the initial position")
+        }
+
+        ButtonGroup {
+            id: compactTruncatedTextStyle
+            property int value: ScrollingText.TruncateStyle.FadeOut
+        }
+
+        RadioButton {
+            text: i18n("Elide")
+            checked: compactTruncatedTextStyle.value == ScrollingText.TruncateStyle.Elide
+            onCheckedChanged: () => {
+                if (checked) {
+                    compactTruncatedTextStyle.value = ScrollingText.TruncateStyle.Elide
+                }
+            }
+            ButtonGroup.group: compactTruncatedTextStyle
+        }
+
+        RadioButton {
+            text: i18n("Fade out")
+            checked: compactTruncatedTextStyle.value == ScrollingText.TruncateStyle.FadeOut
+            onCheckedChanged: () => {
+                if (checked) {
+                    compactTruncatedTextStyle.value = ScrollingText.TruncateStyle.FadeOut
+                }
+            }
+            ButtonGroup.group: compactTruncatedTextStyle
+        }
+
+        RadioButton {
+            text: i18n("None")
+            checked: compactTruncatedTextStyle.value == ScrollingText.TruncateStyle.None
+            onCheckedChanged: () => {
+                if (checked) {
+                    compactTruncatedTextStyle.value = ScrollingText.TruncateStyle.None
+                }
+            }
+            ButtonGroup.group: compactTruncatedTextStyle
         }
 
         Kirigami.Separator {

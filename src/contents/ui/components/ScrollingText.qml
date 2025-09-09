@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
+import Qt5Compat.GraphicalEffects
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kirigami as Kirigami
 
@@ -13,7 +14,14 @@ Item {
         StopScrollOnMouseOver
     }
 
+    enum TruncateStyle {
+        Elide,
+        FadeOut,
+        None
+    }
+
     property int overflowBehaviour: ScrollingText.OverflowBehaviour.AlwaysScroll
+    property int truncateStyle: ScrollingText.TruncateStyle.None
 
     property string text: ""
     readonly property string spacing: "     "
@@ -28,6 +36,8 @@ Item {
     property bool scrollingEnabled: true
     property bool scrollResetOnPause: false
     property bool forcePauseScrolling: false
+    readonly property bool overflowElides: truncateStyle === ScrollingText.TruncateStyle.Elide
+    readonly property bool overflowFades: truncateStyle === ScrollingText.TruncateStyle.FadeOut
 
     readonly property bool pauseScrolling: {
         if (forcePauseScrolling) {
@@ -62,12 +72,22 @@ Item {
         text: root.text
     }
 
+    TextMetrics {
+        id: elidedMetrics
+        font: label.font
+        text: root.text
+        elide: Text.ElideRight
+        elideWidth: root.maxWidth
+    }
+
     PlasmaComponents3.Label {
         id: label
-        text: overflow ? root.textAndSpacing : root.text
+        text: overflow ? (root.overflowElides && !animationRunning ? elidedMetrics.elidedText : root.textAndSpacing) : root.text
         color: root.textColor
+        property bool animationRunning: label.x !== 0 || (!animation.paused && animation.running)
 
         NumberAnimation on x {
+            id: animation
             running: root.overflow && root.scrollingEnabled
             paused: root.pauseScrolling && running
             from: 0
@@ -100,11 +120,30 @@ Item {
         }
 
         PlasmaComponents3.Label {
-            visible: overflow
+            visible: root.overflow && label.animationRunning
             anchors.left: parent.right
             color: root.textColor
             font: label.font
             text: label.text
+        }
+    }
+    layer.enabled: overflow && overflowFades && !label.animationRunning
+    layer.effect: OpacityMask {
+        invert: true
+        maskSource: Item {
+            width: root.width
+            height: root.height
+            LinearGradient {
+                height: parent.height
+                width: (textMetrics.width / textMetrics.text.length) * 2
+                anchors.right: parent.right
+                gradient: Gradient {
+                    GradientStop { position: 0.0; color: Qt.rgba(1.0,1.0,1.0,0.0) }
+                    GradientStop { position: 0.5; color: Qt.rgba(1.0,1.0,1.0,0.5) }
+                    GradientStop { position: 1.0; color: Qt.rgba(1.0,1.0,1.0,1.0) }
+                    orientation: Gradient.Horizontal
+                }
+            }
         }
     }
 }

@@ -197,6 +197,7 @@ Item {
                     artists: player.artists
                     album: player.album
                     textAlignment: songGrid.textAlignment
+                    truncateStyle: plasmoid.configuration.compactTruncatedTextStyle
                 }
             }
 
