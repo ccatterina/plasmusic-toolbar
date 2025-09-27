@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.1](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.5.0...v3.5.1) (2025-09-27)
+
+
+### Bug Fixes
+
+* Image source binding loop ([#232](https://github.com/ccatterina/plasmusic-toolbar/issues/232)) ([2fff77e](https://github.com/ccatterina/plasmusic-toolbar/commit/2fff77e257a0f5e7cb132253b553f1aa78c6b078))
+
 ## [3.5.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.4.0...v3.5.0) (2025-09-09)
 
 
