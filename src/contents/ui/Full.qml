@@ -13,6 +13,8 @@ Item {
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
     property real volumeStep: plasmoid.configuration.volumeStep
     property bool albumCoverBackground: plasmoid.configuration.fullAlbumCoverAsBackground
+    readonly property color originalTextColor: Kirigami.Theme.textColor
+    readonly property color originalHighlightColor: Kirigami.Theme.highlightColor
 
     Layout.preferredHeight: column.implicitHeight
     Layout.preferredWidth: column.implicitWidth
@@ -20,8 +22,8 @@ Item {
     Layout.minimumHeight: column.implicitHeight
 
 
-    Kirigami.Theme.textColor: albumCoverBackground ? imageColors.fgColor : Kirigami.Theme.textColor
-    Kirigami.Theme.highlightColor: albumCoverBackground ? imageColors.hlColor : Kirigami.Theme.highlightColor
+    Kirigami.Theme.textColor: albumCoverBackground ? imageColors.fgColor : originalTextColor
+    Kirigami.Theme.highlightColor: albumCoverBackground ? imageColors.hlColor : originalHighlightColor
 
     Item {
         visible: albumCoverBackground
