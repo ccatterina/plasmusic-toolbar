@@ -30,25 +30,20 @@ Item {
         height: column.height
         width: column.width
 
-        Image {
+        ImageWithPlaceholder {
             id: albumArtFull
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
             height: parent.height * 0.7
             width: parent.width
             fillMode: Image.PreserveAspectCrop
+            placeholderSource: albumPlaceholder
+            imageSource: player.artUrl
 
             onStatusChanged: {
                 if (status === Image.Ready) {
                     imageColors.update()
                 }
-            }
-
-            source: {
-                if (status === Image.Error || !player.artUrl) {
-                    return albumPlaceholder;
-                }
-                return player.artUrl;
             }
 
             Kirigami.ImageColors {
@@ -106,18 +101,14 @@ Item {
                 hoverEnabled: true
             }
 
-            Image {
+            ImageWithPlaceholder {
                 visible: !albumCoverBackground
                 id: albumArtNormal
                 anchors.fill: parent
-                source: {
-                    if (status === Image.Error || !player.artUrl) {
-                        return albumPlaceholder;
-                    }
-                    return player.artUrl;
-                }
-
                 fillMode: Image.PreserveAspectFit
+
+                placeholderSource: albumPlaceholder
+                imageSource: player.artUrl
             }
         }
 
