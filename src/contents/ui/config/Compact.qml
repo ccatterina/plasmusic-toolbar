@@ -38,6 +38,7 @@ KCM.SimpleKCM {
     property alias cfg_titlePosition: titlePosition.value
     property alias cfg_albumPosition: albumPosition.value
     property alias cfg_compactTruncatedTextStyle: compactTruncatedTextStyle.value
+    property alias cfg_mediaProgressInPanel: mediaProgressInPanel.checked
 
     Kirigami.FormLayout {
         id: form
@@ -475,6 +476,11 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Background")
         }
 
+        CheckBox {
+            id: mediaProgressInPanel
+            Kirigami.FormData.label: i18n("Media progress:")
+        }
+
         RowLayout {
             Kirigami.FormData.label: i18n("Colors from album cover")
             enabled: useAlbumCoverAsPanelIcon.checked
@@ -490,12 +496,12 @@ KCM.SimpleKCM {
 
         Slider {
             Layout.preferredWidth: 10 * Kirigami.Units.gridUnit
-            enabled: colorsFromAlbumCover.checked
+            enabled: colorsFromAlbumCover.checked || mediaProgressInPanel.checked
             id: panelBackgroundRadius
             from: 0
             to: 25
             stepSize: 2
-            Kirigami.FormData.label: i18n("Colored background radius:")
+            Kirigami.FormData.label: i18n("Background radius:")
         }
     }
 }
