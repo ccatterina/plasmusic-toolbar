@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-09-27 12:49+0200\n"
-"PO-Revision-Date: 2025-09-30 01:29+0200\n"
+"PO-Revision-Date: 2025-09-30 01:49+0200\n"
 "Last-Translator: Vsevolod «Damglador» Stopchanskyi "
 "<vse.stopchanskyi@gmail.com>\n"
 "Language-Team: \n"
@@ -189,7 +189,7 @@ msgstr "Позиція назви альбому:"
 #: src/contents/ui/config/Compact.qml:311
 #, kde-format
 msgid "Use fixed width:"
-msgstr "Статична ширина:"
+msgstr "Статична ширина"
 
 #: src/contents/ui/config/Compact.qml:318
 #, kde-format
@@ -234,7 +234,7 @@ msgstr "Прокручування тексту"
 #: src/contents/ui/config/Compact.qml:385
 #, kde-format
 msgid "Enabled:"
-msgstr "Увімкнено:"
+msgstr "Увімкнено"
 
 #: src/contents/ui/config/Compact.qml:394 src/contents/ui/config/Full.qml:212
 #, kde-format
@@ -434,7 +434,7 @@ msgstr "Показувати віджет"
 #: src/contents/ui/config/General.qml:129
 #, kde-format
 msgid "Text displayed when no media found:"
-msgstr "Показувати текст"
+msgstr "Показувати текст:"
 
 #: src/contents/ui/config/General.qml:135
 #, kde-format
