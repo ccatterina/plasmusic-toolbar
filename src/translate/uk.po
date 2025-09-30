@@ -1,9 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Ukrainian translations for plasmusic-toolbar package.
+# Copyright (C) 2025 THE plasmusic-toolbar'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the plasmusic-toolbar package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Vsevolod «Damglador» Stopchanskyi <vse.stopchanskyi@gmail.com>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
