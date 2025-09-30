@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-27 12:49+0200\n"
+"POT-Creation-Date: 2025-09-30 01:47+0200\n"
 "PO-Revision-Date: 2025-07-21 13:16+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: none\n"
@@ -92,23 +92,23 @@ msgid "Show icon:"
 msgstr "Pictogram tonen:"
 
 #: src/contents/ui/config/Compact.qml:107
-#, kde-format
-msgid "Show song text:"
+#, fuzzy, kde-format
+msgid "Show song text"
 msgstr "Titel van nummer tonen:"
 
 #: src/contents/ui/config/Compact.qml:112
-#, kde-format
-msgid "Show skip backward control:"
+#, fuzzy, kde-format
+msgid "Show skip backward control"
 msgstr "Terugspoelknop tonen:"
 
 #: src/contents/ui/config/Compact.qml:117
-#, kde-format
-msgid "Show play/pause control:"
+#, fuzzy, kde-format
+msgid "Show play/pause control"
 msgstr "Afspeel-/Pauzeerknop tonen:"
 
 #: src/contents/ui/config/Compact.qml:122
-#, kde-format
-msgid "Show skip forward control:"
+#, fuzzy, kde-format
+msgid "Show skip forward control"
 msgstr "Vooruitspoelknop tonen:"
 
 #: src/contents/ui/config/Compact.qml:127
@@ -189,8 +189,8 @@ msgid "Album title position:"
 msgstr "Albumtitellocatie:"
 
 #: src/contents/ui/config/Compact.qml:311
-#, kde-format
-msgid "Use fixed width:"
+#, fuzzy, kde-format
+msgid "Use fixed width"
 msgstr "Vaste breedte gebruiken:"
 
 #: src/contents/ui/config/Compact.qml:318
@@ -234,8 +234,8 @@ msgid "Text scrolling"
 msgstr "Tekst laten verschuiven"
 
 #: src/contents/ui/config/Compact.qml:385
-#, kde-format
-msgid "Enabled:"
+#, fuzzy, kde-format
+msgid "Enabled"
 msgstr "Ingeschakeld:"
 
 #: src/contents/ui/config/Compact.qml:394 src/contents/ui/config/Full.qml:212
@@ -264,13 +264,13 @@ msgid "Always scroll except on mouse over"
 msgstr "Altijd verschuiven, behalve na aanwijzen met muis"
 
 #: src/contents/ui/config/Compact.qml:445
-#, kde-format
-msgid "Pause scrolling while media is not playing:"
+#, fuzzy, kde-format
+msgid "Pause scrolling while media is not playing"
 msgstr "Verschuiving onderbreken na pauzeren:"
 
 #: src/contents/ui/config/Compact.qml:450
-#, kde-format
-msgid "Reset position when scrolling is paused:"
+#, fuzzy, kde-format
+msgid "Reset position when scrolling is paused"
 msgstr "Verschuiflocatie herstellen na pauzeren:"
 
 #: src/contents/ui/config/Compact.qml:456
@@ -358,9 +358,9 @@ msgid "Transparent (Shadow content)"
 msgstr "Doorzichtig, met schaduw"
 
 #: src/contents/ui/config/Full.qml:272
-#, kde-format
-msgid "Use album cover as background:"
-msgstr ""
+#, fuzzy, kde-format
+msgid "Use album cover as background"
+msgstr "Albumhoes gebruiken als pictogram"
 
 #: src/contents/ui/config/Full.qml:274
 #, kde-format
@@ -432,8 +432,8 @@ msgid "No media found behavior"
 msgstr "Actie bij geen actieve speler"
 
 #: src/contents/ui/config/General.qml:124
-#, kde-format
-msgid "Show widget when no media found:"
+#, fuzzy, kde-format
+msgid "Show widget when no media found"
 msgstr "Widget tonen indien er niets wordt afgespeeld:"
 
 #: src/contents/ui/config/General.qml:129

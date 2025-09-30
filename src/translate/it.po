@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-27 12:49+0200\n"
+"POT-Creation-Date: 2025-09-30 01:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -92,23 +92,23 @@ msgid "Show icon:"
 msgstr "Mostra icona:"
 
 #: src/contents/ui/config/Compact.qml:107
-#, kde-format
-msgid "Show song text:"
+#, fuzzy, kde-format
+msgid "Show song text"
 msgstr "Mostra brano:"
 
 #: src/contents/ui/config/Compact.qml:112
-#, kde-format
-msgid "Show skip backward control:"
+#, fuzzy, kde-format
+msgid "Show skip backward control"
 msgstr "Mostra comando indietro:"
 
 #: src/contents/ui/config/Compact.qml:117
-#, kde-format
-msgid "Show play/pause control:"
+#, fuzzy, kde-format
+msgid "Show play/pause control"
 msgstr "Mostra comando riproduci/pausa:"
 
 #: src/contents/ui/config/Compact.qml:122
-#, kde-format
-msgid "Show skip forward control:"
+#, fuzzy, kde-format
+msgid "Show skip forward control"
 msgstr "Mostra comando avanti:"
 
 #: src/contents/ui/config/Compact.qml:127
@@ -187,8 +187,8 @@ msgid "Album title position:"
 msgstr "Posizione titolo album:"
 
 #: src/contents/ui/config/Compact.qml:311
-#, kde-format
-msgid "Use fixed width:"
+#, fuzzy, kde-format
+msgid "Use fixed width"
 msgstr "Usa larghezza fissa:"
 
 #: src/contents/ui/config/Compact.qml:318
@@ -232,8 +232,8 @@ msgid "Text scrolling"
 msgstr "Scorrimento testo"
 
 #: src/contents/ui/config/Compact.qml:385
-#, kde-format
-msgid "Enabled:"
+#, fuzzy, kde-format
+msgid "Enabled"
 msgstr "Abilitato:"
 
 #: src/contents/ui/config/Compact.qml:394 src/contents/ui/config/Full.qml:212
@@ -262,13 +262,13 @@ msgid "Always scroll except on mouse over"
 msgstr "Scorri sempre tranne al passaggio del mouse"
 
 #: src/contents/ui/config/Compact.qml:445
-#, kde-format
-msgid "Pause scrolling while media is not playing:"
+#, fuzzy, kde-format
+msgid "Pause scrolling while media is not playing"
 msgstr "Ferma scorrimento quando il media è in pausa:"
 
 #: src/contents/ui/config/Compact.qml:450
-#, kde-format
-msgid "Reset position when scrolling is paused:"
+#, fuzzy, kde-format
+msgid "Reset position when scrolling is paused"
 msgstr "Reimposta posizione quando lo scorrimento è in pausa:"
 
 #: src/contents/ui/config/Compact.qml:456
@@ -357,7 +357,7 @@ msgstr "Trasparente (Ombra)"
 
 #: src/contents/ui/config/Full.qml:272
 #, fuzzy, kde-format
-msgid "Use album cover as background:"
+msgid "Use album cover as background"
 msgstr "Usa copertina album come sfondo:"
 
 #: src/contents/ui/config/Full.qml:274
@@ -430,8 +430,8 @@ msgid "No media found behavior"
 msgstr "Comportamento in assenza di media"
 
 #: src/contents/ui/config/General.qml:124
-#, kde-format
-msgid "Show widget when no media found:"
+#, fuzzy, kde-format
+msgid "Show widget when no media found"
 msgstr "Visualizza widget quando non ci sono media:"
 
 #: src/contents/ui/config/General.qml:129
