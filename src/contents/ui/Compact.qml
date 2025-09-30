@@ -23,6 +23,7 @@ Item {
 
     readonly property int widgetThickness: horizontal ? height : width
     readonly property int controlsSize: Math.round(widgetThickness * plasmoid.configuration.panelControlsSizeRatio)
+    readonly property bool compactControls: plasmoid.configuration.panelControlsCompact
     readonly property int iconSize: Math.round(widgetThickness * plasmoid.configuration.panelIconSizeRatio)
     readonly property int lengthMargin: Math.round((widgetThickness - Math.max(controlsSize, iconSize))) / 2
 
@@ -211,6 +212,8 @@ Item {
         GridLayout {
             columns: horizontal ? grid.children.length : 1
             rows: horizontal ? 1 : grid.children.length
+            columnSpacing: compactControls ? 0 : Kirigami.Units.smallSpacing
+            rowSpacing: compactControls ? 0 : Kirigami.Units.smallSpacing
 
             Layout.fillHeight: horizontal
             Layout.fillWidth: !horizontal
