@@ -460,7 +460,7 @@ KCM.SimpleKCM {
             Layout.preferredWidth: 10 * Kirigami.Units.gridUnit
             id: panelControlsSizeRatio
             from: 0.6
-            to: 1
+            to: 1.1
             stepSize: 0.05
             Kirigami.FormData.label: i18n("Size:")
         }
