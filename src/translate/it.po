@@ -92,24 +92,24 @@ msgid "Show icon:"
 msgstr "Mostra icona:"
 
 #: src/contents/ui/config/Compact.qml:107
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show song text"
-msgstr "Mostra brano:"
+msgstr "Mostra brano"
 
 #: src/contents/ui/config/Compact.qml:112
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show skip backward control"
-msgstr "Mostra comando indietro:"
+msgstr "Mostra comando indietro"
 
 #: src/contents/ui/config/Compact.qml:117
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show play/pause control"
-msgstr "Mostra comando riproduci/pausa:"
+msgstr "Mostra comando riproduci/pausa"
 
 #: src/contents/ui/config/Compact.qml:122
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show skip forward control"
-msgstr "Mostra comando avanti:"
+msgstr "Mostra comando avanti"
 
 #: src/contents/ui/config/Compact.qml:127
 #, kde-format
@@ -187,9 +187,9 @@ msgid "Album title position:"
 msgstr "Posizione titolo album:"
 
 #: src/contents/ui/config/Compact.qml:311
-#, fuzzy, kde-format
+#, kde-format
 msgid "Use fixed width"
-msgstr "Usa larghezza fissa:"
+msgstr "Usa larghezza fissa"
 
 #: src/contents/ui/config/Compact.qml:318
 #, kde-format
@@ -232,9 +232,9 @@ msgid "Text scrolling"
 msgstr "Scorrimento testo"
 
 #: src/contents/ui/config/Compact.qml:385
-#, fuzzy, kde-format
+#, kde-format
 msgid "Enabled"
-msgstr "Abilitato:"
+msgstr "Abilitato"
 
 #: src/contents/ui/config/Compact.qml:394 src/contents/ui/config/Full.qml:212
 #, kde-format
@@ -262,14 +262,14 @@ msgid "Always scroll except on mouse over"
 msgstr "Scorri sempre tranne al passaggio del mouse"
 
 #: src/contents/ui/config/Compact.qml:445
-#, fuzzy, kde-format
+#, kde-format
 msgid "Pause scrolling while media is not playing"
-msgstr "Ferma scorrimento quando il media è in pausa:"
+msgstr "Ferma scorrimento quando il media è in pausa"
 
 #: src/contents/ui/config/Compact.qml:450
-#, fuzzy, kde-format
+#, kde-format
 msgid "Reset position when scrolling is paused"
-msgstr "Reimposta posizione quando lo scorrimento è in pausa:"
+msgstr "Reimposta posizione quando lo scorrimento è in pausa"
 
 #: src/contents/ui/config/Compact.qml:456
 #, kde-format
@@ -356,9 +356,9 @@ msgid "Transparent (Shadow content)"
 msgstr "Trasparente (Ombra)"
 
 #: src/contents/ui/config/Full.qml:272
-#, fuzzy, kde-format
+#, kde-format
 msgid "Use album cover as background"
-msgstr "Usa copertina album come sfondo:"
+msgstr "Usa copertina album come sfondo"
 
 #: src/contents/ui/config/Full.qml:274
 #, kde-format
@@ -430,9 +430,9 @@ msgid "No media found behavior"
 msgstr "Comportamento in assenza di media"
 
 #: src/contents/ui/config/General.qml:124
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show widget when no media found"
-msgstr "Visualizza widget quando non ci sono media:"
+msgstr "Visualizza widget quando non ci sono media"
 
 #: src/contents/ui/config/General.qml:129
 #, kde-format

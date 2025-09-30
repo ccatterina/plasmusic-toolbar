@@ -92,24 +92,24 @@ msgid "Show icon:"
 msgstr "Pictogram tonen:"
 
 #: src/contents/ui/config/Compact.qml:107
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show song text"
-msgstr "Titel van nummer tonen:"
+msgstr "Titel van nummer tonen"
 
 #: src/contents/ui/config/Compact.qml:112
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show skip backward control"
-msgstr "Terugspoelknop tonen:"
+msgstr "Terugspoelknop tonen"
 
 #: src/contents/ui/config/Compact.qml:117
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show play/pause control"
-msgstr "Afspeel-/Pauzeerknop tonen:"
+msgstr "Afspeel-/Pauzeerknop tonen"
 
 #: src/contents/ui/config/Compact.qml:122
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show skip forward control"
-msgstr "Vooruitspoelknop tonen:"
+msgstr "Vooruitspoelknop tonen"
 
 #: src/contents/ui/config/Compact.qml:127
 #, kde-format
@@ -189,9 +189,9 @@ msgid "Album title position:"
 msgstr "Albumtitellocatie:"
 
 #: src/contents/ui/config/Compact.qml:311
-#, fuzzy, kde-format
+#, kde-format
 msgid "Use fixed width"
-msgstr "Vaste breedte gebruiken:"
+msgstr "Vaste breedte gebruiken"
 
 #: src/contents/ui/config/Compact.qml:318
 #, kde-format
@@ -234,9 +234,9 @@ msgid "Text scrolling"
 msgstr "Tekst laten verschuiven"
 
 #: src/contents/ui/config/Compact.qml:385
-#, fuzzy, kde-format
+#, kde-format
 msgid "Enabled"
-msgstr "Ingeschakeld:"
+msgstr "Ingeschakeld"
 
 #: src/contents/ui/config/Compact.qml:394 src/contents/ui/config/Full.qml:212
 #, kde-format
@@ -264,14 +264,14 @@ msgid "Always scroll except on mouse over"
 msgstr "Altijd verschuiven, behalve na aanwijzen met muis"
 
 #: src/contents/ui/config/Compact.qml:445
-#, fuzzy, kde-format
+#, kde-format
 msgid "Pause scrolling while media is not playing"
-msgstr "Verschuiving onderbreken na pauzeren:"
+msgstr "Verschuiving onderbreken na pauzeren"
 
 #: src/contents/ui/config/Compact.qml:450
-#, fuzzy, kde-format
+#, kde-format
 msgid "Reset position when scrolling is paused"
-msgstr "Verschuiflocatie herstellen na pauzeren:"
+msgstr "Verschuiflocatie herstellen na pauzeren"
 
 #: src/contents/ui/config/Compact.qml:456
 #, kde-format
@@ -432,9 +432,9 @@ msgid "No media found behavior"
 msgstr "Actie bij geen actieve speler"
 
 #: src/contents/ui/config/General.qml:124
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show widget when no media found"
-msgstr "Widget tonen indien er niets wordt afgespeeld:"
+msgstr "Widget tonen indien er niets wordt afgespeeld"
 
 #: src/contents/ui/config/General.qml:129
 #, kde-format
