@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-27 12:49+0200\n"
+"POT-Creation-Date: 2025-10-01 18:14+0200\n"
 "PO-Revision-Date: 2025-09-30 01:49+0200\n"
 "Last-Translator: Vsevolod «Damglador» Stopchanskyi "
 "<vse.stopchanskyi@gmail.com>\n"
@@ -92,22 +92,22 @@ msgstr "Показувати піктограму"
 
 #: src/contents/ui/config/Compact.qml:107
 #, kde-format
-msgid "Show song text:"
+msgid "Show song text"
 msgstr "Показувати опис композиції"
 
 #: src/contents/ui/config/Compact.qml:112
 #, kde-format
-msgid "Show skip backward control:"
+msgid "Show skip backward control"
 msgstr "Кнопка «Попередній»"
 
 #: src/contents/ui/config/Compact.qml:117
 #, kde-format
-msgid "Show play/pause control:"
+msgid "Show play/pause control"
 msgstr "Кнопка «Призупинити/Відтворити»"
 
 #: src/contents/ui/config/Compact.qml:122
 #, kde-format
-msgid "Show skip forward control:"
+msgid "Show skip forward control"
 msgstr "Кнопка «Наступний»"
 
 #: src/contents/ui/config/Compact.qml:127
@@ -187,7 +187,7 @@ msgstr "Позиція назви альбому:"
 
 #: src/contents/ui/config/Compact.qml:311
 #, kde-format
-msgid "Use fixed width:"
+msgid "Use fixed width"
 msgstr "Статична ширина"
 
 #: src/contents/ui/config/Compact.qml:318
@@ -232,7 +232,7 @@ msgstr "Прокручування тексту"
 
 #: src/contents/ui/config/Compact.qml:385
 #, kde-format
-msgid "Enabled:"
+msgid "Enabled"
 msgstr "Увімкнено"
 
 #: src/contents/ui/config/Compact.qml:394 src/contents/ui/config/Full.qml:212
@@ -262,12 +262,12 @@ msgstr "Коли НЕ наведено мишею"
 
 #: src/contents/ui/config/Compact.qml:445
 #, kde-format
-msgid "Pause scrolling while media is not playing:"
+msgid "Pause scrolling while media is not playing"
 msgstr "Призупинити прокручування з композицією"
 
 #: src/contents/ui/config/Compact.qml:450
 #, kde-format
-msgid "Reset position when scrolling is paused:"
+msgid "Reset position when scrolling is paused"
 msgstr "Скинути позицію коли призупинено"
 
 #: src/contents/ui/config/Compact.qml:456
@@ -354,7 +354,7 @@ msgstr "Прозорий (з тінями від вмісту)"
 
 #: src/contents/ui/config/Full.qml:272
 #, kde-format
-msgid "Use album cover as background:"
+msgid "Use album cover as background"
 msgstr "Використовувати обкладинку як фон"
 
 #: src/contents/ui/config/Full.qml:274
@@ -427,7 +427,7 @@ msgstr "Якщо не знайдено медіа"
 
 #: src/contents/ui/config/General.qml:124
 #, kde-format
-msgid "Show widget when no media found:"
+msgid "Show widget when no media found"
 msgstr "Показувати віджет"
 
 #: src/contents/ui/config/General.qml:129
