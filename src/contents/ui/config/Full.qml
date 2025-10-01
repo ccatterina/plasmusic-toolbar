@@ -269,7 +269,7 @@ KCM.SimpleKCM {
         }
 
         CheckBox {
-            Kirigami.FormData.label: i18n("Use album cover as background:")
+            Kirigami.FormData.label: i18n("Use album cover as background")
             id: fullAlbumCoverAsBackground
             text: i18n("(Experimental feature)")
         }

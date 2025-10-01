@@ -121,7 +121,7 @@ KCM.SimpleKCM {
 
         CheckBox {
             id:showWhenNoMedia
-            Kirigami.FormData.label: i18n("Show widget when no media found:")
+            Kirigami.FormData.label: i18n("Show widget when no media found")
         }
 
         TextField {

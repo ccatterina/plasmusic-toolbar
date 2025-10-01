@@ -104,22 +104,22 @@ KCM.SimpleKCM {
 
         CheckBox {
             id: songTextInPanel
-            Kirigami.FormData.label: i18n("Show song text:")
+            Kirigami.FormData.label: i18n("Show song text")
         }
 
         CheckBox {
             id: skipBackwardControlInPanel
-            Kirigami.FormData.label: i18n("Show skip backward control:")
+            Kirigami.FormData.label: i18n("Show skip backward control")
         }
 
         CheckBox {
             id: playPauseControlInPanel
-            Kirigami.FormData.label: i18n("Show play/pause control:")
+            Kirigami.FormData.label: i18n("Show play/pause control")
         }
 
         CheckBox {
             id: skipForwardControlInPanel
-            Kirigami.FormData.label: i18n("Show skip forward control:")
+            Kirigami.FormData.label: i18n("Show skip forward control")
         }
 
         Kirigami.Separator {
@@ -308,7 +308,7 @@ KCM.SimpleKCM {
         CheckBox {
             id: useSongTextFixedWidth
             enabled: songTextInPanel.checked && fillAvailableSpaceCheckbox
-            Kirigami.FormData.label: i18n("Use fixed width:")
+            Kirigami.FormData.label: i18n("Use fixed width")
         }
 
         SpinBox {
@@ -382,7 +382,7 @@ KCM.SimpleKCM {
 
         CheckBox {
             id: textScrollingEnabledCheckbox
-            Kirigami.FormData.label: i18n("Enabled:")
+            Kirigami.FormData.label: i18n("Enabled")
         }
 
         Slider {
@@ -442,12 +442,12 @@ KCM.SimpleKCM {
 
         CheckBox {
             id: pauseWhileMediaIsNotPlaying
-            Kirigami.FormData.label: i18n("Pause scrolling while media is not playing:")
+            Kirigami.FormData.label: i18n("Pause scrolling while media is not playing")
         }
 
         CheckBox {
             id: textScrollingResetOnPauseCheckbox
-            Kirigami.FormData.label: i18n("Reset position when scrolling is paused:")
+            Kirigami.FormData.label: i18n("Reset position when scrolling is paused")
             enabled: textScrollingEnabledCheckbox.checked
         }
 

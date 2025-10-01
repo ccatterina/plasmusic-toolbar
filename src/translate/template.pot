@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-27 12:49+0200\n"
+"POT-Creation-Date: 2025-09-30 01:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,22 +88,22 @@ msgstr ""
 
 #: src/contents/ui/config/Compact.qml:107
 #, kde-format
-msgid "Show song text:"
+msgid "Show song text"
 msgstr ""
 
 #: src/contents/ui/config/Compact.qml:112
 #, kde-format
-msgid "Show skip backward control:"
+msgid "Show skip backward control"
 msgstr ""
 
 #: src/contents/ui/config/Compact.qml:117
 #, kde-format
-msgid "Show play/pause control:"
+msgid "Show play/pause control"
 msgstr ""
 
 #: src/contents/ui/config/Compact.qml:122
 #, kde-format
-msgid "Show skip forward control:"
+msgid "Show skip forward control"
 msgstr ""
 
 #: src/contents/ui/config/Compact.qml:127
@@ -183,7 +183,7 @@ msgstr ""
 
 #: src/contents/ui/config/Compact.qml:311
 #, kde-format
-msgid "Use fixed width:"
+msgid "Use fixed width"
 msgstr ""
 
 #: src/contents/ui/config/Compact.qml:318
@@ -228,7 +228,7 @@ msgstr ""
 
 #: src/contents/ui/config/Compact.qml:385
 #, kde-format
-msgid "Enabled:"
+msgid "Enabled"
 msgstr ""
 
 #: src/contents/ui/config/Compact.qml:394 src/contents/ui/config/Full.qml:212
@@ -258,12 +258,12 @@ msgstr ""
 
 #: src/contents/ui/config/Compact.qml:445
 #, kde-format
-msgid "Pause scrolling while media is not playing:"
+msgid "Pause scrolling while media is not playing"
 msgstr ""
 
 #: src/contents/ui/config/Compact.qml:450
 #, kde-format
-msgid "Reset position when scrolling is paused:"
+msgid "Reset position when scrolling is paused"
 msgstr ""
 
 #: src/contents/ui/config/Compact.qml:456
@@ -350,7 +350,7 @@ msgstr ""
 
 #: src/contents/ui/config/Full.qml:272
 #, kde-format
-msgid "Use album cover as background:"
+msgid "Use album cover as background"
 msgstr ""
 
 #: src/contents/ui/config/Full.qml:274
@@ -417,7 +417,7 @@ msgstr ""
 
 #: src/contents/ui/config/General.qml:124
 #, kde-format
-msgid "Show widget when no media found:"
+msgid "Show widget when no media found"
 msgstr ""
 
 #: src/contents/ui/config/General.qml:129
