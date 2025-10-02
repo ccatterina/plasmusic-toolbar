@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.6.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.5.0...v3.6.0) (2025-10-02)
+
+
+### Features
+
+* Increase max controls size ([#236](https://github.com/ccatterina/plasmusic-toolbar/issues/236)) ([0fb54f3](https://github.com/ccatterina/plasmusic-toolbar/commit/0fb54f3cd95e0a97a8fa934e8ded1647b24024d8))
+* Never use : in checkbox labels ([#237](https://github.com/ccatterina/plasmusic-toolbar/issues/237)) ([46b5b35](https://github.com/ccatterina/plasmusic-toolbar/commit/46b5b35df1feb254fd9363b7192d4e6058a3a42d))
+
+
+### Bug Fixes
+
+* Image source binding loop ([#232](https://github.com/ccatterina/plasmusic-toolbar/issues/232)) ([2fff77e](https://github.com/ccatterina/plasmusic-toolbar/commit/2fff77e257a0f5e7cb132253b553f1aa78c6b078))
+
 ## [3.5.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.4.0...v3.5.0) (2025-09-09)
 
 
