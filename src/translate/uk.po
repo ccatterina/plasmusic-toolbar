@@ -1,0 +1,488 @@
+# Ukrainian translations for plasmusic-toolbar package.
+# Copyright (C) 2025 THE plasmusic-toolbar'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the plasmusic-toolbar package.
+# Vsevolod «Damglador» Stopchanskyi <vse.stopchanskyi@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: plasmusic-toolbar\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-01 18:14+0200\n"
+"PO-Revision-Date: 2025-09-30 01:49+0200\n"
+"Last-Translator: Vsevolod «Damglador» Stopchanskyi "
+"<vse.stopchanskyi@gmail.com>\n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#: src/contents/config/config.qml:6
+#, kde-format
+msgid "General"
+msgstr "Загальні"
+
+#: src/contents/config/config.qml:11
+#, kde-format
+msgid "Panel View"
+msgstr "Панельний показ"
+
+#: src/contents/config/config.qml:16
+#, kde-format
+msgid "Full View"
+msgstr "Повний показ"
+
+#: src/contents/ui/Full.qml:90
+#, kde-format
+msgid "Bring player to the front"
+msgstr "Сфокусувати програвач"
+
+#: src/contents/ui/Full.qml:90 src/contents/ui/main.qml:29
+#, kde-format
+msgid "This player can't be raised"
+msgstr "Цей програвач неможливо сфокусувати"
+
+#: src/contents/ui/config/Compact.qml:46
+#, kde-format
+msgid "Layout"
+msgstr "Компонування"
+
+#: src/contents/ui/config/Compact.qml:50
+#, kde-format
+msgid "Fill available space in the panel"
+msgstr "Заповнити доступний простір панелі"
+
+#: src/contents/ui/config/Compact.qml:56
+#, kde-format
+msgid ""
+"The widget fills all available width in the horizontal panel (or height in "
+"the vertical panel);  the icon is aligned to the left (or top) and the "
+"playback controls are aligned to the right (or bottom); The song text can be "
+"positioned based on user preference."
+msgstr ""
+"Віджет заповнюватиме ширину горизонтальної панелі та висоту вертикальної, з "
+"піктограмою ліворуч чи зверху та елементами керування праворуч чи унизу. "
+"Опис композиції може бути розташований за побажанням. "
+
+#: src/contents/ui/config/Compact.qml:67
+#, kde-format
+msgid "Song text alignment:"
+msgstr "Розташування опису композиції"
+
+#: src/contents/ui/config/Compact.qml:68
+#, kde-format
+msgid "Left (Top for vertical panel)"
+msgstr "Ліворуч (зверху для вертикальних панелей)"
+
+#: src/contents/ui/config/Compact.qml:79
+#, kde-format
+msgid "Center"
+msgstr "По центру"
+
+#: src/contents/ui/config/Compact.qml:90
+#, kde-format
+msgid "Right (Bottom for vertical panel)"
+msgstr "Праворуч (унизу для вертикальних панелей)"
+
+#: src/contents/ui/config/Compact.qml:102
+#, kde-format
+msgid "Show icon:"
+msgstr "Показувати піктограму"
+
+#: src/contents/ui/config/Compact.qml:107
+#, kde-format
+msgid "Show song text"
+msgstr "Показувати опис композиції"
+
+#: src/contents/ui/config/Compact.qml:112
+#, kde-format
+msgid "Show skip backward control"
+msgstr "Кнопка «Попередній»"
+
+#: src/contents/ui/config/Compact.qml:117
+#, kde-format
+msgid "Show play/pause control"
+msgstr "Кнопка «Призупинити/Відтворити»"
+
+#: src/contents/ui/config/Compact.qml:122
+#, kde-format
+msgid "Show skip forward control"
+msgstr "Кнопка «Наступний»"
+
+#: src/contents/ui/config/Compact.qml:127
+#, kde-format
+msgid "Icon customization"
+msgstr "Налаштування піктограми"
+
+#: src/contents/ui/config/Compact.qml:132
+#, kde-format
+msgid "Icon:"
+msgstr "Піктограма:"
+
+#: src/contents/ui/config/Compact.qml:141
+#: src/contents/ui/config/Compact.qml:465
+#, kde-format
+msgid "Size:"
+msgstr "Розмір:"
+
+#: src/contents/ui/config/Compact.qml:146
+#, kde-format
+msgid "Use album cover as icon"
+msgstr "Використовувати зображення альбому"
+
+#: src/contents/ui/config/Compact.qml:152
+#, kde-format
+msgid "Fallback to icon if cover is not available"
+msgstr "Інакше, використовувати піктограму"
+
+#: src/contents/ui/config/Compact.qml:162
+#, kde-format
+msgid "Album cover radius:"
+msgstr "Радіус зображення альбому:"
+
+#: src/contents/ui/config/Compact.qml:167
+#, kde-format
+msgid "Song text customization"
+msgstr "Налаштування опису композиції"
+
+#: src/contents/ui/config/Compact.qml:178 src/contents/ui/config/Full.qml:76
+#, kde-format
+msgid "Song title position:"
+msgstr "Позиція назви композиції:"
+
+#: src/contents/ui/config/Compact.qml:179
+#: src/contents/ui/config/Compact.qml:226
+#: src/contents/ui/config/Compact.qml:271 src/contents/ui/config/Full.qml:77
+#: src/contents/ui/config/Full.qml:124 src/contents/ui/config/Full.qml:169
+#, kde-format
+msgid "Hidden"
+msgstr "Прихований"
+
+#: src/contents/ui/config/Compact.qml:190
+#: src/contents/ui/config/Compact.qml:237
+#: src/contents/ui/config/Compact.qml:282 src/contents/ui/config/Full.qml:88
+#: src/contents/ui/config/Full.qml:135 src/contents/ui/config/Full.qml:180
+#, kde-format
+msgid "First line"
+msgstr "Перший ряд"
+
+#: src/contents/ui/config/Compact.qml:201
+#: src/contents/ui/config/Compact.qml:248
+#: src/contents/ui/config/Compact.qml:293 src/contents/ui/config/Full.qml:99
+#: src/contents/ui/config/Full.qml:146 src/contents/ui/config/Full.qml:191
+#, kde-format
+msgid "Second line"
+msgstr "Другий ряд"
+
+#: src/contents/ui/config/Compact.qml:225 src/contents/ui/config/Full.qml:123
+#, kde-format
+msgid "Artists position:"
+msgstr "Позиція композитора:"
+
+#: src/contents/ui/config/Compact.qml:270 src/contents/ui/config/Full.qml:168
+#, kde-format
+msgid "Album title position:"
+msgstr "Позиція назви альбому:"
+
+#: src/contents/ui/config/Compact.qml:311
+#, kde-format
+msgid "Use fixed width"
+msgstr "Статична ширина"
+
+#: src/contents/ui/config/Compact.qml:318
+#, kde-format
+msgid "fixed width:"
+msgstr "Фіксована ширина:"
+
+#: src/contents/ui/config/Compact.qml:326
+#, kde-format
+msgid "max width:"
+msgstr "Максимальна ширина:"
+
+#: src/contents/ui/config/Compact.qml:336
+#, kde-format
+msgid "Truncated text style:"
+msgstr "Стиль обрізаного тексту:"
+
+#: src/contents/ui/config/Compact.qml:337
+#, kde-format
+msgid "Works only when the text is not scrolling and in the initial position"
+msgstr "Працює лише коли текст не прокручується та у початковій позиції"
+
+#: src/contents/ui/config/Compact.qml:346
+#, kde-format
+msgid "Elide"
+msgstr "Обрізання+,,,"
+
+#: src/contents/ui/config/Compact.qml:357
+#, kde-format
+msgid "Fade out"
+msgstr "Згасання"
+
+#: src/contents/ui/config/Compact.qml:368
+#, kde-format
+msgid "None"
+msgstr "Немає"
+
+#: src/contents/ui/config/Compact.qml:380 src/contents/ui/config/Full.qml:203
+#, kde-format
+msgid "Text scrolling"
+msgstr "Прокручування тексту"
+
+#: src/contents/ui/config/Compact.qml:385
+#, kde-format
+msgid "Enabled"
+msgstr "Увімкнено"
+
+#: src/contents/ui/config/Compact.qml:394 src/contents/ui/config/Full.qml:212
+#, kde-format
+msgid "Speed:"
+msgstr "Швидкість:"
+
+#: src/contents/ui/config/Compact.qml:404
+#, kde-format
+msgid "When text overflows:"
+msgstr "Прокручування коли забагато тексту:"
+
+#: src/contents/ui/config/Compact.qml:406
+#, kde-format
+msgid "Always scroll"
+msgstr "Завжди"
+
+#: src/contents/ui/config/Compact.qml:419
+#, kde-format
+msgid "Scroll only on mouse over"
+msgstr "Коли наведено мишею"
+
+#: src/contents/ui/config/Compact.qml:432
+#, kde-format
+msgid "Always scroll except on mouse over"
+msgstr "Коли НЕ наведено мишею"
+
+#: src/contents/ui/config/Compact.qml:445
+#, kde-format
+msgid "Pause scrolling while media is not playing"
+msgstr "Призупинити прокручування з композицією"
+
+#: src/contents/ui/config/Compact.qml:450
+#, kde-format
+msgid "Reset position when scrolling is paused"
+msgstr "Скинути позицію коли призупинено"
+
+#: src/contents/ui/config/Compact.qml:456
+#, kde-format
+msgid "Playback controls customization"
+msgstr "Елементи керування відтворення"
+
+#: src/contents/ui/config/Compact.qml:470 src/contents/ui/config/Full.qml:217
+#, kde-format
+msgid "Background"
+msgstr "Фон"
+
+#: src/contents/ui/config/Compact.qml:474
+#, kde-format
+msgid "Colors from album cover"
+msgstr "Кольори обкладинки альбому"
+
+#: src/contents/ui/config/Compact.qml:482
+#, kde-format
+msgid "Use album cover as icon should be checked for background to work."
+msgstr "Необхідно також увімкнути «Використовувати обкладинку як фон»."
+
+#: src/contents/ui/config/Compact.qml:493
+#, kde-format
+msgid "Colored background radius:"
+msgstr "Радіус кольорового фону:"
+
+#: src/contents/ui/config/ConfigIcon.qml:49
+#, kde-format
+msgctxt "@item:inmenu Open icon chooser dialog"
+msgid "Choose..."
+msgstr "Вибрати..."
+
+#: src/contents/ui/config/ConfigIcon.qml:54
+#, kde-format
+msgctxt "@item:inmenu Reset icon to default"
+msgid "Clear Icon"
+msgstr "Очистити піктограму"
+
+#: src/contents/ui/config/Full.qml:28
+#, kde-format
+msgid "Album cover"
+msgstr "Обкладинка альбому"
+
+#: src/contents/ui/config/Full.qml:32
+#, kde-format
+msgid "Album placeholder:"
+msgstr ""
+
+#: src/contents/ui/config/Full.qml:35 src/contents/ui/config/General.qml:101
+#, kde-format
+msgid "Choose…"
+msgstr "Вибрати…"
+
+#: src/contents/ui/config/Full.qml:43
+#, kde-format
+msgid "Clear"
+msgstr "Очистити"
+
+#: src/contents/ui/config/Full.qml:65
+#, kde-format
+msgid "Song Text Customization"
+msgstr "Налаштування опису композиції"
+
+#: src/contents/ui/config/Full.qml:226
+#, kde-format
+msgid "Background (desktop widget only):"
+msgstr "Фон (лише для стільникового віджета)"
+
+#: src/contents/ui/config/Full.qml:228
+#, kde-format
+msgid "Standard"
+msgstr "Стандартний"
+
+#: src/contents/ui/config/Full.qml:244
+#, kde-format
+msgid "Transparent"
+msgstr "Прозорий"
+
+#: src/contents/ui/config/Full.qml:255
+#, kde-format
+msgid "Transparent (Shadow content)"
+msgstr "Прозорий (з тінями від вмісту)"
+
+#: src/contents/ui/config/Full.qml:272
+#, kde-format
+msgid "Use album cover as background"
+msgstr "Використовувати обкладинку як фон"
+
+#: src/contents/ui/config/Full.qml:274
+#, kde-format
+msgid "(Experimental feature)"
+msgstr "(Експериментальна функція)"
+
+#: src/contents/ui/config/General.qml:26
+#, kde-format
+msgid "Playback source"
+msgstr "Джерело відтворення"
+
+#: src/contents/ui/config/General.qml:34
+#, kde-format
+msgid "Player:"
+msgstr "Програвач:"
+
+#: src/contents/ui/config/General.qml:37
+#, kde-format
+msgid "Choose automatically"
+msgstr "Вибирати автоматично"
+
+#: src/contents/ui/config/General.qml:42
+#, kde-format
+msgid ""
+"The player will be chosen automatically based on the currently playing song. "
+"If two or more players are playing at the same time, the widget will choose "
+"the one that started playing first."
+msgstr ""
+"Програвач, у якому щось грає, буде автоматично вибраний. Якщо два чи більше "
+"програвача активні водночас, віджет вибере той, що почав грати першим."
+
+#: src/contents/ui/config/General.qml:50
+#, kde-format
+msgid "Always:"
+msgstr "Завжди:"
+
+#: src/contents/ui/config/General.qml:82
+#, kde-format
+msgid ""
+"Always display information from the selected player, if it's not running the "
+"widget will be hidden. In the dropdown you can choose between all the "
+"players that are currently running, if you can't find the one you want, open "
+"the player application and reload the list with reload button."
+msgstr ""
+"Завжди показувати інформацію з вибраного програвача, якщо програвач не "
+"відкрито, віджет буде приховано. У випадному меню ви можете вибрати між "
+"усіма наразі відкритими програвачами, якщо ви не можете знайти бажаний, "
+"відкрийте його та перезавантажте список використовуючи відповідну кнопку."
+
+#: src/contents/ui/config/General.qml:90
+#, kde-format
+msgid "Font customization"
+msgstr "Налаштування шрифту"
+
+#: src/contents/ui/config/General.qml:94
+#, kde-format
+msgid "Custom font:"
+msgstr "Власний шрифт:"
+
+#: src/contents/ui/config/General.qml:112
+#, kde-format
+msgid "%1pt %2"
+msgstr ""
+
+#: src/contents/ui/config/General.qml:119
+#, kde-format
+msgid "No media found behavior"
+msgstr "Якщо не знайдено медіа"
+
+#: src/contents/ui/config/General.qml:124
+#, kde-format
+msgid "Show widget when no media found"
+msgstr "Показувати віджет"
+
+#: src/contents/ui/config/General.qml:129
+#, kde-format
+msgid "Text displayed when no media found:"
+msgstr "Показувати текст:"
+
+#: src/contents/ui/config/General.qml:135
+#, kde-format
+msgid "Controls behaviour"
+msgstr "Поведінка елементів керування"
+
+#: src/contents/ui/config/General.qml:140
+#, kde-format
+msgid "Volume step:"
+msgstr "Крок гучності:"
+
+#: src/contents/ui/config/General.qml:150
+#, kde-format
+msgid "Choose a Font"
+msgstr "Вибір шрифта"
+
+#: src/contents/ui/main.qml:23
+#, kde-format
+msgid "No media playing"
+msgstr "Нічого не грає"
+
+#: src/contents/ui/main.qml:25
+#, kde-format
+msgctxt "%1 is the media artist/author and %2 is the player name"
+msgid "by %1 (%2)"
+msgstr "від %1 (%2)"
+
+#: src/contents/ui/main.qml:26
+#, kde-format
+msgctxt "%1 is the player name"
+msgid "%1"
+msgstr "%1"
+
+#: src/contents/ui/main.qml:27
+#, kde-format
+msgid "Middle-click to pause"
+msgstr "СКМ: Призупинити"
+
+#: src/contents/ui/main.qml:27
+#, kde-format
+msgid "Middle-click to play"
+msgstr "СКМ: Відтворити"
+
+#: src/contents/ui/main.qml:28
+#, kde-format
+msgid "Scroll to adjust volume"
+msgstr "Колесико миші: Зміна гучності"
+
+#: src/contents/ui/main.qml:29
+#, kde-format
+msgid "Ctrl+Click to bring player to the front"
+msgstr "Ctrl+Клац: Сфокусувати програвач"
