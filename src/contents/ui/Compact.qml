@@ -1,6 +1,7 @@
 import "./components"
 import QtQuick
 import QtQuick.Layouts
+import Qt5Compat.GraphicalEffects
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
 import org.kde.plasma.components as PlasmaComponents3
@@ -27,6 +28,7 @@ Item {
     readonly property int lengthMargin: Math.round((widgetThickness - Math.max(controlsSize, iconSize))) / 2
 
     readonly property bool colorsFromAlbumCover: plasmoid.configuration.colorsFromAlbumCover
+    readonly property int panelBackgroundRadius: plasmoid.configuration.panelBackgroundRadius
     readonly property bool useImageColors: panelIcon.imageReady && panelIcon.type == PanelIcon.Type.Image && colorsFromAlbumCover
     readonly property color imageColor: useImageColors ? panelIcon.imageColor : Kirigami.Theme.textColor
     readonly property color backgroundColorFromImage: Kirigami.ColorUtils.tintWithAlpha(imageColor, "black", 0.5)
@@ -51,7 +53,43 @@ Item {
     Rectangle {
         anchors.fill: parent
         color: backgroundColor
-        radius: plasmoid.configuration.panelBackgroundRadius
+        radius: compact.panelBackgroundRadius
+        Item {
+            // start the progress after the cover/thumbnail if it is as tall as the panel thickness
+            property int panelIconSpace: panelIcon.type === PanelIcon.Type.Image && (compact.iconSize === compact.widgetThickness) ? compact.iconSize - Math.min(plasmoid.configuration.albumCoverRadius, compact.iconSize / 2) : 0
+            x: horizontal ? panelIconSpace : 0
+            y: horizontal ? 0 : panelIconSpace
+            width: horizontal ? parent.width - panelIconSpace : parent.width
+            height: horizontal ? parent.height : parent.height - panelIconSpace
+            Rectangle {
+                id: progress
+                color: foregroundColor
+                height: horizontal ? parent.height : parent.height * (player.songPosition / player.songLength)
+                width: horizontal ? parent.width * (player.songPosition / player.songLength) : parent.width
+                visible: plasmoid.configuration.mediaProgressInPanel
+                opacity: player.playbackStatus === Mpris.PlaybackStatus.Playing ? 0.15 : 0.07
+            }
+            Rectangle {
+                height: horizontal ? progress.height : 1
+                width: horizontal ? 1 : progress.width
+                color: foregroundColor
+                anchors.right: horizontal ? progress.right : undefined
+                anchors.bottom: horizontal ? undefined : progress.bottom
+                visible: progress.visible
+                opacity: 0.2
+            }
+        }
+    }
+    layer.enabled: compact.panelBackgroundRadius > 0 && (!Qt.colorEqual(backgroundColor, "transparent") || plasmoid.configuration.mediaProgressInPanel)
+    layer.effect: OpacityMask {
+        maskSource: Item {
+            width: compact.width
+            height: compact.height
+            Rectangle {
+                anchors.fill: parent
+                radius: compact.panelBackgroundRadius
+            }
+        }
     }
 
     MouseAreaWithWheelHandler {
@@ -198,6 +236,7 @@ Item {
                     album: player.album
                     textAlignment: songGrid.textAlignment
                     truncateStyle: plasmoid.configuration.compactTruncatedTextStyle
+                    opacity: player.playbackStatus === Mpris.PlaybackStatus.Playing ? 1.0 : 0.75
                 }
             }
 
