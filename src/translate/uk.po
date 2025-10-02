@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-01 18:14+0200\n"
+"POT-Creation-Date: 2025-10-03 00:12+0200\n"
 "PO-Revision-Date: 2025-09-30 01:49+0200\n"
 "Last-Translator: Vsevolod «Damglador» Stopchanskyi "
 "<vse.stopchanskyi@gmail.com>\n"
@@ -43,17 +43,17 @@ msgstr "Сфокусувати програвач"
 msgid "This player can't be raised"
 msgstr "Цей програвач неможливо сфокусувати"
 
-#: src/contents/ui/config/Compact.qml:46
+#: src/contents/ui/config/Compact.qml:47
 #, kde-format
 msgid "Layout"
 msgstr "Компонування"
 
-#: src/contents/ui/config/Compact.qml:50
+#: src/contents/ui/config/Compact.qml:51
 #, kde-format
 msgid "Fill available space in the panel"
 msgstr "Заповнити доступний простір панелі"
 
-#: src/contents/ui/config/Compact.qml:56
+#: src/contents/ui/config/Compact.qml:57
 #, kde-format
 msgid ""
 "The widget fills all available width in the horizontal panel (or height in "
@@ -65,232 +65,237 @@ msgstr ""
 "піктограмою ліворуч чи зверху та елементами керування праворуч чи унизу. "
 "Опис композиції може бути розташований за побажанням. "
 
-#: src/contents/ui/config/Compact.qml:67
+#: src/contents/ui/config/Compact.qml:68
 #, kde-format
 msgid "Song text alignment:"
 msgstr "Розташування опису композиції"
 
-#: src/contents/ui/config/Compact.qml:68
+#: src/contents/ui/config/Compact.qml:69
 #, kde-format
 msgid "Left (Top for vertical panel)"
 msgstr "Ліворуч (зверху для вертикальних панелей)"
 
-#: src/contents/ui/config/Compact.qml:79
+#: src/contents/ui/config/Compact.qml:80
 #, kde-format
 msgid "Center"
 msgstr "По центру"
 
-#: src/contents/ui/config/Compact.qml:90
+#: src/contents/ui/config/Compact.qml:91
 #, kde-format
 msgid "Right (Bottom for vertical panel)"
 msgstr "Праворуч (унизу для вертикальних панелей)"
 
-#: src/contents/ui/config/Compact.qml:102
+#: src/contents/ui/config/Compact.qml:103
 #, kde-format
 msgid "Show icon:"
 msgstr "Показувати піктограму"
 
-#: src/contents/ui/config/Compact.qml:107
+#: src/contents/ui/config/Compact.qml:108
 #, kde-format
 msgid "Show song text"
 msgstr "Показувати опис композиції"
 
-#: src/contents/ui/config/Compact.qml:112
+#: src/contents/ui/config/Compact.qml:113
 #, kde-format
 msgid "Show skip backward control"
 msgstr "Кнопка «Попередній»"
 
-#: src/contents/ui/config/Compact.qml:117
+#: src/contents/ui/config/Compact.qml:118
 #, kde-format
 msgid "Show play/pause control"
 msgstr "Кнопка «Призупинити/Відтворити»"
 
-#: src/contents/ui/config/Compact.qml:122
+#: src/contents/ui/config/Compact.qml:123
 #, kde-format
 msgid "Show skip forward control"
 msgstr "Кнопка «Наступний»"
 
-#: src/contents/ui/config/Compact.qml:127
+#: src/contents/ui/config/Compact.qml:128
 #, kde-format
 msgid "Icon customization"
 msgstr "Налаштування піктограми"
 
-#: src/contents/ui/config/Compact.qml:132
+#: src/contents/ui/config/Compact.qml:133
 #, kde-format
 msgid "Icon:"
 msgstr "Піктограма:"
 
-#: src/contents/ui/config/Compact.qml:141
-#: src/contents/ui/config/Compact.qml:465
+#: src/contents/ui/config/Compact.qml:142
+#: src/contents/ui/config/Compact.qml:466
 #, kde-format
 msgid "Size:"
 msgstr "Розмір:"
 
-#: src/contents/ui/config/Compact.qml:146
+#: src/contents/ui/config/Compact.qml:147
 #, kde-format
 msgid "Use album cover as icon"
 msgstr "Використовувати зображення альбому"
 
-#: src/contents/ui/config/Compact.qml:152
+#: src/contents/ui/config/Compact.qml:153
 #, kde-format
 msgid "Fallback to icon if cover is not available"
 msgstr "Інакше, використовувати піктограму"
 
-#: src/contents/ui/config/Compact.qml:162
+#: src/contents/ui/config/Compact.qml:163
 #, kde-format
 msgid "Album cover radius:"
 msgstr "Радіус зображення альбому:"
 
-#: src/contents/ui/config/Compact.qml:167
+#: src/contents/ui/config/Compact.qml:168
 #, kde-format
 msgid "Song text customization"
 msgstr "Налаштування опису композиції"
 
-#: src/contents/ui/config/Compact.qml:178 src/contents/ui/config/Full.qml:76
+#: src/contents/ui/config/Compact.qml:179 src/contents/ui/config/Full.qml:76
 #, kde-format
 msgid "Song title position:"
 msgstr "Позиція назви композиції:"
 
-#: src/contents/ui/config/Compact.qml:179
-#: src/contents/ui/config/Compact.qml:226
-#: src/contents/ui/config/Compact.qml:271 src/contents/ui/config/Full.qml:77
+#: src/contents/ui/config/Compact.qml:180
+#: src/contents/ui/config/Compact.qml:227
+#: src/contents/ui/config/Compact.qml:272 src/contents/ui/config/Full.qml:77
 #: src/contents/ui/config/Full.qml:124 src/contents/ui/config/Full.qml:169
 #, kde-format
 msgid "Hidden"
 msgstr "Прихований"
 
-#: src/contents/ui/config/Compact.qml:190
-#: src/contents/ui/config/Compact.qml:237
-#: src/contents/ui/config/Compact.qml:282 src/contents/ui/config/Full.qml:88
+#: src/contents/ui/config/Compact.qml:191
+#: src/contents/ui/config/Compact.qml:238
+#: src/contents/ui/config/Compact.qml:283 src/contents/ui/config/Full.qml:88
 #: src/contents/ui/config/Full.qml:135 src/contents/ui/config/Full.qml:180
 #, kde-format
 msgid "First line"
 msgstr "Перший ряд"
 
-#: src/contents/ui/config/Compact.qml:201
-#: src/contents/ui/config/Compact.qml:248
-#: src/contents/ui/config/Compact.qml:293 src/contents/ui/config/Full.qml:99
+#: src/contents/ui/config/Compact.qml:202
+#: src/contents/ui/config/Compact.qml:249
+#: src/contents/ui/config/Compact.qml:294 src/contents/ui/config/Full.qml:99
 #: src/contents/ui/config/Full.qml:146 src/contents/ui/config/Full.qml:191
 #, kde-format
 msgid "Second line"
 msgstr "Другий ряд"
 
-#: src/contents/ui/config/Compact.qml:225 src/contents/ui/config/Full.qml:123
+#: src/contents/ui/config/Compact.qml:226 src/contents/ui/config/Full.qml:123
 #, kde-format
 msgid "Artists position:"
 msgstr "Позиція композитора:"
 
-#: src/contents/ui/config/Compact.qml:270 src/contents/ui/config/Full.qml:168
+#: src/contents/ui/config/Compact.qml:271 src/contents/ui/config/Full.qml:168
 #, kde-format
 msgid "Album title position:"
 msgstr "Позиція назви альбому:"
 
-#: src/contents/ui/config/Compact.qml:311
+#: src/contents/ui/config/Compact.qml:312
 #, kde-format
 msgid "Use fixed width"
 msgstr "Статична ширина"
 
-#: src/contents/ui/config/Compact.qml:318
+#: src/contents/ui/config/Compact.qml:319
 #, kde-format
 msgid "fixed width:"
 msgstr "Фіксована ширина:"
 
-#: src/contents/ui/config/Compact.qml:326
+#: src/contents/ui/config/Compact.qml:327
 #, kde-format
 msgid "max width:"
 msgstr "Максимальна ширина:"
 
-#: src/contents/ui/config/Compact.qml:336
+#: src/contents/ui/config/Compact.qml:337
 #, kde-format
 msgid "Truncated text style:"
 msgstr "Стиль обрізаного тексту:"
 
-#: src/contents/ui/config/Compact.qml:337
+#: src/contents/ui/config/Compact.qml:338
 #, kde-format
 msgid "Works only when the text is not scrolling and in the initial position"
 msgstr "Працює лише коли текст не прокручується та у початковій позиції"
 
-#: src/contents/ui/config/Compact.qml:346
+#: src/contents/ui/config/Compact.qml:347
 #, kde-format
 msgid "Elide"
 msgstr "Обрізання+,,,"
 
-#: src/contents/ui/config/Compact.qml:357
+#: src/contents/ui/config/Compact.qml:358
 #, kde-format
 msgid "Fade out"
 msgstr "Згасання"
 
-#: src/contents/ui/config/Compact.qml:368
+#: src/contents/ui/config/Compact.qml:369
 #, kde-format
 msgid "None"
 msgstr "Немає"
 
-#: src/contents/ui/config/Compact.qml:380 src/contents/ui/config/Full.qml:203
+#: src/contents/ui/config/Compact.qml:381 src/contents/ui/config/Full.qml:203
 #, kde-format
 msgid "Text scrolling"
 msgstr "Прокручування тексту"
 
-#: src/contents/ui/config/Compact.qml:385
+#: src/contents/ui/config/Compact.qml:386
 #, kde-format
 msgid "Enabled"
 msgstr "Увімкнено"
 
-#: src/contents/ui/config/Compact.qml:394 src/contents/ui/config/Full.qml:212
+#: src/contents/ui/config/Compact.qml:395 src/contents/ui/config/Full.qml:212
 #, kde-format
 msgid "Speed:"
 msgstr "Швидкість:"
 
-#: src/contents/ui/config/Compact.qml:404
+#: src/contents/ui/config/Compact.qml:405
 #, kde-format
 msgid "When text overflows:"
 msgstr "Прокручування коли забагато тексту:"
 
-#: src/contents/ui/config/Compact.qml:406
+#: src/contents/ui/config/Compact.qml:407
 #, kde-format
 msgid "Always scroll"
 msgstr "Завжди"
 
-#: src/contents/ui/config/Compact.qml:419
+#: src/contents/ui/config/Compact.qml:420
 #, kde-format
 msgid "Scroll only on mouse over"
 msgstr "Коли наведено мишею"
 
-#: src/contents/ui/config/Compact.qml:432
+#: src/contents/ui/config/Compact.qml:433
 #, kde-format
 msgid "Always scroll except on mouse over"
 msgstr "Коли НЕ наведено мишею"
 
-#: src/contents/ui/config/Compact.qml:445
+#: src/contents/ui/config/Compact.qml:446
 #, kde-format
 msgid "Pause scrolling while media is not playing"
 msgstr "Призупинити прокручування з композицією"
 
-#: src/contents/ui/config/Compact.qml:450
+#: src/contents/ui/config/Compact.qml:451
 #, kde-format
 msgid "Reset position when scrolling is paused"
 msgstr "Скинути позицію коли призупинено"
 
-#: src/contents/ui/config/Compact.qml:456
+#: src/contents/ui/config/Compact.qml:457
 #, kde-format
 msgid "Playback controls customization"
 msgstr "Елементи керування відтворення"
 
-#: src/contents/ui/config/Compact.qml:470 src/contents/ui/config/Full.qml:217
+#: src/contents/ui/config/Compact.qml:470
+#, kde-format
+msgid "Compact mode"
+msgstr "Компактний режим"
+
+#: src/contents/ui/config/Compact.qml:475 src/contents/ui/config/Full.qml:217
 #, kde-format
 msgid "Background"
 msgstr "Фон"
 
-#: src/contents/ui/config/Compact.qml:474
+#: src/contents/ui/config/Compact.qml:479
 #, kde-format
 msgid "Colors from album cover"
 msgstr "Кольори обкладинки альбому"
 
-#: src/contents/ui/config/Compact.qml:482
+#: src/contents/ui/config/Compact.qml:487
 #, kde-format
 msgid "Use album cover as icon should be checked for background to work."
 msgstr "Необхідно також увімкнути «Використовувати обкладинку як фон»."
 
-#: src/contents/ui/config/Compact.qml:493
+#: src/contents/ui/config/Compact.qml:498
 #, kde-format
 msgid "Colored background radius:"
 msgstr "Радіус кольорового фону:"
