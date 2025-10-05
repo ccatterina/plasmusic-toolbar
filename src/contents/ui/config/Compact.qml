@@ -33,7 +33,7 @@ KCM.SimpleKCM {
     property alias cfg_songTextAlignment: songTextPositionRadio.value
     property alias cfg_panelIconSizeRatio: panelIconSizeRatio.value
     property alias cfg_panelControlsSizeRatio: panelControlsSizeRatio.value
-    property alias cfg_panelControlsCompact: panelControlCompact.checked
+    property alias cfg_spaceBetweenControlsInPanel: spaceBetweenControlsInPanel.checked
     property alias cfg_artistsPosition: artistsPosition.value
     property alias cfg_titlePosition: titlePosition.value
     property alias cfg_albumPosition: albumPosition.value
@@ -466,8 +466,8 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Size:")
         }
         CheckBox {
-            id: panelControlCompact
-            Kirigami.FormData.label: i18n("Compact mode")
+            id: spaceBetweenControlsInPanel
+            Kirigami.FormData.label: i18n("Space between controls")
         }
 
         Kirigami.Separator {

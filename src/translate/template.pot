@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-30 22:34+0200\n"
+"POT-Creation-Date: 2025-10-05 13:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -273,7 +273,7 @@ msgstr ""
 
 #: src/contents/ui/config/Compact.qml:470
 #, kde-format
-msgid "Compact mode"
+msgid "Space between controls"
 msgstr ""
 
 #: src/contents/ui/config/Compact.qml:475 src/contents/ui/config/Full.qml:217
