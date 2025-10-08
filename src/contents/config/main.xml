@@ -96,6 +96,9 @@
         <entry name="panelControlsSizeRatio" type="Double">
             <default>0.75</default>
         </entry>
+        <entry name="spaceBetweenControlsInPanel" type="Bool">
+            <default>true</default>
+        </entry>
         <entry name="titlePosition" type="Int">
             <default>1</default>
         </entry>
