@@ -8,6 +8,7 @@
 * Increase max controls size ([#236](https://github.com/ccatterina/plasmusic-toolbar/issues/236)) ([0fb54f3](https://github.com/ccatterina/plasmusic-toolbar/commit/0fb54f3cd95e0a97a8fa934e8ded1647b24024d8))
 * Never use : in checkbox labels ([#237](https://github.com/ccatterina/plasmusic-toolbar/issues/237)) ([46b5b35](https://github.com/ccatterina/plasmusic-toolbar/commit/46b5b35df1feb254fd9363b7192d4e6058a3a42d))
 * option for compact controls in panel view ([#238](https://github.com/ccatterina/plasmusic-toolbar/issues/238)) ([3d32001](https://github.com/ccatterina/plasmusic-toolbar/commit/3d3200126655b8a0b24bf3ea93a6594f60260119))
+* Add Ukrainian translation ([#235](https://github.com/ccatterina/plasmusic-toolbar/issues/235)) ([bd0e12b](https://github.com/ccatterina/plasmusic-toolbar/commit/bd0e12b0c2bdb39e5b85967716dedf79fe1cf80a))
 
 
 ### Bug Fixes
