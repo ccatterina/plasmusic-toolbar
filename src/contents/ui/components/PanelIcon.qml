@@ -19,6 +19,7 @@ Item {
     property bool imageReady: imageComponent.status == Image.Ready
     property string imageColor: imageColors.dominant
     property bool fallbackToIconWhenImageNotAvailable: false
+    property Image img: imageComponent
     visible: type === PanelIcon.Type.Icon || imageReady || (fallbackToIconWhenImageNotAvailable && !imageReady)
 
     implicitHeight: size

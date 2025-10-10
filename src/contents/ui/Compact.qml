@@ -56,7 +56,8 @@ Item {
         color: backgroundColor
         Item {
             // start the progress after the cover/thumbnail if it is as tall as the panel thickness
-            property int panelIconSpace: panelIcon.type === PanelIcon.Type.Image && (compact.iconSize === compact.widgetThickness) ? compact.iconSize - Math.min(plasmoid.configuration.albumCoverRadius, compact.iconSize / 2) : 0
+            property int imageSize: horizontal ? panelIcon.img.paintedHeight : panelIcon.img.paintedWidth
+            property int panelIconSpace: panelIcon.type === PanelIcon.Type.Image && (imageSize === compact.widgetThickness) ? imageSize - Math.min(plasmoid.configuration.albumCoverRadius, imageSize / 2) : 0
             x: horizontal ? panelIconSpace : 0
             y: horizontal ? 0 : panelIconSpace
             width: horizontal ? parent.width - panelIconSpace : parent.width
