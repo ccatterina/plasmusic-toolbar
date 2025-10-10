@@ -69,15 +69,6 @@ Item {
                 visible: plasmoid.configuration.mediaProgressInPanel
                 opacity: player.playbackStatus === Mpris.PlaybackStatus.Playing ? 0.15 : 0.07
             }
-            Rectangle {
-                height: horizontal ? progress.height : 1
-                width: horizontal ? 1 : progress.width
-                color: foregroundColor
-                anchors.right: horizontal ? progress.right : undefined
-                anchors.bottom: horizontal ? undefined : progress.bottom
-                visible: progress.visible
-                opacity: 0.2
-            }
         }
     }
     layer.enabled: compact.panelBackgroundRadius > 0 && (!Qt.colorEqual(backgroundColor, "transparent") || plasmoid.configuration.mediaProgressInPanel)
