@@ -54,7 +54,6 @@ Item {
     Rectangle {
         anchors.fill: parent
         color: backgroundColor
-        radius: compact.panelBackgroundRadius
         Item {
             // start the progress after the cover/thumbnail if it is as tall as the panel thickness
             property int panelIconSpace: panelIcon.type === PanelIcon.Type.Image && (compact.iconSize === compact.widgetThickness) ? compact.iconSize - Math.min(plasmoid.configuration.albumCoverRadius, compact.iconSize / 2) : 0
