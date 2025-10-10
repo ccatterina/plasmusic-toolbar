@@ -473,7 +473,7 @@ KCM.SimpleKCM {
 
         CheckBox {
             id: mediaProgressInPanel
-            Kirigami.FormData.label: i18n("Media progress:")
+            Kirigami.FormData.label: i18n("Media progress")
         }
 
         RowLayout {
