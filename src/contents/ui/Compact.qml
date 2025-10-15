@@ -55,13 +55,8 @@ Item {
         anchors.fill: parent
         color: backgroundColor
         Item {
-            // start the progress after the cover/thumbnail if it is as tall as the panel thickness
-            property int imageSize: horizontal ? panelIcon.img.paintedHeight : panelIcon.img.paintedWidth
-            property int panelIconSpace: panelIcon.type === PanelIcon.Type.Image && (imageSize === compact.widgetThickness) ? imageSize - Math.min(plasmoid.configuration.albumCoverRadius, imageSize / 2) : 0
-            x: horizontal ? panelIconSpace : 0
-            y: horizontal ? 0 : panelIconSpace
-            width: horizontal ? parent.width - panelIconSpace : parent.width
-            height: horizontal ? parent.height : parent.height - panelIconSpace
+            width: horizontal ? parent.width : parent.width
+            height: horizontal ? parent.height : parent.height
             Rectangle {
                 id: progress
                 color: foregroundColor
