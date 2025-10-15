@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-05 13:13+0200\n"
+"POT-Creation-Date: 2025-10-15 00:42-0600\n"
 "PO-Revision-Date: 2025-07-21 13:16+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: none\n"
@@ -43,17 +43,17 @@ msgstr "Speler naar voorgrond halen"
 msgid "This player can't be raised"
 msgstr "Deze speler kan niet naar de voorgrond worden gehaald"
 
-#: src/contents/ui/config/Compact.qml:47
+#: src/contents/ui/config/Compact.qml:48
 #, kde-format
 msgid "Layout"
 msgstr "Indeling"
 
-#: src/contents/ui/config/Compact.qml:51
+#: src/contents/ui/config/Compact.qml:52
 #, kde-format
 msgid "Fill available space in the panel"
 msgstr "Alle beschikbare paneelruimte gebruiken"
 
-#: src/contents/ui/config/Compact.qml:57
+#: src/contents/ui/config/Compact.qml:58
 #, kde-format
 msgid ""
 "The widget fills all available width in the horizontal panel (or height in "
@@ -66,243 +66,248 @@ msgstr ""
 "bovenaan uitgelijnd, en de afspeelbediening rechts of onderaan. De tekst kan "
 "op een locatie naar keuze worden getoond."
 
-#: src/contents/ui/config/Compact.qml:68
+#: src/contents/ui/config/Compact.qml:69
 #, kde-format
 msgid "Song text alignment:"
 msgstr "Tekst uitlijnen:"
 
-#: src/contents/ui/config/Compact.qml:69
+#: src/contents/ui/config/Compact.qml:70
 #, kde-format
 msgid "Left (Top for vertical panel)"
 msgstr "Links/Bovenaan"
 
-#: src/contents/ui/config/Compact.qml:80
+#: src/contents/ui/config/Compact.qml:81
 #, kde-format
 msgid "Center"
 msgstr "Midden"
 
-#: src/contents/ui/config/Compact.qml:91
+#: src/contents/ui/config/Compact.qml:92
 #, kde-format
 msgid "Right (Bottom for vertical panel)"
 msgstr "Rechts/Onderaan"
 
-#: src/contents/ui/config/Compact.qml:103
+#: src/contents/ui/config/Compact.qml:104
 #, kde-format
 msgid "Show icon:"
 msgstr "Pictogram tonen:"
 
-#: src/contents/ui/config/Compact.qml:108
+#: src/contents/ui/config/Compact.qml:109
 #, kde-format
 msgid "Show song text"
 msgstr "Titel van nummer tonen"
 
-#: src/contents/ui/config/Compact.qml:113
+#: src/contents/ui/config/Compact.qml:114
 #, kde-format
 msgid "Show skip backward control"
 msgstr "Terugspoelknop tonen"
 
-#: src/contents/ui/config/Compact.qml:118
+#: src/contents/ui/config/Compact.qml:119
 #, kde-format
 msgid "Show play/pause control"
 msgstr "Afspeel-/Pauzeerknop tonen"
 
-#: src/contents/ui/config/Compact.qml:123
+#: src/contents/ui/config/Compact.qml:124
 #, kde-format
 msgid "Show skip forward control"
 msgstr "Vooruitspoelknop tonen"
 
-#: src/contents/ui/config/Compact.qml:128
+#: src/contents/ui/config/Compact.qml:129
 #, kde-format
 msgid "Icon customization"
 msgstr "Pictogram aanpassen"
 
-#: src/contents/ui/config/Compact.qml:133
+#: src/contents/ui/config/Compact.qml:134
 #, kde-format
 msgid "Icon:"
 msgstr "Pictogram:"
 
-#: src/contents/ui/config/Compact.qml:142
-#: src/contents/ui/config/Compact.qml:466
+#: src/contents/ui/config/Compact.qml:143
+#: src/contents/ui/config/Compact.qml:467
 #, kde-format
 msgid "Size:"
 msgstr "Afmetingen:"
 
-#: src/contents/ui/config/Compact.qml:147
+#: src/contents/ui/config/Compact.qml:148
 #, kde-format
 msgid "Use album cover as icon"
 msgstr "Albumhoes gebruiken als pictogram"
 
-#: src/contents/ui/config/Compact.qml:153
+#: src/contents/ui/config/Compact.qml:154
 #, kde-format
 msgid "Fallback to icon if cover is not available"
 msgstr ""
 "Indien er geen hoes beschikbaar is, zal het standaardpictogram worden "
 "gebruikt"
 
-#: src/contents/ui/config/Compact.qml:163
+#: src/contents/ui/config/Compact.qml:164
 #, kde-format
 msgid "Album cover radius:"
 msgstr "Albumhoesafmetingen:"
 
-#: src/contents/ui/config/Compact.qml:168
+#: src/contents/ui/config/Compact.qml:169
 #, kde-format
 msgid "Song text customization"
 msgstr "Tekst aanpassen"
 
-#: src/contents/ui/config/Compact.qml:179 src/contents/ui/config/Full.qml:76
+#: src/contents/ui/config/Compact.qml:180 src/contents/ui/config/Full.qml:76
 #, kde-format
 msgid "Song title position:"
 msgstr "Tekstlocatie:"
 
-#: src/contents/ui/config/Compact.qml:180
-#: src/contents/ui/config/Compact.qml:227
-#: src/contents/ui/config/Compact.qml:272 src/contents/ui/config/Full.qml:77
+#: src/contents/ui/config/Compact.qml:181
+#: src/contents/ui/config/Compact.qml:228
+#: src/contents/ui/config/Compact.qml:273 src/contents/ui/config/Full.qml:77
 #: src/contents/ui/config/Full.qml:124 src/contents/ui/config/Full.qml:169
 #, kde-format
 msgid "Hidden"
 msgstr "Verborgen"
 
-#: src/contents/ui/config/Compact.qml:191
-#: src/contents/ui/config/Compact.qml:238
-#: src/contents/ui/config/Compact.qml:283 src/contents/ui/config/Full.qml:88
+#: src/contents/ui/config/Compact.qml:192
+#: src/contents/ui/config/Compact.qml:239
+#: src/contents/ui/config/Compact.qml:284 src/contents/ui/config/Full.qml:88
 #: src/contents/ui/config/Full.qml:135 src/contents/ui/config/Full.qml:180
 #, kde-format
 msgid "First line"
 msgstr "Eerste regel"
 
-#: src/contents/ui/config/Compact.qml:202
-#: src/contents/ui/config/Compact.qml:249
-#: src/contents/ui/config/Compact.qml:294 src/contents/ui/config/Full.qml:99
+#: src/contents/ui/config/Compact.qml:203
+#: src/contents/ui/config/Compact.qml:250
+#: src/contents/ui/config/Compact.qml:295 src/contents/ui/config/Full.qml:99
 #: src/contents/ui/config/Full.qml:146 src/contents/ui/config/Full.qml:191
 #, kde-format
 msgid "Second line"
 msgstr "Tweede regel"
 
-#: src/contents/ui/config/Compact.qml:226 src/contents/ui/config/Full.qml:123
+#: src/contents/ui/config/Compact.qml:227 src/contents/ui/config/Full.qml:123
 #, kde-format
 msgid "Artists position:"
 msgstr "Artiestlocatie:"
 
-#: src/contents/ui/config/Compact.qml:271 src/contents/ui/config/Full.qml:168
+#: src/contents/ui/config/Compact.qml:272 src/contents/ui/config/Full.qml:168
 #, kde-format
 msgid "Album title position:"
 msgstr "Albumtitellocatie:"
 
-#: src/contents/ui/config/Compact.qml:312
+#: src/contents/ui/config/Compact.qml:313
 #, kde-format
 msgid "Use fixed width"
 msgstr "Vaste breedte gebruiken"
 
-#: src/contents/ui/config/Compact.qml:319
+#: src/contents/ui/config/Compact.qml:320
 #, kde-format
 msgid "fixed width:"
 msgstr "vaste breedte:"
 
-#: src/contents/ui/config/Compact.qml:327
+#: src/contents/ui/config/Compact.qml:328
 #, kde-format
 msgid "max width:"
 msgstr "max. breedte:"
 
-#: src/contents/ui/config/Compact.qml:337
+#: src/contents/ui/config/Compact.qml:338
 #, kde-format
 msgid "Truncated text style:"
 msgstr ""
 
-#: src/contents/ui/config/Compact.qml:338
+#: src/contents/ui/config/Compact.qml:339
 #, kde-format
 msgid "Works only when the text is not scrolling and in the initial position"
 msgstr ""
 
-#: src/contents/ui/config/Compact.qml:347
+#: src/contents/ui/config/Compact.qml:348
 #, kde-format
 msgid "Elide"
 msgstr ""
 
-#: src/contents/ui/config/Compact.qml:358
+#: src/contents/ui/config/Compact.qml:359
 #, kde-format
 msgid "Fade out"
 msgstr ""
 
-#: src/contents/ui/config/Compact.qml:369
+#: src/contents/ui/config/Compact.qml:370
 #, kde-format
 msgid "None"
 msgstr ""
 
-#: src/contents/ui/config/Compact.qml:381 src/contents/ui/config/Full.qml:203
+#: src/contents/ui/config/Compact.qml:382 src/contents/ui/config/Full.qml:203
 #, kde-format
 msgid "Text scrolling"
 msgstr "Tekst laten verschuiven"
 
-#: src/contents/ui/config/Compact.qml:386
+#: src/contents/ui/config/Compact.qml:387
 #, kde-format
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: src/contents/ui/config/Compact.qml:395 src/contents/ui/config/Full.qml:212
+#: src/contents/ui/config/Compact.qml:396 src/contents/ui/config/Full.qml:212
 #, kde-format
 msgid "Speed:"
 msgstr "Snelheid:"
 
-#: src/contents/ui/config/Compact.qml:405
+#: src/contents/ui/config/Compact.qml:406
 #, kde-format
 msgid "When text overflows:"
 msgstr "Als tekst buiten beeld valt:"
 
-#: src/contents/ui/config/Compact.qml:407
+#: src/contents/ui/config/Compact.qml:408
 #, kde-format
 msgid "Always scroll"
 msgstr "Altijd verschuiven"
 
-#: src/contents/ui/config/Compact.qml:420
+#: src/contents/ui/config/Compact.qml:421
 #, kde-format
 msgid "Scroll only on mouse over"
 msgstr "Verschuiven na aanwijzen met muis"
 
-#: src/contents/ui/config/Compact.qml:433
+#: src/contents/ui/config/Compact.qml:434
 #, kde-format
 msgid "Always scroll except on mouse over"
 msgstr "Altijd verschuiven, behalve na aanwijzen met muis"
 
-#: src/contents/ui/config/Compact.qml:446
+#: src/contents/ui/config/Compact.qml:447
 #, kde-format
 msgid "Pause scrolling while media is not playing"
 msgstr "Verschuiving onderbreken na pauzeren"
 
-#: src/contents/ui/config/Compact.qml:451
+#: src/contents/ui/config/Compact.qml:452
 #, kde-format
 msgid "Reset position when scrolling is paused"
 msgstr "Verschuiflocatie herstellen na pauzeren"
 
-#: src/contents/ui/config/Compact.qml:457
+#: src/contents/ui/config/Compact.qml:458
 #, kde-format
 msgid "Playback controls customization"
 msgstr "Afspeelbediening aanpassen"
 
-#: src/contents/ui/config/Compact.qml:470
+#: src/contents/ui/config/Compact.qml:471
 #, kde-format
 msgid "Space between controls"
 msgstr ""
 
-#: src/contents/ui/config/Compact.qml:475 src/contents/ui/config/Full.qml:217
+#: src/contents/ui/config/Compact.qml:476 src/contents/ui/config/Full.qml:217
 #, kde-format
 msgid "Background"
 msgstr "Achtergrond"
 
-#: src/contents/ui/config/Compact.qml:479
+#: src/contents/ui/config/Compact.qml:481
+#, kde-format
+msgid "Media progress"
+msgstr ""
+
+#: src/contents/ui/config/Compact.qml:485
 #, kde-format
 msgid "Colors from album cover"
 msgstr "Kleuren van albumhoes"
 
-#: src/contents/ui/config/Compact.qml:487
+#: src/contents/ui/config/Compact.qml:493
 #, kde-format
 msgid "Use album cover as icon should be checked for background to work."
 msgstr ""
 "De instelling om de albumhoes als pictogram te gebruiken dient ingeschakeld "
 "te zijn."
 
-#: src/contents/ui/config/Compact.qml:498
-#, kde-format
-msgid "Colored background radius:"
+#: src/contents/ui/config/Compact.qml:504
+#, fuzzy, kde-format
+msgid "Background radius:"
 msgstr "Straal van ingekleurde achtergrond:"
 
 #: src/contents/ui/config/ConfigIcon.qml:49
