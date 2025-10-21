@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.7.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.6.0...v3.7.0) (2025-10-15)
+
+
+### Features
+
+* compact playing and progress indicators ([#228](https://github.com/ccatterina/plasmusic-toolbar/issues/228)) ([5c2a5d2](https://github.com/ccatterina/plasmusic-toolbar/commit/5c2a5d2b1db8ccd9af509e84dfa5f47c6cfe26c3))
+
 ## [3.6.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.5.0...v3.6.0) (2025-10-08)
 
 
