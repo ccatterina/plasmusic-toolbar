@@ -3,8 +3,6 @@
 # PlasMusic Toolbar
 
 [![Store version](https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Fapi.opendesktop.org%2Focs%2Fv1%2Fcontent%2Fdata%2F2128143&query=%2Focs%2Fdata%2Fcontent%2Fversion%2Ftext()&color=1f425f&labelColor=2d333b&logo=kde&label=KDE%20Store)](https://store.kde.org/p/2128143)
-[![AUR Version](https://img.shields.io/aur/version/plasma6-applets-plasmusic-toolbar?logo=archlinux&labelColor=2d333b&color=1f425f)](https://aur.archlinux.org/packages/plasma6-applets-plasmusic-toolbar)
-[![nixpkgs unstable](https://repology.org/badge/version-for-repo/nix_unstable/plasma-plasmusic-toolbar.svg?header=nixpkgs%20unstable)](https://repology.org/project/plasma-plasmusic-toolbar/versions)
 
 
 PlasMusic Toolbar is a widget for KDE Plasma 6 that shows currently playing song information and provide playback controls. (A Plasma 5 version of the widget is available in the [plasma5 branch](https://github.com/ccatterina/plasmusic-toolbar/tree/plasma5).)
@@ -42,14 +40,49 @@ You can install the widget directly from the kde store:
 
 - https://store.kde.org/p/2128143
 
-### AUR package
+
+### Manual
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/ccatterina/plasmusic-toolbar.git /tmp/plasmusic-toolbar
+    ```
+
+2. Install the widget:
+
+    ```sh
+    kpackagetool6 -i /tmp/plasmusic-toolbar/src/ --type Plasma/Applet
+    ```
+
+3. Upgrading the widget:
+
+    ```sh
+    kpackagetool6 -u /tmp/plasmusic-toolbar/src/ --type Plasma/Applet
+    ```
+
+4. Removing the widget:
+
+    ```sh
+    kpackagetool6 -r plasmusic-toolbar --type Plasma/Applet
+    ```
+
+
+### Unofficial packages
+
+#### AUR package
+
+⚠️ **Unofficial package** Use at your own risk – I cannot guarantee security.
+
+Maintainer: [@D3SOX](https://www.github.com/D3SOX)
 
 For those using an Arch-based distribution, an AUR package is available:
  - https://aur.archlinux.org/packages/plasma6-applets-plasmusic-toolbar
 
-Thanks to [@D3SOX](https://www.github.com/D3SOX) for creating and maintaining the package!
 
-### Nix package
+#### Nix package
+
+⚠️ **Unofficial package** Use at your own risk – I cannot guarantee security.
+
+Maintainer: [@HeitorAugustoLN](https://github.com/HeitorAugustoLN)
 
 For those using NixOS or the nix package manager, a Nix package is available in nixpkgs-unstable.
 
@@ -82,32 +115,6 @@ To install the widget use one of these methods:
   nix profile install nixpkgs#plasmusic-toolbar
   ```
 
-
-
-
-### Manual
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/ccatterina/plasmusic-toolbar.git /tmp/plasmusic-toolbar
-    ```
-
-2. Install the widget:
-
-    ```sh
-    kpackagetool6 -i /tmp/plasmusic-toolbar/src/ --type Plasma/Applet
-    ```
-
-3. Upgrading the widget:
-
-    ```sh
-    kpackagetool6 -u /tmp/plasmusic-toolbar/src/ --type Plasma/Applet
-    ```
-
-4. Removing the widget:
-
-    ```sh
-    kpackagetool6 -r plasmusic-toolbar --type Plasma/Applet
-    ```
 
 ## Translations
 
