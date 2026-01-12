@@ -206,27 +206,27 @@ msgstr "max. breedte:"
 #: src/contents/ui/config/Compact.qml:338
 #, kde-format
 msgid "Truncated text style:"
-msgstr ""
+msgstr "Stijl van afgekapte tekst:"
 
 #: src/contents/ui/config/Compact.qml:339
 #, kde-format
 msgid "Works only when the text is not scrolling and in the initial position"
-msgstr ""
+msgstr "Werkt alleen als de tekst niet verschuift en op de beginpositie staat"
 
 #: src/contents/ui/config/Compact.qml:348
 #, kde-format
 msgid "Elide"
-msgstr ""
+msgstr "Weglatingsteken"
 
 #: src/contents/ui/config/Compact.qml:359
 #, kde-format
 msgid "Fade out"
-msgstr ""
+msgstr "Vervaging"
 
 #: src/contents/ui/config/Compact.qml:370
 #, kde-format
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #: src/contents/ui/config/Compact.qml:382 src/contents/ui/config/Full.qml:203
 #, kde-format
@@ -281,7 +281,7 @@ msgstr "Afspeelbediening aanpassen"
 #: src/contents/ui/config/Compact.qml:471
 #, kde-format
 msgid "Space between controls"
-msgstr ""
+msgstr "Ruimte tussen bedieningsknoppen"
 
 #: src/contents/ui/config/Compact.qml:476 src/contents/ui/config/Full.qml:217
 #, kde-format
@@ -291,7 +291,7 @@ msgstr "Achtergrond"
 #: src/contents/ui/config/Compact.qml:481
 #, kde-format
 msgid "Media progress"
-msgstr ""
+msgstr "Voortgangsbalk"
 
 #: src/contents/ui/config/Compact.qml:485
 #, kde-format
@@ -306,9 +306,9 @@ msgstr ""
 "te zijn."
 
 #: src/contents/ui/config/Compact.qml:504
-#, fuzzy, kde-format
+#, kde-format
 msgid "Background radius:"
-msgstr "Straal van ingekleurde achtergrond:"
+msgstr "Achtergrondradius:"
 
 #: src/contents/ui/config/ConfigIcon.qml:49
 #, kde-format
@@ -338,9 +338,9 @@ msgid "Choose…"
 msgstr "Kiezen…"
 
 #: src/contents/ui/config/Full.qml:43
-#, fuzzy, kde-format
+#, kde-format
 msgid "Clear"
-msgstr "Pictogram wissen"
+msgstr "Wissen"
 
 #: src/contents/ui/config/Full.qml:65
 #, kde-format
@@ -368,14 +368,14 @@ msgid "Transparent (Shadow content)"
 msgstr "Doorzichtig, met schaduw"
 
 #: src/contents/ui/config/Full.qml:272
-#, fuzzy, kde-format
+#, kde-format
 msgid "Use album cover as background"
-msgstr "Albumhoes gebruiken als pictogram"
+msgstr "Albumhoes gebruiken als achtergrond"
 
 #: src/contents/ui/config/Full.qml:274
 #, kde-format
 msgid "(Experimental feature)"
-msgstr ""
+msgstr "(Experimentele functionaliteit)"
 
 #: src/contents/ui/config/General.qml:26
 #, kde-format
