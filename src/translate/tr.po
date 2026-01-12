@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-15 00:42-0600\n"
+"POT-Creation-Date: 2026-01-12 22:57+0100\n"
 "PO-Revision-Date: 2026-01-11 20:05+0300\n"
 "Last-Translator: A coffee lover\n"
 "Language-Team: none\n"
@@ -32,12 +32,12 @@ msgstr "Panel Görünümü"
 msgid "Full View"
 msgstr "Tam Görünüm"
 
-#: src/contents/ui/Full.qml:90
+#: src/contents/ui/Full.qml:96
 #, kde-format
 msgid "Bring player to the front"
 msgstr "Oynatıcıyı öne getir"
 
-#: src/contents/ui/Full.qml:90 src/contents/ui/main.qml:29
+#: src/contents/ui/Full.qml:96 src/contents/ui/main.qml:29
 #, kde-format
 msgid "This player can't be raised"
 msgstr "Bu oynatıcı öne getirilemez"
@@ -61,8 +61,8 @@ msgid ""
 "positioned based on user preference."
 msgstr ""
 "Araç takımı, yatay panelde tüm kullanılabilir genişliği (veya dikey panelde "
-"yüksekliği) doldurur; simge sola (veya üste) hizalanır ve oynatma kontrolleri "
-"sağa (veya alta) hizalanır; şarkı metni kullanıcı tercihine göre "
+"yüksekliği) doldurur; simge sola (veya üste) hizalanır ve oynatma "
+"kontrolleri sağa (veya alta) hizalanır; şarkı metni kullanıcı tercihine göre "
 "konumlandırılabilir."
 
 #: src/contents/ui/config/Compact.qml:69
@@ -298,7 +298,9 @@ msgstr "Albüm kapağındaki renkler"
 #: src/contents/ui/config/Compact.qml:493
 #, kde-format
 msgid "Use album cover as icon should be checked for background to work."
-msgstr "Arka planın çalışması için albüm kapağını simge olarak kullan seçeneği işaretlenmelidir."
+msgstr ""
+"Arka planın çalışması için albüm kapağını simge olarak kullan seçeneği "
+"işaretlenmelidir."
 
 #: src/contents/ui/config/Compact.qml:504
 #, kde-format
@@ -394,9 +396,9 @@ msgid ""
 "If two or more players are playing at the same time, the widget will choose "
 "the one that started playing first."
 msgstr ""
-"Oynatıcı, şu anda çalan şarkıya göre otomatik olarak seçilecektir. "
-"İki veya daha fazla oynatıcı aynı anda çalıyorsa, araç takımı ilk çalmaya "
-"başlayanı seçecektir."
+"Oynatıcı, şu anda çalan şarkıya göre otomatik olarak seçilecektir. İki veya "
+"daha fazla oynatıcı aynı anda çalıyorsa, araç takımı ilk çalmaya başlayanı "
+"seçecektir."
 
 #: src/contents/ui/config/General.qml:50
 #, kde-format
@@ -411,10 +413,10 @@ msgid ""
 "players that are currently running, if you can't find the one you want, open "
 "the player application and reload the list with reload button."
 msgstr ""
-"Seçilen oynatıcıdan her zaman bilgi göster, çalışmıyorsa araç takımı gizlenecektir. "
-"Açılır menüden şu anda çalışan tüm oynatıcılar arasından seçim yapabilirsiniz, "
-"istediğinizi bulamazsanız oynatıcı uygulamasını açın ve yenile düğmesiyle "
-"listeyi yenileyin."
+"Seçilen oynatıcıdan her zaman bilgi göster, çalışmıyorsa araç takımı "
+"gizlenecektir. Açılır menüden şu anda çalışan tüm oynatıcılar arasından "
+"seçim yapabilirsiniz, istediğinizi bulamazsanız oynatıcı uygulamasını açın "
+"ve yenile düğmesiyle listeyi yenileyin."
 
 #: src/contents/ui/config/General.qml:90
 #, kde-format
