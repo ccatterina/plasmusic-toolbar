@@ -10,6 +10,8 @@ import Qt5Compat.GraphicalEffects
 
 
 Item {
+    id: root
+
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
     property real volumeStep: plasmoid.configuration.volumeStep
     property bool albumCoverBackground: plasmoid.configuration.fullAlbumCoverAsBackground
@@ -19,9 +21,9 @@ Item {
     Layout.minimumWidth: column.implicitWidth
     Layout.minimumHeight: column.implicitHeight
 
-
-    Kirigami.Theme.textColor: albumCoverBackground ? imageColors.fgColor : Kirigami.Theme.textColor
-    Kirigami.Theme.highlightColor: albumCoverBackground ? imageColors.hlColor : Kirigami.Theme.highlightColor
+    // Store the original theme colors (root keeps default Kirigami.Theme.inherit: true)
+    readonly property color _originalTextColor: Kirigami.Theme.textColor
+    readonly property color _originalHighlightColor: Kirigami.Theme.highlightColor
 
     Item {
         visible: albumCoverBackground
@@ -49,7 +51,6 @@ Item {
             Kirigami.ImageColors {
                 id: imageColors
                 source: albumArtFull
-
                 readonly property color bgColor: average
                 readonly property var bgColorBrightness: Kirigami.ColorUtils.brightnessForColor(bgColor)
                 readonly property color contrastColor: bgColorBrightness === Kirigami.ColorUtils.Dark ? "white" : "black"
@@ -76,6 +77,11 @@ Item {
 
         spacing: 0
         anchors.fill: parent
+
+        // Override theme ONLY for this layout and its children
+        Kirigami.Theme.inherit: false
+        Kirigami.Theme.textColor: albumCoverBackground ? imageColors.fgColor : root._originalTextColor
+        Kirigami.Theme.highlightColor: albumCoverBackground ? imageColors.hlColor : root._originalHighlightColor
 
         Rectangle {
             Layout.alignment: Qt.AlignHCenter

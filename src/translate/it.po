@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-15 00:42-0600\n"
+"POT-Creation-Date: 2026-01-12 16:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -32,12 +32,12 @@ msgstr "Vista pannello"
 msgid "Full View"
 msgstr "Vista completa"
 
-#: src/contents/ui/Full.qml:90
+#: src/contents/ui/Full.qml:96
 #, kde-format
 msgid "Bring player to the front"
 msgstr "Porta il player in primo piano"
 
-#: src/contents/ui/Full.qml:90 src/contents/ui/main.qml:29
+#: src/contents/ui/Full.qml:96 src/contents/ui/main.qml:29
 #, kde-format
 msgid "This player can't be raised"
 msgstr "Questo player non può essere portato in primo piano"
