@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.8.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.7.0...v3.8.0) (2026-01-17)
+
+
+### Features
+
+* Add missing dutch translations ([#258](https://github.com/ccatterina/plasmusic-toolbar/issues/258)) ([2749055](https://github.com/ccatterina/plasmusic-toolbar/commit/2749055523730c4492ae4e88c0a9d38dc3ce6c8d))
+* **i18n:** Add Turkish translation ([#255](https://github.com/ccatterina/plasmusic-toolbar/issues/255)) ([17ec869](https://github.com/ccatterina/plasmusic-toolbar/commit/17ec8693ed2bc385d00e772a485c287ffeb5e179))
+
+
+### Bug Fixes
+
+* store original theme colors before overriding ([#252](https://github.com/ccatterina/plasmusic-toolbar/issues/252)) ([8d2ecaf](https://github.com/ccatterina/plasmusic-toolbar/commit/8d2ecaf8c0d9153551eb079f52da70e1769945a5))
+
 ## [3.7.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.6.0...v3.7.0) (2025-10-15)
 
 
