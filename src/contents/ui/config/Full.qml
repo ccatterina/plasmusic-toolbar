@@ -19,9 +19,63 @@ KCM.SimpleKCM {
     property alias cfg_fullTitlePosition: fullTitlePosition.value
     property alias cfg_fullAlbumPosition: fullAlbumPosition.value
     property alias cfg_fullAlbumCoverAsBackground: fullAlbumCoverAsBackground.checked
+    property alias cfg_fullViewThumbnailVisible: fullViewThumbnailVisible.checked
+    property alias cfg_fullViewProgressBarVisible: fullViewProgressBarVisible.checked
+    property alias cfg_fullViewVolumeControlVisible: fullViewVolumeControlVisible.checked
+    property alias cfg_fullViewShuffleVisible: fullViewShuffleVisible.checked
+    property alias cfg_fullViewPlaybackControlsVisible: fullViewPlaybackControlsVisible.checked
+    property alias cfg_fullViewLoopVisible: fullViewLoopVisible.checked
+    property alias cfg_fullViewPlaybackControlsFitWidth: fullViewPlaybackControlsFitWidth.checked
 
     Kirigami.FormLayout {
         id: form
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("Layout")
+        }
+
+        CheckBox {
+            id: fullViewThumbnailVisible
+            Kirigami.FormData.label: i18n("Show album cover")
+        }
+
+        CheckBox {
+            id: fullViewProgressBarVisible
+            Kirigami.FormData.label: i18n("Show progress bar")
+        }
+
+        CheckBox {
+            id: fullViewVolumeControlVisible
+            Kirigami.FormData.label: i18n("Show volume control")
+        }
+
+        CheckBox {
+            id: fullViewShuffleVisible
+            Kirigami.FormData.label: i18n("Show shuffle control")
+        }
+
+        CheckBox {
+            id: fullViewPlaybackControlsVisible
+            Kirigami.FormData.label: i18n("Show playback controls")
+        }
+
+        CheckBox {
+            id: fullViewLoopVisible
+            Kirigami.FormData.label: i18n("Show loop control")
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Fill available space with playback controls")
+            CheckBox {
+                id: fullViewPlaybackControlsFitWidth
+            }
+            Kirigami.ContextualHelpButton {
+                toolTipText: i18n(
+                    "When enabled, playback controls are spread across the full width of the widget. When disabled, they are grouped together in the center."
+                )
+            }
+        }
 
         Kirigami.Separator {
             Kirigami.FormData.isSection: true

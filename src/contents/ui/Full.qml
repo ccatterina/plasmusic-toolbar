@@ -15,6 +15,13 @@ Item {
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
     property real volumeStep: plasmoid.configuration.volumeStep
     property bool albumCoverBackground: plasmoid.configuration.fullAlbumCoverAsBackground
+    property bool thumbnailVisible: plasmoid.configuration.fullViewThumbnailVisible
+    property bool progressBarVisible: plasmoid.configuration.fullViewProgressBarVisible
+    property bool volumeControlVisible: plasmoid.configuration.fullViewVolumeControlVisible
+    property bool shuffleVisible: plasmoid.configuration.fullViewShuffleVisible
+    property bool playbackControlsVisible: plasmoid.configuration.fullViewPlaybackControlsVisible
+    property bool loopVisible: plasmoid.configuration.fullViewLoopVisible
+    property bool playbackControlsFitWidth: plasmoid.configuration.fullViewPlaybackControlsFitWidth
 
     Layout.preferredHeight: column.implicitHeight
     Layout.preferredWidth: column.implicitWidth
@@ -26,7 +33,7 @@ Item {
     readonly property color _originalHighlightColor: Kirigami.Theme.highlightColor
 
     Item {
-        visible: albumCoverBackground
+        visible: albumCoverBackground && thumbnailVisible
         Layout.margins: 0
         anchors.centerIn: parent
         height: column.height
@@ -84,10 +91,11 @@ Item {
         Kirigami.Theme.highlightColor: albumCoverBackground ? imageColors.hlColor : root._originalHighlightColor
 
         Rectangle {
+            visible: thumbnailVisible
             Layout.alignment: Qt.AlignHCenter
             Layout.margins: 10
             width: 300
-            height: width
+            height: thumbnailVisible ? width : 0
             color: 'transparent'
 
             PlasmaComponents3.ToolTip {
@@ -119,6 +127,7 @@ Item {
         }
 
         TrackPositionSlider {
+            visible: progressBarVisible
             Layout.leftMargin: 20
             Layout.rightMargin: 20
             songPosition: player.songPosition
@@ -147,6 +156,7 @@ Item {
         }
 
         VolumeBar {
+            visible: volumeControlVisible
             Layout.leftMargin: 40
             Layout.rightMargin: 40
             Layout.topMargin: 10
@@ -163,17 +173,23 @@ Item {
         }
 
         Item {
+            visible: shuffleVisible || playbackControlsVisible || loopVisible
             Layout.leftMargin: 20
             Layout.rightMargin: 20
             Layout.bottomMargin: 10
-            Layout.fillWidth: true
+            Layout.fillWidth: playbackControlsFitWidth
+            Layout.alignment: playbackControlsFitWidth ? 0 : Qt.AlignHCenter
+            Layout.preferredWidth: playbackControlsFitWidth ? -1 : row.implicitWidth
             Layout.preferredHeight: row.implicitHeight
             RowLayout {
                 id: row
 
-                anchors.fill: parent
+                width: playbackControlsFitWidth ? parent.width : implicitWidth
+                height: implicitHeight
+                anchors.centerIn: parent
 
                 CommandIcon {
+                    visible: shuffleVisible
                     enabled: player.canChangeShuffle
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.medium
@@ -183,6 +199,7 @@ Item {
                 }
 
                 CommandIcon {
+                    visible: playbackControlsVisible
                     enabled: player.canGoPrevious
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.medium
@@ -191,6 +208,7 @@ Item {
                 }
 
                 CommandIcon {
+                    visible: playbackControlsVisible
                     enabled: player.playbackStatus === Mpris.PlaybackStatus.Playing ? player.canPause : player.canPlay
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.large
@@ -199,6 +217,7 @@ Item {
                 }
 
                 CommandIcon {
+                    visible: playbackControlsVisible
                     enabled: player.canGoNext
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.medium
@@ -207,6 +226,7 @@ Item {
                 }
 
                 CommandIcon {
+                    visible: loopVisible
                     enabled: player.canChangeLoopStatus
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.medium
