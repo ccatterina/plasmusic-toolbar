@@ -24,11 +24,12 @@ Item {
     property bool playbackControlsFitWidth: plasmoid.configuration.fullViewPlaybackControlsFitWidth
     property bool songTextVisible: plasmoid.configuration.fullViewSongTextVisible
     property int songTextAlignment: plasmoid.configuration.fullViewSongTextAlignment
+    property bool songTextAboveProgressBar: plasmoid.configuration.fullViewSongTextPosition === 0
 
     // The Full View max and min width is driven by config values. The window can be resized within these bounds; thumbnail and text adapt.
     readonly property int configMinWidth: plasmoid.configuration.fullViewMinWidth
     readonly property int maximumWidth: plasmoid.configuration.fullViewMaxWidth
-    
+
     // Override min width if visible content (e.g. playback controls) needs more space
     readonly property int contentMinWidth: row.visible ? row.implicitWidth + 40 : 0
     readonly property int effectiveMinWidth: Math.min(Math.max(configMinWidth, contentMinWidth), maximumWidth)
@@ -142,10 +143,29 @@ Item {
             }
         }
 
+        SongAndArtistText {
+            visible: songTextVisible && songTextAboveProgressBar
+            Layout.fillWidth: true
+            Layout.minimumWidth: 0
+            Layout.leftMargin: 10
+            Layout.rightMargin: 10
+            Layout.bottomMargin: 5
+            textAlignment: songTextAlignment
+            scrollingSpeed: plasmoid.configuration.fullViewTextScrollingSpeed
+            title: player.title
+            artists: player.artists
+            album: player.album
+            textFont: baseFont
+            maxWidth: width
+            titlePosition: plasmoid.configuration.fullTitlePosition
+            artistsPosition: plasmoid.configuration.fullArtistsPosition
+            albumPosition: plasmoid.configuration.fullAlbumPosition
+        }
+
         TrackPositionSlider {
             visible: progressBarVisible
-            Layout.leftMargin: 20
-            Layout.rightMargin: 20
+            Layout.leftMargin: 10
+            Layout.rightMargin: 10
             songPosition: player.songPosition
             songLength: player.songLength
             playing: player.playbackStatus === Mpris.PlaybackStatus.Playing
@@ -160,11 +180,12 @@ Item {
 
         SongAndArtistText {
             id: songText
-            visible: songTextVisible
+            visible: songTextVisible && !songTextAboveProgressBar
             Layout.fillWidth: true
             Layout.minimumWidth: 0
-            Layout.leftMargin: 20
-            Layout.rightMargin: 20
+            Layout.leftMargin: 10
+            Layout.rightMargin: 10
+            Layout.topMargin: 5
             textAlignment: songTextAlignment
             scrollingSpeed: plasmoid.configuration.fullViewTextScrollingSpeed
             title: player.title

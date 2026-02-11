@@ -147,6 +147,9 @@
         <entry name="fullViewSongTextAlignment" type="Int">
             <default>4</default>
         </entry>
+        <entry name="fullViewSongTextPosition" type="Int">
+            <default>1</default>
+        </entry>
         <entry name="fullViewMinWidth" type="Int">
             <default>100</default>
         </entry>

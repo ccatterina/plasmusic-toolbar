@@ -28,6 +28,7 @@ KCM.SimpleKCM {
     property alias cfg_fullViewPlaybackControlsFitWidth: fullViewPlaybackControlsFitWidth.checked
     property alias cfg_fullViewSongTextVisible: fullViewSongTextVisible.checked
     property alias cfg_fullViewSongTextAlignment: fullViewSongTextAlignment.value
+    property alias cfg_fullViewSongTextPosition: fullViewSongTextPosition.value
     property alias cfg_fullViewMinWidth: fullViewMinWidth.value
     property alias cfg_fullViewMaxWidth: fullViewMaxWidth.value
 
@@ -94,6 +95,36 @@ KCM.SimpleKCM {
         CheckBox {
             id: fullViewSongTextVisible
             Kirigami.FormData.label: i18n("Show song text")
+        }
+
+        ButtonGroup {
+            id: fullViewSongTextPosition
+            property int value: 1
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Song text position:")
+            text: i18n("Above progress bar")
+            enabled: fullViewSongTextVisible.checked
+            checked: fullViewSongTextPosition.value === 0
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullViewSongTextPosition.value = 0
+                }
+            }
+            ButtonGroup.group: fullViewSongTextPosition
+        }
+
+        RadioButton {
+            text: i18n("Under progress bar")
+            enabled: fullViewSongTextVisible.checked
+            checked: fullViewSongTextPosition.value === 1
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullViewSongTextPosition.value = 1
+                }
+            }
+            ButtonGroup.group: fullViewSongTextPosition
         }
 
         CheckBox {
