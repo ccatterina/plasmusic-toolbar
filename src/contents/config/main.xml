@@ -141,6 +141,18 @@
         <entry name="fullViewPlaybackControlsFitWidth" type="Bool">
             <default>true</default>
         </entry>
+        <entry name="fullViewSongTextVisible" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="fullViewSongTextAlignment" type="Int">
+            <default>4</default>
+        </entry>
+        <entry name="fullViewMinWidth" type="Int">
+            <default>100</default>
+        </entry>
+        <entry name="fullViewMaxWidth" type="Int">
+            <default>1000</default>
+        </entry>
         <entry name="noMediaText" type="String">
             <default>No media found</default>
         </entry>

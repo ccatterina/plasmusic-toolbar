@@ -22,11 +22,23 @@ Item {
     property bool playbackControlsVisible: plasmoid.configuration.fullViewPlaybackControlsVisible
     property bool loopVisible: plasmoid.configuration.fullViewLoopVisible
     property bool playbackControlsFitWidth: plasmoid.configuration.fullViewPlaybackControlsFitWidth
+    property bool songTextVisible: plasmoid.configuration.fullViewSongTextVisible
+    property int songTextAlignment: plasmoid.configuration.fullViewSongTextAlignment
 
+    // The Full View max and min width is driven by config values. The window can be resized within these bounds; thumbnail and text adapt.
+    readonly property int configMinWidth: plasmoid.configuration.fullViewMinWidth
+    readonly property int maximumWidth: plasmoid.configuration.fullViewMaxWidth
+    
+    // Override min width if visible content (e.g. playback controls) needs more space
+    readonly property int contentMinWidth: row.visible ? row.implicitWidth + 40 : 0
+    readonly property int effectiveMinWidth: Math.min(Math.max(configMinWidth, contentMinWidth), maximumWidth)
+
+    Layout.preferredWidth: maximumWidth
+    Layout.minimumWidth: effectiveMinWidth
+    Layout.maximumWidth: maximumWidth
     Layout.preferredHeight: column.implicitHeight
-    Layout.preferredWidth: column.implicitWidth
-    Layout.minimumWidth: column.implicitWidth
     Layout.minimumHeight: column.implicitHeight
+    Layout.maximumHeight: column.implicitHeight
 
     // Store the original theme colors (root keeps default Kirigami.Theme.inherit: true)
     readonly property color _originalTextColor: Kirigami.Theme.textColor
@@ -91,11 +103,15 @@ Item {
         Kirigami.Theme.highlightColor: albumCoverBackground ? imageColors.hlColor : root._originalHighlightColor
 
         Rectangle {
+            id: thumbnailContainer
             visible: thumbnailVisible
-            Layout.alignment: Qt.AlignHCenter
+            Layout.fillWidth: true
             Layout.margins: 10
-            width: 300
-            height: thumbnailVisible ? width : 0
+            // Use the actual image aspect ratio, fallback to square if not loaded yet
+            readonly property real imageRatio: albumArtNormal.implicitWidth > 0 && albumArtNormal.implicitHeight > 0
+                ? albumArtNormal.implicitWidth / albumArtNormal.implicitHeight
+                : 1.0
+            Layout.preferredHeight: thumbnailVisible ? width / imageRatio : 0
             color: 'transparent'
 
             PlasmaComponents3.ToolTip {
@@ -143,13 +159,19 @@ Item {
         }
 
         SongAndArtistText {
-            Layout.alignment: Qt.AlignHCenter
+            id: songText
+            visible: songTextVisible
+            Layout.fillWidth: true
+            Layout.minimumWidth: 0
+            Layout.leftMargin: 20
+            Layout.rightMargin: 20
+            textAlignment: songTextAlignment
             scrollingSpeed: plasmoid.configuration.fullViewTextScrollingSpeed
             title: player.title
             artists: player.artists
             album: player.album
             textFont: baseFont
-            maxWidth: 250
+            maxWidth: songText.width
             titlePosition: plasmoid.configuration.fullTitlePosition
             artistsPosition: plasmoid.configuration.fullArtistsPosition
             albumPosition: plasmoid.configuration.fullAlbumPosition

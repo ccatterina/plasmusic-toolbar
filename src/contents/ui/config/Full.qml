@@ -26,6 +26,10 @@ KCM.SimpleKCM {
     property alias cfg_fullViewPlaybackControlsVisible: fullViewPlaybackControlsVisible.checked
     property alias cfg_fullViewLoopVisible: fullViewLoopVisible.checked
     property alias cfg_fullViewPlaybackControlsFitWidth: fullViewPlaybackControlsFitWidth.checked
+    property alias cfg_fullViewSongTextVisible: fullViewSongTextVisible.checked
+    property alias cfg_fullViewSongTextAlignment: fullViewSongTextAlignment.value
+    property alias cfg_fullViewMinWidth: fullViewMinWidth.value
+    property alias cfg_fullViewMaxWidth: fullViewMaxWidth.value
 
     Kirigami.FormLayout {
         id: form
@@ -43,6 +47,53 @@ KCM.SimpleKCM {
         CheckBox {
             id: fullViewProgressBarVisible
             Kirigami.FormData.label: i18n("Show progress bar")
+        }
+
+        ButtonGroup {
+            id: fullViewSongTextAlignment
+            property int value: Qt.AlignHCenter
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Song text alignment:")
+            text: i18n("Left")
+            enabled: fullViewSongTextVisible.checked
+            checked: fullViewSongTextAlignment.value == Qt.AlignLeft
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullViewSongTextAlignment.value = Qt.AlignLeft
+                }
+            }
+            ButtonGroup.group: fullViewSongTextAlignment
+        }
+
+        RadioButton {
+            text: i18n("Center")
+            enabled: fullViewSongTextVisible.checked
+            checked: fullViewSongTextAlignment.value == Qt.AlignHCenter
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullViewSongTextAlignment.value = Qt.AlignHCenter
+                }
+            }
+            ButtonGroup.group: fullViewSongTextAlignment
+        }
+
+        RadioButton {
+            text: i18n("Right")
+            enabled: fullViewSongTextVisible.checked
+            checked: fullViewSongTextAlignment.value == Qt.AlignRight
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullViewSongTextAlignment.value = Qt.AlignRight
+                }
+            }
+            ButtonGroup.group: fullViewSongTextAlignment
+        }
+
+        CheckBox {
+            id: fullViewSongTextVisible
+            Kirigami.FormData.label: i18n("Show song text")
         }
 
         CheckBox {
@@ -75,6 +126,22 @@ KCM.SimpleKCM {
                     "When enabled, playback controls are spread across the full width of the widget. When disabled, they are grouped together in the center."
                 )
             }
+        }
+
+        SpinBox {
+            id: fullViewMinWidth
+            Kirigami.FormData.label: i18n("Minimum resizable width:")
+            from: 100
+            to: fullViewMaxWidth.value
+            stepSize: 10
+        }
+
+        SpinBox {
+            id: fullViewMaxWidth
+            Kirigami.FormData.label: i18n("Maximum resizable width:")
+            from: fullViewMinWidth.value
+            to: 2000
+            stepSize: 10
         }
 
         Kirigami.Separator {
