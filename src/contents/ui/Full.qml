@@ -144,6 +144,7 @@ Item {
             titlePosition: plasmoid.configuration.fullTitlePosition
             artistsPosition: plasmoid.configuration.fullArtistsPosition
             albumPosition: plasmoid.configuration.fullAlbumPosition
+            hideAlbumForSingles: plasmoid.configuration.fullHideAlbumForSingles
         }
 
         VolumeBar {

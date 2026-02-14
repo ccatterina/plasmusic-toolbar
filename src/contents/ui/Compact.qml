@@ -210,6 +210,7 @@ Item {
                     titlePosition: plasmoid.configuration.titlePosition
                     artistsPosition: plasmoid.configuration.artistsPosition
                     albumPosition: plasmoid.configuration.albumPosition
+                    hideAlbumForSingles: plasmoid.configuration.compactHideAlbumForSingles
                     forcePauseScrolling: {
                         if (!plasmoid.configuration.pauseTextScrollingWhileMediaIsNotPlaying) {
                             return false

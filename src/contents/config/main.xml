@@ -117,6 +117,12 @@
         <entry name="fullAlbumPosition" type="Int">
             <default>2</default>
         </entry>
+        <entry name="fullHideAlbumForSingles" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="compactHideAlbumForSingles" type="Bool">
+            <default>false</default>
+        </entry>
         <entry name="fullAlbumCoverAsBackground" type="Bool">
             <default>false</default>
         </entry>

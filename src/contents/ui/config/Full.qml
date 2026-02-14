@@ -19,6 +19,7 @@ KCM.SimpleKCM {
     property alias cfg_fullTitlePosition: fullTitlePosition.value
     property alias cfg_fullAlbumPosition: fullAlbumPosition.value
     property alias cfg_fullAlbumCoverAsBackground: fullAlbumCoverAsBackground.checked
+    property alias cfg_fullHideAlbumForSingles: fullHideAlbumForSingles.checked
 
     Kirigami.FormLayout {
         id: form
@@ -198,6 +199,18 @@ KCM.SimpleKCM {
             ButtonGroup.group: fullAlbumPosition
         }
 
+        RowLayout{
+            Kirigami.FormData.label: i18n("Hide album name for singles")
+            CheckBox{
+                id: fullHideAlbumForSingles
+            }
+            Kirigami.ContextualHelpButton {
+                toolTipText: (
+                    "If the album name and the track title match, the album name will be hidden."
+                )
+            }
+        }
+        
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
             Kirigami.FormData.label: i18n("Text scrolling")

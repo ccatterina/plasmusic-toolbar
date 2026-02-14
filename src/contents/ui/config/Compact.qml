@@ -39,6 +39,7 @@ KCM.SimpleKCM {
     property alias cfg_albumPosition: albumPosition.value
     property alias cfg_compactTruncatedTextStyle: compactTruncatedTextStyle.value
     property alias cfg_mediaProgressInPanel: mediaProgressInPanel.checked
+    property alias cfg_compactHideAlbumForSingles: compactHideAlbumForSingles.checked
 
     Kirigami.FormLayout {
         id: form
@@ -302,6 +303,18 @@ KCM.SimpleKCM {
             ButtonGroup.group: albumPosition
         }
 
+        RowLayout{
+            Kirigami.FormData.label: i18n("Hide album name for singles")
+            CheckBox{
+                id: compactHideAlbumForSingles
+            }
+            Kirigami.ContextualHelpButton {
+                toolTipText: (
+                    "If the album name and the track title match, the album name will be hidden."
+                )
+            }
+        }
+        
         Item {
             // adds spacing between the groups
             height: 0.5 * Kirigami.Units.gridUnit
