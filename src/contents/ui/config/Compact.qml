@@ -304,7 +304,7 @@ KCM.SimpleKCM {
         }
 
         RowLayout{
-            Kirigami.FormData.label: i18n("Hide album name for singles")
+            Kirigami.FormData.label: i18n("Hide album name for singles:")
             CheckBox{
                 id: compactHideAlbumForSingles
             }
