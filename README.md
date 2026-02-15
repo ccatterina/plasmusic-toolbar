@@ -5,9 +5,15 @@
 [![Store version](https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Fapi.opendesktop.org%2Focs%2Fv1%2Fcontent%2Fdata%2F2128143&query=%2Focs%2Fdata%2Fcontent%2Fversion%2Ftext()&color=1f425f&labelColor=2d333b&logo=kde&label=KDE%20Store)](https://store.kde.org/p/2128143)
 
 
-PlasMusic Toolbar is a widget for KDE Plasma 6 that shows currently playing song information and provide playback controls. (A Plasma 5 version of the widget is available in the [plasma5 branch](https://github.com/ccatterina/plasmusic-toolbar/tree/plasma5).)
+PlasMusic Toolbar is a widget for KDE Plasma 6 that shows currently playing song information and provide playback controls.
 
 </div>
+
+## Compatibility
+
+- Compatible with KDE Plasma 6.0.4 and newer.
+- Last compatible release for older Plasma 6 versions: [**v3.7.0**](https://github.com/ccatterina/plasmusic-toolbar/tree/v3.7.0)
+- Plasma 5: a Plasma 5 version of the widget is available in the `plasma5` branch: https://github.com/ccatterina/plasmusic-toolbar/tree/plasma5
 
 ## Features
 

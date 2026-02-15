@@ -17,7 +17,7 @@
         "Version": "3.7.0",
         "Category": "Multimedia"
     },
-    "X-Plasma-API-Minimum-Version": "6.0",
+    "X-Plasma-API-Minimum-Version": "6.0.4",
     "X-Plasma-Provides": [
         "org.kde.plasma.multimediacontrols"
     ]
