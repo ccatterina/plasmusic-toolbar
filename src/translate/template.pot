@@ -456,6 +456,16 @@ msgstr ""
 msgid "(Experimental feature)"
 msgstr ""
 
+#: src/contents/ui/config/Full.qml:280
+#, kde-format
+msgid "Round album cover"
+msgstr ""
+
+#: src/contents/ui/config/Full.qml:291
+#, kde-format
+msgid "Album cover radius"
+msgstr ""
+
 #: src/contents/ui/config/General.qml:26
 #, kde-format
 msgid "Playback source"

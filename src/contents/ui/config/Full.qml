@@ -32,6 +32,8 @@ KCM.SimpleKCM {
     property alias cfg_fullViewSongTextPosition: fullViewSongTextPosition.value
     property alias cfg_fullViewMinWidth: fullViewMinWidth.value
     property alias cfg_fullViewMaxWidth: fullViewMaxWidth.value
+    property alias cfg_fullAlbumCoverRounded: fullAlbumCoverRounded.checked
+    property alias cfg_fullAlbumCoverRadius: fullAlbumCoverRadius.value
 
     Kirigami.FormLayout {
         id: form
@@ -211,6 +213,21 @@ KCM.SimpleKCM {
                 Layout.alignment: Qt.AlignHCenter
                 source: albumPlaceholderDialog.value
             }
+        }
+
+        CheckBox {
+            Kirigami.FormData.label: i18n("Round album cover")
+            id: fullAlbumCoverRounded
+        }
+
+        Slider {
+            Layout.preferredWidth: 10 * Kirigami.Units.gridUnit
+            enabled: fullAlbumCoverRounded.checked
+            id: fullAlbumCoverRadius
+            from: 2
+            to: 26
+            stepSize: 2
+            Kirigami.FormData.label: i18n("Album cover radius")
         }
 
         Kirigami.Separator {

@@ -29,6 +29,8 @@ Item {
     // The Full View max and min width is driven by config values. The window can be resized within these bounds; thumbnail and text adapt.
     readonly property int configMinWidth: plasmoid.configuration.fullViewMinWidth
     readonly property int maximumWidth: plasmoid.configuration.fullViewMaxWidth
+    property bool fullAlbumCoverRounded: plasmoid.configuration.fullAlbumCoverRounded
+    property int albumCoverRadius: plasmoid.configuration.fullAlbumCoverRadius
 
     // Override min width if visible content (e.g. playback controls) needs more space
     readonly property int contentMinWidth: row.visible ? row.implicitWidth + 40 : 0
@@ -77,6 +79,18 @@ Item {
                 readonly property color fgColor: Kirigami.ColorUtils.tintWithAlpha(bgColor, contrastColor, .6)
                 readonly property color hlColor: Kirigami.ColorUtils.tintWithAlpha(bgColor, contrastColor, .8)
             }
+
+            layer.enabled: root.fullAlbumCoverRounded && root.albumCoverRadius > 0
+			layer.effect: OpacityMask {
+				maskSource: Item {
+					width: albumArtFull.width
+					height: albumArtFull.height
+					Rectangle {
+						anchors.fill: parent
+						radius: albumCoverRadius
+					}
+				}
+			}
         }
 
         LinearGradient {
@@ -140,6 +154,18 @@ Item {
 
                 placeholderSource: albumPlaceholder
                 imageSource: player.artUrl
+
+                layer.enabled: root.fullAlbumCoverRounded && root.albumCoverRadius > 0
+                layer.effect: OpacityMask {
+					maskSource: Item {
+						width: albumArtNormal.width
+						height: albumArtNormal.height
+						Rectangle {
+							anchors.fill: parent
+							radius: albumCoverRadius
+						}
+					}
+				}
             }
         }
 
