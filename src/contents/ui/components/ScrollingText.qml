@@ -82,9 +82,12 @@ Item {
 
     PlasmaComponents3.Label {
         id: label
-        text: overflow ? (root.overflowElides && !animationRunning ? elidedMetrics.elidedText : root.textAndSpacing) : root.text
+        // _animationActive intentionally excludes label.x to avoid a binding loop:
+        // animationRunning → text → implicitWidth → animation.to → label.x → animationRunning
+        property bool _animationActive: !animation.paused && animation.running
+        property bool animationRunning: label.x !== 0 || _animationActive
+        text: overflow ? (root.overflowElides && !_animationActive ? elidedMetrics.elidedText : root.textAndSpacing) : root.text
         color: root.textColor
-        property bool animationRunning: label.x !== 0 || (!animation.paused && animation.running)
 
         NumberAnimation on x {
             id: animation
