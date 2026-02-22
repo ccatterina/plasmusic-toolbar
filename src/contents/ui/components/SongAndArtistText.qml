@@ -12,6 +12,11 @@ ColumnLayout {
         SecondLine
     }
 
+    enum VerticalPosition {
+        AboveProgressBar,
+        UnderProgressBar
+    }
+
     property var maxWidth: undefined
     property var scrollingBehaviour: undefined
     property var scrollingSpeed: undefined

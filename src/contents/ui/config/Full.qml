@@ -99,17 +99,17 @@ KCM.SimpleKCM {
 
         ButtonGroup {
             id: fullViewSongTextPosition
-            property int value: 1
+            property int value: SongAndArtistText.VerticalPosition.UnderProgressBar
         }
 
         RadioButton {
             Kirigami.FormData.label: i18n("Song text position:")
             text: i18n("Above progress bar")
             enabled: fullViewSongTextVisible.checked
-            checked: fullViewSongTextPosition.value === 0
+            checked: fullViewSongTextPosition.value === SongAndArtistText.VerticalPosition.AboveProgressBar
             onCheckedChanged: () => {
                 if (checked) {
-                    fullViewSongTextPosition.value = 0
+                    fullViewSongTextPosition.value = SongAndArtistText.VerticalPosition.AboveProgressBar
                 }
             }
             ButtonGroup.group: fullViewSongTextPosition
@@ -118,10 +118,10 @@ KCM.SimpleKCM {
         RadioButton {
             text: i18n("Under progress bar")
             enabled: fullViewSongTextVisible.checked
-            checked: fullViewSongTextPosition.value === 1
+            checked: fullViewSongTextPosition.value === SongAndArtistText.VerticalPosition.UnderProgressBar
             onCheckedChanged: () => {
                 if (checked) {
-                    fullViewSongTextPosition.value = 1
+                    fullViewSongTextPosition.value = SongAndArtistText.VerticalPosition.UnderProgressBar
                 }
             }
             ButtonGroup.group: fullViewSongTextPosition

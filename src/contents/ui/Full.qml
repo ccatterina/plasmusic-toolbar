@@ -24,7 +24,7 @@ Item {
     property bool playbackControlsFitWidth: plasmoid.configuration.fullViewPlaybackControlsFitWidth
     property bool songTextVisible: plasmoid.configuration.fullViewSongTextVisible
     property int songTextAlignment: plasmoid.configuration.fullViewSongTextAlignment
-    property bool songTextAboveProgressBar: plasmoid.configuration.fullViewSongTextPosition === 0
+    property bool songTextAboveProgressBar: plasmoid.configuration.fullViewSongTextPosition === SongAndArtistText.VerticalPosition.AboveProgressBar
 
     // The Full View max and min width is driven by config values. The window can be resized within these bounds; thumbnail and text adapt.
     readonly property int configMinWidth: plasmoid.configuration.fullViewMinWidth
