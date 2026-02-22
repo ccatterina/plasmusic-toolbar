@@ -21,7 +21,7 @@ Item {
     property bool shuffleVisible: plasmoid.configuration.fullViewShuffleVisible
     property bool playbackControlsVisible: plasmoid.configuration.fullViewPlaybackControlsVisible
     property bool loopVisible: plasmoid.configuration.fullViewLoopVisible
-    property bool playbackControlsFitWidth: plasmoid.configuration.fullViewPlaybackControlsFitWidth
+    property bool playbackControlsFitWidth: plasmoid.configuration.fullViewPlaybackControlsFillWidth
     property bool songTextVisible: plasmoid.configuration.fullViewSongTextVisible
     property int songTextAlignment: plasmoid.configuration.fullViewSongTextAlignment
     property bool songTextAboveProgressBar: plasmoid.configuration.fullViewSongTextPosition === SongAndArtistText.VerticalPosition.AboveProgressBar

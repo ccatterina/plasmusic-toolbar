@@ -138,7 +138,7 @@
         <entry name="fullViewLoopVisible" type="Bool">
             <default>true</default>
         </entry>
-        <entry name="fullViewPlaybackControlsFitWidth" type="Bool">
+        <entry name="fullViewPlaybackControlsFillWidth" type="Bool">
             <default>true</default>
         </entry>
         <entry name="fullViewSongTextVisible" type="Bool">

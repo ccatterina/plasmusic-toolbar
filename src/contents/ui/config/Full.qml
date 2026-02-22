@@ -25,7 +25,7 @@ KCM.SimpleKCM {
     property alias cfg_fullViewShuffleVisible: fullViewShuffleVisible.checked
     property alias cfg_fullViewPlaybackControlsVisible: fullViewPlaybackControlsVisible.checked
     property alias cfg_fullViewLoopVisible: fullViewLoopVisible.checked
-    property alias cfg_fullViewPlaybackControlsFitWidth: fullViewPlaybackControlsFitWidth.checked
+    property alias cfg_fullViewPlaybackControlsFillWidth: fullViewPlaybackControlsFillWidth.checked
     property alias cfg_fullViewSongTextVisible: fullViewSongTextVisible.checked
     property alias cfg_fullViewSongTextAlignment: fullViewSongTextAlignment.value
     property alias cfg_fullViewSongTextPosition: fullViewSongTextPosition.value
@@ -150,7 +150,7 @@ KCM.SimpleKCM {
         RowLayout {
             Kirigami.FormData.label: i18n("Fill available space with playback controls")
             CheckBox {
-                id: fullViewPlaybackControlsFitWidth
+                id: fullViewPlaybackControlsFillWidth
             }
             Kirigami.ContextualHelpButton {
                 toolTipText: i18n(
