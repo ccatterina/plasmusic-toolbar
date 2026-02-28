@@ -357,7 +357,7 @@ KCM.SimpleKCM {
                 id: fullHideAlbumForSingles
             }
             Kirigami.ContextualHelpButton {
-                toolTipText: (
+                toolTipText: i18n(
                     "If the album name and the track title match, the album name will be hidden."
                 )
             }
