@@ -53,13 +53,13 @@ Item {
     }
 
     property alias font: label.font
+    property int textAlignment: Qt.AlignHCenter
 
-    width: overflow ? maxWidth : textMetrics.width
+    implicitWidth: overflow ? maxWidth : textMetrics.width
     clip: overflow 
 
     Layout.preferredHeight: label.implicitHeight
-    Layout.preferredWidth: width
-    Layout.alignment: Qt.AlignHCenter
+    Layout.fillWidth: true
 
     HoverHandler {
         id: mouse
@@ -80,8 +80,21 @@ Item {
         elideWidth: root.maxWidth
     }
 
+    // Static label for non-overflowing text, supports horizontal alignment.
+    // Hidden when text overflows, where the scrolling label takes over instead.
+    PlasmaComponents3.Label {
+        id: staticLabel
+        visible: !overflow
+        anchors.fill: parent
+        text: root.text
+        color: root.textColor
+        font: label.font
+        horizontalAlignment: root.textAlignment
+    }
+
     PlasmaComponents3.Label {
         id: label
+        visible: overflow
         text: overflow ? (root.overflowElides && !animationRunning ? elidedMetrics.elidedText : root.textAndSpacing) : root.text
         color: root.textColor
         property bool animationRunning: label.x !== 0 || (!animation.paused && animation.running)

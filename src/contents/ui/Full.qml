@@ -15,18 +15,38 @@ Item {
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
     property real volumeStep: plasmoid.configuration.volumeStep
     property bool albumCoverBackground: plasmoid.configuration.fullAlbumCoverAsBackground
+    property bool thumbnailVisible: plasmoid.configuration.fullViewThumbnailVisible
+    property bool progressBarVisible: plasmoid.configuration.fullViewProgressBarVisible
+    property bool volumeControlVisible: plasmoid.configuration.fullViewVolumeControlVisible
+    property bool shuffleVisible: plasmoid.configuration.fullViewShuffleVisible
+    property bool playbackControlsVisible: plasmoid.configuration.fullViewPlaybackControlsVisible
+    property bool loopVisible: plasmoid.configuration.fullViewLoopVisible
+    property bool playbackControlsFitWidth: plasmoid.configuration.fullViewPlaybackControlsFillWidth
+    property bool songTextVisible: plasmoid.configuration.fullViewSongTextVisible
+    property int songTextAlignment: plasmoid.configuration.fullViewSongTextAlignment
+    property bool songTextAboveProgressBar: plasmoid.configuration.fullViewSongTextPosition === SongAndArtistText.VerticalPosition.AboveProgressBar
 
+    // The Full View max and min width is driven by config values. The window can be resized within these bounds; thumbnail and text adapt.
+    readonly property int configMinWidth: plasmoid.configuration.fullViewMinWidth
+    readonly property int maximumWidth: plasmoid.configuration.fullViewMaxWidth
+
+    // Override min width if visible content (e.g. playback controls) needs more space
+    readonly property int contentMinWidth: row.visible ? row.implicitWidth + 40 : 0
+    readonly property int effectiveMinWidth: Math.min(Math.max(configMinWidth, contentMinWidth), maximumWidth)
+
+    Layout.preferredWidth: maximumWidth
+    Layout.minimumWidth: effectiveMinWidth
+    Layout.maximumWidth: maximumWidth
     Layout.preferredHeight: column.implicitHeight
-    Layout.preferredWidth: column.implicitWidth
-    Layout.minimumWidth: column.implicitWidth
     Layout.minimumHeight: column.implicitHeight
+    Layout.maximumHeight: column.implicitHeight
 
     // Store the original theme colors (root keeps default Kirigami.Theme.inherit: true)
     readonly property color _originalTextColor: Kirigami.Theme.textColor
     readonly property color _originalHighlightColor: Kirigami.Theme.highlightColor
 
     Item {
-        visible: albumCoverBackground
+        visible: albumCoverBackground && thumbnailVisible
         Layout.margins: 0
         anchors.centerIn: parent
         height: column.height
@@ -84,10 +104,15 @@ Item {
         Kirigami.Theme.highlightColor: albumCoverBackground ? imageColors.hlColor : root._originalHighlightColor
 
         Rectangle {
-            Layout.alignment: Qt.AlignHCenter
+            id: thumbnailContainer
+            visible: thumbnailVisible
+            Layout.fillWidth: true
             Layout.margins: 10
-            width: 300
-            height: width
+            // Use the actual image aspect ratio, fallback to square if not loaded yet
+            readonly property real imageRatio: albumArtNormal.implicitWidth > 0 && albumArtNormal.implicitHeight > 0
+                ? albumArtNormal.implicitWidth / albumArtNormal.implicitHeight
+                : 1.0
+            Layout.preferredHeight: thumbnailVisible ? width / imageRatio : 0
             color: 'transparent'
 
             PlasmaComponents3.ToolTip {
@@ -118,9 +143,29 @@ Item {
             }
         }
 
+        SongAndArtistText {
+            visible: songTextVisible && songTextAboveProgressBar
+            Layout.fillWidth: true
+            Layout.minimumWidth: 0
+            Layout.leftMargin: 10
+            Layout.rightMargin: 10
+            Layout.bottomMargin: 5
+            textAlignment: songTextAlignment
+            scrollingSpeed: plasmoid.configuration.fullViewTextScrollingSpeed
+            title: player.title
+            artists: player.artists
+            album: player.album
+            textFont: baseFont
+            maxWidth: width
+            titlePosition: plasmoid.configuration.fullTitlePosition
+            artistsPosition: plasmoid.configuration.fullArtistsPosition
+            albumPosition: plasmoid.configuration.fullAlbumPosition
+        }
+
         TrackPositionSlider {
-            Layout.leftMargin: 20
-            Layout.rightMargin: 20
+            visible: progressBarVisible
+            Layout.leftMargin: 10
+            Layout.rightMargin: 10
             songPosition: player.songPosition
             songLength: player.songLength
             playing: player.playbackStatus === Mpris.PlaybackStatus.Playing
@@ -134,13 +179,20 @@ Item {
         }
 
         SongAndArtistText {
-            Layout.alignment: Qt.AlignHCenter
+            id: songText
+            visible: songTextVisible && !songTextAboveProgressBar
+            Layout.fillWidth: true
+            Layout.minimumWidth: 0
+            Layout.leftMargin: 10
+            Layout.rightMargin: 10
+            Layout.topMargin: 5
+            textAlignment: songTextAlignment
             scrollingSpeed: plasmoid.configuration.fullViewTextScrollingSpeed
             title: player.title
             artists: player.artists
             album: player.album
             textFont: baseFont
-            maxWidth: 250
+            maxWidth: songText.width
             titlePosition: plasmoid.configuration.fullTitlePosition
             artistsPosition: plasmoid.configuration.fullArtistsPosition
             albumPosition: plasmoid.configuration.fullAlbumPosition
@@ -148,6 +200,7 @@ Item {
         }
 
         VolumeBar {
+            visible: volumeControlVisible
             Layout.leftMargin: 40
             Layout.rightMargin: 40
             Layout.topMargin: 10
@@ -164,17 +217,23 @@ Item {
         }
 
         Item {
+            visible: shuffleVisible || playbackControlsVisible || loopVisible
             Layout.leftMargin: 20
             Layout.rightMargin: 20
             Layout.bottomMargin: 10
-            Layout.fillWidth: true
+            Layout.fillWidth: playbackControlsFitWidth
+            Layout.alignment: playbackControlsFitWidth ? 0 : Qt.AlignHCenter
+            Layout.preferredWidth: playbackControlsFitWidth ? -1 : row.implicitWidth
             Layout.preferredHeight: row.implicitHeight
             RowLayout {
                 id: row
 
-                anchors.fill: parent
+                width: playbackControlsFitWidth ? parent.width : implicitWidth
+                height: implicitHeight
+                anchors.centerIn: parent
 
                 CommandIcon {
+                    visible: shuffleVisible
                     enabled: player.canChangeShuffle
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.medium
@@ -184,6 +243,7 @@ Item {
                 }
 
                 CommandIcon {
+                    visible: playbackControlsVisible
                     enabled: player.canGoPrevious
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.medium
@@ -192,6 +252,7 @@ Item {
                 }
 
                 CommandIcon {
+                    visible: playbackControlsVisible
                     enabled: player.playbackStatus === Mpris.PlaybackStatus.Playing ? player.canPause : player.canPlay
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.large
@@ -200,6 +261,7 @@ Item {
                 }
 
                 CommandIcon {
+                    visible: playbackControlsVisible
                     enabled: player.canGoNext
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.medium
@@ -208,6 +270,7 @@ Item {
                 }
 
                 CommandIcon {
+                    visible: loopVisible
                     enabled: player.canChangeLoopStatus
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.medium

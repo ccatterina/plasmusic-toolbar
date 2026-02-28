@@ -22,7 +22,13 @@ Item {
     visible: type === PanelIcon.Type.Icon || imageReady || (fallbackToIconWhenImageNotAvailable && !imageReady)
 
     implicitHeight: size
-    implicitWidth: size
+    implicitWidth: {
+        if (type === PanelIcon.Type.Image && imageReady && imageComponent.implicitHeight > 0) {
+            return size * (imageComponent.implicitWidth / imageComponent.implicitHeight);
+        } else {
+            return size;
+        }
+    }
 
     Kirigami.Icon {
         visible: type === PanelIcon.Type.Icon || (fallbackToIconWhenImageNotAvailable && !imageReady)
@@ -44,7 +50,7 @@ Item {
         id: imageComponent
         visible: type === PanelIcon.Type.Image
         anchors.fill: parent
-        sourceSize: Qt.size(root.size * Screen.devicePixelRatio, root.size * Screen.devicePixelRatio)
+        sourceSize: Qt.size(root.implicitWidth * Screen.devicePixelRatio, root.implicitHeight * Screen.devicePixelRatio)
         source: root.imageUrl
         fillMode: Image.PreserveAspectFit
         onStatusChanged: {
@@ -61,7 +67,7 @@ Item {
         // enables round corners while the radius is set
         // ref: https://stackoverflow.com/questions/6090740/image-rounded-corners-in-qml
         layer.enabled: imageRadius > 0
-        layer.textureSize: Qt.size(root.size * Screen.devicePixelRatio, root.size * Screen.devicePixelRatio)
+        layer.textureSize: Qt.size(root.implicitWidth * Screen.devicePixelRatio, root.implicitHeight * Screen.devicePixelRatio)
         layer.effect: OpacityMask {
             maskSource: Item {
                 width: imageComponent.width

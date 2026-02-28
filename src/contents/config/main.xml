@@ -126,6 +126,42 @@
         <entry name="fullAlbumCoverAsBackground" type="Bool">
             <default>false</default>
         </entry>
+        <entry name="fullViewThumbnailVisible" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="fullViewProgressBarVisible" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="fullViewVolumeControlVisible" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="fullViewShuffleVisible" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="fullViewPlaybackControlsVisible" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="fullViewLoopVisible" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="fullViewPlaybackControlsFillWidth" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="fullViewSongTextVisible" type="Bool">
+            <default>true</default>
+        </entry>
+        <entry name="fullViewSongTextAlignment" type="Int">
+            <default>4</default>
+        </entry>
+        <entry name="fullViewSongTextPosition" type="Int">
+            <default>1</default>
+        </entry>
+        <entry name="fullViewMinWidth" type="Int">
+            <default>100</default>
+        </entry>
+        <entry name="fullViewMaxWidth" type="Int">
+            <default>1000</default>
+        </entry>
         <entry name="noMediaText" type="String">
             <default>No media found</default>
         </entry>

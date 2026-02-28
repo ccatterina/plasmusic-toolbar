@@ -6,14 +6,25 @@ QtObject {
     id: root
 
     property var mpris2Model: Mpris.Mpris2Model {
-        onRowsInserted: (_, rowIndex) => {
-            if (!sourceIdentity) {
+        readonly property alias preferredSourceIdentity: root.sourceIdentity
+
+        onRowsInserted: () => updatePlayerIndex(this)
+        onPreferredSourceIdentityChanged: () => updatePlayerIndex(this)
+
+        function updatePlayerIndex(model) {
+            if (!preferredSourceIdentity) {
+                // Choose the multiplex source when no preferred source is set
+                model.currentIndex = 0;
                 return;
             }
-            const CONTAINER_ROLE = Qt.UserRole + 1
-            const player = this.data(this.index(rowIndex, 0), CONTAINER_ROLE)
-            if (player.identity === root.sourceIdentity) {
-                this.currentIndex = rowIndex;
+
+            const CONTAINER_ROLE = Qt.UserRole + 1;
+            for (let i = 1; i < model.rowCount(); i++) {
+                const player = model.data(model.index(i, 0), CONTAINER_ROLE);
+                if (player.identity === preferredSourceIdentity) {
+                    model.currentIndex = i;
+                    return;
+                }
             }
         }
     }
@@ -21,7 +32,7 @@ QtObject {
     property var sourceIdentity: null
     readonly property bool ready: {
         if (!mpris2Model.currentPlayer) {
-            return false
+            return false;
         }
         return mpris2Model.currentPlayer.identity === sourceIdentity || !sourceIdentity;
     }
@@ -72,7 +83,7 @@ QtObject {
     }
 
     function setVolume(volume) {
-        mpris2Model.currentPlayer.volume = volume
+        mpris2Model.currentPlayer.volume = volume;
     }
 
     function changeVolume(delta, showOSD) {
@@ -80,11 +91,11 @@ QtObject {
     }
 
     function setShuffle(shuffle) {
-        mpris2Model.currentPlayer.shuffle = shuffle
+        mpris2Model.currentPlayer.shuffle = shuffle;
     }
 
     function setLoopStatus(loopStatus) {
-        mpris2Model.currentPlayer.loopStatus = loopStatus
+        mpris2Model.currentPlayer.loopStatus = loopStatus;
     }
 
     function raise() {

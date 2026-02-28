@@ -20,9 +20,161 @@ KCM.SimpleKCM {
     property alias cfg_fullAlbumPosition: fullAlbumPosition.value
     property alias cfg_fullAlbumCoverAsBackground: fullAlbumCoverAsBackground.checked
     property alias cfg_fullHideAlbumForSingles: fullHideAlbumForSingles.checked
+    property alias cfg_fullViewThumbnailVisible: fullViewThumbnailVisible.checked
+    property alias cfg_fullViewProgressBarVisible: fullViewProgressBarVisible.checked
+    property alias cfg_fullViewVolumeControlVisible: fullViewVolumeControlVisible.checked
+    property alias cfg_fullViewShuffleVisible: fullViewShuffleVisible.checked
+    property alias cfg_fullViewPlaybackControlsVisible: fullViewPlaybackControlsVisible.checked
+    property alias cfg_fullViewLoopVisible: fullViewLoopVisible.checked
+    property alias cfg_fullViewPlaybackControlsFillWidth: fullViewPlaybackControlsFillWidth.checked
+    property alias cfg_fullViewSongTextVisible: fullViewSongTextVisible.checked
+    property alias cfg_fullViewSongTextAlignment: fullViewSongTextAlignment.value
+    property alias cfg_fullViewSongTextPosition: fullViewSongTextPosition.value
+    property alias cfg_fullViewMinWidth: fullViewMinWidth.value
+    property alias cfg_fullViewMaxWidth: fullViewMaxWidth.value
 
     Kirigami.FormLayout {
         id: form
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("Layout")
+        }
+
+        CheckBox {
+            id: fullViewThumbnailVisible
+            Kirigami.FormData.label: i18n("Show album cover")
+        }
+
+        CheckBox {
+            id: fullViewProgressBarVisible
+            Kirigami.FormData.label: i18n("Show progress bar")
+        }
+
+        ButtonGroup {
+            id: fullViewSongTextAlignment
+            property int value: Qt.AlignHCenter
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Song text alignment:")
+            text: i18n("Left")
+            enabled: fullViewSongTextVisible.checked
+            checked: fullViewSongTextAlignment.value == Qt.AlignLeft
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullViewSongTextAlignment.value = Qt.AlignLeft
+                }
+            }
+            ButtonGroup.group: fullViewSongTextAlignment
+        }
+
+        RadioButton {
+            text: i18n("Center")
+            enabled: fullViewSongTextVisible.checked
+            checked: fullViewSongTextAlignment.value == Qt.AlignHCenter
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullViewSongTextAlignment.value = Qt.AlignHCenter
+                }
+            }
+            ButtonGroup.group: fullViewSongTextAlignment
+        }
+
+        RadioButton {
+            text: i18n("Right")
+            enabled: fullViewSongTextVisible.checked
+            checked: fullViewSongTextAlignment.value == Qt.AlignRight
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullViewSongTextAlignment.value = Qt.AlignRight
+                }
+            }
+            ButtonGroup.group: fullViewSongTextAlignment
+        }
+
+        CheckBox {
+            id: fullViewSongTextVisible
+            Kirigami.FormData.label: i18n("Show song text")
+        }
+
+        ButtonGroup {
+            id: fullViewSongTextPosition
+            property int value: SongAndArtistText.VerticalPosition.UnderProgressBar
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Song text position:")
+            text: i18n("Above progress bar")
+            enabled: fullViewSongTextVisible.checked
+            checked: fullViewSongTextPosition.value === SongAndArtistText.VerticalPosition.AboveProgressBar
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullViewSongTextPosition.value = SongAndArtistText.VerticalPosition.AboveProgressBar
+                }
+            }
+            ButtonGroup.group: fullViewSongTextPosition
+        }
+
+        RadioButton {
+            text: i18n("Under progress bar")
+            enabled: fullViewSongTextVisible.checked
+            checked: fullViewSongTextPosition.value === SongAndArtistText.VerticalPosition.UnderProgressBar
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullViewSongTextPosition.value = SongAndArtistText.VerticalPosition.UnderProgressBar
+                }
+            }
+            ButtonGroup.group: fullViewSongTextPosition
+        }
+
+        CheckBox {
+            id: fullViewVolumeControlVisible
+            Kirigami.FormData.label: i18n("Show volume control")
+        }
+
+        CheckBox {
+            id: fullViewShuffleVisible
+            Kirigami.FormData.label: i18n("Show shuffle control")
+        }
+
+        CheckBox {
+            id: fullViewPlaybackControlsVisible
+            Kirigami.FormData.label: i18n("Show playback controls")
+        }
+
+        CheckBox {
+            id: fullViewLoopVisible
+            Kirigami.FormData.label: i18n("Show loop control")
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Fill available space with playback controls")
+            CheckBox {
+                id: fullViewPlaybackControlsFillWidth
+            }
+            Kirigami.ContextualHelpButton {
+                toolTipText: i18n(
+                    "When enabled, playback controls are spread across the full width of the widget. When disabled, they are grouped together in the center."
+                )
+            }
+        }
+
+        SpinBox {
+            id: fullViewMinWidth
+            Kirigami.FormData.label: i18n("Minimum resizable width:")
+            from: 100
+            to: fullViewMaxWidth.value
+            stepSize: 10
+        }
+
+        SpinBox {
+            id: fullViewMaxWidth
+            Kirigami.FormData.label: i18n("Maximum resizable width:")
+            from: fullViewMinWidth.value
+            to: 2000
+            stepSize: 10
+        }
 
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
