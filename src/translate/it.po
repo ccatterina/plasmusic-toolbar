@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-28 18:02+0100\n"
+"POT-Creation-Date: 2026-02-28 18:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -189,6 +189,12 @@ msgstr "Posizione titolo album:"
 #: src/contents/ui/config/Compact.qml:307 src/contents/ui/config/Full.qml:355
 #, kde-format
 msgid "Hide album name for singles:"
+msgstr ""
+
+#: src/contents/ui/config/Compact.qml:313 src/contents/ui/config/Full.qml:361
+#, kde-format
+msgid ""
+"If the album name and the track title match, the album name will be hidden."
 msgstr ""
 
 #: src/contents/ui/config/Compact.qml:326
