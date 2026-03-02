@@ -31,6 +31,9 @@ ColumnLayout {
     property int artistsPosition: SongAndArtistText.TextPosition.FirstLine
     property int albumPosition: SongAndArtistText.TextPosition.Hidden
 
+    property bool hideAlbumForSingles
+    property bool showAlbum: !hideAlbumForSingles || (root.album != root.title)
+    
     property font textFont: Kirigami.Theme.defaultFont
     property font boldTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
     property string color: Kirigami.Theme.textColor
@@ -47,7 +50,7 @@ ColumnLayout {
 
         if (artistsPosition == SongAndArtistText.TextPosition.FirstLine) arr.push(root.artists);
         if (titlePosition   == SongAndArtistText.TextPosition.FirstLine) arr.push(root.title);
-        if (albumPosition   == SongAndArtistText.TextPosition.FirstLine) arr.push(root.album);
+        if (showAlbum && albumPosition == SongAndArtistText.TextPosition.FirstLine) arr.push(root.album);
 
         return arr;
     }
@@ -57,7 +60,7 @@ ColumnLayout {
 
         if (artistsPosition == SongAndArtistText.TextPosition.SecondLine) arr.push(root.artists);
         if (titlePosition   == SongAndArtistText.TextPosition.SecondLine) arr.push(root.title);
-        if (albumPosition   == SongAndArtistText.TextPosition.SecondLine) arr.push(root.album);
+        if (showAlbum && albumPosition == SongAndArtistText.TextPosition.SecondLine) arr.push(root.album);
 
         return arr;        
     }
