@@ -227,7 +227,7 @@ KCM.SimpleKCM {
             from: 2
             to: 26
             stepSize: 2
-            Kirigami.FormData.label: i18n("Album cover radius")
+            Kirigami.FormData.label: i18n("Album cover radius:")
         }
 
         Kirigami.Separator {
