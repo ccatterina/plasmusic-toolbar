@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-01 04:48+0300\n"
+"POT-Creation-Date: 2026-03-04 06:07+0300\n"
 "PO-Revision-Date: 2026-02-23 00:22+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -136,7 +136,7 @@ msgstr "Utiliser la pochette comme icône"
 msgid "Fallback to icon if cover is not available"
 msgstr "Revenir à l'icône si la pochette n'est pas disponible"
 
-#: src/contents/ui/config/Compact.qml:164
+#: src/contents/ui/config/Compact.qml:164 src/contents/ui/config/Full.qml:229
 #, kde-format
 msgid "Album cover radius:"
 msgstr "Arrondi de la pochette :"
@@ -423,12 +423,7 @@ msgstr "Effacer"
 #: src/contents/ui/config/Full.qml:218
 #, fuzzy, kde-format
 msgid "Round album cover"
-msgstr "Afficher la pochette"
-
-#: src/contents/ui/config/Full.qml:229
-#, fuzzy, kde-format
-msgid "Album cover radius"
-msgstr "Arrondi de la pochette :"
+msgstr "Pochette d'album arrondie :"
 
 #: src/contents/ui/config/Full.qml:234
 #, kde-format
@@ -591,3 +586,7 @@ msgstr "Défilement pour ajuster le volume"
 #, kde-format
 msgid "Ctrl+Click to bring player to the front"
 msgstr "Ctrl+Clic pour mettre le lecteur au premier plan"
+
+#, fuzzy, kde-format
+#~ msgid "Album cover radius"
+#~ msgstr "Arrondi de la pochette :"

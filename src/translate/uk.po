@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-01 04:48+0300\n"
+"POT-Creation-Date: 2026-03-04 06:07+0300\n"
 "PO-Revision-Date: 2025-09-30 01:49+0200\n"
 "Last-Translator: Vsevolod «Damglador» Stopchanskyi "
 "<vse.stopchanskyi@gmail.com>\n"
@@ -136,7 +136,7 @@ msgstr "Використовувати зображення альбому"
 msgid "Fallback to icon if cover is not available"
 msgstr "Інакше, використовувати піктограму"
 
-#: src/contents/ui/config/Compact.qml:164
+#: src/contents/ui/config/Compact.qml:164 src/contents/ui/config/Full.qml:229
 #, kde-format
 msgid "Album cover radius:"
 msgstr "Радіус зображення альбому:"
@@ -419,11 +419,6 @@ msgstr "Очистити"
 msgid "Round album cover"
 msgstr "Обкладинка альбому"
 
-#: src/contents/ui/config/Full.qml:229
-#, fuzzy, kde-format
-msgid "Album cover radius"
-msgstr "Радіус зображення альбому:"
-
 #: src/contents/ui/config/Full.qml:234
 #, kde-format
 msgid "Song Text Customization"
@@ -583,3 +578,7 @@ msgstr "Колесико миші: Зміна гучності"
 #, kde-format
 msgid "Ctrl+Click to bring player to the front"
 msgstr "Ctrl+Клац: Сфокусувати програвач"
+
+#, fuzzy, kde-format
+#~ msgid "Album cover radius"
+#~ msgstr "Радіус зображення альбому:"

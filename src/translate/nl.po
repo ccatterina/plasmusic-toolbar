@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-01 04:48+0300\n"
+"POT-Creation-Date: 2026-03-04 06:07+0300\n"
 "PO-Revision-Date: 2025-07-21 13:16+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: none\n"
@@ -139,7 +139,7 @@ msgstr ""
 "Indien er geen hoes beschikbaar is, zal het standaardpictogram worden "
 "gebruikt"
 
-#: src/contents/ui/config/Compact.qml:164
+#: src/contents/ui/config/Compact.qml:164 src/contents/ui/config/Full.qml:229
 #, kde-format
 msgid "Album cover radius:"
 msgstr "Albumhoesafmetingen:"
@@ -424,11 +424,6 @@ msgstr "Wissen"
 msgid "Round album cover"
 msgstr "Albumhoes"
 
-#: src/contents/ui/config/Full.qml:229
-#, fuzzy, kde-format
-msgid "Album cover radius"
-msgstr "Albumhoesafmetingen:"
-
 #: src/contents/ui/config/Full.qml:234
 #, kde-format
 msgid "Song Text Customization"
@@ -589,3 +584,7 @@ msgstr "Scrollen om volumeniveau aan te passen"
 #, kde-format
 msgid "Ctrl+Click to bring player to the front"
 msgstr "Ctrl+klikken om speler naar voorgrond te halen"
+
+#, fuzzy, kde-format
+#~ msgid "Album cover radius"
+#~ msgstr "Albumhoesafmetingen:"

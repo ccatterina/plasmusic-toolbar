@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-01 04:48+0300\n"
+"POT-Creation-Date: 2026-03-04 06:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -137,7 +137,7 @@ msgstr "Usa copertina album come icona"
 msgid "Fallback to icon if cover is not available"
 msgstr "Usa icona se la copertina non è disponibile"
 
-#: src/contents/ui/config/Compact.qml:164
+#: src/contents/ui/config/Compact.qml:164 src/contents/ui/config/Full.qml:229
 #, kde-format
 msgid "Album cover radius:"
 msgstr "Arrotondamento bordo copertina album:"
@@ -422,11 +422,6 @@ msgstr "Resetta icona"
 msgid "Round album cover"
 msgstr "Copertina album"
 
-#: src/contents/ui/config/Full.qml:229
-#, fuzzy, kde-format
-msgid "Album cover radius"
-msgstr "Arrotondamento bordo copertina album:"
-
 #: src/contents/ui/config/Full.qml:234
 #, kde-format
 msgid "Song Text Customization"
@@ -587,3 +582,7 @@ msgstr "Scorri per regolare il volume"
 #, kde-format
 msgid "Ctrl+Click to bring player to the front"
 msgstr "Ctrl+Click per portare il player in primo piano"
+
+#, fuzzy, kde-format
+#~ msgid "Album cover radius"
+#~ msgstr "Arrotondamento bordo copertina album:"
