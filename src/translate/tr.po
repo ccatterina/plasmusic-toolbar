@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 06:44+0300\n"
-"PO-Revision-Date: 2026-01-11 20:05+0300\n"
+"PO-Revision-Date: 2026-03-08 00:00+0300\n"
 "Last-Translator: A coffee lover\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -188,13 +188,14 @@ msgstr "Albüm adı konumu:"
 #: src/contents/ui/config/Compact.qml:307 src/contents/ui/config/Full.qml:372
 #, kde-format
 msgid "Hide album name for singles:"
-msgstr ""
+msgstr "Tekli parçalarda albüm adını gizle:"
 
 #: src/contents/ui/config/Compact.qml:313 src/contents/ui/config/Full.qml:378
 #, kde-format
 msgid ""
 "If the album name and the track title match, the album name will be hidden."
 msgstr ""
+"Albüm adı ve parça başlığı eşleşirse albüm adı gizlenecektir."
 
 #: src/contents/ui/config/Compact.qml:326
 #, kde-format
@@ -331,64 +332,64 @@ msgid "Clear Icon"
 msgstr "Simgeyi Temizle"
 
 #: src/contents/ui/config/Full.qml:48
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show album cover"
-msgstr "Albüm kapağı"
+msgstr "Albüm kapağını göster"
 
 #: src/contents/ui/config/Full.qml:53
 #, kde-format
 msgid "Show progress bar"
-msgstr ""
+msgstr "İlerleme çubuğunu göster"
 
 #: src/contents/ui/config/Full.qml:63
 #, kde-format
 msgid "Left"
-msgstr ""
+msgstr "Sol"
 
 #: src/contents/ui/config/Full.qml:87
 #, kde-format
 msgid "Right"
-msgstr ""
+msgstr "Sağ"
 
 #: src/contents/ui/config/Full.qml:109
-#, fuzzy, kde-format
+#, kde-format
 msgid "Song text position:"
-msgstr "Şarkı adı konumu:"
+msgstr "Şarkı metni konumu:"
 
 #: src/contents/ui/config/Full.qml:110
-#, fuzzy, kde-format
+#, kde-format
 msgid "Above progress bar"
-msgstr "Medya ilerlemesi"
+msgstr "İlerleme çubuğunun üstünde"
 
 #: src/contents/ui/config/Full.qml:122
-#, fuzzy, kde-format
+#, kde-format
 msgid "Under progress bar"
-msgstr "Medya ilerlemesi"
+msgstr "İlerleme çubuğunun altında"
 
 #: src/contents/ui/config/Full.qml:135
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show volume control"
-msgstr "Oynat/duraklat kontrolünü göster"
+msgstr "Ses düzeyi kontrolünü göster"
 
 #: src/contents/ui/config/Full.qml:140
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show shuffle control"
-msgstr "Oynat/duraklat kontrolünü göster"
+msgstr "Karıştırma kontrolünü göster"
 
 #: src/contents/ui/config/Full.qml:145
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show playback controls"
-msgstr "Oynat/duraklat kontrolünü göster"
+msgstr "Oynatma kontrollerini göster"
 
 #: src/contents/ui/config/Full.qml:150
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show loop control"
-msgstr "Oynat/duraklat kontrolünü göster"
+msgstr "Döngü kontrolünü göster"
 
 #: src/contents/ui/config/Full.qml:154
-#, fuzzy, kde-format
+#, kde-format
 msgid "Fill available space with playback controls"
-msgstr "Paneldeki kullanılabilir alanı doldur"
+msgstr "Kullanılabilir alanı oynatma kontrolleriyle doldur"
 
 #: src/contents/ui/config/Full.qml:160
 #, kde-format
@@ -396,16 +397,18 @@ msgid ""
 "When enabled, playback controls are spread across the full width of the "
 "widget. When disabled, they are grouped together in the center."
 msgstr ""
+"Etkinleştirildiğinde, oynatma kontrolleri araç takımının tüm genişliğine "
+"yayılır. Devre dışı bırakıldığında ortada gruplandırılır."
 
 #: src/contents/ui/config/Full.qml:167
 #, kde-format
 msgid "Minimum resizable width:"
-msgstr ""
+msgstr "Minimum boyutlandırılabilir genişlik:"
 
 #: src/contents/ui/config/Full.qml:175
 #, kde-format
 msgid "Maximum resizable width:"
-msgstr ""
+msgstr "Maksimum boyutlandırılabilir genişlik:"
 
 #: src/contents/ui/config/Full.qml:183
 #, kde-format
@@ -428,9 +431,9 @@ msgid "Clear"
 msgstr "Temizle"
 
 #: src/contents/ui/config/Full.qml:219
-#, fuzzy, kde-format
+#, kde-format
 msgid "Round album cover"
-msgstr "Albüm kapağı"
+msgstr "Yuvarlak albüm kapağı"
 
 #: src/contents/ui/config/Full.qml:235
 #, kde-format
