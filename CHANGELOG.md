@@ -5,7 +5,7 @@
 
 ### ⚠ BREAKING CHANGES
 
-* properly lock playback source ([#259](https://github.com/ccatterina/plasmusic-toolbar/issues/259))
+* properly lock playback source ([#259](https://github.com/ccatterina/plasmusic-toolbar/issues/259)) -> Plasma 6.0.4+ required
 
 ### Features
 
