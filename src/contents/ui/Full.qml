@@ -36,9 +36,9 @@ Item {
     readonly property int contentMinWidth: row.visible ? row.implicitWidth + 40 : 0
     readonly property int effectiveMinWidth: Math.min(Math.max(configMinWidth, contentMinWidth), maximumWidth)
 
-    Layout.preferredWidth: maximumWidth
     Layout.minimumWidth: effectiveMinWidth
     Layout.maximumWidth: maximumWidth
+    Layout.preferredWidth: effectiveMinWidth
     Layout.preferredHeight: column.implicitHeight
     Layout.minimumHeight: column.implicitHeight
     Layout.maximumHeight: column.implicitHeight

@@ -160,7 +160,7 @@
             <default>100</default>
         </entry>
         <entry name="fullViewMaxWidth" type="Int">
-            <default>1000</default>
+            <default>300</default>
         </entry>
 		<entry name="fullAlbumCoverRounded" type="Bool">
 			<default>true</default>
