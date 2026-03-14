@@ -1,5 +1,29 @@
 # Changelog
 
+## [4.0.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.7.0...v4.0.0) (2026-03-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* properly lock playback source ([#259](https://github.com/ccatterina/plasmusic-toolbar/issues/259)) -> Plasma 6.0.4+ required
+
+### Features
+
+* Add album cover rounding functionality ([#271](https://github.com/ccatterina/plasmusic-toolbar/issues/271)) ([c01c439](https://github.com/ccatterina/plasmusic-toolbar/commit/c01c4392033f4deb48e3fdd3517c7a5fde255952))
+* Add configuration options for Full View layout + window resizing settings ([#267](https://github.com/ccatterina/plasmusic-toolbar/issues/267)) ([40bc365](https://github.com/ccatterina/plasmusic-toolbar/commit/40bc3654311907c67334b8f590b6c2506d0992b7))
+* Add missing dutch translations ([#258](https://github.com/ccatterina/plasmusic-toolbar/issues/258)) ([2749055](https://github.com/ccatterina/plasmusic-toolbar/commit/2749055523730c4492ae4e88c0a9d38dc3ce6c8d))
+* Added an option to hide the album cover for singles ([#269](https://github.com/ccatterina/plasmusic-toolbar/issues/269)) ([9ed74c7](https://github.com/ccatterina/plasmusic-toolbar/commit/9ed74c7c933f8d4d2ace5cfd9972f1a44a569e48))
+* **i18n:** Add Turkish translation ([#255](https://github.com/ccatterina/plasmusic-toolbar/issues/255)) ([17ec869](https://github.com/ccatterina/plasmusic-toolbar/commit/17ec8693ed2bc385d00e772a485c287ffeb5e179))
+* **i18n:** Update Turkish translation ([#273](https://github.com/ccatterina/plasmusic-toolbar/issues/273)) ([c415689](https://github.com/ccatterina/plasmusic-toolbar/commit/c4156895b947b3f1f482818a7bbbdfd6a266941a))
+* reduce default maximum width ([#276](https://github.com/ccatterina/plasmusic-toolbar/issues/276)) ([5ec42fd](https://github.com/ccatterina/plasmusic-toolbar/commit/5ec42fd9870da2b888c7a643b443bca7f735c48f))
+
+
+### Bug Fixes
+
+* properly lock playback source ([#259](https://github.com/ccatterina/plasmusic-toolbar/issues/259)) ([95100d3](https://github.com/ccatterina/plasmusic-toolbar/commit/95100d31fcdda8fba2ad169905c7d81174ead4f2))
+* store original theme colors before overriding ([#252](https://github.com/ccatterina/plasmusic-toolbar/issues/252)) ([8d2ecaf](https://github.com/ccatterina/plasmusic-toolbar/commit/8d2ecaf8c0d9153551eb079f52da70e1769945a5))
+* thumbnail sizing for image components in PanelIcon ([#268](https://github.com/ccatterina/plasmusic-toolbar/issues/268)) ([ff95ab7](https://github.com/ccatterina/plasmusic-toolbar/commit/ff95ab7d1df6a7ba2131e6e9d916deac30aea332))
+
 ## [3.7.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.6.0...v3.7.0) (2025-10-15)
 
 
