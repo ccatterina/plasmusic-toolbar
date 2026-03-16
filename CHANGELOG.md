@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v4.0.0...v4.1.0) (2026-03-16)
+
+
+### Features
+
+* Updated Dutch translation ([#278](https://github.com/ccatterina/plasmusic-toolbar/issues/278)) ([2138dd3](https://github.com/ccatterina/plasmusic-toolbar/commit/2138dd39c6ee36c405a13e6159a4bfe93b3ae206))
+
 ## [4.0.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.7.0...v4.0.0) (2026-03-14)
 
 
