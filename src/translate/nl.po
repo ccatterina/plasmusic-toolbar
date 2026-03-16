@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-06 06:44+0300\n"
-"PO-Revision-Date: 2025-07-21 13:16+0200\n"
+"PO-Revision-Date: 2026-03-15 10:48+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
 #: src/contents/config/config.qml:6
 #, kde-format
@@ -191,13 +191,15 @@ msgstr "Albumtitellocatie:"
 #: src/contents/ui/config/Compact.qml:307 src/contents/ui/config/Full.qml:372
 #, kde-format
 msgid "Hide album name for singles:"
-msgstr ""
+msgstr "Albumnaam verbergen indien gelijk aan single:"
 
 #: src/contents/ui/config/Compact.qml:313 src/contents/ui/config/Full.qml:378
 #, kde-format
 msgid ""
 "If the album name and the track title match, the album name will be hidden."
 msgstr ""
+"Als de albumnaam en titel van het nummer gelijk zijn, wordt de albumnaam "
+"niet getoond."
 
 #: src/contents/ui/config/Compact.qml:326
 #, kde-format
@@ -334,64 +336,64 @@ msgid "Clear Icon"
 msgstr "Pictogram wissen"
 
 #: src/contents/ui/config/Full.qml:48
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show album cover"
-msgstr "Albumhoes"
+msgstr "Albumhoes tonen"
 
 #: src/contents/ui/config/Full.qml:53
 #, kde-format
 msgid "Show progress bar"
-msgstr ""
+msgstr "Voortgangsbalk tonen"
 
 #: src/contents/ui/config/Full.qml:63
 #, kde-format
 msgid "Left"
-msgstr ""
+msgstr "Links"
 
 #: src/contents/ui/config/Full.qml:87
 #, kde-format
 msgid "Right"
-msgstr ""
+msgstr "Rechts"
 
 #: src/contents/ui/config/Full.qml:109
-#, fuzzy, kde-format
+#, kde-format
 msgid "Song text position:"
-msgstr "Tekstlocatie:"
+msgstr "Songtekstlocatie:"
 
 #: src/contents/ui/config/Full.qml:110
-#, fuzzy, kde-format
+#, kde-format
 msgid "Above progress bar"
-msgstr "Voortgangsbalk"
+msgstr "Boven voortgangsbalk"
 
 #: src/contents/ui/config/Full.qml:122
-#, fuzzy, kde-format
+#, kde-format
 msgid "Under progress bar"
-msgstr "Voortgangsbalk"
+msgstr "Onder voortgangsbalk"
 
 #: src/contents/ui/config/Full.qml:135
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show volume control"
-msgstr "Afspeel-/Pauzeerknop tonen"
+msgstr "Volumeregeling tonen"
 
 #: src/contents/ui/config/Full.qml:140
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show shuffle control"
-msgstr "Afspeel-/Pauzeerknop tonen"
+msgstr "Knoppen voor willekeurig afspelen tonen"
 
 #: src/contents/ui/config/Full.qml:145
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show playback controls"
-msgstr "Afspeel-/Pauzeerknop tonen"
+msgstr "Afspeelbediening tonen"
 
 #: src/contents/ui/config/Full.qml:150
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show loop control"
-msgstr "Afspeel-/Pauzeerknop tonen"
+msgstr "Knoppen voor herhalen tonen"
 
 #: src/contents/ui/config/Full.qml:154
-#, fuzzy, kde-format
+#, kde-format
 msgid "Fill available space with playback controls"
-msgstr "Alle beschikbare paneelruimte gebruiken"
+msgstr "Alle beschikbare paneelruimte gebruiken voor afspeelbediening"
 
 #: src/contents/ui/config/Full.qml:160
 #, kde-format
@@ -399,16 +401,18 @@ msgid ""
 "When enabled, playback controls are spread across the full width of the "
 "widget. When disabled, they are grouped together in the center."
 msgstr ""
+"Schakel in om de afspeelbediening over de gehele breedte van de widget te "
+"tonen. Schakel uit om in het midden te groeperen."
 
 #: src/contents/ui/config/Full.qml:167
 #, kde-format
 msgid "Minimum resizable width:"
-msgstr ""
+msgstr "Minimale aanpasbare breedte:"
 
 #: src/contents/ui/config/Full.qml:175
 #, kde-format
 msgid "Maximum resizable width:"
-msgstr ""
+msgstr "Maximale aanpasbare breedte:"
 
 #: src/contents/ui/config/Full.qml:183
 #, kde-format
@@ -431,9 +435,9 @@ msgid "Clear"
 msgstr "Wissen"
 
 #: src/contents/ui/config/Full.qml:219
-#, fuzzy, kde-format
+#, kde-format
 msgid "Round album cover"
-msgstr "Albumhoes"
+msgstr "Albumhoezen voorzien van afgeronde hoeken"
 
 #: src/contents/ui/config/Full.qml:235
 #, kde-format
