@@ -68,7 +68,6 @@ ColumnLayout {
     property string finalFirstText:  firstLineArray.filter((x) => x).join(" - ")
     property string finalSecondText: secondLineArray.filter((x) => x).join(" - ")
 
-    // Synchronous width computation bypassing ColumnLayout polish delay
     readonly property real calculatedWidth: Math.max(
         firstLine.visible ? firstLine.implicitWidth : 0,
         secondLine.visible ? secondLine.implicitWidth : 0

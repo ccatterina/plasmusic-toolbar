@@ -175,9 +175,6 @@ Item {
             SongAndArtistText {
                 id: songAndArtistText
 
-                // Fill songGrid entirely; text centering is handled by
-                // staticLabel.horizontalAlignment inside ScrollingText.
-                // This avoids all async layout positioning issues.
                 width: horizontal ? songGrid.width : songGrid.height
                 height: horizontal ? songGrid.height : songGrid.width
                 x: horizontal ? 0 : (songGrid.width - songGrid.height) / 2

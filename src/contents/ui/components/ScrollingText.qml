@@ -97,7 +97,6 @@ Item {
         visible: overflow
         text: overflow ? (root.overflowElides && showElided ? elidedMetrics.elidedText : root.textAndSpacing) : root.text
         color: root.textColor
-        // Break binding loop: use animation.running/paused directly instead of label.x
         property bool showElided: !animation.running || animation.paused
         property bool animationRunning: label.x !== 0 || (!animation.paused && animation.running)
 
