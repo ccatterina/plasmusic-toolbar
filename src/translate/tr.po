@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-06 06:44+0300\n"
+"POT-Creation-Date: 2026-03-18 00:51+0100\n"
 "PO-Revision-Date: 2026-03-08 00:00+0300\n"
 "Last-Translator: A coffee lover\n"
 "Language-Team: none\n"
@@ -194,8 +194,7 @@ msgstr "Tekli parçalarda albüm adını gizle:"
 #, kde-format
 msgid ""
 "If the album name and the track title match, the album name will be hidden."
-msgstr ""
-"Albüm adı ve parça başlığı eşleşirse albüm adı gizlenecektir."
+msgstr "Albüm adı ve parça başlığı eşleşirse albüm adı gizlenecektir."
 
 #: src/contents/ui/config/Compact.qml:326
 #, kde-format
@@ -420,7 +419,7 @@ msgstr "Albüm kapağı"
 msgid "Album placeholder:"
 msgstr "Albüm yer tutucusu:"
 
-#: src/contents/ui/config/Full.qml:190 src/contents/ui/config/General.qml:101
+#: src/contents/ui/config/Full.qml:190 src/contents/ui/config/General.qml:132
 #, kde-format
 msgid "Choose…"
 msgstr "Seç…"
@@ -470,22 +469,22 @@ msgstr "Albüm kapağını arka plan olarak kullan"
 msgid "(Experimental feature)"
 msgstr "(Deneysel özellik)"
 
-#: src/contents/ui/config/General.qml:26
+#: src/contents/ui/config/General.qml:30
 #, kde-format
 msgid "Playback source"
 msgstr "Oynatma kaynağı"
 
-#: src/contents/ui/config/General.qml:34
+#: src/contents/ui/config/General.qml:38
 #, kde-format
 msgid "Player:"
 msgstr "Oynatıcı:"
 
-#: src/contents/ui/config/General.qml:37
+#: src/contents/ui/config/General.qml:41
 #, kde-format
 msgid "Choose automatically"
 msgstr "Otomatik seç"
 
-#: src/contents/ui/config/General.qml:42
+#: src/contents/ui/config/General.qml:46
 #, kde-format
 msgid ""
 "The player will be chosen automatically based on the currently playing song. "
@@ -496,12 +495,22 @@ msgstr ""
 "daha fazla oynatıcı aynı anda çalıyorsa, araç takımı ilk çalmaya başlayanı "
 "seçecektir."
 
-#: src/contents/ui/config/General.qml:50
+#: src/contents/ui/config/General.qml:54
 #, kde-format
 msgid "Always:"
 msgstr "Her zaman:"
 
-#: src/contents/ui/config/General.qml:82
+#: src/contents/ui/config/General.qml:67
+#, kde-format
+msgid "None selected"
+msgstr ""
+
+#: src/contents/ui/config/General.qml:72
+#, kde-format
+msgid "%1 players selected"
+msgstr ""
+
+#: src/contents/ui/config/General.qml:113
 #, kde-format
 msgid ""
 "Always display information from the selected player, if it's not running the "
@@ -514,47 +523,47 @@ msgstr ""
 "seçim yapabilirsiniz, istediğinizi bulamazsanız oynatıcı uygulamasını açın "
 "ve yenile düğmesiyle listeyi yenileyin."
 
-#: src/contents/ui/config/General.qml:90
+#: src/contents/ui/config/General.qml:121
 #, kde-format
 msgid "Font customization"
 msgstr "Yazı tipi özelleştirme"
 
-#: src/contents/ui/config/General.qml:94
+#: src/contents/ui/config/General.qml:125
 #, kde-format
 msgid "Custom font:"
 msgstr "Özel yazı tipi:"
 
-#: src/contents/ui/config/General.qml:112
+#: src/contents/ui/config/General.qml:143
 #, kde-format
 msgid "%1pt %2"
 msgstr "%1pt %2"
 
-#: src/contents/ui/config/General.qml:119
+#: src/contents/ui/config/General.qml:150
 #, kde-format
 msgid "No media found behavior"
 msgstr "Medya bulunamadığında davranış"
 
-#: src/contents/ui/config/General.qml:124
+#: src/contents/ui/config/General.qml:155
 #, kde-format
 msgid "Show widget when no media found"
 msgstr "Medya bulunamadığında araç takımını göster"
 
-#: src/contents/ui/config/General.qml:129
+#: src/contents/ui/config/General.qml:160
 #, kde-format
 msgid "Text displayed when no media found:"
 msgstr "Medya bulunamadığında gösterilen metin:"
 
-#: src/contents/ui/config/General.qml:135
+#: src/contents/ui/config/General.qml:166
 #, kde-format
 msgid "Controls behaviour"
 msgstr "Kontrol davranışı"
 
-#: src/contents/ui/config/General.qml:140
+#: src/contents/ui/config/General.qml:171
 #, kde-format
 msgid "Volume step:"
 msgstr "Ses düzeyi adımı:"
 
-#: src/contents/ui/config/General.qml:150
+#: src/contents/ui/config/General.qml:181
 #, kde-format
 msgid "Choose a Font"
 msgstr "Yazı Tipi Seç"
