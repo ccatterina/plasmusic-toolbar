@@ -68,8 +68,15 @@ ColumnLayout {
     property string finalFirstText:  firstLineArray.filter((x) => x).join(" - ")
     property string finalSecondText: secondLineArray.filter((x) => x).join(" - ")
 
+    // Synchronous width computation bypassing ColumnLayout polish delay
+    readonly property real calculatedWidth: Math.max(
+        firstLine.visible ? firstLine.implicitWidth : 0,
+        secondLine.visible ? secondLine.implicitWidth : 0
+    )
+
     // first row of text (the only row, if there is only one)
     ScrollingText {
+        id: firstLine
         // visible only when necessary
         visible: text.length !== 0
         overflowBehaviour: root.scrollingBehaviour
@@ -89,6 +96,7 @@ ColumnLayout {
 
     // second row of text
     ScrollingText {
+        id: secondLine
         // visible only when necessary
         visible: text.length !== 0
         overflowBehaviour: root.scrollingBehaviour
