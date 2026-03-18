@@ -157,81 +157,63 @@ Item {
             Layout.fillWidth: true
         }
 
-        GridLayout {
+        Item {
             id: songGrid
             visible: plasmoid.configuration.songTextInPanel
-
-            columns: horizontal ? songGrid.children.length : 1
-            rows: horizontal ? 1 : songGrid.children.length
 
             readonly property int textAlignment: plasmoid.configuration.songTextAlignment
             readonly property int fxdWidth: plasmoid.configuration.songTextFixedWidth + 2 * Kirigami.Units.smallSpacing
             readonly property bool useFixedWidth: plasmoid.configuration.useSongTextFixedWidth
             readonly property int length: horizontal ? width : height
 
-            Layout.preferredWidth: horizontal && useFixedWidth && !fillAvailableSpace ? fxdWidth : -1
-            Layout.preferredHeight: !horizontal && useFixedWidth && !fillAvailableSpace ? fxdWidth : -1
+            Layout.preferredWidth: horizontal && useFixedWidth && !fillAvailableSpace ? fxdWidth : (horizontal ? songAndArtistText.calculatedWidth : -1)
+            Layout.preferredHeight: !horizontal && useFixedWidth && !fillAvailableSpace ? fxdWidth : (!horizontal ? songAndArtistText.calculatedWidth : -1)
             Layout.fillHeight: horizontal || fillAvailableSpace
             Layout.fillWidth: !horizontal || fillAvailableSpace
             Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
 
-            Item {
-                readonly property bool fill: [Qt.AlignRight, Qt.AlignCenter].includes(songGrid.textAlignment)
-                Layout.fillHeight: !horizontal && fill
-                Layout.fillWidth: horizontal && fill
-            }
+            SongAndArtistText {
+                id: songAndArtistText
 
-            Item {
-                Layout.fillHeight: horizontal
-                Layout.fillWidth: !horizontal
-                Layout.preferredHeight: !horizontal ? songAndArtistText.width : null
-                Layout.preferredWidth: horizontal ? songAndArtistText.width : null
+                width: horizontal ? songGrid.width : songGrid.height
+                height: horizontal ? songGrid.height : songGrid.width
+                x: horizontal ? 0 : (songGrid.width - songGrid.height) / 2
+                y: horizontal ? 0 : (songGrid.height - songGrid.width) / 2
 
-                SongAndArtistText {
-                    id: songAndArtistText
-                    anchors.centerIn: parent
-
-                    rotation: {
-                        if (horizontal) return 0
-                        if (widget.location === PlasmaCore.Types.LeftEdge) return -90
-                        if (widget.location === PlasmaCore.Types.RightEdge) return 90
-                    }
-
-                    maxWidth: {
-                        if (fillAvailableSpace || songGrid.useFixedWidth) {
-                            return songGrid.length
-                        }
-                        return plasmoid.configuration.maxSongWidthInPanel
-                    }
-                    scrollingBehaviour: plasmoid.configuration.textScrollingBehaviour
-                    scrollingSpeed: plasmoid.configuration.textScrollingSpeed
-                    scrollingResetOnPause: plasmoid.configuration.textScrollingResetOnPause
-                    scrollingEnabled: plasmoid.configuration.textScrollingEnabled
-                    titlePosition: plasmoid.configuration.titlePosition
-                    artistsPosition: plasmoid.configuration.artistsPosition
-                    albumPosition: plasmoid.configuration.albumPosition
-                    hideAlbumForSingles: plasmoid.configuration.compactHideAlbumForSingles
-                    forcePauseScrolling: {
-                        if (!plasmoid.configuration.pauseTextScrollingWhileMediaIsNotPlaying) {
-                            return false
-                        }
-                        return player.playbackStatus !== Mpris.PlaybackStatus.Playing
-                    }
-                    textFont: baseFont
-                    color: foregroundColor
-                    title: player.title
-                    artists: player.artists
-                    album: player.album
-                    textAlignment: songGrid.textAlignment
-                    truncateStyle: plasmoid.configuration.compactTruncatedTextStyle
-                    opacity: player.playbackStatus === Mpris.PlaybackStatus.Playing ? 1.0 : 0.75
+                rotation: {
+                    if (horizontal) return 0
+                    if (widget.location === PlasmaCore.Types.LeftEdge) return -90
+                    if (widget.location === PlasmaCore.Types.RightEdge) return 90
                 }
-            }
 
-            Item {
-                readonly property bool fill: [Qt.AlignLeft, Qt.AlignCenter].includes(songGrid.textAlignment)
-                Layout.fillHeight: !horizontal && fill
-                Layout.fillWidth: horizontal && fill
+                maxWidth: {
+                    if (fillAvailableSpace || songGrid.useFixedWidth) {
+                        return songGrid.length
+                    }
+                    return plasmoid.configuration.maxSongWidthInPanel
+                }
+                scrollingBehaviour: plasmoid.configuration.textScrollingBehaviour
+                scrollingSpeed: plasmoid.configuration.textScrollingSpeed
+                scrollingResetOnPause: plasmoid.configuration.textScrollingResetOnPause
+                scrollingEnabled: plasmoid.configuration.textScrollingEnabled
+                titlePosition: plasmoid.configuration.titlePosition
+                artistsPosition: plasmoid.configuration.artistsPosition
+                albumPosition: plasmoid.configuration.albumPosition
+                hideAlbumForSingles: plasmoid.configuration.compactHideAlbumForSingles
+                forcePauseScrolling: {
+                    if (!plasmoid.configuration.pauseTextScrollingWhileMediaIsNotPlaying) {
+                        return false
+                    }
+                    return player.playbackStatus !== Mpris.PlaybackStatus.Playing
+                }
+                textFont: baseFont
+                color: foregroundColor
+                title: player.title
+                artists: player.artists
+                album: player.album
+                textAlignment: songGrid.textAlignment
+                truncateStyle: plasmoid.configuration.compactTruncatedTextStyle
+                opacity: player.playbackStatus === Mpris.PlaybackStatus.Playing ? 1.0 : 0.75
             }
         }
 
