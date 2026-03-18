@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-06 06:44+0300\n"
+"POT-Creation-Date: 2026-03-18 00:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -418,7 +418,7 @@ msgstr "Copertina album"
 msgid "Album placeholder:"
 msgstr "Immagine placeholder per album:"
 
-#: src/contents/ui/config/Full.qml:190 src/contents/ui/config/General.qml:101
+#: src/contents/ui/config/Full.qml:190 src/contents/ui/config/General.qml:132
 #, kde-format
 msgid "Choose…"
 msgstr "Scegli…"
@@ -468,22 +468,22 @@ msgstr "Usa copertina album come sfondo"
 msgid "(Experimental feature)"
 msgstr "Funzionalità sperimentale"
 
-#: src/contents/ui/config/General.qml:26
+#: src/contents/ui/config/General.qml:30
 #, kde-format
 msgid "Playback source"
 msgstr "Sorgente di riproduzione"
 
-#: src/contents/ui/config/General.qml:34
+#: src/contents/ui/config/General.qml:38
 #, kde-format
 msgid "Player:"
 msgstr "Player:"
 
-#: src/contents/ui/config/General.qml:37
+#: src/contents/ui/config/General.qml:41
 #, kde-format
 msgid "Choose automatically"
 msgstr "Scegli automaticamente"
 
-#: src/contents/ui/config/General.qml:42
+#: src/contents/ui/config/General.qml:46
 #, kde-format
 msgid ""
 "The player will be chosen automatically based on the currently playing song. "
@@ -494,12 +494,22 @@ msgstr ""
 "riproduzione. Se due o più player sono in riproduzione contemporaneamente, "
 "il widget sceglierà quello che è stato avviato per primo."
 
-#: src/contents/ui/config/General.qml:50
+#: src/contents/ui/config/General.qml:54
 #, kde-format
 msgid "Always:"
 msgstr "Sempre:"
 
-#: src/contents/ui/config/General.qml:82
+#: src/contents/ui/config/General.qml:67
+#, kde-format
+msgid "None selected"
+msgstr ""
+
+#: src/contents/ui/config/General.qml:72
+#, kde-format
+msgid "%1 players selected"
+msgstr ""
+
+#: src/contents/ui/config/General.qml:113
 #, kde-format
 msgid ""
 "Always display information from the selected player, if it's not running the "
@@ -512,47 +522,47 @@ msgstr ""
 "player attualmente in esecuzione, se non trovi quello che desideri, apri "
 "l'applicazione del player e ricarica la lista con il pulsante apposito."
 
-#: src/contents/ui/config/General.qml:90
+#: src/contents/ui/config/General.qml:121
 #, kde-format
 msgid "Font customization"
 msgstr "Personalizzazione font"
 
-#: src/contents/ui/config/General.qml:94
+#: src/contents/ui/config/General.qml:125
 #, kde-format
 msgid "Custom font:"
 msgstr "Font personalizzato:"
 
-#: src/contents/ui/config/General.qml:112
+#: src/contents/ui/config/General.qml:143
 #, kde-format
 msgid "%1pt %2"
 msgstr "%1pt %2"
 
-#: src/contents/ui/config/General.qml:119
+#: src/contents/ui/config/General.qml:150
 #, kde-format
 msgid "No media found behavior"
 msgstr "Comportamento in assenza di media"
 
-#: src/contents/ui/config/General.qml:124
+#: src/contents/ui/config/General.qml:155
 #, kde-format
 msgid "Show widget when no media found"
 msgstr "Visualizza widget quando non ci sono media"
 
-#: src/contents/ui/config/General.qml:129
+#: src/contents/ui/config/General.qml:160
 #, kde-format
 msgid "Text displayed when no media found:"
 msgstr "Testo visualizzato quando non ci sono media:"
 
-#: src/contents/ui/config/General.qml:135
+#: src/contents/ui/config/General.qml:166
 #, kde-format
 msgid "Controls behaviour"
 msgstr "Comportamento comandi"
 
-#: src/contents/ui/config/General.qml:140
+#: src/contents/ui/config/General.qml:171
 #, kde-format
 msgid "Volume step:"
 msgstr "Step volume:"
 
-#: src/contents/ui/config/General.qml:150
+#: src/contents/ui/config/General.qml:181
 #, kde-format
 msgid "Choose a Font"
 msgstr "Scegli un font"

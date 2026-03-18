@@ -6,22 +6,22 @@ QtObject {
     id: root
 
     property var mpris2Model: Mpris.Mpris2Model {
-        readonly property alias preferredSourceIdentity: root.sourceIdentity
+        readonly property alias preferredSourceIdentities: root.sourceIdentities
 
         onRowsInserted: () => updatePlayerIndex(this)
-        onPreferredSourceIdentityChanged: () => updatePlayerIndex(this)
+        onPreferredSourceIdentitiesChanged: () => updatePlayerIndex(this)
 
         function updatePlayerIndex(model) {
-            if (!preferredSourceIdentity) {
+            if (!preferredSourceIdentities) {
                 // Choose the multiplex source when no preferred source is set
                 model.currentIndex = 0;
                 return;
             }
 
             const CONTAINER_ROLE = Qt.UserRole + 1;
-            for (let i = 1; i < model.rowCount(); i++) {
+            for (let i = 0; i < model.rowCount(); i++) {
                 const player = model.data(model.index(i, 0), CONTAINER_ROLE);
-                if (player.identity === preferredSourceIdentity) {
+                if (preferredSourceIdentities.includes(player.identity)) {
                     model.currentIndex = i;
                     return;
                 }
@@ -29,12 +29,15 @@ QtObject {
         }
     }
 
-    property var sourceIdentity: null
+    property var sourceIdentities: null
     readonly property bool ready: {
         if (!mpris2Model.currentPlayer) {
             return false;
         }
-        return mpris2Model.currentPlayer.identity === sourceIdentity || !sourceIdentity;
+        if (!sourceIdentities) {
+            return true;
+        }
+        return sourceIdentities.includes(mpris2Model.currentPlayer.identity);
     }
 
     readonly property string artists: ready ? mpris2Model.currentPlayer.artist : ""

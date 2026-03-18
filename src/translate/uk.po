@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-06 06:44+0300\n"
+"POT-Creation-Date: 2026-03-18 00:51+0100\n"
 "PO-Revision-Date: 2025-09-30 01:49+0200\n"
 "Last-Translator: Vsevolod «Damglador» Stopchanskyi "
 "<vse.stopchanskyi@gmail.com>\n"
@@ -415,7 +415,7 @@ msgstr "Обкладинка альбому"
 msgid "Album placeholder:"
 msgstr ""
 
-#: src/contents/ui/config/Full.qml:190 src/contents/ui/config/General.qml:101
+#: src/contents/ui/config/Full.qml:190 src/contents/ui/config/General.qml:132
 #, kde-format
 msgid "Choose…"
 msgstr "Вибрати…"
@@ -465,22 +465,22 @@ msgstr "Використовувати обкладинку як фон"
 msgid "(Experimental feature)"
 msgstr "(Експериментальна функція)"
 
-#: src/contents/ui/config/General.qml:26
+#: src/contents/ui/config/General.qml:30
 #, kde-format
 msgid "Playback source"
 msgstr "Джерело відтворення"
 
-#: src/contents/ui/config/General.qml:34
+#: src/contents/ui/config/General.qml:38
 #, kde-format
 msgid "Player:"
 msgstr "Програвач:"
 
-#: src/contents/ui/config/General.qml:37
+#: src/contents/ui/config/General.qml:41
 #, kde-format
 msgid "Choose automatically"
 msgstr "Вибирати автоматично"
 
-#: src/contents/ui/config/General.qml:42
+#: src/contents/ui/config/General.qml:46
 #, kde-format
 msgid ""
 "The player will be chosen automatically based on the currently playing song. "
@@ -490,12 +490,22 @@ msgstr ""
 "Програвач, у якому щось грає, буде автоматично вибраний. Якщо два чи більше "
 "програвача активні водночас, віджет вибере той, що почав грати першим."
 
-#: src/contents/ui/config/General.qml:50
+#: src/contents/ui/config/General.qml:54
 #, kde-format
 msgid "Always:"
 msgstr "Завжди:"
 
-#: src/contents/ui/config/General.qml:82
+#: src/contents/ui/config/General.qml:67
+#, kde-format
+msgid "None selected"
+msgstr ""
+
+#: src/contents/ui/config/General.qml:72
+#, kde-format
+msgid "%1 players selected"
+msgstr ""
+
+#: src/contents/ui/config/General.qml:113
 #, kde-format
 msgid ""
 "Always display information from the selected player, if it's not running the "
@@ -508,47 +518,47 @@ msgstr ""
 "усіма наразі відкритими програвачами, якщо ви не можете знайти бажаний, "
 "відкрийте його та перезавантажте список використовуючи відповідну кнопку."
 
-#: src/contents/ui/config/General.qml:90
+#: src/contents/ui/config/General.qml:121
 #, kde-format
 msgid "Font customization"
 msgstr "Налаштування шрифту"
 
-#: src/contents/ui/config/General.qml:94
+#: src/contents/ui/config/General.qml:125
 #, kde-format
 msgid "Custom font:"
 msgstr "Власний шрифт:"
 
-#: src/contents/ui/config/General.qml:112
+#: src/contents/ui/config/General.qml:143
 #, kde-format
 msgid "%1pt %2"
 msgstr ""
 
-#: src/contents/ui/config/General.qml:119
+#: src/contents/ui/config/General.qml:150
 #, kde-format
 msgid "No media found behavior"
 msgstr "Якщо не знайдено медіа"
 
-#: src/contents/ui/config/General.qml:124
+#: src/contents/ui/config/General.qml:155
 #, kde-format
 msgid "Show widget when no media found"
 msgstr "Показувати віджет"
 
-#: src/contents/ui/config/General.qml:129
+#: src/contents/ui/config/General.qml:160
 #, kde-format
 msgid "Text displayed when no media found:"
 msgstr "Показувати текст:"
 
-#: src/contents/ui/config/General.qml:135
+#: src/contents/ui/config/General.qml:166
 #, kde-format
 msgid "Controls behaviour"
 msgstr "Поведінка елементів керування"
 
-#: src/contents/ui/config/General.qml:140
+#: src/contents/ui/config/General.qml:171
 #, kde-format
 msgid "Volume step:"
 msgstr "Крок гучності:"
 
-#: src/contents/ui/config/General.qml:150
+#: src/contents/ui/config/General.qml:181
 #, kde-format
 msgid "Choose a Font"
 msgstr "Вибір шрифта"
