@@ -26,6 +26,16 @@ Item {
     property int songTextAlignment: plasmoid.configuration.fullViewSongTextAlignment
     property bool songTextAboveProgressBar: plasmoid.configuration.fullViewSongTextPosition === SongAndArtistText.VerticalPosition.AboveProgressBar
 
+    property bool showLyrics: false
+
+    LyricsManager {
+        id: lyricsManager
+        title: player.title
+        artists: player.artists
+        album: player.album
+        songLength: player.songLength
+    }
+
     // The Full View max and min width is driven by config values. The window can be resized within these bounds; thumbnail and text adapt.
     readonly property int configMinWidth: plasmoid.configuration.fullViewMinWidth
     readonly property int maximumWidth: plasmoid.configuration.fullViewMaxWidth
@@ -121,7 +131,7 @@ Item {
 
         Rectangle {
             id: thumbnailContainer
-            visible: thumbnailVisible
+            visible: thumbnailVisible && !showLyrics
             Layout.fillWidth: true
             Layout.margins: 10
             // Use the actual image aspect ratio, fallback to square if not loaded yet
@@ -169,6 +179,18 @@ Item {
 					}
 				}
             }
+        }
+
+        LyricsView {
+            visible: showLyrics
+            Layout.fillWidth: true
+            Layout.margins: 10
+            Layout.preferredHeight: showLyrics ? width / (albumArtNormal.implicitWidth > 0 && albumArtNormal.implicitHeight > 0
+                ? albumArtNormal.implicitWidth / albumArtNormal.implicitHeight : 1.0) : 0
+            lyrics: lyricsManager.lyrics
+            songPosition: player.songPosition
+            textFont: baseFont
+            loading: lyricsManager.loading
         }
 
         SongAndArtistText {
@@ -246,7 +268,7 @@ Item {
         }
 
         Item {
-            visible: shuffleVisible || playbackControlsVisible || loopVisible
+            visible: shuffleVisible || playbackControlsVisible || loopVisible || lyricsManager.available
             Layout.leftMargin: 20
             Layout.rightMargin: 20
             Layout.bottomMargin: 10
@@ -313,6 +335,15 @@ Item {
                             status = Mpris.LoopStatus.Playlist;
                         player.setLoopStatus(status);
                     }
+                }
+
+                CommandIcon {
+                    visible: lyricsManager.available
+                    Layout.alignment: Qt.AlignHCenter
+                    size: Kirigami.Units.iconSizes.medium
+                    source: "view-media-lyrics"
+                    active: showLyrics
+                    onClicked: showLyrics = !showLyrics
                 }
 
             }
