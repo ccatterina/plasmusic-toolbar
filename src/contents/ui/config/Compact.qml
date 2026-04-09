@@ -40,6 +40,7 @@ KCM.SimpleKCM {
     property alias cfg_compactTruncatedTextStyle: compactTruncatedTextStyle.value
     property alias cfg_mediaProgressInPanel: mediaProgressInPanel.checked
     property alias cfg_compactHideAlbumForSingles: compactHideAlbumForSingles.checked
+    property alias cfg_hidePlayerControlBindsInHoverTooltip: hidePlayerControlBindsInHoverTooltip.checked
 
     Kirigami.FormLayout {
         id: form
@@ -515,6 +516,16 @@ KCM.SimpleKCM {
             to: 25
             stepSize: 2
             Kirigami.FormData.label: i18n("Background radius:")
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("Hover tooltip")
+        }
+
+        CheckBox{
+            id: hidePlayerControlBindsInHoverTooltip
+            Kirigami.FormData.label: i18n("Hide player control keybinds in tooltip")
         }
     }
 }
