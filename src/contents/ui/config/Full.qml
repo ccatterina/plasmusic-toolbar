@@ -26,6 +26,7 @@ KCM.SimpleKCM {
     property alias cfg_fullViewShuffleVisible: fullViewShuffleVisible.checked
     property alias cfg_fullViewPlaybackControlsVisible: fullViewPlaybackControlsVisible.checked
     property alias cfg_fullViewLoopVisible: fullViewLoopVisible.checked
+    property alias cfg_fullViewLyricsEnabled: fullViewLyricsEnabled.checked
     property alias cfg_fullViewPlaybackControlsFillWidth: fullViewPlaybackControlsFillWidth.checked
     property alias cfg_fullViewSongTextVisible: fullViewSongTextVisible.checked
     property alias cfg_fullViewSongTextAlignment: fullViewSongTextAlignment.value
@@ -148,6 +149,18 @@ KCM.SimpleKCM {
         CheckBox {
             id: fullViewLoopVisible
             Kirigami.FormData.label: i18n("Show loop control")
+        }
+
+        RowLayout {
+            Kirigami.FormData.label: i18n("Show synced lyrics")
+            CheckBox {
+                id: fullViewLyricsEnabled
+            }
+            Kirigami.ContextualHelpButton {
+                toolTipText: i18n(
+                    "When enabled, the lyrics button appears in Full View. Opening lyrics sends the current track title, artist, album, and duration to LRCLIB."
+                )
+            }
         }
 
         RowLayout {

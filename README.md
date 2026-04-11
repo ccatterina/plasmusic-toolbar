@@ -35,6 +35,7 @@ PlasMusic Toolbar is a widget for KDE Plasma 6 that shows currently playing song
 - **Panel song/icon/controls visibility:** Choose whether to show icon, song text and playback controls in the panel view.
 - **Preferred source**: Change the widget preferred source for music information (choose between active MPRIS2 sources).
 - **Song text customization**: Customize the maximum (or fixed) text width and scrolling behavior with adjustable scroll speed.
+- **Synced lyrics**: Optionally enable a Full View lyrics button. Opening lyrics sends the current track title, artist, album, and duration to [LRCLIB](https://lrclib.net/).
 - and more...
 
 
@@ -175,4 +176,3 @@ The widget comes with a helper script (`bin/i18n`) to manage translations:
   <img src="./screenshots/screenshot_vertical_1.png" />
   <img src="./screenshots/screenshot_vertical_2.png" />
 <p>
-
