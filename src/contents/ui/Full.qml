@@ -25,11 +25,20 @@ Item {
     property bool songTextVisible: plasmoid.configuration.fullViewSongTextVisible
     property int songTextAlignment: plasmoid.configuration.fullViewSongTextAlignment
     property bool songTextAboveProgressBar: plasmoid.configuration.fullViewSongTextPosition === SongAndArtistText.VerticalPosition.AboveProgressBar
+    property bool lyricsEnabled: plasmoid.configuration.fullViewLyricsEnabled
 
     property bool showLyrics: false
+    readonly property bool canRequestLyrics: lyricsEnabled && player.title.length > 0 && player.artists.length > 0
+
+    onCanRequestLyricsChanged: {
+        if (!canRequestLyrics) {
+            showLyrics = false
+        }
+    }
 
     LyricsManager {
         id: lyricsManager
+        enabled: showLyrics && canRequestLyrics
         title: player.title
         artists: player.artists
         album: player.album
@@ -268,7 +277,7 @@ Item {
         }
 
         Item {
-            visible: shuffleVisible || playbackControlsVisible || loopVisible || lyricsManager.available
+            visible: shuffleVisible || playbackControlsVisible || loopVisible || canRequestLyrics
             Layout.leftMargin: 20
             Layout.rightMargin: 20
             Layout.bottomMargin: 10
@@ -338,7 +347,7 @@ Item {
                 }
 
                 CommandIcon {
-                    visible: lyricsManager.available
+                    visible: canRequestLyrics
                     Layout.alignment: Qt.AlignHCenter
                     size: Kirigami.Units.iconSizes.medium
                     source: "view-media-lyrics"

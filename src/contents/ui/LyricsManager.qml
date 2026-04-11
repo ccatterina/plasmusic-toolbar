@@ -7,6 +7,7 @@ QtObject {
     property string artists: ""
     property string album: ""
     property double songLength: 0  // microseconds
+    property bool enabled: false
 
     property var lyrics: []
     property bool loading: false
@@ -14,6 +15,8 @@ QtObject {
 
     // Internal: track what we last fetched to avoid duplicate requests
     property string _lastQuery: ""
+    property int _requestId: 0
+    property var _activeRequest: null
 
     // Debounce timer to avoid spamming API on rapid track changes
     property var _debounceTimer: Timer {
@@ -22,19 +25,25 @@ QtObject {
         onTriggered: root._fetchLyrics()
     }
 
+    onEnabledChanged: _scheduleRefetch()
     onTitleChanged: _scheduleRefetch()
     onArtistsChanged: _scheduleRefetch()
+    onAlbumChanged: _scheduleRefetch()
+    onSongLengthChanged: _scheduleRefetch()
 
     function _scheduleRefetch() {
-        const query = title + "|" + artists
-        if (query === _lastQuery) return
-        if (!title || !artists) {
-            _lastQuery = ""
-            lyrics = []
-            available = false
-            loading = false
+        if (!enabled) {
+            _clear()
             return
         }
+
+        const query = _queryKey()
+        if (query === _lastQuery) return
+        if (!title || !artists) {
+            _clear()
+            return
+        }
+        _abortActiveRequest()
         _lastQuery = query
         lyrics = []
         available = false
@@ -42,11 +51,48 @@ QtObject {
         _debounceTimer.restart()
     }
 
+    function _clear() {
+        _debounceTimer.stop()
+        _abortActiveRequest()
+        _lastQuery = ""
+        lyrics = []
+        available = false
+        loading = false
+    }
+
+    function _abortActiveRequest() {
+        _requestId++
+        if (_activeRequest) {
+            const xhr = _activeRequest
+            _activeRequest = null
+            xhr.onreadystatechange = function() {}
+            xhr.abort()
+        }
+    }
+
+    function _queryKey() {
+        const durationSec = Math.round(songLength / 1000000)
+        return JSON.stringify([title, artists, album, durationSec])
+    }
+
+    function _isCurrentRequest(requestId, query) {
+        return enabled && requestId === _requestId && query === _lastQuery
+    }
+
     function _fetchLyrics() {
+        if (!enabled || !title || !artists) {
+            _clear()
+            return
+        }
+
+        _abortActiveRequest()
+
         const trackName = encodeURIComponent(title)
         const artistName = encodeURIComponent(artists)
         const albumName = encodeURIComponent(album)
         const durationSec = Math.round(songLength / 1000000)
+        const query = _lastQuery
+        const requestId = _requestId
 
         let url = "https://lrclib.net/api/get?artist_name=" + artistName
             + "&track_name=" + trackName
@@ -56,13 +102,19 @@ QtObject {
         }
 
         const xhr = new XMLHttpRequest()
+        _activeRequest = xhr
         xhr.onreadystatechange = function() {
             if (xhr.readyState !== XMLHttpRequest.DONE) return
+            if (!_isCurrentRequest(requestId, query)) return
+
+            if (_activeRequest === xhr) {
+                _activeRequest = null
+            }
 
             if (xhr.status === 200) {
-                _handleResponse(xhr.responseText)
+                _handleResponse(xhr.responseText, requestId, query)
             } else if (xhr.status === 404) {
-                _searchLyrics()
+                _searchLyrics(requestId, query)
             } else {
                 loading = false
             }
@@ -72,15 +124,23 @@ QtObject {
         xhr.send()
     }
 
-    function _searchLyrics() {
+    function _searchLyrics(requestId, query) {
+        if (!_isCurrentRequest(requestId, query)) return
+
         const trackName = encodeURIComponent(title)
         const artistName = encodeURIComponent(artists)
         const url = "https://lrclib.net/api/search?track_name=" + trackName
             + "&artist_name=" + artistName
 
         const xhr = new XMLHttpRequest()
+        _activeRequest = xhr
         xhr.onreadystatechange = function() {
             if (xhr.readyState !== XMLHttpRequest.DONE) return
+            if (!_isCurrentRequest(requestId, query)) return
+
+            if (_activeRequest === xhr) {
+                _activeRequest = null
+            }
 
             if (xhr.status === 200) {
                 try {
@@ -105,7 +165,9 @@ QtObject {
         xhr.send()
     }
 
-    function _handleResponse(responseText) {
+    function _handleResponse(responseText, requestId, query) {
+        if (!_isCurrentRequest(requestId, query)) return
+
         try {
             const data = JSON.parse(responseText)
             if (data.syncedLyrics) {

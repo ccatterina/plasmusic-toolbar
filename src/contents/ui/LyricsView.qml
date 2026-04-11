@@ -9,6 +9,7 @@ Item {
     property var lyrics: []
     property double songPosition: 0  // microseconds
     property font textFont: Kirigami.Theme.defaultFont
+    property font activeTextFont: Qt.font(Object.assign({}, textFont, {weight: Font.Bold}))
     property bool loading: false
 
     Layout.fillWidth: true
@@ -46,7 +47,7 @@ Item {
     }
 
     onLyricsChanged: {
-        _currentLyricIndex = 0
+        _currentLyricIndex = findCurrentIndex()
     }
 
     PlasmaComponents3.BusyIndicator {
@@ -103,11 +104,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 wrapMode: Text.WordWrap
                 color: Kirigami.Theme.textColor
-                font.family: root.textFont.family
-                font.pointSize: parent.isActive
-                    ? root.textFont.pointSize * 1.1
-                    : root.textFont.pointSize
-                font.bold: parent.isActive
+                font: parent.isActive ? root.activeTextFont : root.textFont
 
                 opacity: parent.isActive ? 1.0 : 0.35
 
