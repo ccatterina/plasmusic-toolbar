@@ -16,6 +16,7 @@ PlasmoidItem {
     readonly property int formFactor: Plasmoid.formFactor
     readonly property int location: Plasmoid.location
     readonly property bool showWhenNoMedia: plasmoid.configuration.showWhenNoMedia
+    readonly property bool hidePlayerControlBinds: plasmoid.configuration.hidePlayerControlBindsInHoverTooltip
 
     readonly property font baseFont: plasmoid.configuration.useCustomFont ? plasmoid.configuration.customFont : Kirigami.Theme.defaultFont
 
@@ -24,9 +25,11 @@ PlasmoidItem {
     toolTipSubText: {
         let text = player.artists ? i18nc("%1 is the media artist/author and %2 is the player name", "by %1 (%2)", player.artists, player.identity)
             : i18nc("%1 is the player name", "%1", player.identity)
-        text += "\n" + (player.playbackStatus === Mpris.PlaybackStatus.Playing ? i18n("Middle-click to pause") : i18n("Middle-click to play"))
-        text += "\n" + i18n("Scroll to adjust volume")
-        text += "\n" + (player.canRaise ? i18n("Ctrl+Click to bring player to the front") : i18n("This player can't be raised"))
+        if(!hidePlayerControlBinds){
+            text += "\n" + (player.playbackStatus === Mpris.PlaybackStatus.Playing ? i18n("Middle-click to pause") : i18n("Middle-click to play"))
+            text += "\n" + i18n("Scroll to adjust volume")
+            text += "\n" + (player.canRaise ? i18n("Ctrl+Click to bring player to the front") : i18n("This player can't be raised"))
+        }
         return text
     }
 
