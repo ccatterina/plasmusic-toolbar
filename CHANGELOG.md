@@ -7,6 +7,10 @@
 
 * Updated Dutch translation ([#278](https://github.com/ccatterina/plasmusic-toolbar/issues/278)) ([2138dd3](https://github.com/ccatterina/plasmusic-toolbar/commit/2138dd39c6ee36c405a13e6159a4bfe93b3ae206))
 
+* Hide player binds in tooltip ([#286](https://github.com/ccatterina/plasmusic-toolbar/pull/286)) ([41ec437](https://github.com/ccatterina/plasmusic-toolbar/commit/41ec437ba1f3df7be4827503866bbbf35033aad8))
+
+* Added spanish translation ([#289](https://github.com/ccatterina/plasmusic-toolbar/pull/289)) ([7603a68](https://github.com/ccatterina/plasmusic-toolbar/commit/7603a68a9a34e45c682788c9c8041d481f722374]))
+
 
 ### Bug Fixes
 
