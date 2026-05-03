@@ -1,5 +1,21 @@
 # Changelog
 
+## [4.1.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v4.0.0...v4.1.0) (2026-05-03)
+
+
+### Features
+
+* Updated Dutch translation ([#278](https://github.com/ccatterina/plasmusic-toolbar/issues/278)) ([2138dd3](https://github.com/ccatterina/plasmusic-toolbar/commit/2138dd39c6ee36c405a13e6159a4bfe93b3ae206))
+
+* Hide player binds in tooltip ([#286](https://github.com/ccatterina/plasmusic-toolbar/pull/286)) ([41ec437](https://github.com/ccatterina/plasmusic-toolbar/commit/41ec437ba1f3df7be4827503866bbbf35033aad8))
+
+* Added spanish translation ([#289](https://github.com/ccatterina/plasmusic-toolbar/pull/289)) ([7603a68](https://github.com/ccatterina/plasmusic-toolbar/commit/7603a68a9a34e45c682788c9c8041d481f722374]))
+
+
+### Bug Fixes
+
+* Added missing line to support album hiding if the text is above the track pos slider ([#284](https://github.com/ccatterina/plasmusic-toolbar/issues/284)) ([cc9f479](https://github.com/ccatterina/plasmusic-toolbar/commit/cc9f47938ce9750d8c3b310eeaa40dc4bc857b9e))
+
 ## [4.0.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v3.7.0...v4.0.0) (2026-03-14)
 
 
