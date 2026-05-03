@@ -3,39 +3,52 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write
-  pull-requests: write
-
 name: release-please
 
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: google-github-actions/release-please-action@v4
+      - uses: googleapis/release-please-action@v4
         id: release
         with:
-          token: ${{ secrets.TOKEN_RELEASE_PLEASE }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  build-release:
+    needs: release-please
+    runs-on: ubuntu-latest
+    if: ${{ needs.release-please.outputs.release_created }}
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.release-please.outputs.tag_name }}
+          persist-credentials: false
 
       - name: Install gettext
-        if: ${{ steps.release.outputs.release_created }}
         run: sudo apt-get update && sudo apt-get install -y gettext
 
       - name: Compile translations
-        if: ${{ steps.release.outputs.release_created }}
         run: ./bin/i18n compile
 
       - name: Generate plasmoid package
-        if: ${{ steps.release.outputs.release_created }}
+        env:
+          TAG_NAME: ${{ needs.release-please.outputs.tag_name }}
         run: |
           cd ./src
-          zip -r ../plasmusic-toolbar-${{steps.release.outputs.tag_name}}.plasmoid .
+          zip -r "../plasmusic-toolbar-${TAG_NAME}.plasmoid" .
 
       - name: Upload plasmoid package to release
-        if: ${{ steps.release.outputs.release_created }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release upload ${{ steps.release.outputs.tag_name }} ./plasmusic-toolbar-${{steps.release.outputs.tag_name}}.plasmoid
+          TAG_NAME: ${{ needs.release-please.outputs.tag_name }}
+        run: |
+          gh release upload "$TAG_NAME" "./plasmusic-toolbar-${TAG_NAME}.plasmoid"
