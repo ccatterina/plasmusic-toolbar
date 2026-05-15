@@ -10,7 +10,6 @@ import org.kde.plasma.private.mpris as Mpris
 PlasmoidItem {
     id: widget
 
-    Plasmoid.status: (showWhenNoMedia || (player.ready && player.playbackStatus > Mpris.PlaybackStatus.Stopped)) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
     Plasmoid.backgroundHints: plasmoid.configuration.desktopWidgetBg
 
     readonly property int formFactor: Plasmoid.formFactor
@@ -19,6 +18,23 @@ PlasmoidItem {
     readonly property bool hidePlayerControlBinds: plasmoid.configuration.hidePlayerControlBindsInHoverTooltip
 
     readonly property font baseFont: plasmoid.configuration.useCustomFont ? plasmoid.configuration.customFont : Kirigami.Theme.defaultFont
+
+    function updateStatus() {
+        Plasmoid.status = computeStatus()
+    }
+
+    // showWhenNoMedia: always visible (user override)
+    // native player: visible as soon as the app is open (player.ready)
+    // browser: visible only when a media tab is open (non-empty title)
+    function computeStatus() {
+        if (showWhenNoMedia) return PlasmaCore.Types.ActiveStatus;
+        if (!player.ready) return PlasmaCore.Types.HiddenStatus;
+        if (player.isBrowser && player.title === "") {
+            return PlasmaCore.Types.HiddenStatus;
+        }
+        return PlasmaCore.Types.ActiveStatus;
+    }
+
 
     toolTipTextFormat: Text.PlainText
     toolTipMainText: player.playbackStatus > Mpris.PlaybackStatus.Stopped ? player.title : i18n("No media playing")
@@ -33,9 +49,7 @@ PlasmoidItem {
         return text
     }
 
-    onShowWhenNoMediaChanged: {
-        Plasmoid.status = (showWhenNoMedia || (player.ready && player.playbackStatus > Mpris.PlaybackStatus.Stopped)) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
-    }
+    onShowWhenNoMediaChanged: updateStatus()
 
     Player {
         id: player
@@ -44,15 +58,10 @@ PlasmoidItem {
                 return plasmoid.configuration.preferredPlayerIdentity
             }
         }
-        onReadyChanged: {
-            Plasmoid.status = (showWhenNoMedia || player.ready) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
-            console.debug(`Player ready changed: ${player.ready} -> plasmoid status changed: ${Plasmoid.status}`)
-        }
-        onPlaybackStatusChanged: {
-            Plasmoid.status = (showWhenNoMedia || (player.ready && player.playbackStatus > Mpris.PlaybackStatus.Stopped)) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
-            console.debug(`Playback status changed: ${player.playbackStatus} -> plasmoid status changed: ${Plasmoid.status}`)
-        }
-
+        onReadyChanged: widget.updateStatus()
+        onPlaybackStatusChanged: widget.updateStatus()
+        onTitleChanged: widget.updateStatus()
+        onIsBrowserChanged: widget.updateStatus()
     }
 
     compactRepresentation: Compact {}
