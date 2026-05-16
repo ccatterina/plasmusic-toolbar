@@ -6,35 +6,111 @@ QtObject {
     id: root
 
     property var mpris2Model: Mpris.Mpris2Model {
-        readonly property alias preferredSourceIdentity: root.sourceIdentity
+        readonly property alias preferredSourceIdentities: root.sourceIdentities
+        property var preferredPlayersConnections: []
 
         onRowsInserted: () => updatePlayerIndex(this)
-        onPreferredSourceIdentityChanged: () => updatePlayerIndex(this)
+        onRowsRemoved: () => updatePlayerIndex(this)
+        onPreferredSourceIdentitiesChanged: () => updatePlayerIndex(this)
 
         function updatePlayerIndex(model) {
-            if (!preferredSourceIdentity) {
+            if (!preferredSourceIdentities) {
                 // Choose the multiplex source when no preferred source is set
                 model.currentIndex = 0;
                 return;
             }
 
+            clearAllPlayersConnections();
+
+            const preferredModels = [];
             const CONTAINER_ROLE = Qt.UserRole + 1;
             for (let i = 1; i < model.rowCount(); i++) {
                 const player = model.data(model.index(i, 0), CONTAINER_ROLE);
-                if (player.identity === preferredSourceIdentity) {
-                    model.currentIndex = i;
+                if (preferredSourceIdentities.includes(player.identity)) {
+                    preferredModels.push({
+                        player: player,
+                        index: i
+                    });
+                }
+            }
+
+            // If only one preferred players have been setup, directly use it
+            if (preferredSourceIdentities.length === 1) {
+                if (preferredModels.length > 0) {
+                    model.currentIndex = preferredModels[0].index;
+                }
+                return;
+            }
+
+            // In case of multiple preferred players we replicate the multiplexer logic
+            // and use the following:
+            // 1. the first currently playing player
+            // 2. the first opened player
+            //
+            // Additionally, on each player status change switch to the player:
+            // 1. that just started playing if none of the players were playing before
+            // 2. that is still playing if the current player was paused
+            for (let model of preferredModels) {
+                const handler = function () {
+                    const rootModel = root.mpris2Model;
+
+                    if (rootModel.currentPlayer?.playbackStatus === Mpris.PlaybackStatus.Playing) {
+                        return;
+                    }
+
+                    const status = model.player.playbackStatus;
+                    if (status === Mpris.PlaybackStatus.Playing) {
+                        rootModel.currentIndex = model.index;
+                        return;
+                    }
+
+                    if (status === Mpris.PlaybackStatus.Paused) {
+                        for (let otherModels of preferredModels) {
+                            if (otherModels.player.playbackStatus === Mpris.PlaybackStatus.Playing) {
+                                rootModel.currentIndex = otherModels.index;
+                                return;
+                            }
+                        }
+                    }
+                };
+
+                model.player.playbackStatusChanged.connect(handler);
+                preferredPlayersConnections.push({
+                    player: model.player,
+                    handler: handler
+                });
+            }
+
+            for (let entry of preferredModels) {
+                if (entry.player.playbackStatus === Mpris.PlaybackStatus.Playing) {
+                    model.currentIndex = entry.index;
                     return;
                 }
             }
+
+            if (preferredModels.length > 0) {
+                model.currentIndex = preferredModels[0].index;
+                return;
+            }
+        }
+
+        function clearAllPlayersConnections() {
+            for (let connection of preferredPlayersConnections) {
+                connection.player.playbackStatusChanged.disconnect(connection.handler);
+            }
+            preferredPlayersConnections = [];
         }
     }
 
-    property var sourceIdentity: null
+    property var sourceIdentities: null
     readonly property bool ready: {
         if (!mpris2Model.currentPlayer) {
             return false;
         }
-        return mpris2Model.currentPlayer.identity === sourceIdentity || !sourceIdentity;
+        if (!sourceIdentities) {
+            return true;
+        }
+        return sourceIdentities.includes(mpris2Model.currentPlayer.identity);
     }
 
     readonly property string artists: ready ? mpris2Model.currentPlayer.artist : ""
