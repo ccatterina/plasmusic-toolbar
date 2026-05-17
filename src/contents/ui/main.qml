@@ -10,6 +10,7 @@ import org.kde.plasma.private.mpris as Mpris
 PlasmoidItem {
     id: widget
 
+    Plasmoid.status: widget.updateStatus()
     Plasmoid.backgroundHints: plasmoid.configuration.desktopWidgetBg
 
     readonly property int formFactor: Plasmoid.formFactor
