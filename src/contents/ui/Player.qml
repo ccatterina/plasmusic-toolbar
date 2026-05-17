@@ -53,7 +53,7 @@ QtObject {
     // Browsers register themselves as MPRIS sources as soon as they launch,
     // so `ready` alone cannot tell us whether a media tab is actually open.
     readonly property bool isBrowser: {
-        const knownBrowsers = ["firefox", "chromium", "chrome", "brave", "opera", "vivaldi", "edge"];
+        const knownBrowsers = ["chromium", "chrome", "brave", "opera", "vivaldi", "edge"];
         const id = identity.toLowerCase();
         return knownBrowsers.some(b => id.includes(b));
     }
