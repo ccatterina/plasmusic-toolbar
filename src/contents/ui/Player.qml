@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQml.Models 2.3
 import org.kde.plasma.private.mpris as Mpris
 
-QtObject {
+Item {
     id: root
 
     property var mpris2Model: Mpris.Mpris2Model {
@@ -10,6 +10,21 @@ QtObject {
 
         onRowsInserted: () => updatePlayerIndex(this)
         onPreferredSourceIdentityChanged: () => updatePlayerIndex(this)
+
+        onCurrentPlayerChanged: {
+            if (!currentPlayer) {
+                return;
+            }
+
+            if (!root.sourceIdentity ||
+                currentPlayer.identity === root.sourceIdentity) {
+
+                // Player switched: accept art if already available
+                if (currentPlayer.artUrl) {
+                    root._cachedArtUrl = currentPlayer.artUrl;
+                }
+            }
+        }
 
         function updatePlayerIndex(model) {
             if (!preferredSourceIdentity) {
@@ -30,6 +45,50 @@ QtObject {
     }
 
     property var sourceIdentity: null
+
+    // Album art cache
+    property string _cachedArtUrl: ""
+    property bool _waitingForNewArt: false
+
+    Timer {
+        id: artGraceTimer
+        interval: 800
+        repeat: false
+
+        onTriggered: {
+            // Stop waiting, but do not clear cached art
+            root._waitingForNewArt = false;
+        }
+    }
+
+    Connections {
+        target: mpris2Model.currentPlayer
+
+        function onTrackChanged() {
+            root._waitingForNewArt = true;
+            artGraceTimer.restart();
+        }
+
+        function onArtistChanged() {
+            root._waitingForNewArt = true;
+            artGraceTimer.restart();
+        }
+
+        function onAlbumChanged() {
+            root._waitingForNewArt = true;
+            artGraceTimer.restart();
+        }
+
+        function onArtUrlChanged() {
+            const url = mpris2Model.currentPlayer?.artUrl;
+            if (url) {
+                root._cachedArtUrl = url;
+                root._waitingForNewArt = false;
+                artGraceTimer.stop();
+            }
+        }
+    }
+
     readonly property bool ready: {
         if (!mpris2Model.currentPlayer) {
             return false;
@@ -42,7 +101,10 @@ QtObject {
     readonly property string album: ready ? mpris2Model.currentPlayer.album : ""
     readonly property int playbackStatus: ready ? mpris2Model.currentPlayer.playbackStatus : Mpris.PlaybackStatus.Unknown
     readonly property int shuffle: ready ? mpris2Model.currentPlayer.shuffle : Mpris.ShuffleStatus.Unknown
-    readonly property string artUrl: ready ? mpris2Model.currentPlayer.artUrl : ""
+
+    // Cached art URL instead of direct binding
+    readonly property string artUrl: _cachedArtUrl
+
     readonly property int loopStatus: ready ? mpris2Model.currentPlayer.loopStatus : Mpris.LoopStatus.Unknown
     readonly property double songPosition: ready ? mpris2Model.currentPlayer.position : 0
     readonly property double songLength: ready ? mpris2Model.currentPlayer.length : 0
