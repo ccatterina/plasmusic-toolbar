@@ -34,6 +34,7 @@ KCM.SimpleKCM {
     property alias cfg_fullViewMaxWidth: fullViewMaxWidth.value
     property alias cfg_fullAlbumCoverRounded: fullAlbumCoverRounded.checked
     property alias cfg_fullAlbumCoverRadius: fullAlbumCoverRadius.value
+    property alias cfg_hideCanBeRaisedTooltip: hideCanBeRaisedTooltip.checked
 
     Kirigami.FormLayout {
         id: form
@@ -454,6 +455,16 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Use album cover as background")
             id: fullAlbumCoverAsBackground
             text: i18n("(Experimental feature)")
+        }
+        
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("Hover tooltip")
+        }
+        
+        CheckBox{
+            id: hideCanBeRaisedTooltip
+            Kirigami.FormData.label: i18n("Hide album art tooltip")
         }
     }
 

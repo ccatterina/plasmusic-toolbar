@@ -135,7 +135,7 @@ Item {
                 id: raisePlayerTooltip
                 anchors.centerIn: parent
                 text: player.canRaise ? i18n("Bring player to the front") : i18n("This player can't be raised")
-                visible: coverMouseArea.containsMouse
+                visible: !plasmoid.configuration.hideCanBeRaisedTooltip && coverMouseArea.containsMouse
             }
 
             MouseArea {
