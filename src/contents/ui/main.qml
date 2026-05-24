@@ -39,10 +39,12 @@ PlasmoidItem {
 
     Player {
         id: player
-        sourceIdentity: {
+        sourceIdentities: {
             if (!plasmoid.configuration.choosePlayerAutomatically) {
-                return plasmoid.configuration.preferredPlayerIdentity
+                const identities = plasmoid.configuration.preferredPlayerIdentity
+                return identities ? identities.split(',').filter(x => x) : null
             }
+            return null
         }
         onReadyChanged: {
             Plasmoid.status = (showWhenNoMedia || player.ready) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-01 09:13+0200\n"
+"POT-Creation-Date: 2026-05-16 15:28+0200\n"
 "PO-Revision-Date: 2026-05-03 14:58+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -428,7 +428,7 @@ msgstr "Portada del álbum"
 msgid "Album placeholder:"
 msgstr "Sustituto del álbum:"
 
-#: src/contents/ui/config/Full.qml:190 src/contents/ui/config/General.qml:101
+#: src/contents/ui/config/Full.qml:190 src/contents/ui/config/General.qml:132
 #, kde-format
 msgid "Choose…"
 msgstr "Elige..."
@@ -478,22 +478,22 @@ msgstr "Utilizar portada del álbum como fondo"
 msgid "(Experimental feature)"
 msgstr "(Función experimental)"
 
-#: src/contents/ui/config/General.qml:26
+#: src/contents/ui/config/General.qml:30
 #, kde-format
 msgid "Playback source"
 msgstr "Fuente de reproducción"
 
-#: src/contents/ui/config/General.qml:34
+#: src/contents/ui/config/General.qml:38
 #, kde-format
 msgid "Player:"
 msgstr "Reproductor:"
 
-#: src/contents/ui/config/General.qml:37
+#: src/contents/ui/config/General.qml:41
 #, kde-format
 msgid "Choose automatically"
 msgstr "Elegir automáticamente"
 
-#: src/contents/ui/config/General.qml:42
+#: src/contents/ui/config/General.qml:46
 #, kde-format
 msgid ""
 "The player will be chosen automatically based on the currently playing song. "
@@ -504,12 +504,22 @@ msgstr ""
 "Si hay dos o más reproductores reproduciendo al mismo tiempo, el widget elegirá "
 "el que empezara a reproducir primero."
 
-#: src/contents/ui/config/General.qml:50
+#: src/contents/ui/config/General.qml:54
 #, kde-format
 msgid "Always:"
 msgstr "Siempre:"
 
-#: src/contents/ui/config/General.qml:82
+#: src/contents/ui/config/General.qml:67
+#, kde-format
+msgid "None selected"
+msgstr ""
+
+#: src/contents/ui/config/General.qml:72
+#, kde-format
+msgid "%1 players selected"
+msgstr ""
+
+#: src/contents/ui/config/General.qml:113
 #, kde-format
 msgid ""
 "Always display information from the selected player, if it's not running the "
@@ -522,84 +532,84 @@ msgstr ""
 "reproductores activos, si no puedes encontrar el que buscas, abre "
 "la aplicación del reproductor y recarga la lista con el botón de recarga."
 
-#: src/contents/ui/config/General.qml:90
+#: src/contents/ui/config/General.qml:121
 #, kde-format
 msgid "Font customization"
 msgstr "Personalización de fuente"
 
-#: src/contents/ui/config/General.qml:94
+#: src/contents/ui/config/General.qml:125
 #, kde-format
 msgid "Custom font:"
 msgstr "Fuente personalizada:"
 
-#: src/contents/ui/config/General.qml:112
+#: src/contents/ui/config/General.qml:143
 #, kde-format
 msgid "%1pt %2"
 msgstr "%1pt %2"
 
-#: src/contents/ui/config/General.qml:119
+#: src/contents/ui/config/General.qml:150
 #, kde-format
 msgid "No media found behavior"
 msgstr "Comportamiento cuando no se encuentren medios"
 
-#: src/contents/ui/config/General.qml:124
+#: src/contents/ui/config/General.qml:155
 #, kde-format
 msgid "Show widget when no media found"
 msgstr "Enseñar widget cuando no se encuentren medios"
 
-#: src/contents/ui/config/General.qml:129
+#: src/contents/ui/config/General.qml:160
 #, kde-format
 msgid "Text displayed when no media found:"
 msgstr "Texto mostrado cuando no se encuentren medios:"
 
-#: src/contents/ui/config/General.qml:135
+#: src/contents/ui/config/General.qml:166
 #, kde-format
 msgid "Controls behaviour"
 msgstr "Comportamiento de los controles"
 
-#: src/contents/ui/config/General.qml:140
+#: src/contents/ui/config/General.qml:171
 #, kde-format
 msgid "Volume step:"
 msgstr "Escalones de volumen:"
 
-#: src/contents/ui/config/General.qml:150
+#: src/contents/ui/config/General.qml:181
 #, kde-format
 msgid "Choose a Font"
 msgstr "Elige una fuente"
 
-#: src/contents/ui/main.qml:23
+#: src/contents/ui/main.qml:24
 #, kde-format
 msgid "No media playing"
 msgstr "No hay medios reproduciéndose"
 
-#: src/contents/ui/main.qml:25
+#: src/contents/ui/main.qml:26
 #, kde-format
 msgctxt "%1 is the media artist/author and %2 is the player name"
 msgid "by %1 (%2)"
 msgstr "%1 es el autor/artista del medio y %2 es el nombre del reproductor"
 
-#: src/contents/ui/main.qml:26
+#: src/contents/ui/main.qml:27
 #, kde-format
 msgctxt "%1 is the player name"
 msgid "%1"
 msgstr "%1 es el nombre del reproductor"
 
-#: src/contents/ui/main.qml:27
+#: src/contents/ui/main.qml:29
 #, kde-format
 msgid "Middle-click to pause"
 msgstr "Click con la rueda del ratón para pausar"
 
-#: src/contents/ui/main.qml:27
+#: src/contents/ui/main.qml:29
 #, kde-format
 msgid "Middle-click to play"
 msgstr "Click con la rueda del ratón para reproducir"
 
-#: src/contents/ui/main.qml:28
+#: src/contents/ui/main.qml:30
 #, kde-format
 msgid "Scroll to adjust volume"
 msgstr "Desplaza para ajustar el volumen"
 
-#: src/contents/ui/main.qml:29
+#: src/contents/ui/main.qml:31
 #, kde-format
 msgid "Ctrl+Click to bring player to the front"
 msgstr "Ctrl+Click para mostrar el reproductor al frente"

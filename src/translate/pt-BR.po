@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-03 04:35-0300\n"
+"POT-Creation-Date: 2026-05-16 17:24+0200\n"
 "PO-Revision-Date: 2026-05-03 04:35-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -60,9 +60,9 @@ msgid ""
 "positioned based on user preference."
 msgstr ""
 "O widget preenche toda a largura disponível no painel horizontal (ou altura "
-"no painel vertical);  O ícone é alinhado à esquerda (ou ao topo) e os controles "
-"de reprodução são alinhados à direita (ou inferior);  o texto da música pode ser "
-"posicionado de acordo com a preferência do usuário."
+"no painel vertical);  O ícone é alinhado à esquerda (ou ao topo) e os "
+"controles de reprodução são alinhados à direita (ou inferior);  o texto da "
+"música pode ser posicionado de acordo com a preferência do usuário."
 
 #: src/contents/ui/config/Compact.qml:71 src/contents/ui/config/Full.qml:62
 #, kde-format
@@ -193,7 +193,9 @@ msgstr "Ocultar nome do álbum para singles"
 #, kde-format
 msgid ""
 "If the album name and the track title match, the album name will be hidden."
-msgstr "Se o nome do álbum e o título da faixa coincidirem, o nome do álbum ficará oculto."
+msgstr ""
+"Se o nome do álbum e o título da faixa coincidirem, o nome do álbum ficará "
+"oculto."
 
 #: src/contents/ui/config/Compact.qml:327
 #, kde-format
@@ -218,7 +220,8 @@ msgstr "Estilo de texto truncado"
 #: src/contents/ui/config/Compact.qml:353
 #, kde-format
 msgid "Works only when the text is not scrolling and in the initial position"
-msgstr "Funciona apenas quando o texto não está rolando e está na posição inicial."
+msgstr ""
+"Funciona apenas quando o texto não está rolando e está na posição inicial."
 
 #: src/contents/ui/config/Compact.qml:362
 #, kde-format
@@ -232,7 +235,7 @@ msgstr ""
 
 #: src/contents/ui/config/Compact.qml:384
 #, kde-format
-msgid "Nenhum"
+msgid "None"
 msgstr ""
 
 #: src/contents/ui/config/Compact.qml:396 src/contents/ui/config/Full.qml:385
@@ -308,7 +311,9 @@ msgstr "Cores da capa do álbum"
 #: src/contents/ui/config/Compact.qml:507
 #, kde-format
 msgid "Use album cover as icon should be checked for background to work."
-msgstr "A opção Usar a capa do álbum como ícone deve estar marcada para que o plano de fundo funcione."
+msgstr ""
+"A opção Usar a capa do álbum como ícone deve estar marcada para que o plano "
+"de fundo funcione."
 
 #: src/contents/ui/config/Compact.qml:518
 #, kde-format
@@ -403,8 +408,8 @@ msgid ""
 "When enabled, playback controls are spread across the full width of the "
 "widget. When disabled, they are grouped together in the center."
 msgstr ""
-"Quando ativado, os controles de reprodução são distribuidos ao longo de "
-"toda a largura do widget. Quando desativado, eles são agrupados juntos no centro."
+"Quando ativado, os controles de reprodução são distribuidos ao longo de toda "
+"a largura do widget. Quando desativado, eles são agrupados juntos no centro."
 
 #: src/contents/ui/config/Full.qml:167
 #, kde-format
@@ -426,7 +431,7 @@ msgstr "Capa do álbum"
 msgid "Album placeholder:"
 msgstr "Espaço reservado para capa do álbum"
 
-#: src/contents/ui/config/Full.qml:190 src/contents/ui/config/General.qml:101
+#: src/contents/ui/config/Full.qml:190 src/contents/ui/config/General.qml:132
 #, kde-format
 msgid "Choose…"
 msgstr "Escolher"
@@ -476,38 +481,48 @@ msgstr "Usar a capa do álbum como fundo"
 msgid "(Experimental feature)"
 msgstr "(Função experimental)"
 
-#: src/contents/ui/config/General.qml:26
+#: src/contents/ui/config/General.qml:30
 #, kde-format
 msgid "Playback source"
 msgstr "Origem da reprodução"
 
-#: src/contents/ui/config/General.qml:34
+#: src/contents/ui/config/General.qml:38
 #, kde-format
 msgid "Player:"
 msgstr "Reprodutor"
 
-#: src/contents/ui/config/General.qml:37
+#: src/contents/ui/config/General.qml:41
 #, kde-format
 msgid "Choose automatically"
 msgstr "Escolher automaticamente"
 
-#: src/contents/ui/config/General.qml:42
+#: src/contents/ui/config/General.qml:46
 #, kde-format
 msgid ""
 "The player will be chosen automatically based on the currently playing song. "
 "If two or more players are playing at the same time, the widget will choose "
 "the one that started playing first."
 msgstr ""
-"O reprodutor será escolhido automaticamente baseado na faixa tocando no momento. "
-"Se dois ou mais reprodutores estiverem tocando ao mesmo tempo, o widget escolherá "
-"o que a reprodução iniciou primeiro."
+"O reprodutor será escolhido automaticamente baseado na faixa tocando no "
+"momento. Se dois ou mais reprodutores estiverem tocando ao mesmo tempo, o "
+"widget escolherá o que a reprodução iniciou primeiro."
 
-#: src/contents/ui/config/General.qml:50
+#: src/contents/ui/config/General.qml:54
 #, kde-format
 msgid "Always:"
 msgstr "Sempre"
 
-#: src/contents/ui/config/General.qml:82
+#: src/contents/ui/config/General.qml:67
+#, kde-format
+msgid "None selected"
+msgstr ""
+
+#: src/contents/ui/config/General.qml:72
+#, kde-format
+msgid "%1 players selected"
+msgstr ""
+
+#: src/contents/ui/config/General.qml:113
 #, kde-format
 msgid ""
 "Always display information from the selected player, if it's not running the "
@@ -515,52 +530,53 @@ msgid ""
 "players that are currently running, if you can't find the one you want, open "
 "the player application and reload the list with reload button."
 msgstr ""
-"Sempre mostrar a informação do reprodutor selecionado, se não estiver em uso o "
-"widget será ocultado. No menu de escolha você pode selecionar entre todos os "
-"reprodutores que estão em uso no momento, se não encontrar o que você quer, abra "
-"o aplicativo do reprodutor e recarregue a lista com o botão de recarregar."
+"Sempre mostrar a informação do reprodutor selecionado, se não estiver em uso "
+"o widget será ocultado. No menu de escolha você pode selecionar entre todos "
+"os reprodutores que estão em uso no momento, se não encontrar o que você "
+"quer, abra o aplicativo do reprodutor e recarregue a lista com o botão de "
+"recarregar."
 
-#: src/contents/ui/config/General.qml:90
+#: src/contents/ui/config/General.qml:121
 #, kde-format
 msgid "Font customization"
 msgstr "Personalização da fonte"
 
-#: src/contents/ui/config/General.qml:94
+#: src/contents/ui/config/General.qml:125
 #, kde-format
 msgid "Custom font:"
 msgstr "Fonte personalizada"
 
-#: src/contents/ui/config/General.qml:112
+#: src/contents/ui/config/General.qml:143
 #, kde-format
 msgid "%1pt %2"
 msgstr ""
 
-#: src/contents/ui/config/General.qml:119
+#: src/contents/ui/config/General.qml:150
 #, kde-format
 msgid "No media found behavior"
 msgstr "Nenhuma reprodução encontrada"
 
-#: src/contents/ui/config/General.qml:124
+#: src/contents/ui/config/General.qml:155
 #, kde-format
 msgid "Show widget when no media found"
 msgstr "mostrar widget quando não encontrar reprodução"
 
-#: src/contents/ui/config/General.qml:129
+#: src/contents/ui/config/General.qml:160
 #, kde-format
 msgid "Text displayed when no media found:"
 msgstr "texto exibido quando não encontrar reprodução:"
 
-#: src/contents/ui/config/General.qml:135
+#: src/contents/ui/config/General.qml:166
 #, kde-format
 msgid "Controls behaviour"
 msgstr "Comportamento dos controles"
 
-#: src/contents/ui/config/General.qml:140
+#: src/contents/ui/config/General.qml:171
 #, kde-format
 msgid "Volume step:"
 msgstr "nivel de volume"
 
-#: src/contents/ui/config/General.qml:150
+#: src/contents/ui/config/General.qml:181
 #, kde-format
 msgid "Choose a Font"
 msgstr "Escolher uma fonte"

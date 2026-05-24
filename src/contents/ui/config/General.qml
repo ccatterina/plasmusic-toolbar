@@ -18,6 +18,10 @@ KCM.SimpleKCM {
     property alias cfg_noMediaText: noMediaText.text
     property alias cfg_showWhenNoMedia: showWhenNoMedia.checked
 
+    property var preferredIdentities: {
+        return cfg_preferredPlayerIdentity ? cfg_preferredPlayerIdentity.split(',').filter(x => x) : []
+    }
+
     Kirigami.FormLayout {
         id: form
 
@@ -56,13 +60,42 @@ KCM.SimpleKCM {
                 enabled: selectPreferredPlayer.checked
                 id: playerComboBox
                 model: sources
-                Component.onCompleted: {
-                    const preferredPlayerIndex = playerComboBox.find(cfg_preferredPlayerIdentity)
-                    playerComboBox.currentIndex = preferredPlayerIndex != -1 ? preferredPlayerIndex : 0
+
+                displayText: {
+                    const selectedPlayersCount = preferredIdentities.length
+                    if (selectedPlayersCount === 0) {
+                        return i18n("None selected")
+                    }
+                    if (selectedPlayersCount === 1) {
+                        return preferredIdentities[0]
+                    }
+                    return i18n("%1 players selected", selectedPlayersCount)
                 }
-                onCurrentValueChanged: {
-                    if (currentValue) {
-                        cfg_preferredPlayerIdentity = currentValue
+
+                delegate: Item {
+                    width: ListView.view ? ListView.view.width : playerComboBox.width
+                    height: playerCheckBox.implicitHeight
+
+                    CheckDelegate {
+                        id: playerCheckBox
+                        width: parent.width
+                        text: model.text
+                        checked: preferredIdentities.includes(model.text)
+
+                        onToggled: {
+                            let identities = [...preferredIdentities]
+                            if (checked) {
+                                if (!identities.includes(model.text)) {
+                                    identities.push(model.text)
+                                }
+                            } else {
+                                const index = identities.indexOf(model.text)
+                                if (index !== -1) {
+                                    identities.splice(index, 1)
+                                }
+                            }
+                            cfg_preferredPlayerIdentity = identities.join(',')
+                        }
                     }
                 }
             }
@@ -71,9 +104,7 @@ KCM.SimpleKCM {
                 enabled: selectPreferredPlayer.checked
                 icon.name: 'refreshstructure'
                 onClicked: {
-                    sources.reload(cfg_preferredPlayerIdentity)
-                    const preferredPlayerIndex = playerComboBox.find(cfg_preferredPlayerIdentity)
-                    playerComboBox.currentIndex = preferredPlayerIndex != -1 ? preferredPlayerIndex : 0
+                    sources.reload(preferredIdentities)
                 }
             }
 
@@ -160,20 +191,20 @@ KCM.SimpleKCM {
         property var mpris2Model: Mpris.Mpris2Model {}
 
         id: sources
-        function reload(predefinedSource) {
+        function reload(predefinedSources) {
             sources.clear()
-            if (predefinedSource) {
-                sources.append({ "text": predefinedSource })
+            for (let i = 0; i < predefinedSources.length; i++) {
+                sources.append({ "text": predefinedSources[i] })
             }
 
             const CONTAINER_ROLE = Qt.UserRole + 1
             for (var i = 1; i < mpris2Model.rowCount(); i++) {
                 const player = mpris2Model.data(mpris2Model.index(i, 0), CONTAINER_ROLE)
-                if (predefinedSource !== player.identity) {
+                if (!predefinedSources.includes(player.identity)) {
                     sources.append({ "text": player.identity })
                 }
             }
         }
-        Component.onCompleted: reload(cfg_preferredPlayerIdentity)
+        Component.onCompleted: reload(preferredIdentities)
     }
 }
