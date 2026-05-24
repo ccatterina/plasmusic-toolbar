@@ -125,15 +125,6 @@ QtObject {
     readonly property real volume: ready ? mpris2Model.currentPlayer.volume : 0
     readonly property string identity: ready ? mpris2Model.currentPlayer.identity : ""
 
-    // True when the MPRIS source is a web browser.
-    // Browsers register themselves as MPRIS sources as soon as they launch,
-    // so `ready` alone cannot tell us whether a media tab is actually open.
-    readonly property bool isBrowser: {
-        const knownBrowsers = ["chromium", "chrome", "brave", "opera", "vivaldi", "edge"];
-        const id = identity.toLowerCase();
-        return knownBrowsers.some(b => id.includes(b));
-    }
-
     readonly property bool canGoNext: ready ? mpris2Model.currentPlayer.canGoNext : false
     readonly property bool canGoPrevious: ready ? mpris2Model.currentPlayer.canGoPrevious : false
     readonly property bool canPlay: ready ? mpris2Model.currentPlayer.canPlay : false

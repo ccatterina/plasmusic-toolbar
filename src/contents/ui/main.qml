@@ -10,7 +10,7 @@ import org.kde.plasma.private.mpris as Mpris
 PlasmoidItem {
     id: widget
 
-    Plasmoid.status: widget.updateStatus()
+    Plasmoid.status: player.updateStatus()
     Plasmoid.backgroundHints: plasmoid.configuration.desktopWidgetBg
 
     readonly property int formFactor: Plasmoid.formFactor
@@ -19,23 +19,6 @@ PlasmoidItem {
     readonly property bool hidePlayerControlBinds: plasmoid.configuration.hidePlayerControlBindsInHoverTooltip
 
     readonly property font baseFont: plasmoid.configuration.useCustomFont ? plasmoid.configuration.customFont : Kirigami.Theme.defaultFont
-
-    function updateStatus() {
-        Plasmoid.status = computeStatus()
-    }
-
-    // showWhenNoMedia: always visible (user override)
-    // native player: visible as soon as the app is open (player.ready)
-    // browser: visible only when a media tab is open (non-empty title)
-    function computeStatus() {
-        if (showWhenNoMedia) return PlasmaCore.Types.ActiveStatus;
-        if (!player.ready) return PlasmaCore.Types.HiddenStatus;
-        if (player.isBrowser && player.title === "") {
-            return PlasmaCore.Types.HiddenStatus;
-        }
-        return PlasmaCore.Types.ActiveStatus;
-    }
-
 
     toolTipTextFormat: Text.PlainText
     toolTipMainText: player.playbackStatus > Mpris.PlaybackStatus.Stopped ? player.title : i18n("No media playing")
@@ -50,10 +33,16 @@ PlasmoidItem {
         return text
     }
 
-    onShowWhenNoMediaChanged: updateStatus()
+    onShowWhenNoMediaChanged: player.updateStatus()
 
     Player {
         id: player
+
+        // Some browsers keep the MPRIS container active even after the player tab has been closed,
+        // which causes the player to be always "ready" due to the presence of the container.
+        // Checking for the presence of metadata is a simple way to work around this issue.
+        readonly property bool isMediaInfoSet: player.title || player.artists || player.album
+
         sourceIdentities: {
             if (!plasmoid.configuration.choosePlayerAutomatically) {
                 const identities = plasmoid.configuration.preferredPlayerIdentity
@@ -61,10 +50,23 @@ PlasmoidItem {
             }
             return null
         }
-        onReadyChanged: widget.updateStatus()
-        onPlaybackStatusChanged: widget.updateStatus()
-        onTitleChanged: widget.updateStatus()
-        onIsBrowserChanged: widget.updateStatus()
+        onReadyChanged: {
+            updateStatus();
+            console.debug(`Player ready changed: ${player.ready} -> plasmoid status changed: ${Plasmoid.status}`)
+        }
+        onIsMediaInfoSetChanged: {
+            updateStatus();
+            console.debug(`Player media info changed: ${player.isMediaInfoSet} -> plasmoid status changed: ${Plasmoid.status}`)
+        }
+
+        function updateStatus() {
+            if (!showWhenNoMedia && !isMediaInfoSet) {
+                Plasmoid.status = PlasmaCore.Types.HiddenStatus;
+            } else {
+                Plasmoid.status = PlasmaCore.Types.ActiveStatus;
+            }
+        }
+
     }
 
     compactRepresentation: Compact {}
