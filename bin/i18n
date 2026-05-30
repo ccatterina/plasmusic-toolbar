@@ -15,6 +15,15 @@ EXTOPTS="""
     --package-name="$PACKAGE_NAME" \
 """
 
+validate_lang() {
+    local lang="$1"
+    if [[ ! "$lang" =~ ^[a-z]{2}(_[A-Z]{2})?$ ]]; then
+        echo "❌ Invalid or suspicious language name: '$lang' — skipping"
+        return 1
+    fi
+    return 0
+}
+
 extract() {
     find "$CONTENT_DIR" -name "*.qml" -print0 | sort -z | xargs -0 xgettext $EXTOPTS --sort-by-file --output="$TRANSLATE_DIR/template.pot"
     for po in "$TRANSLATE_DIR"/*.po; do
@@ -43,6 +52,7 @@ check() {
     rm "$new_pot"
     for po in "$TRANSLATE_DIR"/*.po; do
         if [ -f "$po" ]; then
+            validate_lang "$(basename "$po" .po)" || continue
             lang=$(basename "$po" .po)
             stats=$(msgfmt --statistics -o /dev/null "$po" 2>&1)
             untranslated=$(echo "$stats" | grep -o '[0-9]* untranslated' | cut -d' ' -f1)
@@ -62,6 +72,7 @@ check() {
 compile() {
     for po in "$TRANSLATE_DIR"/*.po; do
         if [ -f "$po" ]; then
+            validate_lang "$(basename "$po" .po)" || continue
             lang=$(basename "$po" .po)
             mkdir -p "$CONTENT_DIR/locale/$lang/LC_MESSAGES"
             msgfmt "$po" -o "$CONTENT_DIR/locale/$lang/LC_MESSAGES/plasma_applet_$PACKAGE_NAME.mo"
@@ -71,7 +82,7 @@ compile() {
 }
 
 init() {
-    if [ -z "$LANG" ]; then
+    if [ -z "$TARGET_LANG" ]; then
         echo "Usage: $0 init <lang>"
         exit 1
     fi
@@ -79,16 +90,17 @@ init() {
         echo "❌ template.pot not found. Run extract first."
         exit 1
     fi
-    if [ -f "$TRANSLATE_DIR/$LANG.po" ]; then
-        echo "⚠️  $LANG.po already exists"
+    validate_lang "$TARGET_LANG" || exit 1
+    if [ -f "$TRANSLATE_DIR/$TARGET_LANG.po" ]; then
+        echo "⚠️  $TARGET_LANG.po already exists"
         exit 1
     fi
-    msginit --no-translator --input="$TRANSLATE_DIR/template.pot" --locale="$LANG" --output-file="$TRANSLATE_DIR/$LANG.po"
-    echo "✅ $LANG.po created"
+    msginit --no-translator --input="$TRANSLATE_DIR/template.pot" --locale="$TARGET_LANG" --output-file="$TRANSLATE_DIR/$TARGET_LANG.po"
+    echo "✅ $TARGET_LANG.po created"
 }
 
 COMMAND="$1"
-LANG="$2"
+TARGET_LANG="$2"
 
 if ! command -v xgettext >/dev/null 2>&1; then
     echo "❌ xgettext not found. Please install gettext."
