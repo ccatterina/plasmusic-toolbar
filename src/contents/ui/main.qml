@@ -10,7 +10,7 @@ import org.kde.plasma.private.mpris as Mpris
 PlasmoidItem {
     id: widget
 
-    Plasmoid.status: player.updateStatus()
+    Plasmoid.status: (showWhenNoMedia || player.ready) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
     Plasmoid.backgroundHints: plasmoid.configuration.desktopWidgetBg
 
     readonly property int formFactor: Plasmoid.formFactor
@@ -33,15 +33,12 @@ PlasmoidItem {
         return text
     }
 
-    onShowWhenNoMediaChanged: player.updateStatus()
+    onShowWhenNoMediaChanged: {
+        Plasmoid.status = (showWhenNoMedia || player.ready) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
+    }
 
     Player {
         id: player
-
-        // Some browsers keep the MPRIS container active even after the player tab has been closed,
-        // which causes the player to be always "ready" due to the presence of the container.
-        // Checking for the presence of metadata is a simple way to work around this issue.
-        readonly property bool isMediaInfoSet: player.title || player.artists || player.album
 
         sourceIdentities: {
             if (!plasmoid.configuration.choosePlayerAutomatically) {
@@ -51,20 +48,8 @@ PlasmoidItem {
             return null
         }
         onReadyChanged: {
-            updateStatus();
+            Plasmoid.status = (showWhenNoMedia || player.ready) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
             console.debug(`Player ready changed: ${player.ready} -> plasmoid status changed: ${Plasmoid.status}`)
-        }
-        onIsMediaInfoSetChanged: {
-            updateStatus();
-            console.debug(`Player media info changed: ${player.isMediaInfoSet} -> plasmoid status changed: ${Plasmoid.status}`)
-        }
-
-        function updateStatus() {
-            if (!showWhenNoMedia && !isMediaInfoSet) {
-                Plasmoid.status = PlasmaCore.Types.HiddenStatus;
-            } else {
-                Plasmoid.status = PlasmaCore.Types.ActiveStatus;
-            }
         }
 
     }
