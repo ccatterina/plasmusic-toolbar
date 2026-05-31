@@ -7,6 +7,7 @@ on:
     paths:
       - 'src/contents/**/*.qml'
       - 'src/translate/**'
+      - 'bin/i18n'
 
 jobs:
   update-translations:
