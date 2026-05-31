@@ -27,7 +27,7 @@ validate_lang() {
 extract() {
     find "$CONTENT_DIR" -name "*.qml" -print0 | sort -z | xargs -0 xgettext $EXTOPTS --sort-by-file --output="$TRANSLATE_DIR/template.pot"
     for po in "$TRANSLATE_DIR"/*.po; do
-        [ -f "$po" ] && msgmerge --quiet --update --backup=off "$po" "$TRANSLATE_DIR/template.pot"
+        [ -f "$po" ] && msgmerge --quiet --update --backup=off "$po" "$TRANSLATE_DIR/template.pot" --no-fuzzy-matching
     done
 
     echo "✅ Extraction completed!"
