@@ -39,6 +39,7 @@ PlasmoidItem {
 
     Player {
         id: player
+
         sourceIdentities: {
             if (!plasmoid.configuration.choosePlayerAutomatically) {
                 const identities = plasmoid.configuration.preferredPlayerIdentity

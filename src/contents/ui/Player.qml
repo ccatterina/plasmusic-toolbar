@@ -107,10 +107,15 @@ QtObject {
         if (!mpris2Model.currentPlayer) {
             return false;
         }
-        if (!sourceIdentities) {
-            return true;
+        if (sourceIdentities && !sourceIdentities.includes(mpris2Model.currentPlayer.identity)) {
+            return false;
         }
-        return sourceIdentities.includes(mpris2Model.currentPlayer.identity);
+        // Chromium-based browsers stay registered on MPRIS even after the media tab
+        // is closed, without clearing their metadata. Requiring actual metadata
+        // prevents the widget from staying visible in that case.
+        return !!(mpris2Model.currentPlayer.track
+               || mpris2Model.currentPlayer.artist
+               || mpris2Model.currentPlayer.album);
     }
 
     readonly property string artists: ready ? mpris2Model.currentPlayer.artist : ""
