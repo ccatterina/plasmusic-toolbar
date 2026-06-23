@@ -43,6 +43,9 @@ Item {
     Layout.minimumHeight: column.implicitHeight
     Layout.maximumHeight: column.implicitHeight
 
+    // Multi player selector visibility check
+    readonly property bool showPlayerSelector: playerList.count > 2
+
     // Store the original theme colors (root keeps default Kirigami.Theme.inherit: true)
     readonly property color _originalTextColor: Kirigami.Theme.textColor
     readonly property color _originalHighlightColor: Kirigami.Theme.highlightColor
@@ -99,8 +102,9 @@ Item {
             id: mask
             anchors.fill: parent
             gradient: Gradient {
-                GradientStop { position: 0; color: "transparent" }
-                GradientStop { position: 0.4; color: "transparent" }
+                GradientStop { position: 0; color: showPlayerSelector ? imageColors.bgColor : "transparent" }   // Adjust top gradient when the player selector is visible
+                GradientStop { position: 0.11; color: "transparent" }
+                GradientStop { position: showPlayerSelector ? 0.5 : 0.4; color: "transparent" }
                 GradientStop { position: 0.7; color: imageColors.bgColor }
                 GradientStop { position: 1; color: imageColors.bgColor }
             }
@@ -123,10 +127,10 @@ Item {
         Rectangle {
             id: headerbar
             Layout.fillWidth: true
-            visible: playerList.count > 2
+            visible: showPlayerSelector
 
             color: albumCoverBackground
-                ? Qt.rgba(0, 0, 0, 0.25)
+                ? "transparent"
                 : Kirigami.Theme.backgroundColor
 
             implicitHeight: Kirigami.Units.gridUnit * 2
@@ -136,7 +140,7 @@ Item {
                 objectName: "playerSelector"               
                 anchors.fill: parent
                 implicitHeight: contentHeight
-                currentIndex: playerSelector.count, player.mpris2Model.currentIndex
+                currentIndex: player.mpris2Model.currentIndex
                 
                 Repeater {
                     id: playerList
@@ -150,8 +154,9 @@ Item {
                         anchors.bottom: parent?.bottom
                         display: PlasmaComponents3.AbstractButton.IconOnly
                         icon.name: iconName
-                        icon.height: Kirigami.Units.iconSizes.small 
+                        icon.height: Kirigami.Units.iconSizes.small
                         text: isMultiplexer ? i18nc("@action:button", "Choose player automatically") : identity
+
                         Accessible.onPressAction: clicked()
 
                         onClicked: {
