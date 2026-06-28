@@ -8,7 +8,7 @@
 * **i18n:** Add pt-BR to the widget ([#296](https://github.com/ccatterina/plasmusic-toolbar/issues/296)) ([16d09e9](https://github.com/ccatterina/plasmusic-toolbar/commit/16d09e9de67dfe4e359a660ff36f2881c1643659))
 * **i18n:** update italian translations ([#305](https://github.com/ccatterina/plasmusic-toolbar/issues/305)) ([c38ae1b](https://github.com/ccatterina/plasmusic-toolbar/commit/c38ae1b4751a8014b1ffd46f13e2692dbea5d31b))
 * support multiple locked players ([#281](https://github.com/ccatterina/plasmusic-toolbar/issues/281)) ([72bf554](https://github.com/ccatterina/plasmusic-toolbar/commit/72bf55451d97768f773cc861c462fb43a4720859))
-
+* Added an option to hide the raise player tooltip on the album art ([#298](https://github.com/ccatterina/plasmusic-toolbar/issues/298)) ([3c05876](https://github.com/ccatterina/plasmusic-toolbar/commit/3c058761f5d03136fd290ecee8454c6100bb0fa9))
 
 ### Bug Fixes
 
