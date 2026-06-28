@@ -43,6 +43,9 @@ Item {
     Layout.minimumHeight: column.implicitHeight
     Layout.maximumHeight: column.implicitHeight
 
+    // Multi player selector visibility check
+    readonly property bool showPlayerSelector: playerList.count > 2
+
     // Store the original theme colors (root keeps default Kirigami.Theme.inherit: true)
     readonly property color _originalTextColor: Kirigami.Theme.textColor
     readonly property color _originalHighlightColor: Kirigami.Theme.highlightColor
@@ -99,8 +102,9 @@ Item {
             id: mask
             anchors.fill: parent
             gradient: Gradient {
-                GradientStop { position: 0; color: "transparent" }
-                GradientStop { position: 0.4; color: "transparent" }
+                GradientStop { position: 0; color: showPlayerSelector ? imageColors.bgColor : "transparent" }   // Adjust top gradient when the player selector is visible
+                GradientStop { position: 0.11; color: "transparent" }
+                GradientStop { position: showPlayerSelector ? 0.5 : 0.4; color: "transparent" }
                 GradientStop { position: 0.7; color: imageColors.bgColor }
                 GradientStop { position: 1; color: imageColors.bgColor }
             }
@@ -118,6 +122,54 @@ Item {
         Kirigami.Theme.inherit: false
         Kirigami.Theme.textColor: albumCoverBackground ? imageColors.fgColor : root._originalTextColor
         Kirigami.Theme.highlightColor: albumCoverBackground ? imageColors.hlColor : root._originalHighlightColor
+        
+        // Media Player Selector
+        Rectangle {
+            id: headerbar
+            Layout.fillWidth: true
+            visible: showPlayerSelector
+
+            color: albumCoverBackground
+                ? "transparent"
+                : Kirigami.Theme.backgroundColor
+
+            implicitHeight: Kirigami.Units.gridUnit * 2
+
+            PlasmaComponents3.TabBar {
+                id: playerSelector
+                objectName: "playerSelector"               
+                anchors.fill: parent
+                implicitHeight: contentHeight
+                currentIndex: player.mpris2Model.currentIndex
+                
+                Repeater {
+                    id: playerList
+                    model: player.mpris2Model
+                    delegate: PlasmaComponents3.TabButton {
+                        required property string iconName
+                        required property bool isMultiplexer
+                        required property string identity
+                        required property int index
+                        anchors.top: parent?.top
+                        anchors.bottom: parent?.bottom
+                        display: PlasmaComponents3.AbstractButton.IconOnly
+                        icon.name: iconName
+                        icon.height: Kirigami.Units.iconSizes.small
+                        text: isMultiplexer ? i18nc("@action:button", "Choose player automatically") : identity
+
+                        Accessible.onPressAction: clicked()
+
+                        onClicked: {
+                            player.mpris2Model.currentIndex = index;
+                        }
+
+                        PlasmaComponents3.ToolTip.text: text
+                        PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
+                        PlasmaComponents3.ToolTip.visible: hovered || (activeFocus && (focusReason === Qt.TabFocusReason || focusReason === Qt.BacktabFocusReason))
+                    }    
+                }    
+            }
+        }
 
         Rectangle {
             id: thumbnailContainer
