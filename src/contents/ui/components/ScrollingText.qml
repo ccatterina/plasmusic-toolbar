@@ -1,5 +1,5 @@
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
 import org.kde.plasma.components as PlasmaComponents3
 import org.kde.kirigami as Kirigami
@@ -7,6 +7,18 @@ import org.kde.kirigami as Kirigami
 // inspired by https://stackoverflow.com/a/49031115/2568933
 Item {
     id: root
+
+    property int maxWidth: root.width;
+    readonly property bool overflow: {
+        if (!root.maxWidth) {
+            return false;
+        }
+        return root.maxWidth < staticLabel.implicitWidth;
+    }
+
+    width: Math.min(maxWidth, staticLabel.implicitWidth)
+    implicitHeight: staticLabel.implicitHeight
+    implicitWidth: width
 
     enum OverflowBehaviour {
         AlwaysScroll,
@@ -22,22 +34,12 @@ Item {
 
     property int overflowBehaviour: ScrollingText.OverflowBehaviour.AlwaysScroll
     property int truncateStyle: ScrollingText.TruncateStyle.None
-
-    property string text: ""
-    readonly property string spacing: "     "
-    readonly property string textAndSpacing: text + spacing
-    property color textColor: Kirigami.Theme.textColor
-
-    property int maxWidth: 200 * units.devicePixelRatio
-    readonly property bool overflow: maxWidth <= textMetrics.width
-    property int speed: 5;
-    readonly property int duration: (25 * (11 - speed) + 25)* textAndSpacing.length;
+    readonly property bool overflowElides: root.truncateStyle === ScrollingText.TruncateStyle.Elide
+    readonly property bool overflowFades: root.truncateStyle === ScrollingText.TruncateStyle.FadeOut
 
     property bool scrollingEnabled: true
     property bool scrollResetOnPause: false
     property bool forcePauseScrolling: false
-    readonly property bool overflowElides: truncateStyle === ScrollingText.TruncateStyle.Elide
-    readonly property bool overflowFades: truncateStyle === ScrollingText.TruncateStyle.FadeOut
 
     readonly property bool pauseScrolling: {
         if (forcePauseScrolling) {
@@ -52,14 +54,15 @@ Item {
         }
     }
 
-    property alias font: label.font
-    property int textAlignment: Qt.AlignHCenter
+    property alias font: staticLabel.font
+    property alias color: staticLabel.color
+    property string text: ""
+    readonly property string spacing: "     "
+    readonly property string textAndSpacing: root.text + root.spacing
+    property int speed: 5;
+    readonly property int duration: (25 * (11 - speed) + 25)* textAndSpacing.length;
 
-    implicitWidth: overflow ? maxWidth : textMetrics.width
-    clip: overflow 
-
-    Layout.preferredHeight: label.implicitHeight
-    Layout.fillWidth: true
+    clip: overflow
 
     HoverHandler {
         id: mouse
@@ -68,79 +71,101 @@ Item {
 
     TextMetrics {
         id: textMetrics
-        font: label.font
+        font: staticLabel.font
         text: root.text
     }
 
     TextMetrics {
-        id: elidedMetrics
-        font: label.font
+        id: elidedTextMetrics
+        font: staticLabel.font
         text: root.text
         elide: Text.ElideRight
         elideWidth: root.maxWidth
     }
 
-    // Static label for non-overflowing text, supports horizontal alignment.
-    // Hidden when text overflows, where the scrolling label takes over instead.
     PlasmaComponents3.Label {
         id: staticLabel
-        visible: !overflow
+        visible: !overflow || !scrollingEnabled
         anchors.fill: parent
+        leftPadding: 0
+        rightPadding: 0
         text: root.text
-        color: root.textColor
-        font: label.font
-        horizontalAlignment: root.textAlignment
     }
 
     PlasmaComponents3.Label {
-        id: label
-        visible: overflow
-        text: overflow ? (root.overflowElides && !animationRunning ? elidedMetrics.elidedText : root.textAndSpacing) : root.text
-        color: root.textColor
-        property bool animationRunning: label.x !== 0 || (!animation.paused && animation.running)
+        id: scrollingLabel
+
+        visible: overflow && scrollingEnabled
+
+        text: (root.overflowElides && !scrollingAnimation.running) ? elidedTextMetrics.elidedText : root.textAndSpacing
+        color: staticLabel.color
+        font: staticLabel.font
 
         NumberAnimation on x {
-            id: animation
-            running: root.overflow && root.scrollingEnabled
-            paused: root.pauseScrolling && running
+            id: scrollingAnimation
+
+            running: false
             from: 0
-            to: -label.implicitWidth
+            to: -scrollingLabel.implicitWidth
             duration: root.duration
             loops: Animation.Infinite
 
-            function reset() {
-                label.x = 0;
-                if (running) {
-                    restart()
+            function updateState() {
+                const shouldRun = root.overflow && root.scrollingEnabled;
+                if (!shouldRun) {
+                    scrollingAnimation.stop();
+                    scrollingLabel.x = 0;
+
+                    return;
                 }
-                if (running && root.pauseScrolling) {
-                    pause()
+
+                if (!scrollingAnimation.running) {
+                    scrollingAnimation.start();
                 }
+
+                if (root.pauseScrolling) {
+                    if (root.scrollResetOnPause) {
+                        scrollingAnimation.stop();
+                        scrollingLabel.x = 0;
+                    } else {
+                        scrollingAnimation.pause();
+                    }
+                } else if (scrollingAnimation.paused) {
+                    scrollingAnimation.resume();
+                }
+            }
+        }
+
+        Connections {
+            target: root
+            function onOverflowChanged() {
+                scrollingAnimation.updateState();
+            }
+            function onScrollingEnabledChanged() {
+                scrollingAnimation.updateState();
+            }
+            function onPauseScrollingChanged() {
+                scrollingAnimation.updateState();
             }
 
-            onRunningChanged: () => {
-                // When `running` becomes true the animation start regardless of the `pauseScrolling` value.
-                // Manually pause the animation if the `pauseScrolling` value is true.
-                if (running && root.pauseScrolling) {
-                    pause()
+            function onTextChanged() {
+                // Song is changed, restart the animation to avoid start from the middle of the text
+                if (scrollingAnimation.running) {
+                    scrollingAnimation.restart();
                 }
-            }
-            onToChanged: () => reset()
-            onDurationChanged: () =>  reset()
-            onPausedChanged: (paused) => {
-                if (paused && scrollResetOnPause) label.x = 0
+                scrollingAnimation.updateState();
             }
         }
 
         PlasmaComponents3.Label {
-            visible: root.overflow && label.animationRunning
+            visible: !root.overflowElides || scrollingAnimation.running
             anchors.left: parent.right
-            color: root.textColor
-            font: label.font
-            text: label.text
+            color: scrollingLabel.color
+            font: scrollingLabel.font
+            text: scrollingLabel.text
         }
     }
-    layer.enabled: overflow && overflowFades && !label.animationRunning
+    layer.enabled: overflow && overflowFades
     layer.effect: OpacityMask {
         invert: true
         maskSource: Item {

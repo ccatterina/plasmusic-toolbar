@@ -182,14 +182,18 @@ Item {
             }
 
             Item {
+                id: songAndArtistTextColumn
                 Layout.fillHeight: horizontal
                 Layout.fillWidth: !horizontal
                 Layout.preferredHeight: !horizontal ? songAndArtistText.width : null
                 Layout.preferredWidth: horizontal ? songAndArtistText.width : null
+                Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
 
                 SongAndArtistText {
                     id: songAndArtistText
+
                     anchors.centerIn: parent
+                    Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
 
                     rotation: {
                         if (horizontal) return 0
@@ -218,7 +222,7 @@ Item {
                         return player.playbackStatus !== Mpris.PlaybackStatus.Playing
                     }
                     textFont: baseFont
-                    color: foregroundColor
+                    textColor: foregroundColor
                     title: player.title
                     artists: player.artists
                     album: player.album

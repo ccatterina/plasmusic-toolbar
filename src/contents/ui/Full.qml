@@ -12,6 +12,11 @@ import Qt5Compat.GraphicalEffects
 Item {
     id: root
 
+    enum SongAndArtistTextPosition {
+        AboveProgressBar,
+        UnderProgressBar
+    }
+
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
     property real volumeStep: plasmoid.configuration.volumeStep
     property bool albumCoverBackground: plasmoid.configuration.fullAlbumCoverAsBackground
@@ -24,7 +29,7 @@ Item {
     property bool playbackControlsFitWidth: plasmoid.configuration.fullViewPlaybackControlsFillWidth
     property bool songTextVisible: plasmoid.configuration.fullViewSongTextVisible
     property int songTextAlignment: plasmoid.configuration.fullViewSongTextAlignment
-    property bool songTextAboveProgressBar: plasmoid.configuration.fullViewSongTextPosition === SongAndArtistText.VerticalPosition.AboveProgressBar
+    property bool songTextAboveProgressBar: plasmoid.configuration.fullViewSongTextPosition === Full.SongAndArtistTextPosition.AboveProgressBar
 
     // The Full View max and min width is driven by config values. The window can be resized within these bounds; thumbnail and text adapt.
     readonly property int configMinWidth: plasmoid.configuration.fullViewMinWidth
@@ -174,7 +179,6 @@ Item {
         SongAndArtistText {
             visible: songTextVisible && songTextAboveProgressBar
             Layout.fillWidth: true
-            Layout.minimumWidth: 0
             Layout.leftMargin: 10
             Layout.rightMargin: 10
             Layout.bottomMargin: 5
@@ -184,11 +188,11 @@ Item {
             artists: player.artists
             album: player.album
             textFont: baseFont
-            maxWidth: width
             titlePosition: plasmoid.configuration.fullTitlePosition
             artistsPosition: plasmoid.configuration.fullArtistsPosition
             albumPosition: plasmoid.configuration.fullAlbumPosition
             hideAlbumForSingles: plasmoid.configuration.fullHideAlbumForSingles
+            scrollingEnabled: widget.expanded
         }
 
         TrackPositionSlider {
@@ -208,10 +212,8 @@ Item {
         }
 
         SongAndArtistText {
-            id: songText
             visible: songTextVisible && !songTextAboveProgressBar
             Layout.fillWidth: true
-            Layout.minimumWidth: 0
             Layout.leftMargin: 10
             Layout.rightMargin: 10
             Layout.topMargin: 5
@@ -221,11 +223,11 @@ Item {
             artists: player.artists
             album: player.album
             textFont: baseFont
-            maxWidth: songText.width
             titlePosition: plasmoid.configuration.fullTitlePosition
             artistsPosition: plasmoid.configuration.fullArtistsPosition
             albumPosition: plasmoid.configuration.fullAlbumPosition
             hideAlbumForSingles: plasmoid.configuration.fullHideAlbumForSingles
+            scrollingEnabled: widget.expanded
         }
 
         VolumeBar {

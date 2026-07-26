@@ -15,6 +15,7 @@ PlasmoidItem {
 
     readonly property int formFactor: Plasmoid.formFactor
     readonly property int location: Plasmoid.location
+    property bool expanded: Plasmoid.expanded == true
     readonly property bool showWhenNoMedia: plasmoid.configuration.showWhenNoMedia
     readonly property bool hidePlayerControlBinds: plasmoid.configuration.hidePlayerControlBindsInHoverTooltip
 
