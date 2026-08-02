@@ -104,9 +104,9 @@ Item {
             id: mask
             anchors.fill: parent
             gradient: Gradient {
-                GradientStop { position: 0; color: showPlayerSelector ? imageColors.bgColor : "transparent" }   // Adjust top gradient when the player selector is visible
+                GradientStop { position: 0; color: headerbar.visible ? imageColors.bgColor : "transparent" }   // Adjust top gradient when the player selector is visible
                 GradientStop { position: 0.11; color: "transparent" }
-                GradientStop { position: showPlayerSelector ? 0.5 : 0.4; color: "transparent" }
+                GradientStop { position: headerbar.visible ? 0.5 : 0.4; color: "transparent" }
                 GradientStop { position: 0.7; color: imageColors.bgColor }
                 GradientStop { position: 1; color: imageColors.bgColor }
             }
@@ -124,7 +124,7 @@ Item {
         Kirigami.Theme.inherit: false
         Kirigami.Theme.textColor: albumCoverBackground ? imageColors.fgColor : root._originalTextColor
         Kirigami.Theme.highlightColor: albumCoverBackground ? imageColors.hlColor : root._originalHighlightColor
-        
+
         // Media Player Selector
         Rectangle {
             id: headerbar
@@ -141,11 +141,11 @@ Item {
 
             PlasmaComponents3.TabBar {
                 id: playerSelector
-                objectName: "playerSelector"               
+                objectName: "playerSelector"
                 anchors.fill: parent
                 implicitHeight: contentHeight
                 currentIndex: player.mpris2Model.currentIndex
-                
+
                 Repeater {
                     id: playerList
                     model: player.mpris2Model
@@ -169,8 +169,8 @@ Item {
                         PlasmaComponents3.ToolTip.text: text
                         PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
                         PlasmaComponents3.ToolTip.visible: hovered || (activeFocus && (focusReason === Qt.TabFocusReason || focusReason === Qt.BacktabFocusReason))
-                    }    
-                }    
+                    }
+                }
             }
         }
 
