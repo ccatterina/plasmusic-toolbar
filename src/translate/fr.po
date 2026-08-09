@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-02 07:43+0000\n"
+"POT-Creation-Date: 2026-08-09 13:21+0000\n"
 "PO-Revision-Date: 2026-02-23 00:22+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -43,7 +43,7 @@ msgstr ""
 msgid "Bring player to the front"
 msgstr "Mettre le lecteur au premier plan"
 
-#: src/contents/ui/Full.qml:192 src/contents/ui/main.qml:32
+#: src/contents/ui/Full.qml:192 src/contents/ui/main.qml:31
 #, kde-format
 msgid "This player can't be raised"
 msgstr "Ce lecteur ne peut pas être mis au premier plan"
@@ -449,7 +449,7 @@ msgstr "Pochette d'album"
 msgid "Album placeholder:"
 msgstr "Image de remplacement :"
 
-#: src/contents/ui/config/Full.qml:205 src/contents/ui/config/General.qml:132
+#: src/contents/ui/config/Full.qml:205 src/contents/ui/config/General.qml:127
 #, kde-format
 msgid "Choose…"
 msgstr "Choisir…"
@@ -545,7 +545,7 @@ msgstr ""
 msgid "%1 players selected"
 msgstr ""
 
-#: src/contents/ui/config/General.qml:113
+#: src/contents/ui/config/General.qml:108
 #, kde-format
 msgid ""
 "Always display information from the selected player, if it's not running the "
@@ -559,84 +559,84 @@ msgstr ""
 "trouvez pas celui souhaité, ouvrez l'application et rechargez la liste avec "
 "le bouton de rechargement."
 
-#: src/contents/ui/config/General.qml:121
+#: src/contents/ui/config/General.qml:116
 #, kde-format
 msgid "Font customization"
 msgstr "Personnalisation de la police"
 
-#: src/contents/ui/config/General.qml:125
+#: src/contents/ui/config/General.qml:120
 #, kde-format
 msgid "Custom font:"
 msgstr "Police personnalisée :"
 
-#: src/contents/ui/config/General.qml:143
+#: src/contents/ui/config/General.qml:138
 #, kde-format
 msgid "%1pt %2"
 msgstr "%1pt %2"
 
-#: src/contents/ui/config/General.qml:150
+#: src/contents/ui/config/General.qml:145
 #, kde-format
 msgid "No media found behavior"
 msgstr "Comportement sans média"
 
-#: src/contents/ui/config/General.qml:155
+#: src/contents/ui/config/General.qml:150
 #, kde-format
 msgid "Show widget when no media found"
 msgstr "Afficher le widget quand aucun média n'est trouvé"
 
-#: src/contents/ui/config/General.qml:160
+#: src/contents/ui/config/General.qml:155
 #, kde-format
 msgid "Text displayed when no media found:"
 msgstr "Texte affiché quand aucun média n'est trouvé :"
 
-#: src/contents/ui/config/General.qml:166
+#: src/contents/ui/config/General.qml:161
 #, kde-format
 msgid "Controls behaviour"
 msgstr "Comportement des contrôles"
 
-#: src/contents/ui/config/General.qml:171
+#: src/contents/ui/config/General.qml:166
 #, kde-format
 msgid "Volume step:"
 msgstr "Pas du volume :"
 
-#: src/contents/ui/config/General.qml:181
+#: src/contents/ui/config/General.qml:176
 #, kde-format
 msgid "Choose a Font"
 msgstr "Choisir une police"
 
-#: src/contents/ui/main.qml:25
+#: src/contents/ui/main.qml:24
 #, kde-format
 msgid "No media playing"
 msgstr "Aucun média en lecture"
 
-#: src/contents/ui/main.qml:27
+#: src/contents/ui/main.qml:26
 #, kde-format
 msgctxt "%1 is the media artist/author and %2 is the player name"
 msgid "by %1 (%2)"
 msgstr "par %1 (%2)"
 
-#: src/contents/ui/main.qml:28
+#: src/contents/ui/main.qml:27
 #, kde-format
 msgctxt "%1 is the player name"
 msgid "%1"
 msgstr "%1"
 
-#: src/contents/ui/main.qml:30
+#: src/contents/ui/main.qml:29
 #, kde-format
 msgid "Middle-click to pause"
 msgstr "Clic du milieu pour mettre en pause"
 
-#: src/contents/ui/main.qml:30
+#: src/contents/ui/main.qml:29
 #, kde-format
 msgid "Middle-click to play"
 msgstr "Clic du milieu pour lire"
 
-#: src/contents/ui/main.qml:31
+#: src/contents/ui/main.qml:30
 #, kde-format
 msgid "Scroll to adjust volume"
 msgstr "Défilement pour ajuster le volume"
 
-#: src/contents/ui/main.qml:32
+#: src/contents/ui/main.qml:31
 #, kde-format
 msgid "Ctrl+Click to bring player to the front"
 msgstr "Ctrl+Clic pour mettre le lecteur au premier plan"

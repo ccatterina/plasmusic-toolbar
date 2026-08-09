@@ -72,30 +72,25 @@ KCM.SimpleKCM {
                     return i18n("%1 players selected", selectedPlayersCount)
                 }
 
-                delegate: Item {
-                    width: ListView.view ? ListView.view.width : playerComboBox.width
-                    height: playerCheckBox.implicitHeight
+                delegate: CheckDelegate {
+                    id: playerCheckBox
+                    width: parent.width
+                    text: model.text
+                    checked: preferredIdentities.includes(model.text)
 
-                    CheckDelegate {
-                        id: playerCheckBox
-                        width: parent.width
-                        text: model.text
-                        checked: preferredIdentities.includes(model.text)
-
-                        onToggled: {
-                            let identities = [...preferredIdentities]
-                            if (checked) {
-                                if (!identities.includes(model.text)) {
-                                    identities.push(model.text)
-                                }
-                            } else {
-                                const index = identities.indexOf(model.text)
-                                if (index !== -1) {
-                                    identities.splice(index, 1)
-                                }
+                    onToggled: {
+                        let identities = [...preferredIdentities]
+                        if (checked) {
+                            if (!identities.includes(model.text)) {
+                                identities.push(model.text)
                             }
-                            cfg_preferredPlayerIdentity = identities.join(',')
+                        } else {
+                            const index = identities.indexOf(model.text)
+                            if (index !== -1) {
+                                identities.splice(index, 1)
+                            }
                         }
+                        cfg_preferredPlayerIdentity = identities.join(',')
                     }
                 }
             }

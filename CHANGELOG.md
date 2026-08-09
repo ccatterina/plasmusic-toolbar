@@ -1,5 +1,21 @@
 # Changelog
 
+## [4.3.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v4.2.0...v4.3.0) (2026-08-09)
+
+
+### Features
+
+* Add player selector for switching between MPRIS players ([#313](https://github.com/ccatterina/plasmusic-toolbar/issues/313)) ([452d11d](https://github.com/ccatterina/plasmusic-toolbar/commit/452d11d7620ed3af5c6d835d6a5ded61cacc6dea))
+* **i18n:** add Simplified Chinese translations ([#326](https://github.com/ccatterina/plasmusic-toolbar/issues/326)) ([779590f](https://github.com/ccatterina/plasmusic-toolbar/commit/779590fb726ec9256f9acfae901cd3042f089d5e))
+
+
+### Bug Fixes
+
+* Remove conflicting `expanded` property from widget ([#330](https://github.com/ccatterina/plasmusic-toolbar/issues/330)) ([3e60a0e](https://github.com/ccatterina/plasmusic-toolbar/commit/3e60a0e964364ae87a47d42a583ef7cd6a022671))
+* select preferred player empty ([#325](https://github.com/ccatterina/plasmusic-toolbar/issues/325)) ([467a808](https://github.com/ccatterina/plasmusic-toolbar/commit/467a80867940f57c4239d58024d78eb7e46ebdde))
+* Song and artists scrolling text refactor and fixes ([#320](https://github.com/ccatterina/plasmusic-toolbar/issues/320)) ([b75a904](https://github.com/ccatterina/plasmusic-toolbar/commit/b75a90459e71c9a789746d481b0f8896204fa86d))
+* Update gradient color logic based on headerbar visibility ([#324](https://github.com/ccatterina/plasmusic-toolbar/issues/324)) ([d48a7d2](https://github.com/ccatterina/plasmusic-toolbar/commit/d48a7d2df13684d224f5bd1590c60e56019eca6c))
+
 ## [4.2.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v4.1.0...v4.2.0) (2026-05-31)
 
 
