@@ -5,40 +5,30 @@
 [![Store version](https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Fapi.opendesktop.org%2Focs%2Fv1%2Fcontent%2Fdata%2F2128143&query=%2Focs%2Fdata%2Fcontent%2Fversion%2Ftext()&color=1f425f&labelColor=2d333b&logo=kde&label=KDE%20Store)](https://store.kde.org/p/2128143)
 
 
-PlasMusic Toolbar is a widget for KDE Plasma 6 that shows currently playing song information and provide playback controls.
+PlasMusic Toolbar is a KDE Plasma widget that shows the current playback information and provides basic playback controls.
 
 </div>
 
-## Compatibility
+## 🧩 Compatibility
 
 - Compatible with KDE Plasma 6.0.4 and newer.
 - Last compatible release for older Plasma 6 versions: [**v3.7.0**](https://github.com/ccatterina/plasmusic-toolbar/tree/v3.7.0)
 - Plasma 5: a Plasma 5 version of the widget is available in the `plasma5` branch: https://github.com/ccatterina/plasmusic-toolbar/tree/plasma5
 
-## Features
 
-### 🎵 Now Playing Song
-- Show the currently playing song's title and artist in the KDE panel
+## ✨ Features
 
-### ⏯️ Playback Controls
-- Manage your music effortlessly with Play, Pause, Next, and Previous controls directly from the KDE panel.
+- **🎵 Now Playing** — Title, artist and album art shown right in the KDE panel.
+- **⏯️ Playback Controls** — Play, pause, skip and go back without leaving the panel.
+- **📸 Full View** — Popup with album art, full playback controls (shuffle, repeat included), volume and seek bar.
+- **🔀 Preferred Source** — Choose which media player the widget should follow.
+- **🖥️ Flexible Layout** — Works in horizontal and vertical panels, and as a desktop widget.
+- **🎨 Deep Customization** — Icon, album cover, fonts, panel visibility of icon/text/controls, scrolling text behavior, and more.
 
-### 📸 Full View
-- Full View provides the album image, along with Play, Pause, Next, Previous, Shuffle, and Repeat controls. Adjust the volume and track position with ease.
-
-### 🖥️ Compatibility
-- Compatible with both vertical and horizontal KDE Plasma panels, can also be used as a desktop widget.
-
-### 🛠️ Configurations
-- **Icon customization:** Change the widget's icon in the panel view to suit your preferences. You can also choose to display the album cover.
-- **Font customization:** Change the widget's text font to suit your preferences.
-- **Panel song/icon/controls visibility:** Choose whether to show icon, song text and playback controls in the panel view.
-- **Preferred source**: Change the widget preferred source for music information (choose between active MPRIS2 sources).
-- **Song text customization**: Customize the maximum (or fixed) text width and scrolling behavior with adjustable scroll speed.
-- and more...
+All media info (title, artist, cover art url, playback state) is read from your media player via **[MPRIS2](https://specifications.freedesktop.org/mpris-spec/latest/)**. The same interface is used to send playback and other commands back to the player.
 
 
-## Installation
+## 📦 Installation
 
 ### KDE store
 
@@ -76,9 +66,9 @@ You can install the widget directly from the kde store:
 
 #### AUR package
 
-⚠️ **Unofficial package** Use at your own risk – I cannot guarantee security.
+⚠️ **Unofficial package** — Use at your own risk.
 
-Maintainer: [@D3SOX](https://www.github.com/D3SOX)
+**Maintainer**: [@D3SOX](https://www.github.com/D3SOX)
 
 For those using an Arch-based distribution, an AUR package is available:
  - https://aur.archlinux.org/packages/plasma6-applets-plasmusic-toolbar
@@ -86,11 +76,11 @@ For those using an Arch-based distribution, an AUR package is available:
 
 #### Nix package
 
-⚠️ **Unofficial package** Use at your own risk – I cannot guarantee security.
+⚠️ **Unofficial package** — Use at your own risk.
 
-Maintainer: [@HeitorAugustoLN](https://github.com/HeitorAugustoLN)
+**Maintainer**: [@HeitorAugustoLN](https://github.com/HeitorAugustoLN)
 
-For those using NixOS or the nix package manager, a Nix package is available in nixpkgs-unstable.
+For those using NixOS or the nix package manager, a Nix package is available in nixpkgs.
 
 To install the widget use one of these methods:
 
@@ -122,57 +112,19 @@ To install the widget use one of these methods:
   ```
 
 
-## Translations
+## 🌍 Translations
 
-### Prerequisites
+Want to help translate PlasMusic Toolbar into your language? See [TRANSLATIONS.md](TRANSLATIONS.md) for instructions.
 
-Make sure you have the package `gettext` installed on your system, as it is required for managing translations.
-
-### I18n helper script
-
-The widget comes with a helper script (`bin/i18n`) to manage translations:
-
-1. **Extract translatable strings** from the source code:
-   ```sh
-   ./bin/i18n extract
-   ```
-   Creates/updates the translation template file (`src/translate/template.pot`) and updates existing `.po` files.
-
-1. **Check translation status**:
-   ```sh
-   ./bin/i18n check
-   ```
-   Check if translations template is up to date and shows how many strings are untranslated in each language file.
-
-1. **Initialize a new language**:
-   ```sh
-   ./bin/i18n init <lang_code>
-   ```
-   For example, `./bin/i18n init fr` creates a new French translation file.
-
-1. **Compile translations**:
-   ```sh
-   ./bin/i18n compile
-   ```
-   This compiles all `.po` files into `.mo` files that the widget can use.
-
-### Contributing Translations
-
-1. Create or edit a `.po` file in the `src/translate/` directory.
-1. Compile the translations to verify they work correctly.
-1. Submit a pull request with your changes to the `src/translate/` directory, do not include the compiled `.mo` files, as they will be generated automatically during the build process.
-
-
-## Screenshots
+## 🖼️ Screenshots
 
 <p align="center">
-  <img src="./screenshots/screenshot_dark.png"/>
-  <img src="./screenshots/screenshot_light.png"/>
+  <img src="./screenshots/screenshot_dark.png" width="25%"/>
+  <img src="./screenshots/screenshot_light.png" width="25%"/>
   <br>
-  <img src="./screenshots/screenshot_colors_1.png" />
-  <img src="./screenshots/screenshot_colors_2.png" />
+  <img src="./screenshots/screenshot_colors_1.png" width="25%" />
+  <img src="./screenshots/screenshot_colors_2.png" width="25%" />
   <br>
-  <img src="./screenshots/screenshot_vertical_1.png" />
-  <img src="./screenshots/screenshot_vertical_2.png" />
-<p>
-
+  <img src="./screenshots/screenshot_vertical_1.png" width="25%" />
+  <img src="./screenshots/screenshot_vertical_2.png" width="25%" />
+</p>
