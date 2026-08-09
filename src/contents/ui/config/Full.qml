@@ -1,4 +1,5 @@
 import "../components"
+import ".."
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -104,17 +105,17 @@ KCM.SimpleKCM {
 
         ButtonGroup {
             id: fullViewSongTextPosition
-            property int value: SongAndArtistText.VerticalPosition.UnderProgressBar
+            property int value: Full.SongAndArtistTextPosition.UnderProgressBar
         }
 
         RadioButton {
             Kirigami.FormData.label: i18n("Song text position:")
             text: i18n("Above progress bar")
             enabled: fullViewSongTextVisible.checked
-            checked: fullViewSongTextPosition.value === SongAndArtistText.VerticalPosition.AboveProgressBar
+            checked: fullViewSongTextPosition.value === Full.SongAndArtistTextPosition.AboveProgressBar
             onCheckedChanged: () => {
                 if (checked) {
-                    fullViewSongTextPosition.value = SongAndArtistText.VerticalPosition.AboveProgressBar
+                    fullViewSongTextPosition.value = Full.SongAndArtistTextPosition.AboveProgressBar
                 }
             }
             ButtonGroup.group: fullViewSongTextPosition
@@ -123,10 +124,10 @@ KCM.SimpleKCM {
         RadioButton {
             text: i18n("Under progress bar")
             enabled: fullViewSongTextVisible.checked
-            checked: fullViewSongTextPosition.value === SongAndArtistText.VerticalPosition.UnderProgressBar
+            checked: fullViewSongTextPosition.value === Full.SongAndArtistTextPosition.UnderProgressBar
             onCheckedChanged: () => {
                 if (checked) {
-                    fullViewSongTextPosition.value = SongAndArtistText.VerticalPosition.UnderProgressBar
+                    fullViewSongTextPosition.value = Full.SongAndArtistTextPosition.UnderProgressBar
                 }
             }
             ButtonGroup.group: fullViewSongTextPosition

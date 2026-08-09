@@ -12,6 +12,11 @@ import Qt5Compat.GraphicalEffects
 Item {
     id: root
 
+    enum SongAndArtistTextPosition {
+        AboveProgressBar,
+        UnderProgressBar
+    }
+
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
     property real volumeStep: plasmoid.configuration.volumeStep
     property bool albumCoverBackground: plasmoid.configuration.fullAlbumCoverAsBackground
@@ -24,7 +29,7 @@ Item {
     property bool playbackControlsFitWidth: plasmoid.configuration.fullViewPlaybackControlsFillWidth
     property bool songTextVisible: plasmoid.configuration.fullViewSongTextVisible
     property int songTextAlignment: plasmoid.configuration.fullViewSongTextAlignment
-    property bool songTextAboveProgressBar: plasmoid.configuration.fullViewSongTextPosition === SongAndArtistText.VerticalPosition.AboveProgressBar
+    property bool songTextAboveProgressBar: plasmoid.configuration.fullViewSongTextPosition === Full.SongAndArtistTextPosition.AboveProgressBar
 
     // The Full View max and min width is driven by config values. The window can be resized within these bounds; thumbnail and text adapt.
     readonly property int configMinWidth: plasmoid.configuration.fullViewMinWidth
@@ -99,9 +104,10 @@ Item {
             id: mask
             anchors.fill: parent
             gradient: Gradient {
-                GradientStop { position: 0; color: showPlayerSelector ? imageColors.bgColor : "transparent" }   // Adjust top gradient when the player selector is visible
+
+                GradientStop { position: 0; color: headerbar.visible ? imageColors.bgColor : "transparent" }   // Adjust top gradient when the player selector is visible
                 GradientStop { position: 0.11; color: "transparent" }
-                GradientStop { position: showPlayerSelector ? 0.5 : 0.4; color: "transparent" }
+                GradientStop { position: headerbar.visible ? 0.5 : 0.4; color: "transparent" }
                 GradientStop { position: 0.7; color: imageColors.bgColor }
                 GradientStop { position: 1; color: imageColors.bgColor }
             }
@@ -169,6 +175,55 @@ Item {
             }
         }
 
+        // Media Player Selector
+        Rectangle {
+            id: headerbar
+            Layout.fillWidth: true
+            visible: plasmoid.configuration.showPlayerSelector
+                    && playerList.count > 2
+                    && player.sourceIdentities == null
+
+            color: albumCoverBackground
+                ? "transparent"
+                : Kirigami.Theme.backgroundColor
+
+            implicitHeight: Kirigami.Units.gridUnit * 2
+
+            PlasmaComponents3.TabBar {
+                id: playerSelector
+                objectName: "playerSelector"
+                anchors.fill: parent
+                implicitHeight: contentHeight
+                currentIndex: player.mpris2Model.currentIndex
+
+                Repeater {
+                    id: playerList
+                    model: player.mpris2Model
+                    delegate: PlasmaComponents3.TabButton {
+                        required property string iconName
+                        required property bool isMultiplexer
+                        required property string identity
+                        required property int index
+                        anchors.top: parent?.top
+                        anchors.bottom: parent?.bottom
+                        display: PlasmaComponents3.AbstractButton.IconOnly
+                        icon.name: iconName
+                        icon.height: Kirigami.Units.iconSizes.small
+                        text: isMultiplexer ? i18nc("@action:button", "Choose player automatically") : identity
+
+                        Accessible.onPressAction: clicked()
+                        onClicked: {
+                            player.mpris2Model.currentIndex = index;
+                        }
+
+                        PlasmaComponents3.ToolTip.text: text
+                        PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
+                        PlasmaComponents3.ToolTip.visible: hovered || (activeFocus && (focusReason === Qt.TabFocusReason || focusReason === Qt.BacktabFocusReason))
+                    }
+                }
+            }
+        }
+
         Rectangle {
             id: thumbnailContainer
             visible: thumbnailVisible
@@ -224,7 +279,6 @@ Item {
         SongAndArtistText {
             visible: songTextVisible && songTextAboveProgressBar
             Layout.fillWidth: true
-            Layout.minimumWidth: 0
             Layout.leftMargin: 10
             Layout.rightMargin: 10
             Layout.bottomMargin: 5
@@ -234,11 +288,11 @@ Item {
             artists: player.artists
             album: player.album
             textFont: baseFont
-            maxWidth: width
             titlePosition: plasmoid.configuration.fullTitlePosition
             artistsPosition: plasmoid.configuration.fullArtistsPosition
             albumPosition: plasmoid.configuration.fullAlbumPosition
             hideAlbumForSingles: plasmoid.configuration.fullHideAlbumForSingles
+            scrollingEnabled: widget.expanded
         }
 
         TrackPositionSlider {
@@ -258,10 +312,8 @@ Item {
         }
 
         SongAndArtistText {
-            id: songText
             visible: songTextVisible && !songTextAboveProgressBar
             Layout.fillWidth: true
-            Layout.minimumWidth: 0
             Layout.leftMargin: 10
             Layout.rightMargin: 10
             Layout.topMargin: 5
@@ -271,11 +323,11 @@ Item {
             artists: player.artists
             album: player.album
             textFont: baseFont
-            maxWidth: songText.width
             titlePosition: plasmoid.configuration.fullTitlePosition
             artistsPosition: plasmoid.configuration.fullArtistsPosition
             albumPosition: plasmoid.configuration.fullAlbumPosition
             hideAlbumForSingles: plasmoid.configuration.fullHideAlbumForSingles
+            scrollingEnabled: widget.expanded
         }
 
         VolumeBar {
