@@ -8,13 +8,6 @@
 * **ci:** asset upload with immutable releases ([#334](https://github.com/ccatterina/plasmusic-toolbar/issues/334)) ([fae865a](https://github.com/ccatterina/plasmusic-toolbar/commit/fae865a1330c7f973dda4c3e3b75f6c3f5f6b4bc))
 * **ci:** checkout release commit by sha to support draft releases ([c422314](https://github.com/ccatterina/plasmusic-toolbar/commit/c42231411b728b7aefbc98afa4ffcdf4dc3e117a))
 
-## [4.3.1](https://github.com/ccatterina/plasmusic-toolbar/compare/v4.3.0...v4.3.1) (2026-08-09)
-
-
-### Bug Fixes
-
-* **ci:** asset upload with immutable releases ([#334](https://github.com/ccatterina/plasmusic-toolbar/issues/334)) ([fae865a](https://github.com/ccatterina/plasmusic-toolbar/commit/fae865a1330c7f973dda4c3e3b75f6c3f5f6b4bc))
-
 **Note:** release 4.3.0 did not include the `.plasmoid` package due to a CI pipeline issue (immutable releases blocked the asset upload after publishing). This release fixes the issue and includes the correct package.
 
 ## [4.3.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v4.2.0...v4.3.0) (2026-08-09)
