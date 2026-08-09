@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-02 07:43+0000\n"
+"POT-Creation-Date: 2026-08-09 13:21+0000\n"
 "PO-Revision-Date: 2026-03-15 10:48+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: none\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Bring player to the front"
 msgstr "Speler naar voorgrond halen"
 
-#: src/contents/ui/Full.qml:192 src/contents/ui/main.qml:32
+#: src/contents/ui/Full.qml:192 src/contents/ui/main.qml:31
 #, kde-format
 msgid "This player can't be raised"
 msgstr "Deze speler kan niet naar de voorgrond worden gehaald"
@@ -452,7 +452,7 @@ msgstr "Albumhoes"
 msgid "Album placeholder:"
 msgstr "Plaatshouder van albumhoes:"
 
-#: src/contents/ui/config/Full.qml:205 src/contents/ui/config/General.qml:132
+#: src/contents/ui/config/Full.qml:205 src/contents/ui/config/General.qml:127
 #, kde-format
 msgid "Choose…"
 msgstr "Kiezen…"
@@ -548,7 +548,7 @@ msgstr ""
 msgid "%1 players selected"
 msgstr ""
 
-#: src/contents/ui/config/General.qml:113
+#: src/contents/ui/config/General.qml:108
 #, kde-format
 msgid ""
 "Always display information from the selected player, if it's not running the "
@@ -561,84 +561,84 @@ msgstr ""
 "spelers die momenteel actief zijn. Als je je speler niet kunt vinden, open "
 "hem dan eerst en herlaad de lijst met behulp van de herlaadknop."
 
-#: src/contents/ui/config/General.qml:121
+#: src/contents/ui/config/General.qml:116
 #, kde-format
 msgid "Font customization"
 msgstr "Lettertype aanpassen"
 
-#: src/contents/ui/config/General.qml:125
+#: src/contents/ui/config/General.qml:120
 #, kde-format
 msgid "Custom font:"
 msgstr "Ander lettertype:"
 
-#: src/contents/ui/config/General.qml:143
+#: src/contents/ui/config/General.qml:138
 #, kde-format
 msgid "%1pt %2"
 msgstr "%1pt %2"
 
-#: src/contents/ui/config/General.qml:150
+#: src/contents/ui/config/General.qml:145
 #, kde-format
 msgid "No media found behavior"
 msgstr "Actie bij geen actieve speler"
 
-#: src/contents/ui/config/General.qml:155
+#: src/contents/ui/config/General.qml:150
 #, kde-format
 msgid "Show widget when no media found"
 msgstr "Widget tonen indien er niets wordt afgespeeld"
 
-#: src/contents/ui/config/General.qml:160
+#: src/contents/ui/config/General.qml:155
 #, kde-format
 msgid "Text displayed when no media found:"
 msgstr "Tekst tonen indien er niets wordt afgespeeld:"
 
-#: src/contents/ui/config/General.qml:166
+#: src/contents/ui/config/General.qml:161
 #, kde-format
 msgid "Controls behaviour"
 msgstr "Bediening"
 
-#: src/contents/ui/config/General.qml:171
+#: src/contents/ui/config/General.qml:166
 #, kde-format
 msgid "Volume step:"
 msgstr "Volumestap:"
 
-#: src/contents/ui/config/General.qml:181
+#: src/contents/ui/config/General.qml:176
 #, kde-format
 msgid "Choose a Font"
 msgstr "Kies een lettertype"
 
-#: src/contents/ui/main.qml:25
+#: src/contents/ui/main.qml:24
 #, kde-format
 msgid "No media playing"
 msgstr "Er wordt niets afgespeeld"
 
-#: src/contents/ui/main.qml:27
+#: src/contents/ui/main.qml:26
 #, kde-format
 msgctxt "%1 is the media artist/author and %2 is the player name"
 msgid "by %1 (%2)"
 msgstr "van %1 (%2)"
 
-#: src/contents/ui/main.qml:28
+#: src/contents/ui/main.qml:27
 #, kde-format
 msgctxt "%1 is the player name"
 msgid "%1"
 msgstr "%1"
 
-#: src/contents/ui/main.qml:30
+#: src/contents/ui/main.qml:29
 #, kde-format
 msgid "Middle-click to pause"
 msgstr "Middelklikken om te pauzeren"
 
-#: src/contents/ui/main.qml:30
+#: src/contents/ui/main.qml:29
 #, kde-format
 msgid "Middle-click to play"
 msgstr "Middelklikken om af te spelen"
 
-#: src/contents/ui/main.qml:31
+#: src/contents/ui/main.qml:30
 #, kde-format
 msgid "Scroll to adjust volume"
 msgstr "Scrollen om volumeniveau aan te passen"
 
-#: src/contents/ui/main.qml:32
+#: src/contents/ui/main.qml:31
 #, kde-format
 msgid "Ctrl+Click to bring player to the front"
 msgstr "Ctrl+klikken om speler naar voorgrond te halen"

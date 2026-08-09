@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-02 07:43+0000\n"
+"POT-Creation-Date: 2026-08-09 13:21+0000\n"
 "PO-Revision-Date: 2026-03-08 00:00+0300\n"
 "Last-Translator: A coffee lover\n"
 "Language-Team: none\n"
@@ -43,7 +43,7 @@ msgstr ""
 msgid "Bring player to the front"
 msgstr "Oynatıcıyı öne getir"
 
-#: src/contents/ui/Full.qml:192 src/contents/ui/main.qml:32
+#: src/contents/ui/Full.qml:192 src/contents/ui/main.qml:31
 #, kde-format
 msgid "This player can't be raised"
 msgstr "Bu oynatıcı öne getirilemez"
@@ -447,7 +447,7 @@ msgstr "Albüm kapağı"
 msgid "Album placeholder:"
 msgstr "Albüm yer tutucusu:"
 
-#: src/contents/ui/config/Full.qml:205 src/contents/ui/config/General.qml:132
+#: src/contents/ui/config/Full.qml:205 src/contents/ui/config/General.qml:127
 #, kde-format
 msgid "Choose…"
 msgstr "Seç…"
@@ -543,7 +543,7 @@ msgstr ""
 msgid "%1 players selected"
 msgstr ""
 
-#: src/contents/ui/config/General.qml:113
+#: src/contents/ui/config/General.qml:108
 #, kde-format
 msgid ""
 "Always display information from the selected player, if it's not running the "
@@ -556,84 +556,84 @@ msgstr ""
 "seçim yapabilirsiniz, istediğinizi bulamazsanız oynatıcı uygulamasını açın "
 "ve yenile düğmesiyle listeyi yenileyin."
 
-#: src/contents/ui/config/General.qml:121
+#: src/contents/ui/config/General.qml:116
 #, kde-format
 msgid "Font customization"
 msgstr "Yazı tipi özelleştirme"
 
-#: src/contents/ui/config/General.qml:125
+#: src/contents/ui/config/General.qml:120
 #, kde-format
 msgid "Custom font:"
 msgstr "Özel yazı tipi:"
 
-#: src/contents/ui/config/General.qml:143
+#: src/contents/ui/config/General.qml:138
 #, kde-format
 msgid "%1pt %2"
 msgstr "%1pt %2"
 
-#: src/contents/ui/config/General.qml:150
+#: src/contents/ui/config/General.qml:145
 #, kde-format
 msgid "No media found behavior"
 msgstr "Medya bulunamadığında davranış"
 
-#: src/contents/ui/config/General.qml:155
+#: src/contents/ui/config/General.qml:150
 #, kde-format
 msgid "Show widget when no media found"
 msgstr "Medya bulunamadığında araç takımını göster"
 
-#: src/contents/ui/config/General.qml:160
+#: src/contents/ui/config/General.qml:155
 #, kde-format
 msgid "Text displayed when no media found:"
 msgstr "Medya bulunamadığında gösterilen metin:"
 
-#: src/contents/ui/config/General.qml:166
+#: src/contents/ui/config/General.qml:161
 #, kde-format
 msgid "Controls behaviour"
 msgstr "Kontrol davranışı"
 
-#: src/contents/ui/config/General.qml:171
+#: src/contents/ui/config/General.qml:166
 #, kde-format
 msgid "Volume step:"
 msgstr "Ses düzeyi adımı:"
 
-#: src/contents/ui/config/General.qml:181
+#: src/contents/ui/config/General.qml:176
 #, kde-format
 msgid "Choose a Font"
 msgstr "Yazı Tipi Seç"
 
-#: src/contents/ui/main.qml:25
+#: src/contents/ui/main.qml:24
 #, kde-format
 msgid "No media playing"
 msgstr "Medya oynatılmıyor"
 
-#: src/contents/ui/main.qml:27
+#: src/contents/ui/main.qml:26
 #, kde-format
 msgctxt "%1 is the media artist/author and %2 is the player name"
 msgid "by %1 (%2)"
 msgstr "%1 tarafından (%2)"
 
-#: src/contents/ui/main.qml:28
+#: src/contents/ui/main.qml:27
 #, kde-format
 msgctxt "%1 is the player name"
 msgid "%1"
 msgstr "%1"
 
-#: src/contents/ui/main.qml:30
+#: src/contents/ui/main.qml:29
 #, kde-format
 msgid "Middle-click to pause"
 msgstr "Orta fare tuşuyla duraklatın"
 
-#: src/contents/ui/main.qml:30
+#: src/contents/ui/main.qml:29
 #, kde-format
 msgid "Middle-click to play"
 msgstr "Orta fare tuşuyla oynatın"
 
-#: src/contents/ui/main.qml:31
+#: src/contents/ui/main.qml:30
 #, kde-format
 msgid "Scroll to adjust volume"
 msgstr "Fare tekeriyle sesi ayarlayın"
 
-#: src/contents/ui/main.qml:32
+#: src/contents/ui/main.qml:31
 #, kde-format
 msgid "Ctrl+Click to bring player to the front"
 msgstr "Ctrl+Tıklayarak oynatıcıyı öne getirin"
