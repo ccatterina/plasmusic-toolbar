@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.3.2](https://github.com/ccatterina/plasmusic-toolbar/compare/v4.3.1...v4.3.2) (2026-08-09)
+
+
+### Bug Fixes
+
+* **ci:** checkout release commit by sha to support draft releases ([c422314](https://github.com/ccatterina/plasmusic-toolbar/commit/c42231411b728b7aefbc98afa4ffcdf4dc3e117a))
+
 ## [4.3.1](https://github.com/ccatterina/plasmusic-toolbar/compare/v4.3.0...v4.3.1) (2026-08-09)
 
 
