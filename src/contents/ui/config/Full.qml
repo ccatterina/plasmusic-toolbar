@@ -20,6 +20,10 @@ KCM.SimpleKCM {
     property alias cfg_fullTitlePosition: fullTitlePosition.value
     property alias cfg_fullAlbumPosition: fullAlbumPosition.value
     property alias cfg_fullAlbumCoverAsBackground: fullAlbumCoverAsBackground.checked
+    property alias cfg_fullAlbumCoverTintBackground: fullAlbumCoverTintBackground.checked
+    property alias cfg_fullAlbumCoverTintOpacity: fullAlbumCoverTintOpacity.value
+    property alias cfg_fullAlbumCoverTintGradient: fullAlbumCoverTintGradient.checked
+    property alias cfg_fullAlbumCoverTintUseContrastText: fullAlbumCoverTintUseContrastText.checked
     property alias cfg_fullHideAlbumForSingles: fullHideAlbumForSingles.checked
     property alias cfg_fullViewThumbnailVisible: fullViewThumbnailVisible.checked
     property alias cfg_fullViewProgressBarVisible: fullViewProgressBarVisible.checked
@@ -469,6 +473,34 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Use album cover as background")
             id: fullAlbumCoverAsBackground
             text: i18n("(Experimental feature)")
+        }
+
+        CheckBox {
+            Kirigami.FormData.label: i18n("Use album cover color as tinted background")
+            id: fullAlbumCoverTintBackground
+        }
+
+        Slider {
+            Layout.preferredWidth: 10 * Kirigami.Units.gridUnit
+            enabled: fullAlbumCoverTintBackground.checked
+            id: fullAlbumCoverTintOpacity
+            from: 0.05
+            to: 0.8
+            stepSize: 0.05
+            value: 0.2
+            Kirigami.FormData.label: i18n("Background tint opacity:")
+        }
+
+        CheckBox {
+            Kirigami.FormData.label: i18n("Use album-derived gradient")
+            enabled: fullAlbumCoverTintBackground.checked
+            id: fullAlbumCoverTintGradient
+        }
+
+        CheckBox {
+            Kirigami.FormData.label: i18n("Use album-derived text color")
+            enabled: fullAlbumCoverTintBackground.checked
+            id: fullAlbumCoverTintUseContrastText
         }
 
         Kirigami.Separator {
