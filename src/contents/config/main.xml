@@ -153,6 +153,12 @@
         <entry name="fullViewSongTextAlignment" type="Int">
             <default>4</default>
         </entry>
+        <entry name="fullViewContentPadding" type="Int">
+            <default>10</default>
+        </entry>
+        <entry name="fullViewContentPaddingBottom" type="Int">
+            <default>10</default>
+        </entry>
         <entry name="fullViewSongTextPosition" type="Int">
             <default>1</default>
         </entry>

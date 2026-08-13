@@ -30,6 +30,8 @@ KCM.SimpleKCM {
     property alias cfg_fullViewPlaybackControlsFillWidth: fullViewPlaybackControlsFillWidth.checked
     property alias cfg_fullViewSongTextVisible: fullViewSongTextVisible.checked
     property alias cfg_fullViewSongTextAlignment: fullViewSongTextAlignment.value
+    property alias cfg_fullViewContentPadding: fullViewContentPadding.value
+    property alias cfg_fullViewContentPaddingBottom: fullViewContentPaddingBottom.value
     property alias cfg_fullViewSongTextPosition: fullViewSongTextPosition.value
     property alias cfg_fullViewMinWidth: fullViewMinWidth.value
     property alias cfg_fullViewMaxWidth: fullViewMaxWidth.value
@@ -243,6 +245,22 @@ KCM.SimpleKCM {
             to: 26
             stepSize: 2
             Kirigami.FormData.label: i18n("Album cover radius:")
+        }
+
+        SpinBox {
+            id: fullViewContentPadding
+            Kirigami.FormData.label: i18n("Content padding:")
+            from: 0
+            to: 50
+            stepSize: 2
+        }
+
+        SpinBox {
+            id: fullViewContentPaddingBottom
+            Kirigami.FormData.label: i18n("Content bottom padding:")
+            from: 0
+            to: 50
+            stepSize: 2
         }
 
         Kirigami.Separator {
