@@ -162,6 +162,12 @@
         <entry name="fullViewMaxWidth" type="Int">
             <default>300</default>
         </entry>
+        <entry name="fullViewMinHeight" type="Int">
+            <default>100</default>
+        </entry>
+        <entry name="fullViewMaxHeight" type="Int">
+            <default>600</default>
+        </entry>
 		<entry name="fullAlbumCoverRounded" type="Bool">
 			<default>true</default>
 		</entry>

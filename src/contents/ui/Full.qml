@@ -34,6 +34,8 @@ Item {
     // The Full View max and min width is driven by config values. The window can be resized within these bounds; thumbnail and text adapt.
     readonly property int configMinWidth: plasmoid.configuration.fullViewMinWidth
     readonly property int maximumWidth: plasmoid.configuration.fullViewMaxWidth
+    readonly property int configMinHeight: plasmoid.configuration.fullViewMinHeight
+    readonly property int maximumHeight: plasmoid.configuration.fullViewMaxHeight
     property bool fullAlbumCoverRounded: plasmoid.configuration.fullAlbumCoverRounded
     property int albumCoverRadius: plasmoid.configuration.fullAlbumCoverRadius
 
@@ -41,12 +43,20 @@ Item {
     readonly property int contentMinWidth: row.visible ? row.implicitWidth + 40 : 0
     readonly property int effectiveMinWidth: Math.min(Math.max(configMinWidth, contentMinWidth), maximumWidth)
 
+    // Stable (width-independent) preferred thumbnail height, referenced to the min width, so that
+    // resizing the popup width doesn't drag the height along with it (the "aspect ratio lock").
+    readonly property real naturalThumbHeight: thumbnailVisible && thumbnailContainer.imageRatio > 0
+        ? effectiveMinWidth / thumbnailContainer.imageRatio
+        : 0
+    // Height floor that keeps the fixed content (everything except the flexible thumbnail) from clipping.
+    readonly property real fixedContentHeight: Math.max(0, column.implicitHeight - naturalThumbHeight)
+
     Layout.minimumWidth: effectiveMinWidth
     Layout.maximumWidth: maximumWidth
     Layout.preferredWidth: effectiveMinWidth
     Layout.preferredHeight: column.implicitHeight
-    Layout.minimumHeight: column.implicitHeight
-    Layout.maximumHeight: column.implicitHeight
+    Layout.minimumHeight: Math.max(configMinHeight, fixedContentHeight)
+    Layout.maximumHeight: maximumHeight
 
     // Store the original theme colors (root keeps default Kirigami.Theme.inherit: true)
     readonly property color _originalTextColor: Kirigami.Theme.textColor
@@ -178,12 +188,16 @@ Item {
             id: thumbnailContainer
             visible: thumbnailVisible
             Layout.fillWidth: true
+            Layout.fillHeight: true
             Layout.margins: 10
+            Layout.minimumHeight: 0
             // Use the actual image aspect ratio, fallback to square if not loaded yet
             readonly property real imageRatio: albumArtNormal.implicitWidth > 0 && albumArtNormal.implicitHeight > 0
                 ? albumArtNormal.implicitWidth / albumArtNormal.implicitHeight
                 : 1.0
-            Layout.preferredHeight: thumbnailVisible ? width / imageRatio : 0
+            // Preferred height is stable (not tied to the current width) so the popup height
+            // stays independent of the width. Extra vertical space is absorbed here.
+            Layout.preferredHeight: root.naturalThumbHeight
             color: 'transparent'
 
             PlasmaComponents3.ToolTip {

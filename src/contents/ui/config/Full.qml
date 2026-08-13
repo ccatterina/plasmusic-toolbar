@@ -33,6 +33,8 @@ KCM.SimpleKCM {
     property alias cfg_fullViewSongTextPosition: fullViewSongTextPosition.value
     property alias cfg_fullViewMinWidth: fullViewMinWidth.value
     property alias cfg_fullViewMaxWidth: fullViewMaxWidth.value
+    property alias cfg_fullViewMinHeight: fullViewMinHeight.value
+    property alias cfg_fullViewMaxHeight: fullViewMaxHeight.value
     property alias cfg_showPlayerSelector: showPlayerSelector.checked
     property alias cfg_fullAlbumCoverRounded: fullAlbumCoverRounded.checked
     property alias cfg_fullAlbumCoverRadius: fullAlbumCoverRadius.value
@@ -177,6 +179,22 @@ KCM.SimpleKCM {
             id: fullViewMaxWidth
             Kirigami.FormData.label: i18n("Maximum resizable width:")
             from: fullViewMinWidth.value
+            to: 2000
+            stepSize: 10
+        }
+
+        SpinBox {
+            id: fullViewMinHeight
+            Kirigami.FormData.label: i18n("Minimum resizable height:")
+            from: 100
+            to: fullViewMaxHeight.value
+            stepSize: 10
+        }
+
+        SpinBox {
+            id: fullViewMaxHeight
+            Kirigami.FormData.label: i18n("Maximum resizable height:")
+            from: fullViewMinHeight.value
             to: 2000
             stepSize: 10
         }
