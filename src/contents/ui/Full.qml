@@ -21,6 +21,7 @@ Item {
     property real volumeStep: plasmoid.configuration.volumeStep
     property bool albumCoverBackground: plasmoid.configuration.fullAlbumCoverAsBackground
     property bool thumbnailVisible: plasmoid.configuration.fullViewThumbnailVisible
+    property bool showPinButton: plasmoid.configuration.showPinButton
     property bool progressBarVisible: plasmoid.configuration.fullViewProgressBarVisible
     property bool volumeControlVisible: plasmoid.configuration.fullViewVolumeControlVisible
     property bool shuffleVisible: plasmoid.configuration.fullViewShuffleVisible
@@ -371,5 +372,19 @@ Item {
 
         }
 
+    }
+
+    // Pin / keep-open button. When pinned the popup stays open on deactivation.
+    CommandIcon {
+        id: pinButton
+        visible: root.showPinButton
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.topMargin: Kirigami.Units.smallSpacing
+        anchors.rightMargin: 20
+        size: Kirigami.Units.iconSizes.smallMedium
+        source: widget.hideOnWindowDeactivate ? "pin" : "window-pin"
+        active: !widget.hideOnWindowDeactivate
+        onClicked: widget.hideOnWindowDeactivate = !widget.hideOnWindowDeactivate
     }
 }
