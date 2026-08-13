@@ -22,6 +22,8 @@ Item {
 
     Layout.fillWidth: true
     Layout.preferredHeight: row.implicitHeight
+    implicitHeight: row.implicitHeight
+    implicitWidth: row.implicitWidth
 
     RowLayout {
         id: row

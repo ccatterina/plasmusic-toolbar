@@ -30,7 +30,9 @@ KCM.SimpleKCM {
     property alias cfg_fullViewPlaybackControlsFillWidth: fullViewPlaybackControlsFillWidth.checked
     property alias cfg_fullViewSongTextVisible: fullViewSongTextVisible.checked
     property alias cfg_fullViewSongTextAlignment: fullViewSongTextAlignment.value
-    property alias cfg_fullViewSongTextPosition: fullViewSongTextPosition.value
+    property alias cfg_fullViewContentPadding: fullViewContentPadding.value
+    property alias cfg_fullViewContentPaddingBottom: fullViewContentPaddingBottom.value
+    property alias cfg_fullViewVerticalOrder: verticalOrderControl.verticalOrderValue
     property alias cfg_fullViewMinWidth: fullViewMinWidth.value
     property alias cfg_fullViewMaxWidth: fullViewMaxWidth.value
     property alias cfg_showPlayerSelector: showPlayerSelector.checked
@@ -103,36 +105,6 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Show song text")
         }
 
-        ButtonGroup {
-            id: fullViewSongTextPosition
-            property int value: Full.SongAndArtistTextPosition.UnderProgressBar
-        }
-
-        RadioButton {
-            Kirigami.FormData.label: i18n("Song text position:")
-            text: i18n("Above progress bar")
-            enabled: fullViewSongTextVisible.checked
-            checked: fullViewSongTextPosition.value === Full.SongAndArtistTextPosition.AboveProgressBar
-            onCheckedChanged: () => {
-                if (checked) {
-                    fullViewSongTextPosition.value = Full.SongAndArtistTextPosition.AboveProgressBar
-                }
-            }
-            ButtonGroup.group: fullViewSongTextPosition
-        }
-
-        RadioButton {
-            text: i18n("Under progress bar")
-            enabled: fullViewSongTextVisible.checked
-            checked: fullViewSongTextPosition.value === Full.SongAndArtistTextPosition.UnderProgressBar
-            onCheckedChanged: () => {
-                if (checked) {
-                    fullViewSongTextPosition.value = Full.SongAndArtistTextPosition.UnderProgressBar
-                }
-            }
-            ButtonGroup.group: fullViewSongTextPosition
-        }
-
         CheckBox {
             id: fullViewVolumeControlVisible
             Kirigami.FormData.label: i18n("Show volume control")
@@ -179,6 +151,95 @@ KCM.SimpleKCM {
             from: fullViewMinWidth.value
             to: 2000
             stepSize: 10
+        }
+
+        ColumnLayout {
+            id: verticalOrderControl
+            Kirigami.FormData.label: i18n("Content order:")
+            spacing: Kirigami.Units.smallSpacing
+
+            property string verticalOrderValue: ""
+
+            ListModel {
+                id: orderModel
+            }
+
+            property bool updatingModel: false
+
+            function displayName(key) {
+                switch (key) {
+                case "song": return i18n("Song text");
+                case "progress": return i18n("Progress bar");
+                case "volume": return i18n("Volume control");
+                case "controls": return i18n("Playback controls");
+                }
+                return key;
+            }
+
+            function rebuildModel() {
+                updatingModel = true;
+                orderModel.clear();
+                const keys = (verticalOrderValue || "").split(",");
+                for (let i = 0; i < keys.length; i++) {
+                    if (keys[i]) orderModel.append({key: keys[i]});
+                }
+                updatingModel = false;
+            }
+
+            function syncValue() {
+                updatingModel = true;
+                const arr = [];
+                for (let i = 0; i < orderModel.count; i++) {
+                    arr.push(orderModel.get(i).key);
+                }
+                verticalOrderValue = arr.join(",");
+                updatingModel = false;
+            }
+
+            onVerticalOrderValueChanged: {
+                if (!updatingModel) rebuildModel();
+            }
+
+            Component.onCompleted: rebuildModel()
+
+            ListView {
+                id: orderList
+                Layout.preferredWidth: 20 * Kirigami.Units.gridUnit
+                Layout.preferredHeight: contentHeight
+                model: orderModel
+                interactive: false
+                delegate: RowLayout {
+                    width: orderList.width
+                    spacing: Kirigami.Units.smallSpacing
+                    Label {
+                        text: verticalOrderControl.displayName(model.key)
+                        Layout.fillWidth: true
+                        elide: Text.ElideRight
+                    }
+                    Button {
+                        enabled: index > 0
+                        flat: true
+                        icon.name: "arrow-up"
+                        icon.width: Kirigami.Units.iconSizes.small
+                        icon.height: Kirigami.Units.iconSizes.small
+                        onClicked: {
+                            orderModel.move(index, index - 1, 1);
+                            verticalOrderControl.syncValue();
+                        }
+                    }
+                    Button {
+                        enabled: index < orderModel.count - 1
+                        flat: true
+                        icon.name: "arrow-down"
+                        icon.width: Kirigami.Units.iconSizes.small
+                        icon.height: Kirigami.Units.iconSizes.small
+                        onClicked: {
+                            orderModel.move(index, index + 1, 1);
+                            verticalOrderControl.syncValue();
+                        }
+                    }
+                }
+            }
         }
 
         RowLayout{
@@ -243,6 +304,22 @@ KCM.SimpleKCM {
             to: 26
             stepSize: 2
             Kirigami.FormData.label: i18n("Album cover radius:")
+        }
+
+        SpinBox {
+            id: fullViewContentPadding
+            Kirigami.FormData.label: i18n("Content padding:")
+            from: 0
+            to: 50
+            stepSize: 2
+        }
+
+        SpinBox {
+            id: fullViewContentPaddingBottom
+            Kirigami.FormData.label: i18n("Content bottom padding:")
+            from: 0
+            to: 50
+            stepSize: 2
         }
 
         Kirigami.Separator {

@@ -14,6 +14,8 @@ Item {
 
     Layout.preferredHeight: column.implicitHeight
     Layout.fillWidth: true
+    implicitHeight: column.implicitHeight
+    implicitWidth: column.implicitWidth
 
     id: container
 
