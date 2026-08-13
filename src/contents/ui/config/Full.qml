@@ -36,6 +36,8 @@ KCM.SimpleKCM {
     property alias cfg_showPlayerSelector: showPlayerSelector.checked
     property alias cfg_fullAlbumCoverRounded: fullAlbumCoverRounded.checked
     property alias cfg_fullAlbumCoverRadius: fullAlbumCoverRadius.value
+    property alias cfg_fullAlbumCoverVerticalAlignment: albumCoverVerticalAlignment.value
+    property alias cfg_fullAlbumCoverPadding: fullAlbumCoverPadding.value
     property alias cfg_hideCanBeRaisedTooltip: hideCanBeRaisedTooltip.checked
 
     Kirigami.FormLayout {
@@ -243,6 +245,53 @@ KCM.SimpleKCM {
             to: 26
             stepSize: 2
             Kirigami.FormData.label: i18n("Album cover radius:")
+        }
+
+        ButtonGroup {
+            id: albumCoverVerticalAlignment
+            property int value: Full.AlbumCoverAlignment.Middle
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Album cover vertical alignment:")
+            text: i18n("Top")
+            checked: albumCoverVerticalAlignment.value == Full.AlbumCoverAlignment.Top
+            onCheckedChanged: () => {
+                if (checked) {
+                    albumCoverVerticalAlignment.value = Full.AlbumCoverAlignment.Top
+                }
+            }
+            ButtonGroup.group: albumCoverVerticalAlignment
+        }
+
+        RadioButton {
+            text: i18n("Middle")
+            checked: albumCoverVerticalAlignment.value == Full.AlbumCoverAlignment.Middle
+            onCheckedChanged: () => {
+                if (checked) {
+                    albumCoverVerticalAlignment.value = Full.AlbumCoverAlignment.Middle
+                }
+            }
+            ButtonGroup.group: albumCoverVerticalAlignment
+        }
+
+        RadioButton {
+            text: i18n("Bottom")
+            checked: albumCoverVerticalAlignment.value == Full.AlbumCoverAlignment.Bottom
+            onCheckedChanged: () => {
+                if (checked) {
+                    albumCoverVerticalAlignment.value = Full.AlbumCoverAlignment.Bottom
+                }
+            }
+            ButtonGroup.group: albumCoverVerticalAlignment
+        }
+
+        SpinBox {
+            id: fullAlbumCoverPadding
+            Kirigami.FormData.label: i18n("Album cover padding:")
+            from: 0
+            to: 50
+            stepSize: 2
         }
 
         Kirigami.Separator {

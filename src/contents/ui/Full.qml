@@ -17,10 +17,18 @@ Item {
         UnderProgressBar
     }
 
+    enum AlbumCoverAlignment {
+        Top,
+        Middle,
+        Bottom
+    }
+
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
     property real volumeStep: plasmoid.configuration.volumeStep
     property bool albumCoverBackground: plasmoid.configuration.fullAlbumCoverAsBackground
     property bool thumbnailVisible: plasmoid.configuration.fullViewThumbnailVisible
+    property int albumCoverVerticalAlignment: plasmoid.configuration.fullAlbumCoverVerticalAlignment
+    property int albumCoverPadding: plasmoid.configuration.fullAlbumCoverPadding
     property bool progressBarVisible: plasmoid.configuration.fullViewProgressBarVisible
     property bool volumeControlVisible: plasmoid.configuration.fullViewVolumeControlVisible
     property bool shuffleVisible: plasmoid.configuration.fullViewShuffleVisible
@@ -206,7 +214,24 @@ Item {
             ImageWithPlaceholder {
                 visible: !albumCoverBackground
                 id: albumArtNormal
-                anchors.fill: parent
+                anchors.horizontalCenter: parent.horizontalCenter
+                readonly property real padding: root.albumCoverPadding
+                readonly property real availWidth: Math.max(0, thumbnailContainer.width - 2 * padding)
+                readonly property real availHeight: Math.max(0, thumbnailContainer.height - 2 * padding)
+                // Fit the artwork to the padded container while honoring the chosen vertical alignment.
+                readonly property real fittedWidth: availWidth > 0
+                    ? Math.min(availWidth, availHeight * thumbnailContainer.imageRatio)
+                    : 0
+                readonly property real fittedHeight: availHeight > 0
+                    ? Math.min(availHeight, availWidth / thumbnailContainer.imageRatio)
+                    : 0
+                width: fittedWidth
+                height: fittedHeight
+                y: root.albumCoverVerticalAlignment === Full.AlbumCoverAlignment.Top
+                    ? padding
+                    : root.albumCoverVerticalAlignment === Full.AlbumCoverAlignment.Bottom
+                        ? thumbnailContainer.height - padding - height
+                        : padding + (availHeight - height) / 2
                 fillMode: Image.PreserveAspectFit
 
                 placeholderSource: albumPlaceholder
