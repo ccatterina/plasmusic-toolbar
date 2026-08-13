@@ -37,6 +37,7 @@ KCM.SimpleKCM {
     property alias cfg_fullAlbumCoverRounded: fullAlbumCoverRounded.checked
     property alias cfg_fullAlbumCoverRadius: fullAlbumCoverRadius.value
     property alias cfg_hideCanBeRaisedTooltip: hideCanBeRaisedTooltip.checked
+    property alias cfg_fullViewClickToRaisePlayer: fullViewClickToRaisePlayer.checked
 
     Kirigami.FormLayout {
         id: form
@@ -469,6 +470,18 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Use album cover as background")
             id: fullAlbumCoverAsBackground
             text: i18n("(Experimental feature)")
+        }
+
+        RowLayout {
+            CheckBox {
+                id: fullViewClickToRaisePlayer
+                text: i18n("Click album cover to bring player to the front")
+            }
+            Kirigami.ContextualHelpButton {
+                toolTipText: i18n(
+                    "Disable if raising the player window causes display artifacts (e.g. broken transparency) on your setup."
+                )
+            }
         }
 
         Kirigami.Separator {

@@ -196,9 +196,9 @@ Item {
             MouseArea {
                 id: coverMouseArea
                 anchors.fill: parent
-                cursorShape: player.canRaise ? Qt.PointingHandCursor : Qt.ArrowCursor
+                cursorShape: plasmoid.configuration.fullViewClickToRaisePlayer && player.canRaise ? Qt.PointingHandCursor : Qt.ArrowCursor
                 onClicked: {
-                    if (player.canRaise) player.raise()
+                    if (plasmoid.configuration.fullViewClickToRaisePlayer && player.canRaise) player.raise()
                 }
                 hoverEnabled: true
             }

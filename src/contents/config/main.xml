@@ -186,6 +186,9 @@
         <entry name="hideCanBeRaisedTooltip" type="Bool">
             <default>false</default>
         </entry>
+        <entry name="fullViewClickToRaisePlayer" type="Bool">
+            <default>true</default>
+        </entry>
         <entry name="showPlayerSelector" type="Bool">
             <default>false</default>
         </entry>
