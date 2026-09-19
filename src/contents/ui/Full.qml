@@ -280,38 +280,10 @@ Item {
             scrollingEnabled: widget.expanded
 
             // Copy Track Info
-            PlasmaComponents3.ToolTip {
-                id: copyTrackToolTip
-                text: copyTrackMouseArea.pressed || copyTimer.running ? i18n("Copied!") : i18n("Click to copy the Track info!")
-                visible: copyTrackMouseArea.containsMouse
-            }
-
-            MouseArea {
-                id: copyTrackMouseArea
+            TextCopyArea {
                 anchors.fill: parent
-                cursorShape: Qt.PointingHandCursor
-                onClicked: {
-                    copyHelper.text = player.title + " | " + player.artists
-                    copyHelper.selectAll()
-                    copyHelper.copy()
-                    copyHelper.deselect()
-                    copyTimer.restart()
-                }
-                hoverEnabled: true
-            }
-
-            Timer {
-                id: copyTimer
-                interval: 1000
-                repeat: false
-                onTriggered: copyTrackMouseArea.pressed
-            }
-
-            // Temporary Clipboard for Track Info
-            TextEdit {
-                id: copyHelper
-                visible: false
-                readOnly: true
+                text: player.title + " | " + player.artists
+                helpText: i18n("Click to copy the track info")
             }
         }
 
