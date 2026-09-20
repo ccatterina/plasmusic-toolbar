@@ -278,6 +278,13 @@ Item {
             albumPosition: plasmoid.configuration.fullAlbumPosition
             hideAlbumForSingles: plasmoid.configuration.fullHideAlbumForSingles
             scrollingEnabled: widget.expanded
+
+            // Copy Track Info
+            TextCopyArea {
+                anchors.fill: parent
+                text: player.title + " | " + player.artists
+                helpText: i18n("Click to copy the track info")
+            }
         }
 
         VolumeBar {
