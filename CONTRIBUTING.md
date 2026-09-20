@@ -55,7 +55,7 @@
   kpackagetool6 -i ./src --type Plasma/Applet
   ```
   
-  This Installation is one-time
+  This installation is one-time.
 
 #### 2.3 Upgrade the development widget:
   
@@ -71,4 +71,4 @@
   systemctl --user restart plasma-plasmashell.service
   ```
   
-  Plasmashell needs a restart to reflect the changes made, usually.
+  Plasmashell needs a restart to reflect the changes made.
