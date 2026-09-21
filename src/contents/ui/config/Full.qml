@@ -20,6 +20,10 @@ KCM.SimpleKCM {
     property alias cfg_fullTitlePosition: fullTitlePosition.value
     property alias cfg_fullAlbumPosition: fullAlbumPosition.value
     property alias cfg_fullAlbumCoverAsBackground: fullAlbumCoverAsBackground.checked
+    property alias cfg_fullAlbumCoverTintBackground: fullAlbumCoverTintBackground.checked
+    property alias cfg_fullAlbumCoverTintOpacity: fullAlbumCoverTintOpacity.value
+    property alias cfg_fullAlbumCoverTintGradient: fullAlbumCoverTintGradient.checked
+    property alias cfg_fullAlbumCoverTintUseContrastText: fullAlbumCoverTintUseContrastText.checked
     property alias cfg_fullHideAlbumForSingles: fullHideAlbumForSingles.checked
     property alias cfg_fullViewThumbnailVisible: fullViewThumbnailVisible.checked
     property alias cfg_fullViewProgressBarVisible: fullViewProgressBarVisible.checked
@@ -420,55 +424,82 @@ KCM.SimpleKCM {
         }
 
         RowLayout {
-            Kirigami.FormData.label: i18n("Background (desktop widget only):")
+            Kirigami.FormData.label: i18n("Background:")
             RadioButton {
                 text: i18n("Standard")
-                checked: desktopWidgetBackgroundRadio.value == PlasmaCore.Types.StandardBackground
-                onCheckedChanged: () => {
-                    if (checked) {
-                        desktopWidgetBackgroundRadio.value = PlasmaCore.Types.StandardBackground
-                    }
+                checked: !fullAlbumCoverAsBackground.checked
+                         && !fullAlbumCoverTintBackground.checked
+                         && desktopWidgetBackgroundRadio.value == PlasmaCore.Types.StandardBackground
+                onCheckedChanged: {
+                    if (checked) desktopWidgetBackgroundRadio.value = PlasmaCore.Types.StandardBackground
                 }
                 ButtonGroup.group: desktopWidgetBackgroundRadio
             }
             Kirigami.ContextualHelpButton {
-                toolTipText: (
-                    "The standard background from the theme."
-                )
+                toolTipText: i18n("The standard background from the theme.")
             }
         }
         RadioButton {
-            text: i18n("Transparent")
-            checked: desktopWidgetBackgroundRadio.value == PlasmaCore.Types.NoBackground
-            onCheckedChanged: () => {
-                if (checked) {
-                    desktopWidgetBackgroundRadio.value = PlasmaCore.Types.NoBackground
-                }
+            text: i18n("Transparent (desktop only)")
+            checked: !fullAlbumCoverAsBackground.checked
+                     && !fullAlbumCoverTintBackground.checked
+                     && desktopWidgetBackgroundRadio.value == PlasmaCore.Types.NoBackground
+            onCheckedChanged: {
+                if (checked) desktopWidgetBackgroundRadio.value = PlasmaCore.Types.NoBackground
             }
             ButtonGroup.group: desktopWidgetBackgroundRadio
         }
         RowLayout {
             RadioButton {
-                text: i18n("Transparent (Shadow content)")
-                checked: desktopWidgetBackgroundRadio.value == PlasmaCore.Types.ShadowBackground
-                onCheckedChanged: () => {
-                    if (checked) {
-                        desktopWidgetBackgroundRadio.value = PlasmaCore.Types.ShadowBackground
-                    }
+                text: i18n("Transparent - shadow (desktop only)")
+                checked: !fullAlbumCoverAsBackground.checked
+                         && !fullAlbumCoverTintBackground.checked
+                         && desktopWidgetBackgroundRadio.value == PlasmaCore.Types.ShadowBackground
+                onCheckedChanged: {
+                    if (checked) desktopWidgetBackgroundRadio.value = PlasmaCore.Types.ShadowBackground
                 }
                 ButtonGroup.group: desktopWidgetBackgroundRadio
             }
             Kirigami.ContextualHelpButton {
-                toolTipText: (
-                    "The applet won't have a background but a drop shadow of its content done via a shader. The text color will also invert."
-                )
+                toolTipText: i18n("The applet has no background, but a drop shadow is applied to its content.")
             }
         }
 
-        CheckBox {
-            Kirigami.FormData.label: i18n("Use album cover as background")
+        RadioButton {
             id: fullAlbumCoverAsBackground
-            text: i18n("(Experimental feature)")
+            text: i18n("Use album cover as background")
+            ButtonGroup.group: desktopWidgetBackgroundRadio
+            onClicked: desktopWidgetBackgroundRadio.value = PlasmaCore.Types.StandardBackground
+        }
+
+        RadioButton {
+            id: fullAlbumCoverTintBackground
+            text: i18n("Use album cover color as tinted background")
+            ButtonGroup.group: desktopWidgetBackgroundRadio
+            onClicked: desktopWidgetBackgroundRadio.value = PlasmaCore.Types.StandardBackground
+        }
+
+        Slider {
+            Layout.preferredWidth: 10 * Kirigami.Units.gridUnit
+            enabled: fullAlbumCoverTintBackground.checked
+            id: fullAlbumCoverTintOpacity
+            from: 0.05
+            to: 0.8
+            stepSize: 0.05
+            value: 0.2
+            Kirigami.FormData.label: i18n("Background tint opacity:")
+        }
+
+        CheckBox {
+            Kirigami.FormData.label: i18n("Use album-derived gradient")
+            enabled: fullAlbumCoverTintBackground.checked
+            id: fullAlbumCoverTintGradient
+        }
+
+        CheckBox {
+            Kirigami.FormData.label: i18n("Use album-derived text color")
+            enabled: fullAlbumCoverTintBackground.checked
+            id: fullAlbumCoverTintUseContrastText
         }
 
         Kirigami.Separator {

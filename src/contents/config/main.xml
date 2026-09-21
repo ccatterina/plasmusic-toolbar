@@ -126,6 +126,18 @@
         <entry name="fullAlbumCoverAsBackground" type="Bool">
             <default>false</default>
         </entry>
+        <entry name="fullAlbumCoverTintBackground" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="fullAlbumCoverTintOpacity" type="Double">
+            <default>0.2</default>
+        </entry>
+        <entry name="fullAlbumCoverTintGradient" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="fullAlbumCoverTintUseContrastText" type="Bool">
+            <default>true</default>
+        </entry>
         <entry name="fullViewThumbnailVisible" type="Bool">
             <default>true</default>
         </entry>

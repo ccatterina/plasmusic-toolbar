@@ -20,6 +20,17 @@ Item {
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
     property real volumeStep: plasmoid.configuration.volumeStep
     property bool albumCoverBackground: plasmoid.configuration.fullAlbumCoverAsBackground
+    property bool albumCoverTintBackground: plasmoid.configuration.fullAlbumCoverTintBackground
+    property real albumCoverTintOpacity: plasmoid.configuration.fullAlbumCoverTintOpacity
+    property bool albumCoverTintGradient: plasmoid.configuration.fullAlbumCoverTintGradient
+    property bool albumCoverTintUseContrastText: plasmoid.configuration.fullAlbumCoverTintUseContrastText
+    // Manually control whether the text uses album-derived contrast colors when the tint is active
+    readonly property bool useAlbumContrastText: albumCoverBackground || (albumCoverTintBackground && albumCoverTintUseContrastText)
+
+    // Applies the configured tint opacity to a color
+    function tintColor(c) {
+        return Qt.rgba(c.r, c.g, c.b, albumCoverTintOpacity);
+    }
     property bool thumbnailVisible: plasmoid.configuration.fullViewThumbnailVisible
     property bool progressBarVisible: plasmoid.configuration.fullViewProgressBarVisible
     property bool volumeControlVisible: plasmoid.configuration.fullViewVolumeControlVisible
@@ -79,10 +90,9 @@ Item {
                 id: imageColors
                 source: albumArtFull
                 readonly property color bgColor: average
-                readonly property var bgColorBrightness: Kirigami.ColorUtils.brightnessForColor(bgColor)
-                readonly property color contrastColor: bgColorBrightness === Kirigami.ColorUtils.Dark ? "white" : "black"
-                readonly property color fgColor: Kirigami.ColorUtils.tintWithAlpha(bgColor, contrastColor, .6)
-                readonly property color hlColor: Kirigami.ColorUtils.tintWithAlpha(bgColor, contrastColor, .8)
+                // Text derived from the album is always bright for readability.
+                readonly property color fgColor: Kirigami.ColorUtils.tintWithAlpha(bgColor, "white", .8)
+                readonly property color hlColor: Kirigami.ColorUtils.tintWithAlpha(bgColor, "white", .9)
             }
 
             layer.enabled: root.fullAlbumCoverRounded && root.albumCoverRadius > 0
@@ -113,6 +123,28 @@ Item {
         }
     }
 
+    // A subtle translucent tint derived from the album cover average color.
+    // Optionally a vertical gradient generated from the album art colors.
+    Rectangle {
+        id: tintBackground
+        visible: albumCoverTintBackground
+        anchors.fill: parent
+        gradient: albumCoverTintGradient ? tintGradient : flatGradient
+    }
+
+    Gradient {
+        id: flatGradient
+        GradientStop { position: 0.0; color: root.tintColor(imageColors.bgColor) }
+        GradientStop { position: 1.0; color: root.tintColor(imageColors.bgColor) }
+    }
+
+    Gradient {
+        id: tintGradient
+        GradientStop { position: 0.0; color: root.tintColor(Kirigami.ColorUtils.tintWithAlpha(imageColors.bgColor, "white", 0.35)) }
+        GradientStop { position: 0.5; color: root.tintColor(imageColors.bgColor) }
+        GradientStop { position: 1.0; color: root.tintColor(Kirigami.ColorUtils.tintWithAlpha(imageColors.bgColor, "black", 0.35)) }
+    }
+
 
     ColumnLayout {
         id: column
@@ -122,8 +154,8 @@ Item {
 
         // Override theme ONLY for this layout and its children
         Kirigami.Theme.inherit: false
-        Kirigami.Theme.textColor: albumCoverBackground ? imageColors.fgColor : root._originalTextColor
-        Kirigami.Theme.highlightColor: albumCoverBackground ? imageColors.hlColor : root._originalHighlightColor
+        Kirigami.Theme.textColor: root.useAlbumContrastText ? imageColors.fgColor : root._originalTextColor
+        Kirigami.Theme.highlightColor: root.useAlbumContrastText ? imageColors.hlColor : root._originalHighlightColor
 
         // Media Player Selector
         Rectangle {
@@ -133,7 +165,7 @@ Item {
                     && playerList.count > 2
                     && player.sourceIdentities == null
 
-            color: albumCoverBackground
+            color: root.useAlbumContrastText
                 ? "transparent"
                 : Kirigami.Theme.backgroundColor
 
