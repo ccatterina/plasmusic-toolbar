@@ -424,60 +424,59 @@ KCM.SimpleKCM {
         }
 
         RowLayout {
-            Kirigami.FormData.label: i18n("Background (desktop widget only):")
+            Kirigami.FormData.label: i18n("Background:")
             RadioButton {
                 text: i18n("Standard")
-                checked: desktopWidgetBackgroundRadio.value == PlasmaCore.Types.StandardBackground
-                onCheckedChanged: () => {
-                    if (checked) {
-                        desktopWidgetBackgroundRadio.value = PlasmaCore.Types.StandardBackground
-                    }
+                checked: !fullAlbumCoverAsBackground.checked
+                         && !fullAlbumCoverTintBackground.checked
+                         && desktopWidgetBackgroundRadio.value == PlasmaCore.Types.StandardBackground
+                onCheckedChanged: {
+                    if (checked) desktopWidgetBackgroundRadio.value = PlasmaCore.Types.StandardBackground
                 }
                 ButtonGroup.group: desktopWidgetBackgroundRadio
             }
             Kirigami.ContextualHelpButton {
-                toolTipText: (
-                    "The standard background from the theme."
-                )
+                toolTipText: i18n("The standard background from the theme.")
             }
         }
         RadioButton {
-            text: i18n("Transparent")
-            checked: desktopWidgetBackgroundRadio.value == PlasmaCore.Types.NoBackground
-            onCheckedChanged: () => {
-                if (checked) {
-                    desktopWidgetBackgroundRadio.value = PlasmaCore.Types.NoBackground
-                }
+            text: i18n("Transparent (desktop only)")
+            checked: !fullAlbumCoverAsBackground.checked
+                     && !fullAlbumCoverTintBackground.checked
+                     && desktopWidgetBackgroundRadio.value == PlasmaCore.Types.NoBackground
+            onCheckedChanged: {
+                if (checked) desktopWidgetBackgroundRadio.value = PlasmaCore.Types.NoBackground
             }
             ButtonGroup.group: desktopWidgetBackgroundRadio
         }
         RowLayout {
             RadioButton {
-                text: i18n("Transparent (Shadow content)")
-                checked: desktopWidgetBackgroundRadio.value == PlasmaCore.Types.ShadowBackground
-                onCheckedChanged: () => {
-                    if (checked) {
-                        desktopWidgetBackgroundRadio.value = PlasmaCore.Types.ShadowBackground
-                    }
+                text: i18n("Transparent - shadow (desktop only)")
+                checked: !fullAlbumCoverAsBackground.checked
+                         && !fullAlbumCoverTintBackground.checked
+                         && desktopWidgetBackgroundRadio.value == PlasmaCore.Types.ShadowBackground
+                onCheckedChanged: {
+                    if (checked) desktopWidgetBackgroundRadio.value = PlasmaCore.Types.ShadowBackground
                 }
                 ButtonGroup.group: desktopWidgetBackgroundRadio
             }
             Kirigami.ContextualHelpButton {
-                toolTipText: (
-                    "The applet won't have a background but a drop shadow of its content done via a shader. The text color will also invert."
-                )
+                toolTipText: i18n("The applet has no background, but a drop shadow is applied to its content.")
             }
         }
 
-        CheckBox {
-            Kirigami.FormData.label: i18n("Use album cover as background")
+        RadioButton {
             id: fullAlbumCoverAsBackground
-            text: i18n("(Experimental feature)")
+            text: i18n("Use album cover as background")
+            ButtonGroup.group: desktopWidgetBackgroundRadio
+            onClicked: desktopWidgetBackgroundRadio.value = PlasmaCore.Types.StandardBackground
         }
 
-        CheckBox {
-            Kirigami.FormData.label: i18n("Use album cover color as tinted background")
+        RadioButton {
             id: fullAlbumCoverTintBackground
+            text: i18n("Use album cover color as tinted background")
+            ButtonGroup.group: desktopWidgetBackgroundRadio
+            onClicked: desktopWidgetBackgroundRadio.value = PlasmaCore.Types.StandardBackground
         }
 
         Slider {

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-13 12:52+0600\n"
+"POT-Creation-Date: 2026-09-21 12:50+0600\n"
 "PO-Revision-Date: 2026-08-02 07:43+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -320,7 +320,7 @@ msgstr "背景功能需要勾选“使用专辑封面作为图标”。"
 msgid "Background radius:"
 msgstr "背景圆角："
 
-#: src/contents/ui/config/Compact.qml:523 src/contents/ui/config/Full.qml:508
+#: src/contents/ui/config/Compact.qml:523 src/contents/ui/config/Full.qml:507
 #, kde-format
 msgid "Hover tooltip"
 msgstr "悬停工具提示"
@@ -464,55 +464,61 @@ msgstr "歌曲文本自定义"
 
 #: src/contents/ui/config/Full.qml:427
 #, kde-format
-msgid "Background (desktop widget only):"
-msgstr "背景（仅桌面小部件）："
+msgid "Background:"
+msgstr ""
 
 #: src/contents/ui/config/Full.qml:429
 #, kde-format
 msgid "Standard"
 msgstr "标准"
 
-#: src/contents/ui/config/Full.qml:445
+#: src/contents/ui/config/Full.qml:439
 #, kde-format
-msgid "Transparent"
-msgstr "透明"
+msgid "The standard background from the theme."
+msgstr ""
 
-#: src/contents/ui/config/Full.qml:456
+#: src/contents/ui/config/Full.qml:443
 #, kde-format
-msgid "Transparent (Shadow content)"
-msgstr "透明（阴影内容）"
+msgid "Transparent (desktop only)"
+msgstr ""
 
-#: src/contents/ui/config/Full.qml:473
+#: src/contents/ui/config/Full.qml:454
+#, kde-format
+msgid "Transparent - shadow (desktop only)"
+msgstr ""
+
+#: src/contents/ui/config/Full.qml:464
+#, kde-format
+msgid ""
+"The applet has no background, but a drop shadow is applied to its content."
+msgstr ""
+
+#: src/contents/ui/config/Full.qml:470
 #, kde-format
 msgid "Use album cover as background"
 msgstr "使用专辑封面作为背景"
 
-#: src/contents/ui/config/Full.qml:475
-#, kde-format
-msgid "(Experimental feature)"
-msgstr "（实验性功能）"
-
-#: src/contents/ui/config/Full.qml:479
+#: src/contents/ui/config/Full.qml:477
 #, kde-format
 msgid "Use album cover color as tinted background"
 msgstr ""
 
-#: src/contents/ui/config/Full.qml:491
+#: src/contents/ui/config/Full.qml:490
 #, kde-format
 msgid "Background tint opacity:"
 msgstr ""
 
-#: src/contents/ui/config/Full.qml:495
+#: src/contents/ui/config/Full.qml:494
 #, kde-format
 msgid "Use album-derived gradient"
 msgstr ""
 
-#: src/contents/ui/config/Full.qml:501
+#: src/contents/ui/config/Full.qml:500
 #, kde-format
 msgid "Use album-derived text color"
 msgstr ""
 
-#: src/contents/ui/config/Full.qml:513
+#: src/contents/ui/config/Full.qml:512
 #, kde-format
 msgid "Hide album art tooltip"
 msgstr "隐藏专辑封面工具提示"
@@ -650,3 +656,19 @@ msgstr "滚动调节音量"
 #, kde-format
 msgid "Ctrl+Click to bring player to the front"
 msgstr "Ctrl+单击将播放器置顶"
+
+#, kde-format
+#~ msgid "Background (desktop widget only):"
+#~ msgstr "背景（仅桌面小部件）："
+
+#, kde-format
+#~ msgid "Transparent"
+#~ msgstr "透明"
+
+#, kde-format
+#~ msgid "Transparent (Shadow content)"
+#~ msgstr "透明（阴影内容）"
+
+#, kde-format
+#~ msgid "(Experimental feature)"
+#~ msgstr "（实验性功能）"
