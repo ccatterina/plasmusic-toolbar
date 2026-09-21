@@ -194,11 +194,6 @@ KCM.SimpleKCM {
             }
         }
 
-        CheckBox {
-            Kirigami.FormData.label: i18n("Show pin (keep open) button")
-            id: showPinButton
-        }
-
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
             Kirigami.FormData.label: i18n("Album cover")

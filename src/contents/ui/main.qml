@@ -10,6 +10,16 @@ import org.kde.plasma.private.mpris as Mpris
 PlasmoidItem {
     id: widget
 
+    Plasmoid.contextualActions: [
+        PlasmaCore.Action {
+            text: i18nc("@action:inmenu", "Keep Open")
+            icon.name: "window-pin"
+            checkable: true
+            checked: !widget.hideOnWindowDeactivate
+            onTriggered: widget.hideOnWindowDeactivate = !widget.hideOnWindowDeactivate
+        }
+    ]
+
     Plasmoid.status: (showWhenNoMedia || player.ready) ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
     Plasmoid.backgroundHints: plasmoid.configuration.desktopWidgetBg
 

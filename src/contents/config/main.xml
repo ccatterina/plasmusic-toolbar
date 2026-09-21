@@ -189,8 +189,5 @@
         <entry name="showPlayerSelector" type="Bool">
             <default>false</default>
         </entry>
-        <entry name="showPinButton" type="Bool">
-            <default>false</default>
-        </entry>
     </group>
 </kcfg>
