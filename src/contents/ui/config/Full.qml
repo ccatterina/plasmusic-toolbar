@@ -195,6 +195,22 @@ KCM.SimpleKCM {
             }
         }
 
+        SpinBox {
+            id: fullViewContentPadding
+            Kirigami.FormData.label: i18n("Content padding:")
+            from: 0
+            to: 50
+            stepSize: 2
+        }
+
+        SpinBox {
+            id: fullViewContentPaddingBottom
+            Kirigami.FormData.label: i18n("Content bottom padding:")
+            from: 0
+            to: 50
+            stepSize: 2
+        }
+
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
             Kirigami.FormData.label: i18n("Album cover")
@@ -245,22 +261,6 @@ KCM.SimpleKCM {
             to: 26
             stepSize: 2
             Kirigami.FormData.label: i18n("Album cover radius:")
-        }
-
-        SpinBox {
-            id: fullViewContentPadding
-            Kirigami.FormData.label: i18n("Content padding:")
-            from: 0
-            to: 50
-            stepSize: 2
-        }
-
-        SpinBox {
-            id: fullViewContentPaddingBottom
-            Kirigami.FormData.label: i18n("Content bottom padding:")
-            from: 0
-            to: 50
-            stepSize: 2
         }
 
         Kirigami.Separator {

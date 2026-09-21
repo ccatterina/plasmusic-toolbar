@@ -181,7 +181,7 @@ Item {
             id: thumbnailContainer
             visible: thumbnailVisible
             Layout.fillWidth: true
-            Layout.margins: 10
+            Layout.margins: contentPadding
             // Use the actual image aspect ratio, fallback to square if not loaded yet
             readonly property real imageRatio: albumArtNormal.implicitWidth > 0 && albumArtNormal.implicitHeight > 0
                 ? albumArtNormal.implicitWidth / albumArtNormal.implicitHeight
