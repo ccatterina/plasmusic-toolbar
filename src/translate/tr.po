@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-08-09 13:21+0000\n"
-"PO-Revision-Date: 2026-03-08 00:00+0300\n"
+"PO-Revision-Date: 2026-09-21 00:00+0300\n"
 "Last-Translator: A coffee lover\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -36,7 +36,7 @@ msgstr "Tam Görünüm"
 #, kde-format
 msgctxt "@action:button"
 msgid "Choose player automatically"
-msgstr ""
+msgstr "Oynatıcıyı otomatik seç"
 
 #: src/contents/ui/Full.qml:192
 #, kde-format
@@ -327,12 +327,12 @@ msgstr "Arka plan köşe yarıçapı:"
 #: src/contents/ui/config/Compact.qml:523 src/contents/ui/config/Full.qml:476
 #, kde-format
 msgid "Hover tooltip"
-msgstr ""
+msgstr "Bilgi kutucuğu"
 
 #: src/contents/ui/config/Compact.qml:528
 #, kde-format
 msgid "Hide player control keybinds in tooltip"
-msgstr ""
+msgstr "Bilgi kutusunda oynatıcı kontrol tuş atamalarını gizle"
 
 #: src/contents/ui/config/ConfigIcon.qml:49
 #, kde-format
@@ -428,7 +428,7 @@ msgstr "Maksimum boyutlandırılabilir genişlik:"
 #: src/contents/ui/config/Full.qml:185
 #, kde-format
 msgid "Show media player selector"
-msgstr ""
+msgstr "Medya oynatıcı seçicisini göster"
 
 #: src/contents/ui/config/Full.qml:191
 #, kde-format
@@ -436,6 +436,8 @@ msgid ""
 "Disabled when a preferred player is selected under General > Playback "
 "Source. Only works when 'Choose automatically' is selected."
 msgstr ""
+"Genel > Oynatma Kaynağı altında tercih edilen bir oynatıcı seçildiğinde devre dışı kalır. "
+"Yalnızca 'Otomatik olarak seç' seçildiğinde kullanılabilir."
 
 #: src/contents/ui/config/Full.qml:198
 #, kde-format
@@ -470,7 +472,7 @@ msgstr "Şarkı metni özelleştirme"
 #: src/contents/ui/config/Full.qml:423
 #, kde-format
 msgid "Background (desktop widget only):"
-msgstr "Arka plan (yalnızca masaüstü araç takımı):"
+msgstr "Arka plan (yalnızca masaüstü programcığı):"
 
 #: src/contents/ui/config/Full.qml:425
 #, kde-format
@@ -500,7 +502,7 @@ msgstr "(Deneysel özellik)"
 #: src/contents/ui/config/Full.qml:481
 #, kde-format
 msgid "Hide album art tooltip"
-msgstr ""
+msgstr "Albüm kapağı bilgi balonunu gizle"
 
 #: src/contents/ui/config/General.qml:30
 #, kde-format
@@ -536,12 +538,12 @@ msgstr "Her zaman:"
 #: src/contents/ui/config/General.qml:67
 #, kde-format
 msgid "None selected"
-msgstr ""
+msgstr "Seçim yapılmadı"
 
 #: src/contents/ui/config/General.qml:72
 #, kde-format
 msgid "%1 players selected"
-msgstr ""
+msgstr "%1 oynatıcı seçildi"
 
 #: src/contents/ui/config/General.qml:108
 #, kde-format
@@ -559,7 +561,7 @@ msgstr ""
 #: src/contents/ui/config/General.qml:116
 #, kde-format
 msgid "Font customization"
-msgstr "Yazı tipi özelleştirme"
+msgstr "Yazı Tipi Özelleştirme"
 
 #: src/contents/ui/config/General.qml:120
 #, kde-format
@@ -574,7 +576,7 @@ msgstr "%1pt %2"
 #: src/contents/ui/config/General.qml:145
 #, kde-format
 msgid "No media found behavior"
-msgstr "Medya bulunamadığında davranış"
+msgstr "Medya bulunamadı davranışı"
 
 #: src/contents/ui/config/General.qml:150
 #, kde-format
@@ -610,7 +612,7 @@ msgstr "Medya oynatılmıyor"
 #, kde-format
 msgctxt "%1 is the media artist/author and %2 is the player name"
 msgid "by %1 (%2)"
-msgstr "%1 tarafından (%2)"
+msgstr "%1 (%2) tarafından"
 
 #: src/contents/ui/main.qml:27
 #, kde-format
