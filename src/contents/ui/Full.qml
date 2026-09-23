@@ -21,6 +21,9 @@ Item {
     property real volumeStep: plasmoid.configuration.volumeStep
     property bool albumCoverBackground: plasmoid.configuration.fullAlbumCoverAsBackground
     property bool thumbnailVisible: plasmoid.configuration.fullViewThumbnailVisible
+    // Horizontal padding for the content components (text, slider, volume, controls).
+    property int contentPadding: plasmoid.configuration.fullViewContentPadding
+    property int contentBottomPadding: plasmoid.configuration.fullViewContentPaddingBottom
     property bool progressBarVisible: plasmoid.configuration.fullViewProgressBarVisible
     property bool volumeControlVisible: plasmoid.configuration.fullViewVolumeControlVisible
     property bool shuffleVisible: plasmoid.configuration.fullViewShuffleVisible
@@ -178,7 +181,7 @@ Item {
             id: thumbnailContainer
             visible: thumbnailVisible
             Layout.fillWidth: true
-            Layout.margins: 10
+            Layout.margins: contentPadding
             // Use the actual image aspect ratio, fallback to square if not loaded yet
             readonly property real imageRatio: albumArtNormal.implicitWidth > 0 && albumArtNormal.implicitHeight > 0
                 ? albumArtNormal.implicitWidth / albumArtNormal.implicitHeight
@@ -229,8 +232,8 @@ Item {
         SongAndArtistText {
             visible: songTextVisible && songTextAboveProgressBar
             Layout.fillWidth: true
-            Layout.leftMargin: 10
-            Layout.rightMargin: 10
+            Layout.leftMargin: contentPadding
+            Layout.rightMargin: contentPadding
             Layout.bottomMargin: 5
             textAlignment: songTextAlignment
             scrollingSpeed: plasmoid.configuration.fullViewTextScrollingSpeed
@@ -247,8 +250,8 @@ Item {
 
         TrackPositionSlider {
             visible: progressBarVisible
-            Layout.leftMargin: 10
-            Layout.rightMargin: 10
+            Layout.leftMargin: contentPadding
+            Layout.rightMargin: contentPadding
             songPosition: player.songPosition
             songLength: player.songLength
             playing: player.playbackStatus === Mpris.PlaybackStatus.Playing
@@ -264,8 +267,8 @@ Item {
         SongAndArtistText {
             visible: songTextVisible && !songTextAboveProgressBar
             Layout.fillWidth: true
-            Layout.leftMargin: 10
-            Layout.rightMargin: 10
+            Layout.leftMargin: contentPadding
+            Layout.rightMargin: contentPadding
             Layout.topMargin: 5
             textAlignment: songTextAlignment
             scrollingSpeed: plasmoid.configuration.fullViewTextScrollingSpeed
@@ -289,8 +292,8 @@ Item {
 
         VolumeBar {
             visible: volumeControlVisible
-            Layout.leftMargin: 40
-            Layout.rightMargin: 40
+            Layout.leftMargin: contentPadding
+            Layout.rightMargin: contentPadding
             Layout.topMargin: 10
             volume: player.volume
             onSetVolume: (vol) => {
@@ -306,9 +309,8 @@ Item {
 
         Item {
             visible: shuffleVisible || playbackControlsVisible || loopVisible
-            Layout.leftMargin: 20
-            Layout.rightMargin: 20
-            Layout.bottomMargin: 10
+            Layout.leftMargin: contentPadding
+            Layout.rightMargin: contentPadding
             Layout.fillWidth: playbackControlsFitWidth
             Layout.alignment: playbackControlsFitWidth ? 0 : Qt.AlignHCenter
             Layout.preferredWidth: playbackControlsFitWidth ? -1 : row.implicitWidth
@@ -376,6 +378,12 @@ Item {
 
             }
 
+        }
+
+        // Bottom padding for the content
+        Item {
+            Layout.fillWidth: true
+            Layout.preferredHeight: root.contentBottomPadding
         }
 
     }
