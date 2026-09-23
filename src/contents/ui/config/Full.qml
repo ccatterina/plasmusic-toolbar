@@ -34,6 +34,7 @@ KCM.SimpleKCM {
     property alias cfg_fullViewMinWidth: fullViewMinWidth.value
     property alias cfg_fullViewMaxWidth: fullViewMaxWidth.value
     property alias cfg_showPlayerSelector: showPlayerSelector.checked
+    property alias cfg_showPinButton: showPinButton.checked
     property alias cfg_fullAlbumCoverRounded: fullAlbumCoverRounded.checked
     property alias cfg_fullAlbumCoverRadius: fullAlbumCoverRadius.value
     property alias cfg_hideCanBeRaisedTooltip: hideCanBeRaisedTooltip.checked
