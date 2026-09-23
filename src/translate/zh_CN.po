@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: plasmusic-toolbar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-02 07:43+0000\n"
+"POT-Creation-Date: 2026-09-23 17:50+0000\n"
 "PO-Revision-Date: 2026-08-02 07:43+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -43,10 +43,20 @@ msgstr "自动选择播放器"
 msgid "Bring player to the front"
 msgstr "将播放器置顶"
 
-#: src/contents/ui/Full.qml:192 src/contents/ui/main.qml:32
+#: src/contents/ui/Full.qml:192 src/contents/ui/main.qml:31
 #, kde-format
 msgid "This player can't be raised"
 msgstr "无法置顶此播放器"
+
+#: src/contents/ui/Full.qml:286
+#, kde-format
+msgid "Click to copy the track info"
+msgstr ""
+
+#: src/contents/ui/components/TextCopyArea.qml:14
+#, kde-format
+msgid "Copied!"
+msgstr ""
 
 #: src/contents/ui/config/Compact.qml:50 src/contents/ui/config/Full.qml:46
 #, kde-format
@@ -66,9 +76,8 @@ msgid ""
 "playback controls are aligned to the right (or bottom); The song text can be "
 "positioned based on user preference."
 msgstr ""
-"该小部件会填满水平面板的全部可用宽度（或垂直面板的全部可用高度）；图标"
-"靠左（或靠上）对齐，播放控制靠右（或靠下）对齐；歌曲文本可根据用户偏好调"
-"整位置。"
+"该小部件会填满水平面板的全部可用宽度（或垂直面板的全部可用高度）；图标靠左"
+"（或靠上）对齐，播放控制靠右（或靠下）对齐；歌曲文本可根据用户偏好调整位置。"
 
 #: src/contents/ui/config/Compact.qml:71 src/contents/ui/config/Full.qml:65
 #, kde-format
@@ -408,8 +417,7 @@ msgstr "用播放控制填充可用空间"
 msgid ""
 "When enabled, playback controls are spread across the full width of the "
 "widget. When disabled, they are grouped together in the center."
-msgstr ""
-"启用后，播放控制将分布在小部件的整个宽度上；禁用时则集中在中间。"
+msgstr "启用后，播放控制将分布在小部件的整个宽度上；禁用时则集中在中间。"
 
 #: src/contents/ui/config/Full.qml:170
 #, kde-format
@@ -444,7 +452,7 @@ msgstr "专辑封面"
 msgid "Album placeholder:"
 msgstr "专辑占位图："
 
-#: src/contents/ui/config/Full.qml:205 src/contents/ui/config/General.qml:132
+#: src/contents/ui/config/Full.qml:205 src/contents/ui/config/General.qml:127
 #, kde-format
 msgid "Choose…"
 msgstr "选择…"
@@ -521,8 +529,8 @@ msgid ""
 "If two or more players are playing at the same time, the widget will choose "
 "the one that started playing first."
 msgstr ""
-"将根据当前正在播放的歌曲自动选择播放器。如果两个或多个播放器同时播放，"
-"小部件将选择最先开始播放的那个。"
+"将根据当前正在播放的歌曲自动选择播放器。如果两个或多个播放器同时播放，小部件"
+"将选择最先开始播放的那个。"
 
 #: src/contents/ui/config/General.qml:54
 #, kde-format
@@ -539,7 +547,7 @@ msgstr "未选择"
 msgid "%1 players selected"
 msgstr "已选择 %1 个播放器"
 
-#: src/contents/ui/config/General.qml:113
+#: src/contents/ui/config/General.qml:108
 #, kde-format
 msgid ""
 "Always display information from the selected player, if it's not running the "
@@ -547,88 +555,88 @@ msgid ""
 "players that are currently running, if you can't find the one you want, open "
 "the player application and reload the list with reload button."
 msgstr ""
-"始终显示所选播放器的信息；如果它未运行，小部件将被隐藏。你可以在下拉列表"
-"中选择当前正在运行的所有播放器；如果找不到想要的播放器，请打开播放器应"
-"用，然后点击重新加载按钮刷新列表。"
+"始终显示所选播放器的信息；如果它未运行，小部件将被隐藏。你可以在下拉列表中选"
+"择当前正在运行的所有播放器；如果找不到想要的播放器，请打开播放器应用，然后点"
+"击重新加载按钮刷新列表。"
 
-#: src/contents/ui/config/General.qml:121
+#: src/contents/ui/config/General.qml:116
 #, kde-format
 msgid "Font customization"
 msgstr "字体自定义"
 
-#: src/contents/ui/config/General.qml:125
+#: src/contents/ui/config/General.qml:120
 #, kde-format
 msgid "Custom font:"
 msgstr "自定义字体："
 
-#: src/contents/ui/config/General.qml:143
+#: src/contents/ui/config/General.qml:138
 #, kde-format
 msgid "%1pt %2"
 msgstr "%1pt %2"
 
-#: src/contents/ui/config/General.qml:150
+#: src/contents/ui/config/General.qml:145
 #, kde-format
 msgid "No media found behavior"
 msgstr "未找到媒体时的行为"
 
-#: src/contents/ui/config/General.qml:155
+#: src/contents/ui/config/General.qml:150
 #, kde-format
 msgid "Show widget when no media found"
 msgstr "未找到媒体时显示小部件"
 
-#: src/contents/ui/config/General.qml:160
+#: src/contents/ui/config/General.qml:155
 #, kde-format
 msgid "Text displayed when no media found:"
 msgstr "未找到媒体时显示的文本："
 
-#: src/contents/ui/config/General.qml:166
+#: src/contents/ui/config/General.qml:161
 #, kde-format
 msgid "Controls behaviour"
 msgstr "控制行为"
 
-#: src/contents/ui/config/General.qml:171
+#: src/contents/ui/config/General.qml:166
 #, kde-format
 msgid "Volume step:"
 msgstr "音量步进："
 
-#: src/contents/ui/config/General.qml:181
+#: src/contents/ui/config/General.qml:176
 #, kde-format
 msgid "Choose a Font"
 msgstr "选择字体"
 
-#: src/contents/ui/main.qml:25
+#: src/contents/ui/main.qml:24
 #, kde-format
 msgid "No media playing"
 msgstr "没有正在播放的媒体"
 
-#: src/contents/ui/main.qml:27
+#: src/contents/ui/main.qml:26
 #, kde-format
 msgctxt "%1 is the media artist/author and %2 is the player name"
 msgid "by %1 (%2)"
 msgstr "来自 %1（%2）"
 
-#: src/contents/ui/main.qml:28
+#: src/contents/ui/main.qml:27
 #, kde-format
 msgctxt "%1 is the player name"
 msgid "%1"
 msgstr "%1"
 
-#: src/contents/ui/main.qml:30
+#: src/contents/ui/main.qml:29
 #, kde-format
 msgid "Middle-click to pause"
 msgstr "中键单击暂停"
 
-#: src/contents/ui/main.qml:30
+#: src/contents/ui/main.qml:29
 #, kde-format
 msgid "Middle-click to play"
 msgstr "中键单击播放"
 
-#: src/contents/ui/main.qml:31
+#: src/contents/ui/main.qml:30
 #, kde-format
 msgid "Scroll to adjust volume"
 msgstr "滚动调节音量"
 
-#: src/contents/ui/main.qml:32
+#: src/contents/ui/main.qml:31
 #, kde-format
 msgid "Ctrl+Click to bring player to the front"
 msgstr "Ctrl+单击将播放器置顶"
