@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.4.0](https://github.com/ccatterina/plasmusic-toolbar/compare/v4.3.1...v4.4.0) (2026-09-23)
+
+
+### Features
+
+* **i18n:** Update tr.po ([#355](https://github.com/ccatterina/plasmusic-toolbar/issues/355)) ([0e78da1](https://github.com/ccatterina/plasmusic-toolbar/commit/0e78da10095e5a9089494cd874129ee5062a5a8d))
+* Implement Copy Track Function ([#350](https://github.com/ccatterina/plasmusic-toolbar/issues/350)) ([d16865e](https://github.com/ccatterina/plasmusic-toolbar/commit/d16865e1bb0e230ff837c1dc80195ad1b55fe114))
+
+
+### Bug Fixes
+
+* **ci:** checkout release commit by sha to support draft releases ([c422314](https://github.com/ccatterina/plasmusic-toolbar/commit/c42231411b728b7aefbc98afa4ffcdf4dc3e117a))
+
 ## [4.3.1](https://github.com/ccatterina/plasmusic-toolbar/compare/v4.3.0...v4.3.1) (2026-08-09)
 
 
