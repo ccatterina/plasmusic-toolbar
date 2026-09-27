@@ -23,6 +23,7 @@ PlasMusic Toolbar is a KDE Plasma widget that shows the current playback informa
 - **📸 Full View** — Popup with album art, full playback controls (shuffle, repeat included), volume and seek bar.
 - **🔀 Preferred Source** — Choose which media player the widget should follow.
 - **🖥️ Flexible Layout** — Works in horizontal and vertical panels, and as a desktop widget.
+- **🔔 System Tray** — Can live in the system tray popup, optionally as just previous / play-pause / next buttons.
 - **🎨 Deep Customization** — Icon, album cover, fonts, panel visibility of icon/text/controls, scrolling text behavior, and more.
 
 All media info (title, artist, cover art url, playback state) is read from your media player via **[MPRIS2](https://specifications.freedesktop.org/mpris-spec/latest/)**. The same interface is used to send playback and other commands back to the player.

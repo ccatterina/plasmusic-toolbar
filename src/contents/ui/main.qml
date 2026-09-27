@@ -54,6 +54,24 @@ PlasmoidItem {
 
     }
 
-    compactRepresentation: Compact {}
+    // When the widget is hosted by the system tray, the tray gives it an icon-sized slot, so the
+    // panel layout (song text, controls) does not fit there.
+    readonly property bool inSystemTray: (Plasmoid.containmentDisplayHints & PlasmaCore.Types.ContainmentDrawsPlasmoidHeading) !== 0
+    readonly property bool trayPlaybackControlsOnly: inSystemTray && plasmoid.configuration.trayPlaybackControlsOnly
+
+    // The tray draws the widget title next to its icon; blank it so the controls can use that space.
+    Plasmoid.title: trayPlaybackControlsOnly ? " " : Plasmoid.metaData.name
+
+    compactRepresentation: inSystemTray ? trayCompact : panelCompact
+
+    Component {
+        id: panelCompact
+        Compact {}
+    }
+
+    Component {
+        id: trayCompact
+        TrayCompact {}
+    }
     fullRepresentation: Full {}
 }

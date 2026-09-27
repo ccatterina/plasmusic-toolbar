@@ -17,6 +17,7 @@ KCM.SimpleKCM {
     property alias cfg_volumeStep: volumeStepSpinbox.value
     property alias cfg_noMediaText: noMediaText.text
     property alias cfg_showWhenNoMedia: showWhenNoMedia.checked
+    property alias cfg_trayPlaybackControlsOnly: trayPlaybackControlsOnly.checked
 
     property var preferredIdentities: {
         return cfg_preferredPlayerIdentity ? cfg_preferredPlayerIdentity.split(',').filter(x => x) : []
@@ -154,6 +155,17 @@ KCM.SimpleKCM {
             id: noMediaText
             Kirigami.FormData.label: i18n("Text displayed when no media found:")
             enabled: showWhenNoMedia.checked
+        }
+
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: i18n("System tray")
+        }
+
+        CheckBox {
+            id: trayPlaybackControlsOnly
+            Kirigami.FormData.label: i18n("In the system tray popup:")
+            text: i18n("Show only the playback controls")
         }
 
         Kirigami.Separator {

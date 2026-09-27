@@ -17,6 +17,8 @@
         "Version": "4.3.1",
         "Category": "Multimedia"
     },
+    "X-Plasma-NotificationArea": "true",
+    "X-Plasma-NotificationAreaCategory": "ApplicationStatus",
     "X-Plasma-API-Minimum-Version": "6.0.4",
     "X-Plasma-Provides": [
         "org.kde.plasma.multimediacontrols"
