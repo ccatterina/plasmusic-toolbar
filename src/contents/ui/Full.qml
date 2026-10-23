@@ -17,6 +17,16 @@ Item {
         UnderProgressBar
     }
 
+    enum PlayerSelectorPosition {
+        Top,
+        Side
+    }
+
+    enum AlbumCoverHeight {
+        FitImage,
+        Fixed
+    }
+
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
     property real volumeStep: plasmoid.configuration.volumeStep
     property bool albumCoverBackground: plasmoid.configuration.fullAlbumCoverAsBackground
@@ -30,6 +40,9 @@ Item {
     property bool songTextVisible: plasmoid.configuration.fullViewSongTextVisible
     property int songTextAlignment: plasmoid.configuration.fullViewSongTextAlignment
     property bool songTextAboveProgressBar: plasmoid.configuration.fullViewSongTextPosition === Full.SongAndArtistTextPosition.AboveProgressBar
+    property bool playerSelectorEnabled: plasmoid.configuration.showPlayerSelector && player.sourceIdentities == null
+    property bool playerSelectorOnSide: plasmoid.configuration.playerSelectorPosition === Full.PlayerSelectorPosition.Side
+    property bool albumCoverFixedHeight: plasmoid.configuration.fullAlbumCoverHeight === Full.AlbumCoverHeight.Fixed
 
     // The Full View max and min width is driven by config values. The window can be resized within these bounds; thumbnail and text adapt.
     readonly property int configMinWidth: plasmoid.configuration.fullViewMinWidth
@@ -41,9 +54,12 @@ Item {
     readonly property int contentMinWidth: row.visible ? row.implicitWidth + 40 : 0
     readonly property int effectiveMinWidth: Math.min(Math.max(configMinWidth, contentMinWidth), maximumWidth)
 
-    Layout.minimumWidth: effectiveMinWidth
-    Layout.maximumWidth: maximumWidth
-    Layout.preferredWidth: effectiveMinWidth
+    // Extra width taken by the side player list, added on top of the configured width bounds
+    readonly property int sidePlayerListWidth: sidePlayerList.visible ? Kirigami.Units.gridUnit * 11 : 0
+
+    Layout.minimumWidth: effectiveMinWidth + sidePlayerListWidth
+    Layout.maximumWidth: maximumWidth + sidePlayerListWidth
+    Layout.preferredWidth: effectiveMinWidth + sidePlayerListWidth
     Layout.preferredHeight: column.implicitHeight
     Layout.minimumHeight: column.implicitHeight
     Layout.maximumHeight: column.implicitHeight
@@ -55,7 +71,8 @@ Item {
     Item {
         visible: albumCoverBackground && thumbnailVisible
         Layout.margins: 0
-        anchors.centerIn: parent
+        x: column.x
+        y: column.y
         height: column.height
         width: column.width
 
@@ -118,7 +135,10 @@ Item {
         id: column
 
         spacing: 0
-        anchors.fill: parent
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        width: root.width - root.sidePlayerListWidth
 
         // Override theme ONLY for this layout and its children
         Kirigami.Theme.inherit: false
@@ -129,9 +149,9 @@ Item {
         Rectangle {
             id: headerbar
             Layout.fillWidth: true
-            visible: plasmoid.configuration.showPlayerSelector
+            visible: root.playerSelectorEnabled
+                    && !root.playerSelectorOnSide
                     && playerList.count > 2
-                    && player.sourceIdentities == null
 
             color: albumCoverBackground
                 ? "transparent"
@@ -183,7 +203,9 @@ Item {
             readonly property real imageRatio: albumArtNormal.implicitWidth > 0 && albumArtNormal.implicitHeight > 0
                 ? albumArtNormal.implicitWidth / albumArtNormal.implicitHeight
                 : 1.0
-            Layout.preferredHeight: thumbnailVisible ? width / imageRatio : 0
+            // In fixed mode the container keeps a 4:3 box and the image is fitted inside it,
+            // so the popup doesn't change height when switching between covers of different shapes
+            Layout.preferredHeight: thumbnailVisible ? (root.albumCoverFixedHeight ? width * 3 / 4 : width / imageRatio) : 0
             color: 'transparent'
 
             PlasmaComponents3.ToolTip {
@@ -378,5 +400,99 @@ Item {
 
         }
 
+    }
+
+    // Media Player Selector (side list)
+    Item {
+        id: sidePlayerList
+        visible: root.playerSelectorEnabled
+                && root.playerSelectorOnSide
+                && sidePlayerListView.count > 2
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        width: root.sidePlayerListWidth
+
+        Kirigami.Separator {
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+        }
+
+        ListView {
+            id: sidePlayerListView
+            objectName: "sidePlayerSelector"
+            anchors.fill: parent
+            anchors.margins: Kirigami.Units.smallSpacing
+            anchors.leftMargin: Kirigami.Units.smallSpacing * 2
+            clip: true
+            spacing: Kirigami.Units.smallSpacing / 2
+            boundsBehavior: Flickable.StopAtBounds
+            model: player.mpris2Model
+            currentIndex: player.mpris2Model.currentIndex
+
+            delegate: PlasmaComponents3.ItemDelegate {
+                id: playerDelegate
+                required property string iconName
+                required property bool isMultiplexer
+                required property string identity
+                required property string track
+                required property int playbackStatus
+                required property int index
+
+                width: ListView.view.width
+                highlighted: ListView.isCurrentItem
+                text: isMultiplexer ? i18nc("@action:button", "Choose player automatically") : identity
+
+                Accessible.onPressAction: clicked()
+                onClicked: {
+                    player.mpris2Model.currentIndex = index;
+                }
+
+                PlasmaComponents3.ToolTip.text: isMultiplexer || !track ? text : text + "\n" + track
+                PlasmaComponents3.ToolTip.delay: Kirigami.Units.toolTipDelay
+                PlasmaComponents3.ToolTip.visible: hovered
+
+                contentItem: RowLayout {
+                    spacing: Kirigami.Units.smallSpacing
+
+                    Kirigami.Icon {
+                        source: isMultiplexer ? "media-playlist-shuffle" : iconName
+                        Layout.preferredWidth: Kirigami.Units.iconSizes.smallMedium
+                        Layout.preferredHeight: Kirigami.Units.iconSizes.smallMedium
+                        Layout.alignment: Qt.AlignVCenter
+                    }
+
+                    ColumnLayout {
+                        spacing: 0
+                        Layout.fillWidth: true
+
+                        PlasmaComponents3.Label {
+                            Layout.fillWidth: true
+                            text: playerDelegate.text
+                            font.weight: Font.DemiBold
+                            elide: Text.ElideRight
+                        }
+
+                        PlasmaComponents3.Label {
+                            Layout.fillWidth: true
+                            visible: !isMultiplexer && track.length > 0
+                            text: track
+                            font: Kirigami.Theme.smallFont
+                            opacity: 0.7
+                            elide: Text.ElideRight
+                        }
+                    }
+
+                    Kirigami.Icon {
+                        visible: !isMultiplexer && playbackStatus === Mpris.PlaybackStatus.Playing
+                        source: "media-playback-start"
+                        Layout.preferredWidth: Kirigami.Units.iconSizes.small
+                        Layout.preferredHeight: Kirigami.Units.iconSizes.small
+                        Layout.alignment: Qt.AlignVCenter
+                    }
+                }
+            }
+        }
     }
 }

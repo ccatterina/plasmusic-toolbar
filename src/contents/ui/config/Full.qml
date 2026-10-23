@@ -34,6 +34,8 @@ KCM.SimpleKCM {
     property alias cfg_fullViewMinWidth: fullViewMinWidth.value
     property alias cfg_fullViewMaxWidth: fullViewMaxWidth.value
     property alias cfg_showPlayerSelector: showPlayerSelector.checked
+    property alias cfg_playerSelectorPosition: playerSelectorPosition.value
+    property alias cfg_fullAlbumCoverHeight: fullAlbumCoverHeight.value
     property alias cfg_fullAlbumCoverRounded: fullAlbumCoverRounded.checked
     property alias cfg_fullAlbumCoverRadius: fullAlbumCoverRadius.value
     property alias cfg_hideCanBeRaisedTooltip: hideCanBeRaisedTooltip.checked
@@ -193,6 +195,36 @@ KCM.SimpleKCM {
             }
         }
 
+        ButtonGroup {
+            id: playerSelectorPosition
+            property int value: Full.PlayerSelectorPosition.Top
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Media player selector position:")
+            text: i18n("Top, icons only")
+            enabled: showPlayerSelector.checked
+            checked: playerSelectorPosition.value === Full.PlayerSelectorPosition.Top
+            onCheckedChanged: () => {
+                if (checked) {
+                    playerSelectorPosition.value = Full.PlayerSelectorPosition.Top
+                }
+            }
+            ButtonGroup.group: playerSelectorPosition
+        }
+
+        RadioButton {
+            text: i18n("Side, list with names and current track")
+            enabled: showPlayerSelector.checked
+            checked: playerSelectorPosition.value === Full.PlayerSelectorPosition.Side
+            onCheckedChanged: () => {
+                if (checked) {
+                    playerSelectorPosition.value = Full.PlayerSelectorPosition.Side
+                }
+            }
+            ButtonGroup.group: playerSelectorPosition
+        }
+
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
             Kirigami.FormData.label: i18n("Album cover")
@@ -243,6 +275,41 @@ KCM.SimpleKCM {
             to: 26
             stepSize: 2
             Kirigami.FormData.label: i18n("Album cover radius:")
+        }
+
+        ButtonGroup {
+            id: fullAlbumCoverHeight
+            property int value: Full.AlbumCoverHeight.FitImage
+        }
+
+        RadioButton {
+            Kirigami.FormData.label: i18n("Album cover height:")
+            text: i18n("Fit image aspect ratio")
+            checked: fullAlbumCoverHeight.value === Full.AlbumCoverHeight.FitImage
+            onCheckedChanged: () => {
+                if (checked) {
+                    fullAlbumCoverHeight.value = Full.AlbumCoverHeight.FitImage
+                }
+            }
+            ButtonGroup.group: fullAlbumCoverHeight
+        }
+
+        RowLayout {
+            RadioButton {
+                text: i18n("Fixed")
+                checked: fullAlbumCoverHeight.value === Full.AlbumCoverHeight.Fixed
+                onCheckedChanged: () => {
+                    if (checked) {
+                        fullAlbumCoverHeight.value = Full.AlbumCoverHeight.Fixed
+                    }
+                }
+                ButtonGroup.group: fullAlbumCoverHeight
+            }
+            Kirigami.ContextualHelpButton {
+                toolTipText: i18n(
+                    "Keeps the album cover area at a constant 4:3 size and fits the image inside it, so the popup doesn't change height when switching between square covers and wide video thumbnails."
+                )
+            }
         }
 
         Kirigami.Separator {
