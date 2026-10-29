@@ -14,6 +14,9 @@ Item {
 
     readonly property bool horizontal: widget.formFactor === PlasmaCore.Types.Horizontal
     readonly property bool fillAvailableSpace: plasmoid.configuration.fillAvailableSpace
+    // Each entry gives the positions of the icon, song text and controls.
+    readonly property var panelOrders: [[0, 1, 2], [0, 2, 1], [1, 0, 2], [2, 0, 1], [1, 2, 0], [2, 1, 0]]
+    readonly property var panelOrder: panelOrders[plasmoid.configuration.panelItemOrder] || panelOrders[0]
 
     Layout.preferredWidth: horizontal ? grid.implicitWidth + lengthMargin * 2 : grid.implicitWidth
     Layout.preferredHeight: !horizontal ? grid.implicitHeight + lengthMargin * 2 : grid.implicitHeight
@@ -136,6 +139,8 @@ Item {
             visible: plasmoid.configuration.iconInPanel
 
             Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
+            Layout.column: horizontal ? panelOrder[0] : 0
+            Layout.row: horizontal ? 0 : panelOrder[0]
 
             size: compact.iconSize
             icon: plasmoid.configuration.panelIcon
@@ -153,6 +158,8 @@ Item {
         // This item is used to fill the available space when the song text is not enabled.
         Item {
             visible: !plasmoid.configuration.songTextInPanel && fillAvailableSpace
+            Layout.column: horizontal ? panelOrder[1] : 0
+            Layout.row: horizontal ? 0 : panelOrder[1]
             Layout.fillHeight: true
             Layout.fillWidth: true
         }
@@ -160,6 +167,8 @@ Item {
         GridLayout {
             id: songGrid
             visible: plasmoid.configuration.songTextInPanel
+            Layout.column: horizontal ? panelOrder[1] : 0
+            Layout.row: horizontal ? 0 : panelOrder[1]
 
             columns: horizontal ? songGrid.children.length : 1
             rows: horizontal ? 1 : songGrid.children.length
@@ -240,6 +249,8 @@ Item {
         }
 
         GridLayout {
+            Layout.column: horizontal ? panelOrder[2] : 0
+            Layout.row: horizontal ? 0 : panelOrder[2]
             columns: horizontal ? grid.children.length : 1
             rows: horizontal ? 1 : grid.children.length
             columnSpacing: spaceBetweenControlsInPanel ? Kirigami.Units.smallSpacing : 0

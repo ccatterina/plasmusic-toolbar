@@ -19,6 +19,7 @@ KCM.SimpleKCM {
     property alias cfg_skipForwardControlInPanel: skipForwardControlInPanel.checked
     property alias cfg_songTextInPanel: songTextInPanel.checked
     property alias cfg_iconInPanel: iconInPanel.checked
+    property alias cfg_panelItemOrder: panelItemOrder.currentIndex
     property alias cfg_maxSongWidthInPanel: maxSongWidthInPanel.value
     property alias cfg_songTextFixedWidth: songTextFixedWidth.value
     property alias cfg_useSongTextFixedWidth: useSongTextFixedWidth.checked
@@ -50,6 +51,19 @@ KCM.SimpleKCM {
             Kirigami.FormData.label: i18n("Layout")
         }
 
+        ComboBox {
+            id: panelItemOrder
+            Kirigami.FormData.label: i18n("Panel item order:")
+            model: [
+                i18n("Icon, song text, controls"),
+                i18n("Icon, controls, song text"),
+                i18n("Song text, icon, controls"),
+                i18n("Song text, controls, icon"),
+                i18n("Controls, icon, song text"),
+                i18n("Controls, song text, icon")
+            ]
+        }
+
         RowLayout {
             Kirigami.FormData.label: i18n("Fill available space in the panel")
             CheckBox {
@@ -57,7 +71,7 @@ KCM.SimpleKCM {
             }
             Kirigami.ContextualHelpButton {
                 toolTipText: i18n(
-                    "The widget fills all available width in the horizontal panel (or height in the vertical panel);  the icon is aligned to the left (or top) and the playback controls are aligned to the right (or bottom); The song text can be positioned based on user preference."
+                    "The widget fills all available width in a horizontal panel (or height in a vertical panel). The song text expands to fill the remaining space."
                 )
             }
         }
