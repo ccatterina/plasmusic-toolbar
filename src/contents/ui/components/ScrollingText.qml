@@ -9,6 +9,7 @@ Item {
     id: root
 
     property int maxWidth: root.width;
+    readonly property real naturalWidth: staticLabel.implicitWidth
     readonly property bool overflow: {
         if (!root.maxWidth) {
             return false;

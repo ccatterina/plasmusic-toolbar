@@ -20,6 +20,7 @@ KCM.SimpleKCM {
     property alias cfg_songTextInPanel: songTextInPanel.checked
     property alias cfg_iconInPanel: iconInPanel.checked
     property alias cfg_maxSongWidthInPanel: maxSongWidthInPanel.value
+    property alias cfg_fitSongTextInPanel: fitSongTextInPanel.checked
     property alias cfg_songTextFixedWidth: songTextFixedWidth.value
     property alias cfg_useSongTextFixedWidth: useSongTextFixedWidth.checked
     property alias cfg_textScrollingSpeed: textScrollingSpeed.value
@@ -323,7 +324,7 @@ KCM.SimpleKCM {
 
         CheckBox {
             id: useSongTextFixedWidth
-            enabled: songTextInPanel.checked && fillAvailableSpaceCheckbox
+            enabled: songTextInPanel.checked && !fillAvailableSpaceCheckbox.checked
             Kirigami.FormData.label: i18n("Use fixed width")
         }
 
@@ -332,7 +333,7 @@ KCM.SimpleKCM {
             from: 0
             to: 1000
             Kirigami.FormData.label: i18n("fixed width:")
-            enabled: useSongTextFixedWidth.checked && songTextInPanel.checked && fillAvailableSpaceCheckbox
+            enabled: useSongTextFixedWidth.checked && songTextInPanel.checked && !fillAvailableSpaceCheckbox.checked
         }
 
         SpinBox {
@@ -340,7 +341,13 @@ KCM.SimpleKCM {
             from: 0
             to: 1000
             Kirigami.FormData.label: i18n("max width:")
-            enabled: !useSongTextFixedWidth.checked && songTextInPanel.checked && fillAvailableSpaceCheckbox
+            enabled: !useSongTextFixedWidth.checked && !fitSongTextInPanel.checked && songTextInPanel.checked && !fillAvailableSpaceCheckbox.checked
+        }
+
+        CheckBox {
+            id: fitSongTextInPanel
+            Kirigami.FormData.label: i18n("Expand to fit song text")
+            enabled: !useSongTextFixedWidth.checked && songTextInPanel.checked && !fillAvailableSpaceCheckbox.checked
         }
 
         Item {

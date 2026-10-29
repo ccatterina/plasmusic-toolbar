@@ -22,6 +22,8 @@ Item {
 
     implicitWidth: songAndArtistText.implicitWidth
     implicitHeight: songAndArtistText.implicitHeight
+    readonly property real naturalWidth: Math.max(firstLine.visible ? firstLine.naturalWidth : 0,
+                                                  secondLine.visible ? secondLine.naturalWidth : 0)
 
     property var maxWidth: undefined
     property alias scrollingBehaviour: firstLine.overflowBehaviour
@@ -91,6 +93,7 @@ Item {
 
         // second row of text
         ScrollingText {
+            id: secondLine
             Layout.alignment: textAlignment
 
             visible: text.length !== 0

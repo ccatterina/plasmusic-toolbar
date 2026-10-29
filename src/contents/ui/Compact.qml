@@ -205,6 +205,9 @@ Item {
                         if (fillAvailableSpace || songGrid.useFixedWidth) {
                             return songGrid.length
                         }
+                        if (plasmoid.configuration.fitSongTextInPanel) {
+                            return Math.ceil(songAndArtistText.naturalWidth)
+                        }
                         return plasmoid.configuration.maxSongWidthInPanel
                     }
                     scrollingBehaviour: plasmoid.configuration.textScrollingBehaviour
