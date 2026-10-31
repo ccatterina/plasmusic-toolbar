@@ -7,6 +7,7 @@ Item {
     property double songPosition: 0;  // Last song position detected in microseconds
     property double songLength: 0;  // Length of the entire song in microseconds;
     property bool playing: false;
+    property bool brokenData: container.songLength < container.songPosition
     property alias enableChangePosition: timeTrackSlider.enabled;
     property alias refreshInterval: timer.interval;
     signal requireChangePosition(position: double);
@@ -60,9 +61,8 @@ Item {
             // Disable the slider events when songLength is 0 or less
             Loader {
                 anchors.fill: parent
-                sourceComponent: container.songLength <= 0 ? sliderDisabler : null
-                Component {
-                    id: sliderDisabler
+                active: container.songLength <= 0 || container.brokenData
+                sourceComponent: Component {
                     MouseArea {
                         onWheel: (wheel) => { wheel.accepted = true }
                         onClicked: (mouse) => { mouse.accepted = true }
@@ -76,7 +76,7 @@ Item {
             Layout.preferredWidth: parent.width
             id: timeLabels
             function formatDuration(duration) {
-                if (container.songLength <= 0) {
+                if (duration < 0) {
                     return "-:--"
                 }
 
@@ -87,11 +87,11 @@ Item {
 
             PlasmaComponents3.Label {
                 Layout.alignment: Qt.AlignLeft
-                text: timeLabels.formatDuration(container.songPosition)
+                text: timeLabels.formatDuration(container.brokenData ? -1 : container.songPosition)
             }
             PlasmaComponents3.Label {
                 Layout.alignment: Qt.AlignRight
-                text: timeLabels.formatDuration(container.songLength - container.songPosition)
+                text: timeLabels.formatDuration(container.brokenData ? container.songLength : container.songLength - container.songPosition)
             }
         }
     }
